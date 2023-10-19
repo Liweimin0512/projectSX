@@ -1,0 +1,210 @@
+[gd_scene load_steps=17 format=3 uid="uid://ds4gbleycp8dr"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/card_view.gd" id="1_1k6ch"]
+[ext_resource type="Resource" path="res://source/entities/card_configs/10S.tres" id="2_2en2c"]
+[ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/cards/card_sheen_fx/sheen__0000_sheen01.png" id="3_lqafl"]
+[ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/cards/card_sheen_fx/sheen__0001_sheen02.png" id="4_g7qua"]
+[ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/cards/card_sheen_fx/sheen__0002_sheen03.png" id="5_i3gn6"]
+[ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/cards/card_sheen_fx/sheen__0003_sheen04.png" id="6_mu18k"]
+[ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/cards/card_sheen_fx/sheen__0004_sheen05.png" id="7_u7k27"]
+[ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/cards/card_sheen_fx/sheen__0005_sheen06.png" id="8_n5l0u"]
+[ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/cards/card_sheen_fx/sheen__0006_sheen07.png" id="9_vadia"]
+[ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/cards/card_sheen_fx/sheen__0007_sheen08.png" id="10_wlwjx"]
+[ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/cards/card_sheen_fx/sheen__0008_sheen09.png" id="11_q15he"]
+[ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/cards/card_sheen_fx/sheen__0009_sheen010.png" id="12_o3idr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
+font_size = 26
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_jfck6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sheenFX:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_lqafl")]
+}
+
+[sub_resource type="Animation" id="Animation_2abhc"]
+resource_name = "fx_sheen"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sheenFX:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_lqafl"), ExtResource("4_g7qua"), ExtResource("5_i3gn6"), ExtResource("6_mu18k"), ExtResource("7_u7k27"), ExtResource("8_n5l0u"), ExtResource("9_vadia"), ExtResource("10_wlwjx"), ExtResource("11_q15he"), ExtResource("12_o3idr")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axa8x"]
+_data = {
+"RESET": SubResource("Animation_jfck6"),
+"fx_sheen": SubResource("Animation_2abhc")
+}
+
+[node name="card_view" type="Control"]
+custom_minimum_size = Vector2(119, 192)
+layout_mode = 3
+anchor_right = 0.056
+anchor_bottom = 0.16
+offset_right = -0.512001
+offset_bottom = -15.68
+script = ExtResource("1_1k6ch")
+card_resource = ExtResource("2_2en2c")
+card_state = null
+ability_target = null
+is_back = null
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[node name="t_card" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="tr_name" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/tr_name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 109.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+text = "全身撞击+"
+label_settings = SubResource("LabelSettings_m5d0h")
+vertical_alignment = 1
+
+[node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.309804, 0.309804, 0.309804, 1)
+
+[node name="tr_description" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+patch_margin_left = 20
+patch_margin_top = 6
+patch_margin_right = 16
+patch_margin_bottom = 14
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/tr_description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="lab_description" type="RichTextLabel" parent="MarginContainer/VBoxContainer/tr_description/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 10
+text = "造成你当前格挡值的伤害。
+（造成0点伤害）"
+autowrap_mode = 2
+
+[node name="sheenFX" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_lqafl")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fx_sheen"
+libraries = {
+"": SubResource("AnimationLibrary_axa8x")
+}

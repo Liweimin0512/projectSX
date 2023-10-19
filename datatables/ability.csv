@@ -1,0 +1,30 @@
+﻿ID,注释,ability_name,ability_descript,ability_icon,is_passive,conditions,cost_args,progress,cool_down_time,target_type,target_args,tasks,buffs
+SN,注释,名称,描述,图标,是否为被动技能,被动技能触发条件,消耗参数|satiety体力health健康san理智,释放读条时间S,冷却时间（当前项目不需要）,目标类型0无目标1自身2全部3友方单体4敌方单体5友方多个6敌方多个7友方全部8敌方全部,目标参数,任务,BUFFs
+string,string,string,string,texture,bool,string[],string[],int,int,int,string[],string[],string[]
+punch,拳打,拳打,尝试用你的拳头狠狠砸向敌人,,0,,satiety*10,,,4,0,,
+half_rabbit_carcass,半只兔子尸体,半只兔子尸体,+20饱食度 -10生命值,,0,,,1,,,,,add_satiety_20*delete_health_10
+pine_cones,松果,松果,+5饱食度,,0,,,1,,,,,add_satiety_5
+banana,香蕉,香蕉,+10饱食度,,0,,,1,,,,,add_satiety_10
+sponge,象海绵,象海绵,+10饱食度 -5生命值,,0,,,1,,,,,add_satiety_5*delete_health_5
+wandering_spiders,流浪蜘蛛,流浪蜘蛛,+5饱食度,,0,,,1,,,,,add_satiety_5
+parrot_egg,鹦鹉蛋,鹦鹉蛋,+5生命值 +5饱食度,,0,,,1,,,,,add_satiety_5*add_health_5
+lonicera,金银花,金银花,+5生命值 +5饱食度,,0,,,1,,,,,add_satiety_5*add_health_5
+grasshopper,蚱蜢,蚱蜢,"食用+10饱食度,连续吃5只后一段时间内不能再食用",,0,,,1,,,,,add_satiety_10*grasshopper
+trillium,延龄草,延龄草,使用后每5s恢复5生命值（持续60s）,,0,,,1,,,,,
+rabbit_meat,兔子肉,兔子肉,+5 饱食度,,0,,,1,,,,,add_satiety_5
+armor_grass,草制盔甲,草制盔甲,+5 护甲,,0,,,1,,,,,
+armor_marble,大理石盔甲,大理石盔甲,+20 护甲,,0,,,1,,,,,
+armor_wood,木头盔甲,木头盔甲,+10 护甲,,0,,,1,,,,,
+berry,浆果,浆果,+5 饱食度,,0,,,1,,,,,add_satiety_5
+axe,斧头,斧头,,,1,,,,,,,,add_cutor
+hoe,锄头,锄头,,,1,,,,,,,,
+shovel,铲子,铲子,,,1,,,,,,,,
+axe_gold,黄金斧,黄金斧,,,1,,,,,,,,add_cutor
+hoe_gold,黄金锄,黄金锄,,,1,,,,,,,,
+spade_gold,黄金铲,黄金铲,,,1,,,,,,,,
+hammer,破坏锤,破坏锤,,,1,,,,,,,,
+razor,刮胡刀,刮胡刀,,,1,,,,,,,,
+land_fork,地皮叉,地皮叉,,,1,,,,,,,,
+shovel,铲子,铲子,,,1,,,,,,,,
+shovel_gold,黄金铲子,黄金铲子,,,1,,,,,,,,
+pitchfork,草叉,草叉,,,1,,,,,,,,

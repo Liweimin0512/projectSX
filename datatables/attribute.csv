@@ -1,0 +1,12 @@
+﻿ID,attribute_name,attribute_describe,attribute_variable_name,is_percentage,max_value,min_value
+ID,属性名,属性描述,属性参数名,是否为百分比,最大值,最小值
+string,string,string,string,bool,int,int
+health,生命值,,health,0,,
+satiety,饱食度,,satiety,0,,
+san,理智值,,san,0,,
+physique,体质,决定了你的生命值上限,physique,0,,
+strength,力量,决定了你的近战命中率与你的武器伤害,strength,0,,
+agile,敏捷,决定了你的远程命中率与在战斗中的出手顺序,agile,0,,
+intellect,智力,决定了奥术系法术的威力,intellect,0,,
+charm,魅力,决定你是否是一个受欢迎的角色,charm,0,,
+perception,感知,决定了信仰系法术的威力,perception,0,,
