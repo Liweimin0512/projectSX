@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=16 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card_view.gd" id="1_1k6ch"]
-[ext_resource type="Resource" path="res://source/entities/card_configs/10S.tres" id="2_2en2c"]
 [ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/cards/card_sheen_fx/sheen__0000_sheen01.png" id="3_lqafl"]
 [ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/cards/card_sheen_fx/sheen__0001_sheen02.png" id="4_g7qua"]
 [ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/cards/card_sheen_fx/sheen__0002_sheen03.png" id="5_i3gn6"]
@@ -63,10 +62,6 @@ anchor_bottom = 0.16
 offset_right = -0.512001
 offset_bottom = -15.68
 script = ExtResource("1_1k6ch")
-card_resource = ExtResource("2_2en2c")
-card_state = null
-ability_target = null
-is_back = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

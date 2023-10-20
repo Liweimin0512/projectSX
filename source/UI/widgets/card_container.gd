@@ -7,7 +7,7 @@ class_name CardContainer
 @export var tween_speed : float = 0.2
 @export var hand_card_position : Vector2 = Vector2(480,510)
 
-@onready var t_card_view : PackedScene = preload("res://source/widgets/cards/card_view.tscn")
+@onready var t_card_view : PackedScene = preload("res://source/UI/widgets/card_view.tscn")
 
 @onready var hand_card : Control = %hand_card
 @onready var draw_deck : Control = %draw_deck
@@ -25,7 +25,7 @@ var offset_x
 
 var dragging = false
 var click_pisition
-var selected_card: Card = null:
+var selected_card: CardView = null:
 	set(value):
 		update_card_position()
 		if value:
@@ -33,7 +33,8 @@ var selected_card: Card = null:
 			tween.set_parallel()
 #			tween.tween_property(value, "position", target_position, tween_speed)
 			tween.tween_property(value, "rotation_degrees", 0, tween_speed)
-			tween.tween_property(value, "scale", Vector2.ONE * 2, tween_speed)
+			tween.tween_property(value, "scale", Vector2.ONE * 1.3, tween_speed)
+			tween.tween_property(value, "position", value.position + Vector2(0, -80), tween_speed)
 			value.z_index = 64
 		selected_card = value
 		
@@ -99,7 +100,7 @@ func update_card_position():
 	card_amount = cards.size()
 	offset_x = cards[0].size.x ## 单卡偏移量
 	for i in cards.size():
-		var card : Card = cards[i]
+		var card : CardView = cards[i]
 		card.z_index = 0
 		var card_offset = card_amount * -0.5 + 0.5 + 1 * i
 		card.pivot_offset = Vector2(
@@ -119,8 +120,8 @@ func update_card_position():
 #		tween.play()
 #		card.rotation = i * rotation_proportion
 #		printerr("card rotation: ", card.rotation, "i: ", i, "rotation_proportion: ", rotation_proportion)
-		if card.card_manager != self:
-			card.card_manager = self
+#		if card.card_manager != self:
+#			card.card_manager = self
 		# cards[i].card_state = cards[i].CardState.normal
 		card.card.show()
 
@@ -157,13 +158,13 @@ func _on_card_dragging(card):
 	card.scale = Vector2(1.2,1.2)
 	card.position = get_viewport().get_mouse_position() - hand_card.position
 
-func _on_card_mouse_entered(card: Card) -> void:
+func _on_card_mouse_entered(card: CardView) -> void:
 	if selected_card != null:
 		return
 	selected_card = card
 	print("_on_card_mouse_entered:", card)
 
-func _on_card_mouse_exited(card: Card) -> void:
+func _on_card_mouse_exited(card: CardView) -> void:
 	if selected_card == card:
 		selected_card = null
 	print("_on_card_mouse_exited:", card)

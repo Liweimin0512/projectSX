@@ -1,4 +1,0 @@
-﻿ID,注释,attributes,attribute_base_values,attribute_growth_values
-,,属性ID,属性基础值,属性成长值
-string,string,string[],int[],int[]
-player,玩家属性,health*satiety*san*physique*strength*agile*intellect*charm*perception,100*100*100*10*10*10*10*10*10,10*10*10*0*0*0*0*0*0

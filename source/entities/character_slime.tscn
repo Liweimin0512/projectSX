@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnkwapde1fka5"]
+
+[ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/character/slime/slime-idle-0.png" id="1_pq6rh"]
+[ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://asserts/character/slime/slime-idle-1.png" id="2_qnldh"]
+[ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://asserts/character/slime/slime-idle-2.png" id="3_uo2hp"]
+[ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/character/slime/slime-idle-3.png" id="4_dmkk2"]
+
+[sub_resource type="Animation" id="Animation_xfvh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_pq6rh")]
+}
+
+[sub_resource type="Animation" id="Animation_gv8u5"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_pq6rh"), ExtResource("2_qnldh"), ExtResource("3_uo2hp"), ExtResource("4_dmkk2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pjv7"]
+_data = {
+"RESET": SubResource("Animation_xfvh4"),
+"idle": SubResource("Animation_gv8u5")
+}
+
+[node name="character_slime" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(3, 3.036)
+texture = ExtResource("1_pq6rh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_3pjv7")
+}

@@ -1,0 +1,7 @@
+﻿ID,name,description,level,health_points,attack_points,defense_points,speed,tags
+ID,怪物名,怪物描述,等级,生命值,攻击力,防御力,速度,标签
+string,string,string,int,int,int,int,int,string[]
+1001,Goblin,一个矮小而丑陋的怪物，生活在森林深处。,3,50,10,5,20,森林*小怪*低级
+1002,Orc,一个高大而强壮的怪物，经常在草原上活动。,5,100,20,10,30,草原*小怪*中级
+1003,Troll,一个极其强壮的怪物，生活在山区和洞穴中。,8,200,40,20,40,山区*洞穴*高级
+1004,Dragon,一只传说中的龙，无人能够抵挡其猛烈的攻击。,20,1000,100,50,80,龙*中级

@@ -1,7 +1,7 @@
 extends Node
 
 ## 手牌
-var hand_cards : Array[Card] = []
+var hand_cards : Array[CardView] = []
 
 ## 默认每回合可抽取5张卡牌
 var distribute_card_amount := 5 
@@ -12,9 +12,9 @@ var draw_deck
 signal card_distributed
 
 ## 创建卡牌(Create Card)：根据指定的参数创建新卡牌。
-#func create_card(card_data: CardConfig) -> Card:
-#	var card = s_card.instantiate()
-#	return card
+func create_card(card_name:String) -> Card:
+	var card = Card.new(card_name)
+	return card
 
 ## 升级卡牌(Upgrade Card)：升级指定的卡牌。
 func upgrade_card() -> void:

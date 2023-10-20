@@ -13,3 +13,5 @@ data_*/
 
 /.godot
 *.tmp
+*.exe
+~$*.xlsx

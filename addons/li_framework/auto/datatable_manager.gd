@@ -64,7 +64,11 @@ func load_datatable(datatable_path : String) -> Dictionary:
 					else:
 						assert(false, "未知的材质数据： " + row_data[i])
 				_:
-					assert(false,"未知的配置表数据类型: " + type_name[i])
+					if type_name[i].is_empty():
+						push_warning("数据表:", datatable_path," 数据类型为空:", data_name[i])
+						d[data_name[i]] = row_data[i]
+					else:
+						assert(false,"未知的配置表数据类型: " + type_name[i])
 		if not d.is_empty():
 			retunr_dic[d["ID"]] = d
 	return retunr_dic

@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.1")
 GameInstance="*res://source/auto/game_instance.gd"
 EventBus="*res://addons/li_framework/auto/event_bus.gd"
 DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
+CardManager="*res://source/auto/card_manager.gd"
 
 [display]
 
@@ -34,4 +35,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/default_environment="res://default_env.tres"

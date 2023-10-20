@@ -12,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6hgmr")
 offset_x_proportion = 0.6
-rotation_proportion = null
 tween_speed = 0.1
 hand_card_position = Vector2(480, 560)
 

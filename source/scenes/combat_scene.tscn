@@ -1,6 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3ki5tbnvkieq"]
+[gd_scene load_steps=15 format=3 uid="uid://c3ki5tbnvkieq"]
 
 [ext_resource type="Script" path="res://source/scenes/combat_scene.gd" id="1_vno2c"]
+[ext_resource type="Texture2D" uid="uid://6fawcdnvkcqt" path="res://asserts/background/Layer_0000_9.png" id="2_a547s"]
+[ext_resource type="Texture2D" uid="uid://cn7igau1ewgqc" path="res://asserts/background/Layer_0011_0.png" id="2_w244e"]
+[ext_resource type="Texture2D" uid="uid://df5lmhr6y7xmh" path="res://asserts/background/Layer_0010_1.png" id="3_phx0g"]
+[ext_resource type="Texture2D" uid="uid://b2u8nf0d0d0ws" path="res://asserts/background/Layer_0009_2.png" id="4_s6b8x"]
+[ext_resource type="Texture2D" uid="uid://b1nsabm8d7hr7" path="res://asserts/background/Layer_0008_3.png" id="5_xwktf"]
+[ext_resource type="Texture2D" uid="uid://c2ob1ste0w5w0" path="res://asserts/background/Layer_0006_4.png" id="6_s5q3c"]
+[ext_resource type="Texture2D" uid="uid://fkjfxtc1x4ih" path="res://asserts/background/Layer_0005_5.png" id="7_h6lvd"]
+[ext_resource type="Texture2D" uid="uid://dnjgq84gactyg" path="res://asserts/background/Layer_0003_6.png" id="8_fcjnw"]
+[ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="9_hy5pr"]
+[ext_resource type="Texture2D" uid="uid://062sompa2pml" path="res://asserts/background/Layer_0001_8.png" id="10_yb810"]
+[ext_resource type="PackedScene" uid="uid://bepej40eovppu" path="res://source/entities/character_player.tscn" id="12_2qxv4"]
+[ext_resource type="PackedScene" uid="uid://dnkwapde1fka5" path="res://source/entities/character_slime.tscn" id="13_osd0f"]
+[ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/card_container.tscn" id="14_8x3je"]
 
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("1_vno2c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0470588, 0.0666667, 0.133333, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer10"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("2_w244e")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("3_phx0g")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("4_s6b8x")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("5_xwktf")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("6_s5q3c")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("7_h6lvd")
+centered = false
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 100
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground2"]
+visible = false
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("8_fcjnw")
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer7"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("9_hy5pr")
+centered = false
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer8"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("10_yb810")
+centered = false
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer9"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("2_a547s")
+centered = false
+
+[node name="Marker2D1" type="Marker2D" parent="."]
+position = Vector2(386, 498)
+metadata/_edit_group_ = true
+
+[node name="CharacterPlayer" parent="Marker2D1" instance=ExtResource("12_2qxv4")]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(258, 499)
+metadata/_edit_group_ = true
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(130, 498)
+metadata/_edit_group_ = true
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(578, 498)
+metadata/_edit_group_ = true
+
+[node name="character_slime" parent="Marker2D4" instance=ExtResource("13_osd0f")]
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(738, 498)
+metadata/_edit_group_ = true
+
+[node name="character_slime2" parent="Marker2D5" instance=ExtResource("13_osd0f")]
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(898, 498)
+metadata/_edit_group_ = true
+
+[node name="character_slime3" parent="Marker2D6" instance=ExtResource("13_osd0f")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="CardContainer" parent="CanvasLayer2" instance=ExtResource("14_8x3je")]

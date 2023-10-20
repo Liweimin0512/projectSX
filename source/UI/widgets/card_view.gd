@@ -1,5 +1,5 @@
 extends Control
-class_name Card
+class_name CardView
 
 enum CARD_STATE {
 	NORMAL, 
@@ -9,7 +9,6 @@ enum CARD_STATE {
 	}
 
 var can_release : bool = false
-
 
 @export var card_state : CARD_STATE = CARD_STATE.NORMAL
 @export var tween_speed : float = 0.1
