@@ -8,6 +8,10 @@ enum CARD_STATE {
 	PRERELEASE, 
 	}
 
+@onready var lab_name: Label = %lab_name
+@onready var tr_icon: TextureRect = %tr_icon
+@onready var lab_description: RichTextLabel = %lab_description
+
 var can_release : bool = false
 
 @export var card_state : CARD_STATE = CARD_STATE.NORMAL
@@ -31,13 +35,11 @@ func _ready():
 #		var card_res_file = card_resource.card_resource_path + card_resource.card_name + ".png"
 #		card.texture = load(card_res_file)
 
-## 鼠标进入
-func _on_card_mouse_entered():
-	card_mouse_entered.emit()
+## 卡牌的初始化操作
+func init(card: Card) -> void:
+	lab_name.text = card.card_name
+	lab_description.text = card.card_description
 
-## 鼠标退出
-func _on_card_mouse_exited():
-	card_mouse_exited.emit()
 
 func predragging():
 	if card_state == CARD_STATE.PRERELEASE:
@@ -57,3 +59,12 @@ func prerelease():
 
 func release():
 	pass
+
+
+## 鼠标进入
+func _on_card_mouse_entered():
+	card_mouse_entered.emit()
+
+## 鼠标退出
+func _on_card_mouse_exited():
+	card_mouse_exited.emit()

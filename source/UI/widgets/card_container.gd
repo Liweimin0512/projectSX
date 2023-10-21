@@ -45,14 +45,18 @@ var can_release_card : bool = false
 func _ready():
 #	card_preview.pivot_offset = Vector2(card_preview.size.x/2,card_preview.size.y)
 #	card_preview.hide()
+	CardManager.hand_cards_added.connect(
+		func(card: Card) -> void:
+			add_cards(card)
+	)
 	for c in cards:
 		c.queue_free()
-	for i in range(0, 5):
-		var card : CardView = t_card_view.instantiate()
-		hand_card.add_child(card)
-		card.card_mouse_entered.connect(_on_card_mouse_entered.bind(card))
-		card.card_mouse_exited.connect(_on_card_mouse_exited.bind(card))
-		printerr(card.rotation)
+#	for i in range(0, 5):
+#		var card : CardView = t_card_view.instantiate()
+#		hand_card.add_child(card)
+#		card.card_mouse_entered.connect(_on_card_mouse_entered.bind(card))
+#		card.card_mouse_exited.connect(_on_card_mouse_exited.bind(card))
+#		printerr(card.rotation)
 	update_card_position()
 
 func _process(delta):
@@ -126,13 +130,13 @@ func update_card_position():
 		card.card.show()
 
 ## 添加卡牌
-func add_cards(n:int):
-	for i in range(n):
-		var card = t_card_view.instantiate()
-		hand_card.add_child(card)
-		card.scale = Vector2.ZERO
-		card.position = draw_deck.position - hand_card.position
-		update_card_position()
+func add_cards(card: Card):
+	var card_view : CardView= t_card_view.instantiate()
+	hand_card.add_child(card_view)
+	card_view.init(card)
+	card_view.scale = Vector2.ZERO
+	card_view.position = draw_deck.position - hand_card.position
+	update_card_position()
 
 ## 删除卡牌
 func remove_card(card):
@@ -169,8 +173,8 @@ func _on_card_mouse_exited(card: CardView) -> void:
 		selected_card = null
 	print("_on_card_mouse_exited:", card)
 
-func _on_btn_add_card_pressed():
-	add_cards(2)
+#func _on_btn_add_card_pressed():
+#	add_cards(2)
 
 func _on_btn_remove_card_pressed():
 	card_remove_index = 1

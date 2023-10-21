@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://spbl0tu1v7vl"]
+
+[ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_5iag6"]
+[ext_resource type="Script" path="res://source/entities/enemy.gd" id="1_30g02"]
+[ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/character/slime/slime-idle-0.png" id="2_brr0s"]
+[ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://asserts/character/slime/slime-idle-1.png" id="3_kqx3e"]
+[ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://asserts/character/slime/slime-idle-2.png" id="4_nfl6s"]
+[ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/character/slime/slime-idle-3.png" id="5_boqrf"]
+
+[sub_resource type="Animation" id="Animation_xfvh4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_gv8u5"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_brr0s"), ExtResource("3_kqx3e"), ExtResource("4_nfl6s"), ExtResource("5_boqrf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38dl5"]
+_data = {
+"RESET": SubResource("Animation_xfvh4"),
+"idle": SubResource("Animation_gv8u5")
+}
+
+[node name="enemy" instance=ExtResource("1_5iag6")]
+script = ExtResource("1_30g02")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+texture = ExtResource("4_nfl6s")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_38dl5")
+}

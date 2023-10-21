@@ -25,9 +25,10 @@ class ProcedureInitResource:
 #		"ability_effect" : false,
 #		"attribute" : false,
 #		"attribute_set" : false,
-#		"enemy" : false,
+		"monster" : false,
 		"card" : false,
 		"hero" : false,
+		"combat": false,
 	}
 	
 	func enter(msg : Dictionary = {}) -> void:

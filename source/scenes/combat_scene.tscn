@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3ki5tbnvkieq"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ki5tbnvkieq"]
 
 [ext_resource type="Script" path="res://source/scenes/combat_scene.gd" id="1_vno2c"]
 [ext_resource type="Texture2D" uid="uid://6fawcdnvkcqt" path="res://asserts/background/Layer_0000_9.png" id="2_a547s"]
@@ -11,8 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dnjgq84gactyg" path="res://asserts/background/Layer_0003_6.png" id="8_fcjnw"]
 [ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="9_hy5pr"]
 [ext_resource type="Texture2D" uid="uid://062sompa2pml" path="res://asserts/background/Layer_0001_8.png" id="10_yb810"]
-[ext_resource type="PackedScene" uid="uid://bepej40eovppu" path="res://source/entities/character_player.tscn" id="12_2qxv4"]
-[ext_resource type="PackedScene" uid="uid://dnkwapde1fka5" path="res://source/entities/character_slime.tscn" id="13_osd0f"]
 [ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/card_container.tscn" id="14_8x3je"]
 
 [node name="combat_scene" type="Node2D"]
@@ -116,37 +114,38 @@ scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("2_a547s")
 centered = false
 
-[node name="Marker2D1" type="Marker2D" parent="."]
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="Marker2D1" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(386, 498)
 metadata/_edit_group_ = true
 
-[node name="CharacterPlayer" parent="Marker2D1" instance=ExtResource("12_2qxv4")]
-
-[node name="Marker2D2" type="Marker2D" parent="."]
+[node name="Marker2D2" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(258, 499)
 metadata/_edit_group_ = true
 
-[node name="Marker2D3" type="Marker2D" parent="."]
+[node name="Marker2D3" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(130, 498)
 metadata/_edit_group_ = true
 
-[node name="Marker2D4" type="Marker2D" parent="."]
+[node name="Marker2D4" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(578, 498)
 metadata/_edit_group_ = true
 
-[node name="character_slime" parent="Marker2D4" instance=ExtResource("13_osd0f")]
-
-[node name="Marker2D5" type="Marker2D" parent="."]
+[node name="Marker2D5" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(738, 498)
 metadata/_edit_group_ = true
 
-[node name="character_slime2" parent="Marker2D5" instance=ExtResource("13_osd0f")]
-
-[node name="Marker2D6" type="Marker2D" parent="."]
+[node name="Marker2D6" type="Marker2D" parent="CanvasLayer3"]
+unique_name_in_owner = true
 position = Vector2(898, 498)
 metadata/_edit_group_ = true
-
-[node name="character_slime3" parent="Marker2D6" instance=ExtResource("13_osd0f")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = 100

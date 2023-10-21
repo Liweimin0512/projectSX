@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=17 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card_view.gd" id="1_1k6ch"]
 [ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/cards/card_sheen_fx/sheen__0000_sheen01.png" id="3_lqafl"]
@@ -16,6 +16,9 @@
 font_size = 26
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vohy2"]
+font_size = 8
 
 [sub_resource type="Animation" id="Animation_jfck6"]
 length = 0.001
@@ -98,6 +101,7 @@ theme_override_constants/margin_bottom = 5
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="tr_name" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
@@ -116,6 +120,7 @@ mouse_filter = 2
 color = Color(0.32549, 0.32549, 0.32549, 1)
 
 [node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/tr_name"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,14 +134,19 @@ text = "全身撞击+"
 label_settings = SubResource("LabelSettings_m5d0h")
 vertical_alignment = 1
 
-[node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_icon"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/tr_icon"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,6 +155,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.309804, 0.309804, 0.309804, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "攻击"
+label_settings = SubResource("LabelSettings_vohy2")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="tr_description" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -178,6 +195,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="lab_description" type="RichTextLabel" parent="MarginContainer/VBoxContainer/tr_description/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

@@ -9,10 +9,10 @@ var can_async : bool = ["Window", "OSX", "UWP", "X11"].has(OS.get_name())
 
 func threaded_load(datatable_name : String) -> void:
 	var datatable = datatable_path + datatable_name + ".csv"
-	print_debug("开始加载数据表： ", datatable)
+#	print_debug("开始加载数据表： ", datatable)
 	var data = load_datatable(datatable)
 	add_datatable(datatable_name, data)
-	print_debug("完成加载数据表： ", datatable_path, " 数据内容： ", data)
+#	print_debug("完成加载数据表： ", datatable_path, " 数据内容： ", data)
 #	emit_signal("load_completed", datatable_name, data)
 	EventBus.emit("load_datatable_completed", [datatable_name, data])
 
@@ -72,7 +72,6 @@ func load_datatable(datatable_path : String) -> Dictionary:
 		if not d.is_empty():
 			retunr_dic[d["ID"]] = d
 	return retunr_dic
-
 
 func add_datatable(datatable_name : String, data : Dictionary) -> void:
 	'''
