@@ -1,4 +1,4 @@
-﻿ID,hero_name,health,background_story,initial_deck,Unnamed: 5,Unnamed: 6
-编号,英雄的名字,英雄的生命值,英雄的背景故事描述,初始卡牌,初始金币,被动技能
-string,string,int,string,string[],int,string
-1,铁甲战士,80,铁甲军团残留下的士兵，他出卖自己的灵魂，获得了恶魔的力量。,strike*5*defense*4*trounce*1,99,燃烧之血，战斗结束时恢复6点生命。
+﻿ID,hero_name,initial_deck,Unnamed: 3,Unnamed: 4
+编号,英雄的名字,初始卡牌,初始金币,被动技能
+string,string,string[],int,string
+1,铁甲战士,strike*5*defense*4*trounce*1,99,燃烧之血，战斗结束时恢复6点生命。

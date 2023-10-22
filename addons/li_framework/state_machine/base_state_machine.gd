@@ -1,9 +1,11 @@
 extends Node
 class_name BaseStateMachine
+
 ## 当前状态
 var current_state : BaseState = null
 ## 用于存储所有可用的状态
 var states : Dictionary = {}
+
 ## 状态机代理
 @export var agent : Node
 ## 判断状态机是否运行

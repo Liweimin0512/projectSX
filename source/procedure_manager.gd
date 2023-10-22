@@ -29,6 +29,7 @@ class ProcedureInitResource:
 		"card" : false,
 		"hero" : false,
 		"combat": false,
+		"character": false,
 	}
 	
 	func enter(msg : Dictionary = {}) -> void:
@@ -54,9 +55,7 @@ class ProcedureInitResource:
 
 class ProcedureBeginGame:
 	extends BaseState
-	var state_name : String = "ProcedureMain"
 	func enter(msg : Dictionary = {}) -> void:
-		print_debug("enter" + state_name)
 		agent.begin_game()
 
 func _ready() -> void:

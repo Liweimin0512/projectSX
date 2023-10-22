@@ -1,22 +1,35 @@
 extends CanvasLayer
 
-var t_player := preload("res://source/entities/player_character.tscn")
-var t_combat_scene := preload("res://source/scenes/combat_scene.tscn")
-var t_map_scene := preload("res://source/scenes/map_scene.tscn")
 @onready var procedure_manager: ProcedureManager = %ProcedureManager
+@onready var ui_manager: CanvasLayer = %UIManager
 
-var player: PlayerCharacter
-var combat_scene : CombatScene
+var scene_path: String = "res://source/views/scenes/"
+
+var player: Player
+var current_scene : SceneBase
 
 func _ready() -> void:
 	GameInstance.game_main = self
 	procedure_manager.launch()
 
 func begin_game() -> void:
-	player = t_player.instantiate()
-	player.init("1")
-	self.add_child(player)
-	combat_scene = t_combat_scene.instantiate()
-	self.add_child(combat_scene)
-	combat_scene.init_combat("1")
-#	self.add_child(player)
+	player = Player.new("1")
+#	combat_scene = CombatScene.new("1")
+	change_scene(CombatScene, "combat_scene_view", {"combat_id": "1"})
+	ui_manager.open_interface("combat_form", "res://source/views/UI/form/combat_form.tscn")
+
+func change_scene(scene_controller: Script, view_name: StringName, msg:Dictionary = {}) -> void:
+	if current_scene:
+		current_scene._exit()
+	current_scene = scene_controller.new()
+	var scene_view := create_scene_view(view_name)
+	scene_view.controller = current_scene
+	if current_scene:
+		current_scene._enter(msg)
+	self.add_child(scene_view)
+
+func create_scene_view(view_name: StringName) -> Node:
+	var t_scene_path : String = scene_path + view_name + ".tscn"
+	assert(ResourceLoader.exists(t_scene_path), "无法加载场景文件")
+	return load(t_scene_path).instantiate() 
+	

@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6whu55qq7xu2"]
+
+[ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/views/entities/character_view.tscn" id="1_geare"]
+[ext_resource type="Script" path="res://source/views/entities/player_view.gd" id="2_y15ts"]
+[ext_resource type="Texture2D" uid="uid://d26vbo46lrcj8" path="res://asserts/character/adventurer/adventurer-idle-01.png" id="3_21id8"]
+[ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/adventurer-idle-00.png" id="4_j1ga5"]
+[ext_resource type="Texture2D" uid="uid://rodyj5aj6awe" path="res://asserts/character/adventurer/adventurer-idle-02.png" id="5_eje74"]
+[ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/adventurer-idle-03.png" id="6_aawuw"]
+
+[sub_resource type="Animation" id="Animation_0ndc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_j1ga5")]
+}
+
+[sub_resource type="Animation" id="Animation_2am5v"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_j1ga5"), ExtResource("3_21id8"), ExtResource("5_eje74"), ExtResource("6_aawuw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
+_data = {
+"RESET": SubResource("Animation_0ndc3"),
+"idle": SubResource("Animation_2am5v")
+}
+
+[node name="player_view" instance=ExtResource("1_geare")]
+script = ExtResource("2_y15ts")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -52)
+texture = ExtResource("4_j1ga5")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_orul5")
+}

@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://bghoauk4pq40q"]
+
+[ext_resource type="Script" path="res://source/views/entities/enemy_view.gd" id="1_jalaa"]
+[ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/views/entities/character_view.tscn" id="1_nk55f"]
+[ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://asserts/character/slime/slime-idle-2.png" id="3_4eqlh"]
+[ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/character/slime/slime-idle-0.png" id="4_4d75v"]
+[ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://asserts/character/slime/slime-idle-1.png" id="5_b6hik"]
+[ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/character/slime/slime-idle-3.png" id="6_7rv10"]
+
+[sub_resource type="Animation" id="Animation_j7sah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4d75v")]
+}
+
+[sub_resource type="Animation" id="Animation_1iao4"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_4d75v"), ExtResource("5_b6hik"), ExtResource("3_4eqlh"), ExtResource("6_7rv10")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxyv5"]
+_data = {
+"RESET": SubResource("Animation_j7sah"),
+"idle": SubResource("Animation_1iao4")
+}
+
+[node name="enemy_view" instance=ExtResource("1_nk55f")]
+script = ExtResource("1_jalaa")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -32)
+texture = ExtResource("4_4d75v")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_fxyv5")
+}

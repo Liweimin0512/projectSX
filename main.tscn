@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk4oobqquo7he"]
+[gd_scene load_steps=4 format=3 uid="uid://dk4oobqquo7he"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_a7x6l"]
 [ext_resource type="Script" path="res://source/procedure_manager.gd" id="2_65atl"]
+[ext_resource type="Script" path="res://addons/li_framework/UIframework/UIManager.gd" id="3_sjxu5"]
 
 [node name="main" type="CanvasLayer"]
 script = ExtResource("1_a7x6l")
+
+[node name="UIManager" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 101
+script = ExtResource("3_sjxu5")
 
 [node name="ProcedureManager" type="Node" parent="." node_paths=PackedStringArray("agent")]
 unique_name_in_owner = true

@@ -12,8 +12,8 @@ var current_interface : UIBase:
 	get:
 		return self.get_child(-1)
 
-func create_interface(name: StringName) -> Control:
-	var widget_path : String = ui_path + name + ".tscn"
+func create_interface(name: StringName, path: String = "") -> Control:
+	var widget_path : String = ui_path + name + ".tscn" if path.is_empty() else path
 	assert(ResourceLoader.exists(widget_path), "UI资源路径不识别！")
 	var control : Control = load(widget_path).instantiate()
 	if "interface_name" in control:
@@ -26,16 +26,17 @@ func get_interface(ui_name: StringName) -> Control:
 			return interface
 	return null
 
-func open_interface(ui_name: StringName, msg: Dictionary = {}) -> UIBase:
+func open_interface(ui_name: StringName, path: String = "", msg: Dictionary = {}) -> UIBase:
 	if current_interface:
 		current_interface.hide()
 	var interface = get_interface(ui_name)
 	if interface:
 		self.move_child(interface, -1)
 	else:
-		interface = create_interface(ui_name)
+		interface = create_interface(ui_name, path)
 		self.add_child(interface)
-	interface._opened(msg)
+	if interface.has_method("_opened"):
+		interface._opened(msg)
 	interface.show()
 	return interface
 

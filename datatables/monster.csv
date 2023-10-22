@@ -1,4 +1,4 @@
-﻿ID,name,description,level,health_points,attack_points,entityID
-ID,怪物名,怪物描述,等级,生命值,攻击力,实体名
-string,string,string,int,int,int,string
-slime,史莱姆,一个矮小而丑陋的怪物，生活在森林深处。,3,50,10,character_slime
+﻿ID,name
+ID,怪物名
+string,string
+slime,史莱姆

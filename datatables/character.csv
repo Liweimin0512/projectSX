@@ -1,0 +1,5 @@
+﻿ID,name,health,attack,description
+编号,角色名,生命值,攻击力,描述
+string,string,int,int,string
+1,铁甲战士,80,0,铁甲军团残留下的士兵，他出卖自己的灵魂，获得了恶魔的力量。
+slime,史莱姆,50,10,一个矮小而丑陋的怪物，生活在森林深处。

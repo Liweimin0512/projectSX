@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwudjhve5vqbd"]
+
+[ext_resource type="Script" path="res://source/views/UI/widgets/pb_health.gd" id="1_4ufn0"]
+
+[sub_resource type="SystemFont" id="SystemFont_alq17"]
+font_names = PackedStringArray("SimSun")
+subpixel_positioning = 0
+
+[node name="pb_health" type="ColorRect"]
+offset_left = -71.0
+offset_top = 68.0
+offset_right = 71.0
+offset_bottom = 95.0
+color = Color(0.129412, 0.129412, 0.129412, 1)
+script = ExtResource("1_4ufn0")
+metadata/_edit_group_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+value = 30.0
+show_percentage = false
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_alq17")
+text = "1260/1280"
+horizontal_alignment = 1
+vertical_alignment = 1
