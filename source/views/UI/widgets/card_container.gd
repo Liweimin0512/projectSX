@@ -10,8 +10,8 @@ class_name CardContainer
 @onready var t_card_view : PackedScene = preload("res://source/views/UI/widgets/card_view.tscn")
 
 @onready var hand_card : Control = %hand_card
-@onready var draw_deck : Control = %draw_deck
-@onready var discard_deck : Control = %discard_deck
+@onready var draw_deck : W_Deck = %draw_deck
+@onready var discard_deck : W_Deck = %discard_deck
 @onready var arrow :Node2D = $bessel_arrow
 
 @onready var max_card_amount : int = 12
@@ -45,19 +45,22 @@ var can_release_card : bool = false
 func _ready():
 #	card_preview.pivot_offset = Vector2(card_preview.size.x/2,card_preview.size.y)
 #	card_preview.hide()
-	CardManager.hand_cards_added.connect(
+	CardManager.card_distributed.connect(
 		func(card: Card) -> void:
-			add_cards(card)
+			add_card(card)
 	)
 	for c in cards:
 		c.queue_free()
-#	for i in range(0, 5):
-#		var card : CardView = t_card_view.instantiate()
-#		hand_card.add_child(card)
-#		card.card_mouse_entered.connect(_on_card_mouse_entered.bind(card))
-#		card.card_mouse_exited.connect(_on_card_mouse_exited.bind(card))
-#		printerr(card.rotation)
+	for i in range(0, CardManager.hand_cards.size()):
+		var card = CardManager.hand_cards[i]
+		var card_view : CardView = t_card_view.instantiate()
+		card_view.controller = card
+		hand_card.add_child(card_view)
+		card_view.card_mouse_entered.connect(_on_card_mouse_entered.bind(card_view))
+		card_view.card_mouse_exited.connect(_on_card_mouse_exited.bind(card_view))
 	update_card_position()
+	draw_deck.set_card_amount(CardManager.draw_deck.get_card_amount())
+	discard_deck.set_card_amount(CardManager.discard_deck.get_card_amount())
 
 func _process(delta):
 	if dragging and selected_card != null:
@@ -130,10 +133,10 @@ func update_card_position():
 		card.card.show()
 
 ## 添加卡牌
-func add_cards(card: Card):
+func add_card(card: Card):
 	var card_view : CardView= t_card_view.instantiate()
+	card_view.controller = card
 	hand_card.add_child(card_view)
-	card_view.init(card)
 	card_view.scale = Vector2.ZERO
 	card_view.position = draw_deck.position - hand_card.position
 	update_card_position()

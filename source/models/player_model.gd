@@ -15,6 +15,8 @@ var discard_deck: CardDeck :
 	set(value):
 		pass
 
+## 能量：释放卡牌用，默认初始4点
+var energy :int = 4
 
 func _init(hero_id: String) -> void:
 	var data :Dictionary = DatatableManager.get_datatable_row("hero", hero_id)

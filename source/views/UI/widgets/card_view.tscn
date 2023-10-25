@@ -13,12 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/cards/card_sheen_fx/sheen__0009_sheen010.png" id="11_e5u85"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
-font_size = 26
+font_size = 18
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vohy2"]
-font_size = 8
+font_size = 10
 
 [sub_resource type="Animation" id="Animation_jfck6"]
 length = 0.001
@@ -103,35 +103,49 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="tr_name" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="tr_name" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_name"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 color = Color(0.32549, 0.32549, 0.32549, 1)
 
-[node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/tr_name"]
+[node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 109.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+layout_mode = 2
 text = "全身撞击+"
 label_settings = SubResource("LabelSettings_m5d0h")
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="lab_cost" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
@@ -156,7 +170,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.309804, 0.309804, 0.309804, 1)
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="lab_type" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "攻击"
 label_settings = SubResource("LabelSettings_vohy2")

@@ -8,9 +8,17 @@ enum CARD_STATE {
 	PRERELEASE, 
 	}
 
+const CARD_TYPE_NAME = [
+	"UNKNOW",
+	"攻击",
+	"技能",
+]
+
 @onready var lab_name: Label = %lab_name
 @onready var tr_icon: TextureRect = %tr_icon
 @onready var lab_description: RichTextLabel = %lab_description
+@onready var lab_type: Label = %lab_type
+@onready var lab_cost: Label = %lab_cost
 
 var can_release : bool = false
 
@@ -22,6 +30,13 @@ var can_release : bool = false
 @onready var timer_preview = $timer_preview
 @onready var timer_release = $timer_release
 
+var controller : Card
+var model: CardModel:
+	get:
+		return controller.card_data
+	set(value):
+		pass
+
 signal card_mouse_entered
 signal card_mouse_exited
 
@@ -29,17 +44,10 @@ func _ready():
 	self.mouse_entered.connect(_on_card_mouse_entered)
 	self.mouse_exited.connect(_on_card_mouse_exited)
 	card.pivot_offset = Vector2(card.size.x/2, card.size.y)
-#	if is_back == true:
-#		card.texture = card_resource.card_back_resource
-#	else:
-#		var card_res_file = card_resource.card_resource_path + card_resource.card_name + ".png"
-#		card.texture = load(card_res_file)
-
-## 卡牌的初始化操作
-func init(card: Card) -> void:
-	lab_name.text = card.card_name
-	lab_description.text = card.card_description
-
+	lab_name.text = model.card_name
+	lab_description.text = model.card_description
+	lab_type.text = CARD_TYPE_NAME[model.card_type]
+	lab_cost.text = str(model.cost)
 
 func predragging():
 	if card_state == CARD_STATE.PRERELEASE:

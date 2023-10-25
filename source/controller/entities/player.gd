@@ -10,3 +10,7 @@ func _init(player_id: StringName) -> void:
 ## 回合开始时
 func begin_turn() -> void:
 	CardManager.distribute_card()
+
+## 结束回合
+func end_turn() -> void:
+	print("结束玩家回合")

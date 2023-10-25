@@ -1,8 +1,8 @@
-﻿ID,card_name,card_type,description
+﻿ID,card_name,card_type,cost,description
 编号,卡牌名,"卡牌类型
 1攻击
-2技能",卡牌描述
-string,string,int,string
-strike,打击,1,造成6点伤害
-defense,防御,2,获得5点护甲
-trounce,痛击,1,造成8点伤害，给与2层易伤
+2技能",成本,卡牌描述
+string,string,int,int,string
+strike,打击,1,1,造成6点伤害
+defense,防御,2,1,获得5点护甲
+trounce,痛击,1,2,造成8点伤害，给与2层易伤

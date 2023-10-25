@@ -15,9 +15,13 @@ var controller: CombatScene # 在切换场景的时候注入
 	%Marker2D5, # 怪物2
 	%Marker2D6, # 怪物3
 ]
+var combat_form: UIForm:
+	set(value):
+		value.end_turn_pressed.connect(_on_combat_form_end_turn_pressed)
+		combat_form = value
 
 func _ready() -> void:
-	var player_view = GameInstance.create_entity(t_player, controller.markers[1])
+	var player_view = GameInstance.create_entity(t_player, controller.markers[0])
 	marker_2d_1.add_child(player_view)
 	for cha_index in range(3,6):
 		## 创建怪物View
@@ -26,23 +30,13 @@ func _ready() -> void:
 			var enemy_view = _spawn_enemy(enemy)
 			enemies[cha_index-3].add_child(enemy_view)
 
+
 ## 创建敌人
 func _spawn_enemy(controller: RefCounted) -> Node:
 	var enemy_view = GameInstance.create_entity(t_enemy, controller)
 	return enemy_view
 
-## 开始战斗
-func begin_combat() -> void:
-	begin_turn()
-
-## 开始回合
-func begin_turn() -> void:
-	pass
-
-## 结束回合
-func end_turn() -> void:
-	pass
-
-## 结束战斗
-func end_combat() -> void:
-	pass
+## 玩家主动结束回合
+func _on_combat_form_end_turn_pressed() -> void:
+	
+	controller.end_turn()

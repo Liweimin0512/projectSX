@@ -33,12 +33,11 @@ class ProcedureInitResource:
 	}
 	
 	func enter(msg : Dictionary = {}) -> void:
-		EventBus.subscribe("load_datatable_completed", _on_load_completed)
-		for datatable_name in datatable_paths:
-			DatatableManager.threaded_load(datatable_name)
+		DatatableManager.load_completed.connect(_on_load_completed)
+		DatatableManager.load_datatables(datatable_paths.keys())
 
 	func exit() -> void:
-		EventBus.unsubscribe("load_datatable_completed", _on_load_completed)
+		DatatableManager.load_completed.disconnect(_on_load_completed)
 
 	func update(delta : float) -> void:
 		if _is_load_completed():

@@ -1,27 +1,46 @@
 extends Node
 class_name S_Datatable
 
-var thread := Thread.new()
 
 @export var datatable_path : String = "res://datatables/"
 var _datatable_dics : Dictionary = {}
-var can_async : bool = ["Window", "OSX", "UWP", "X11"].has(OS.get_name())
 
-func threaded_load(datatable_name : String) -> void:
-	var datatable = datatable_path + datatable_name + ".csv"
-#	print_debug("开始加载数据表： ", datatable)
-	var data = load_datatable(datatable)
-	add_datatable(datatable_name, data)
-#	print_debug("完成加载数据表： ", datatable_path, " 数据内容： ", data)
-#	emit_signal("load_completed", datatable_name, data)
-	EventBus.emit("load_datatable_completed", [datatable_name, data])
+@export var can_async : bool = true
+var _can_async : bool = ["Windows", "OSX", "UWP", "X11"].has(OS.get_name())
+var thread := Thread.new()
 
-func load_datatable(datatable_path : String) -> Dictionary:
+signal load_completed(datatable_name: String, data: Dictionary)
+
+func _exit_tree() -> void:
+	thread.wait_to_finish()
+
+func load_datatables(names: PackedStringArray) -> void:
+	print("", OS.get_name())
+	if can_async && _can_async:
+		thread.start(_load_datatables.bind(names))
+		var ret = thread.wait_to_finish()
+		for name in names:
+			var data = ret[name]
+			load_completed.emit(name, data)
+	else:
+		_load_datatables(names)
+
+func _load_datatables(names: PackedStringArray) -> Dictionary:
+	var ret_dic : Dictionary
+	for datatable_name in names:
+		print_debug("开始加载数据表： ", datatable_name)
+		ret_dic[datatable_name] = _load_datatable(datatable_name)
+		print_debug("完成加载数据表： ", datatable_name)
+	#	emit_signal("load_completed", datatable_name, data)
+	return ret_dic
+
+func _load_datatable(datatable_name : String) -> Dictionary:
 	'''
 	加载数据表，格式化数据
 	'''
-	assert(FileAccess.file_exists(datatable_path),"文件不存在！")
-	var file = FileAccess.open(datatable_path, FileAccess.READ)
+	var datatable = datatable_path + datatable_name + ".csv"
+	assert(FileAccess.file_exists(datatable),"文件不存在！")
+	var file = FileAccess.open(datatable, FileAccess.READ)
 	var retunr_dic : Dictionary = {}
 	# TODO CSV数据解析
 	var data_name = file.get_csv_line(",")
@@ -71,6 +90,8 @@ func load_datatable(datatable_path : String) -> Dictionary:
 						assert(false,"未知的配置表数据类型: " + type_name[i])
 		if not d.is_empty():
 			retunr_dic[d["ID"]] = d
+	add_datatable(datatable_name, retunr_dic)
+	load_completed.emit(datatable_name, retunr_dic)
 	return retunr_dic
 
 func add_datatable(datatable_name : String, data : Dictionary) -> void:

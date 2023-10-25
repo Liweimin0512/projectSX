@@ -3,11 +3,13 @@ extends UIForm
 @onready var lab_power: Label = %lab_power
 @onready var btn_end_turn: Button = %btn_end_turn
 
-# Called when the node enters the scene tree for the first time.
+signal end_turn_pressed
+
 func _ready() -> void:
-	pass # Replace with function body.
+	btn_end_turn.pressed.connect(_on_btn_end_turn_pressed)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+
+func _on_btn_end_turn_pressed() -> void:
+	end_turn_pressed.emit()

@@ -10,7 +10,6 @@ var discard_deck: CardDeck = CardDeck.new("弃牌堆", 0)
 var draw_deck: CardDeck = CardDeck.new("抽牌堆", 1)
 
 signal card_distributed
-signal hand_cards_added
 
 ## 创建卡牌(Create Card)：根据指定的参数创建新卡牌。
 func create_card(card_name:String) -> Card:
@@ -26,5 +25,4 @@ func distribute_card() -> void:
 	for i in range(0, distribute_card_amount):
 		var card = draw_deck.draw_card()
 		hand_cards.append(card)
-		hand_cards_added.emit(card)
-	card_distributed.emit(hand_cards)
+		card_distributed.emit(card)

@@ -66,9 +66,6 @@ color = Color(0.168627, 0.768627, 1, 1)
 [node name="MarginContainer" parent="discard_deck" index="1"]
 size_flags_horizontal = 0
 
-[node name="Label" parent="discard_deck/MarginContainer" index="1"]
-text = "0"
-
 [node name="button" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 0

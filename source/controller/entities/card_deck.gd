@@ -36,3 +36,6 @@ func draw_card() -> Card:
 	shuffle()
 	var card : Card = card_list.pop_front()
 	return card
+
+func get_card_amount() -> int:
+	return card_list.size()

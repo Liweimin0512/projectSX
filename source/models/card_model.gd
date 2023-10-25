@@ -12,6 +12,7 @@ enum TARGET_TYPE {
 @export var card_name : String
 var card_type: = 0
 var card_description := ""
+var cost := 1
 @export var target_type : TARGET_TYPE = TARGET_TYPE.ALL
 @export var tween_speed : float = 0.2
 @export var preview_scale := Vector2(1,1)
@@ -22,6 +23,7 @@ func _init(card_id: String) -> void:
 	card_name = data.card_name
 	card_type = data.card_type
 	card_description = data.description
+	cost = data.cost
 
 ## 是否需要选择目标？
 func is_all_target() -> bool :
