@@ -147,6 +147,7 @@ color = Color(0.101961, 0.101961, 0.101961, 0.639216)
 layout_mode = 2
 
 [node name="CardContainer" parent="." instance=ExtResource("1_i77bo")]
+unique_name_in_owner = true
 layout_mode = 1
 scale = Vector2(1, 0.988801)
 metadata/_edit_lock_ = true

@@ -1,4 +1,4 @@
-extends RefCounted
+extends EntityBase
 class_name Character
 
 var cha_data: CharacterModel

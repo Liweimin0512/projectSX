@@ -1,14 +1,7 @@
-extends RefCounted
+extends EntityBase
 class_name CardDeck
 
-enum DECK_TYPE{
-		DRAW,
-		DISCARD
-	}
-
-var card_list : Array = []
-var deck_type : DECK_TYPE = DECK_TYPE.DRAW
-var deck_name : StringName = "抽牌堆"
+var _model : CardDeckModel
 
 signal card_added
 signal card_removed
@@ -16,26 +9,29 @@ signal shuffled
 signal drawed
 
 func _init(d_name: StringName, type: int) -> void:
-	deck_name = d_name
-	deck_type = type
+	_model = CardDeckModel.new(d_name, type)
 
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
 func add_card(card: Card) -> void:
-	card_list.append(card)
+	_model.card_list.append(card)
+	card_added.emit()
 
 ## 移除卡牌(Remove Card)：从牌组中移除卡牌。
-func remove_card() -> void:
-	pass
+func remove_card(card: Card) -> void:
+	_model.card_list.erase(card)
+	card_removed.emit()
 
 ## 洗牌(Shuffle)：将牌组中的卡牌重新洗牌。
 func shuffle() -> void:
-	card_list.shuffle()
+	_model.card_list.shuffle()
+	shuffled.emit()
 
 ## 抽牌(Draw Card)：从牌组中抽取卡牌。
 func draw_card() -> Card:
 	shuffle()
-	var card : Card = card_list.pop_front()
+	var card : Card = _model.card_list.pop_front()
+	drawed.emit(card)
 	return card
 
 func get_card_amount() -> int:
-	return card_list.size()
+	return _model.card_list.size()

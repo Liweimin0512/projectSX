@@ -1,4 +1,4 @@
-extends RefCounted
+extends EntityBase
 class_name Card
 
 var card_data : CardModel

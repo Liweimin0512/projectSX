@@ -6,7 +6,6 @@ class_name S_Datatable
 var _datatable_dics : Dictionary = {}
 
 @export var can_async : bool = true
-var _can_async : bool = ["Windows", "OSX", "UWP", "X11"].has(OS.get_name())
 var thread := Thread.new()
 
 signal load_completed(datatable_name: String, data: Dictionary)
@@ -15,8 +14,7 @@ func _exit_tree() -> void:
 	thread.wait_to_finish()
 
 func load_datatables(names: PackedStringArray) -> void:
-	print("", OS.get_name())
-	if can_async && _can_async:
+	if can_async:
 		thread.start(_load_datatables.bind(names))
 		var ret = thread.wait_to_finish()
 		for name in names:
@@ -28,10 +26,10 @@ func load_datatables(names: PackedStringArray) -> void:
 func _load_datatables(names: PackedStringArray) -> Dictionary:
 	var ret_dic : Dictionary
 	for datatable_name in names:
-		print_debug("开始加载数据表： ", datatable_name)
+#		print_debug("开始加载数据表： ", datatable_name)
 		ret_dic[datatable_name] = _load_datatable(datatable_name)
-		print_debug("完成加载数据表： ", datatable_name)
-	#	emit_signal("load_completed", datatable_name, data)
+#		print_debug("完成加载数据表： ", datatable_name)
+		emit_signal("load_completed", datatable_name, ret_dic[datatable_name])
 	return ret_dic
 
 func _load_datatable(datatable_name : String) -> Dictionary:
@@ -50,46 +48,47 @@ func _load_datatable(datatable_name : String) -> Dictionary:
 		var row_data = file.get_csv_line(",")
 		var d = {}
 		for i in row_data.size():
+			var _d_name : StringName = data_name[i]
 			match type_name[i]:
 				"int":
-					d[data_name[i]] = row_data[i].to_int() if row_data[i] != "" else 0
+					d[_d_name] = row_data[i].to_int() if row_data[i] != "" else 0
 				"float":
-					d[data_name[i]] = row_data[i].to_float() if row_data[i] != "" else 0.0
+					d[_d_name] = row_data[i].to_float() if row_data[i] != "" else 0.0
 				"string":
-					d[data_name[i]] = row_data[i]
+					d[_d_name] = row_data[i]
 				"bool":
-					d[data_name[i]] = bool(row_data[i].to_int())
+					d[_d_name] = bool(row_data[i].to_int())
 				"int[]":
 					var res := []
 					var data := row_data[i].split("*")
 					for r in data:
 						res.append(r.to_int())
-					d[data_name[i]] = res
+					d[_d_name] = res
 				"float[]":
 					var res := []
 					var data := row_data[i].split("*")
 					for r in data:
 						res.append(r.to_float())
-					d[data_name[i]] = res
+					d[_d_name] = res
 				"string[]":
 					var res := row_data[i].split("*")
-					d[data_name[i]] = [] if res.is_empty() else res
+					d[_d_name] = [] if res.is_empty() else res
 				"texture":
 					# godot引擎的材质
 					if row_data[i].is_empty():
-						d[data_name[i]] = null
+						d[_d_name] = null
 					elif ResourceLoader.exists(row_data[i]):
-						d[data_name[i]] = ResourceLoader.load(row_data[i]) as Texture
+						d[_d_name] = ResourceLoader.load(row_data[i]) as Texture
 					else:
 						assert(false, "未知的材质数据： " + row_data[i])
 				_:
 					if type_name[i].is_empty():
-						push_warning("数据表:", datatable_path," 数据类型为空:", data_name[i])
-						d[data_name[i]] = row_data[i]
+						push_warning("数据表:", datatable_path," 数据类型为空:", _d_name)
+						d[_d_name] = row_data[i]
 					else:
 						assert(false,"未知的配置表数据类型: " + type_name[i])
 		if not d.is_empty():
-			retunr_dic[d["ID"]] = d
+			retunr_dic[StringName(d["ID"])] = d
 	add_datatable(datatable_name, retunr_dic)
 	load_completed.emit(datatable_name, retunr_dic)
 	return retunr_dic
@@ -100,7 +99,7 @@ func add_datatable(datatable_name : String, data : Dictionary) -> void:
 	'''
 	_datatable_dics[datatable_name] = data
 
-func get_datatable_row(datatable : String, row_id : String) -> Dictionary:
+func get_datatable_row(datatable : StringName, row_id : StringName) -> Dictionary:
 	'''
 	获取数据表行
 	'''
@@ -110,7 +109,7 @@ func get_datatable_row(datatable : String, row_id : String) -> Dictionary:
 	var row : Dictionary = _datatable_dics[datatable][row_id]
 	return row
 
-func get_datatable_all(datatable : String) -> Dictionary:
+func get_datatable_all(datatable : StringName) -> Dictionary:
 	'''
 	获取数据表全部数据
 	'''

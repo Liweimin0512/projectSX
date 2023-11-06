@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://72uhpsyxdbi7"]
+[gd_scene load_steps=5 format=3 uid="uid://72uhpsyxdbi7"]
 
 [ext_resource type="Script" path="res://source/views/UI/widgets/card_container.gd" id="1_g3ofs"]
 [ext_resource type="PackedScene" uid="uid://ik2l54j58jrl" path="res://source/views/UI/widgets/bessel_arrow.tscn" id="2_epndj"]
 [ext_resource type="PackedScene" uid="uid://dikirj650nrtg" path="res://source/views/UI/widgets/w_deck.tscn" id="3_8f34j"]
+[ext_resource type="Script" path="res://source/views/UI/widgets/w_hand_card_container.gd" id="3_83ls3"]
 
 [node name="CardContainer" type="Control"]
 layout_mode = 3
@@ -13,9 +14,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_g3ofs")
-offset_x_proportion = 0.6
-tween_speed = 0.1
-hand_card_position = Vector2(480, 560)
 
 [node name="bessel_arrow" parent="." instance=ExtResource("2_epndj")]
 
@@ -27,38 +25,42 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -103.0
-offset_top = -112.0
-offset_right = -63.0
-offset_bottom = -72.0
+offset_top = -100.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("3_83ls3")
+tween_speed = 0.1
 
 [node name="draw_deck" parent="." instance=ExtResource("3_8f34j")]
 unique_name_in_owner = true
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
 anchor_left = 0.0
-anchor_top = 0.0
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 16.0
-offset_top = 592.0
-offset_right = 64.0
-offset_bottom = 640.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 0.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 
 [node name="discard_deck" parent="." instance=ExtResource("3_8f34j")]
 unique_name_in_owner = true
-layout_mode = 2
-anchors_preset = 0
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = 512.0
-offset_top = 592.0
-offset_right = 560.0
-offset_bottom = 640.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="ColorRect" parent="discard_deck" index="0"]
 color = Color(0.168627, 0.768627, 1, 1)

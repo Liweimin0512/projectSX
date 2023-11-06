@@ -6,6 +6,9 @@ var Score = 0
 var game_main = null :
 	set(value) : game_main = value
 	get : return game_main
+var player: EntityBase :
+	get:
+		return game_main.player
 
 signal change_score
 signal changeHP
@@ -71,3 +74,6 @@ func create_entity(view_scene: PackedScene, controller: RefCounted) -> Node:
 	if "controller" in view:
 		view.controller = controller
 	return view
+
+func create_timer(time_sec: float) -> SceneTreeTimer:
+	return get_tree().create_timer(time_sec)

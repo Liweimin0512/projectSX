@@ -16,10 +16,11 @@ func _ready() -> void:
 func begin_game() -> void:
 	player = Player.new("1")
 #	combat_scene = CombatScene.new("1")
-	var combat_scene = change_scene(CombatScene, "combat_scene_view", {"combat_id": "1"})
-	combat_scene.combat_form = ui_manager.open_interface("combat_form", "res://source/views/UI/form/combat_form.tscn")
-
-func change_scene(scene_controller: Script, view_name: StringName, msg:Dictionary = {}) -> Control:
+	var combat_form = ui_manager.open_interface("combat_form", "res://source/views/UI/form/combat_form.tscn")
+	var combat_scene_view = change_scene(CombatScene, "combat_scene_view", {"combat_id": "1"})
+	combat_form._controller = current_scene
+	
+func change_scene(scene_controller: Script, view_name: StringName, msg:Dictionary = {}) -> Node:
 	if current_scene:
 		current_scene._exit()
 	current_scene = scene_controller.new()

@@ -20,8 +20,6 @@ const CARD_TYPE_NAME = [
 @onready var lab_type: Label = %lab_type
 @onready var lab_cost: Label = %lab_cost
 
-var can_release : bool = false
-
 @export var card_state : CARD_STATE = CARD_STATE.NORMAL
 @export var tween_speed : float = 0.1
 @export var is_back : bool
@@ -30,20 +28,15 @@ var can_release : bool = false
 @onready var timer_preview = $timer_preview
 @onready var timer_release = $timer_release
 
-var controller : Card
+var _controller : Card
 var model: CardModel:
 	get:
-		return controller.card_data
+		return _controller.card_data
 	set(value):
 		pass
 
-signal card_mouse_entered
-signal card_mouse_exited
-
 func _ready():
-	self.mouse_entered.connect(_on_card_mouse_entered)
-	self.mouse_exited.connect(_on_card_mouse_exited)
-	card.pivot_offset = Vector2(card.size.x/2, card.size.y)
+#	self.pivot_offset = Vector2(card.size.x/2, card.size.y)
 	lab_name.text = model.card_name
 	lab_description.text = model.card_description
 	lab_type.text = CARD_TYPE_NAME[model.card_type]
@@ -65,14 +58,11 @@ func prerelease():
 		tween.play()
 		card_state = CARD_STATE.PRERELEASE
 
-func release():
+func needs_target() -> bool:
+	return _controller.needs_target()
+
+func can_release() -> bool:
+	return _controller.can_release()
+
+func release() -> void:
 	pass
-
-
-## 鼠标进入
-func _on_card_mouse_entered():
-	card_mouse_entered.emit()
-
-## 鼠标退出
-func _on_card_mouse_exited():
-	card_mouse_exited.emit()

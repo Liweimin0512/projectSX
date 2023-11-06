@@ -19,7 +19,6 @@ config/features=PackedStringArray("4.1")
 GameInstance="*res://source/controller/auto/game_instance.gd"
 EventBus="*res://addons/li_framework/auto/event_bus.gd"
 DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
-CardManager="*res://source/controller/auto/card_manager.gd"
 
 [display]
 

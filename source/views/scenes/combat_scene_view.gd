@@ -15,10 +15,6 @@ var controller: CombatScene # 在切换场景的时候注入
 	%Marker2D5, # 怪物2
 	%Marker2D6, # 怪物3
 ]
-var combat_form: UIForm:
-	set(value):
-		value.end_turn_pressed.connect(_on_combat_form_end_turn_pressed)
-		combat_form = value
 
 func _ready() -> void:
 	var player_view = GameInstance.create_entity(t_player, controller.markers[0])

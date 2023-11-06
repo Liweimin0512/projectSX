@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=18 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/views/UI/widgets/card_view.gd" id="1_bn721"]
 [ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/cards/card_sheen_fx/sheen__0000_sheen01.png" id="2_dkqsd"]
@@ -11,6 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/cards/card_sheen_fx/sheen__0007_sheen08.png" id="9_i51pf"]
 [ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/cards/card_sheen_fx/sheen__0008_sheen09.png" id="10_b08bt"]
 [ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/cards/card_sheen_fx/sheen__0009_sheen010.png" id="11_e5u85"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsya"]
+bg_color = Color(0, 0.243137, 0.243137, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
 font_size = 18
@@ -25,7 +33,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sheenFX:texture")
+tracks/0/path = NodePath("../sheenFX:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +49,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sheenFX:texture")
+tracks/0/path = NodePath("../sheenFX:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,41 +65,32 @@ _data = {
 "fx_sheen": SubResource("Animation_2abhc")
 }
 
-[node name="card_view" type="Control"]
-custom_minimum_size = Vector2(119, 192)
-layout_mode = 3
-anchor_right = 0.056
-anchor_bottom = 0.16
-offset_right = -0.512001
-offset_bottom = -15.68
+[node name="card_view" type="PanelContainer"]
+offset_left = -63.0
+offset_top = -184.0
+offset_right = 64.0
+offset_bottom = -1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sqsya")
 script = ExtResource("1_bn721")
+metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="t_card" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="t_card"]
+visible = false
+layout_mode = 2
+offset_right = 127.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
-[node name="t_card" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -154,9 +153,8 @@ theme_override_constants/margin_top = 5
 
 [node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-size_flags_horizontal = 4
 mouse_filter = 2
 expand_mode = 1
 
@@ -222,11 +220,7 @@ autowrap_mode = 2
 
 [node name="sheenFX" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_dkqsd")
 expand_mode = 1
