@@ -1,28 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=24 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/views/UI/widgets/card_view.gd" id="1_bn721"]
+[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/cards/card_frame/card_frame.png" id="2_d75p2"]
 [ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/cards/card_sheen_fx/sheen__0000_sheen01.png" id="2_dkqsd"]
+[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/cards/card_frame/card_name_frame.png" id="3_6sdgx"]
 [ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/cards/card_sheen_fx/sheen__0001_sheen02.png" id="3_jlkld"]
+[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/cards/card_icons/Sprite-0002.png" id="4_glbxo"]
 [ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/cards/card_sheen_fx/sheen__0002_sheen03.png" id="4_mnjbb"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/cards/card_frame/card_des_frame.png" id="5_rthgy"]
 [ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/cards/card_sheen_fx/sheen__0003_sheen04.png" id="5_t20lp"]
 [ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/cards/card_sheen_fx/sheen__0004_sheen05.png" id="6_876i2"]
+[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/cards/card_frame/card_type_frame.png" id="6_yw4qn"]
+[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/cards/card_frame/card_cost_frame.png" id="7_efg7r"]
 [ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/cards/card_sheen_fx/sheen__0005_sheen06.png" id="7_s5x4d"]
 [ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/cards/card_sheen_fx/sheen__0006_sheen07.png" id="8_hhf1o"]
 [ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/cards/card_sheen_fx/sheen__0007_sheen08.png" id="9_i51pf"]
 [ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/cards/card_sheen_fx/sheen__0008_sheen09.png" id="10_b08bt"]
 [ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/cards/card_sheen_fx/sheen__0009_sheen010.png" id="11_e5u85"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqsya"]
-bg_color = Color(0, 0.243137, 0.243137, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.0431373, 0.0431373, 0.0431373, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
-font_size = 18
+font_size = 13
 outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
+outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vohy2"]
@@ -65,31 +67,27 @@ _data = {
 "fx_sheen": SubResource("Animation_2abhc")
 }
 
-[node name="card_view" type="PanelContainer"]
-offset_left = -63.0
-offset_top = -184.0
-offset_right = 64.0
-offset_bottom = -1.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sqsya")
+[node name="card_view" type="MarginContainer"]
+offset_left = -67.0
+offset_top = -197.0
+offset_right = 67.0
+offset_bottom = -2.0
 script = ExtResource("1_bn721")
-metadata/_edit_group_ = true
 
-[node name="t_card" type="TextureRect" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="card_frame" type="TextureRect" parent="MarginContainer3"]
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("2_d75p2")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="t_card"]
-visible = false
-layout_mode = 2
-offset_right = 127.0
-offset_bottom = 183.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.0941176, 0.0941176, 0.0941176, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
@@ -97,104 +95,83 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[node name="tr_name" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="tr_name" type="TextureRect" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+texture = ExtResource("3_6sdgx")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
-mouse_filter = 2
-color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_constants/separation = 0
 
-[node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 3
+
+[node name="lab_name" type="Label" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "全身撞击+"
 label_settings = SubResource("LabelSettings_m5d0h")
-vertical_alignment = 1
+horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
-custom_minimum_size = Vector2(16, 16)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-color = Color(0.239216, 0.239216, 0.239216, 1)
+texture = ExtResource("7_efg7r")
 
-[node name="lab_cost" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/MarginContainer2"]
+[node name="lab_cost" type="Label" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1"
+label_settings = SubResource("LabelSettings_2wkfj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 5
 
-[node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="tr_icon" type="TextureRect" parent="MarginContainer3/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("4_glbxo")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer/tr_icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.309804, 0.309804, 0.309804, 1)
-
-[node name="lab_type" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "攻击"
-label_settings = SubResource("LabelSettings_vohy2")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="tr_description" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
+[node name="tr_description" type="NinePatchRect" parent="MarginContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+texture = ExtResource("5_rthgy")
 patch_margin_left = 20
 patch_margin_top = 6
 patch_margin_right = 16
 patch_margin_bottom = 14
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/tr_description"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.32549, 0.32549, 0.32549, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/tr_description"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3/MarginContainer/VBoxContainer/tr_description"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -203,11 +180,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="lab_description" type="RichTextLabel" parent="MarginContainer/VBoxContainer/tr_description/MarginContainer"]
+[node name="lab_description" type="RichTextLabel" parent="MarginContainer3/MarginContainer/VBoxContainer/tr_description/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -218,7 +195,26 @@ text = "造成你当前格挡值的伤害。
 （造成0点伤害）"
 autowrap_mode = 2
 
-[node name="sheenFX" type="TextureRect" parent="."]
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer3/MarginContainer/MarginContainer3"]
+custom_minimum_size = Vector2(64, 18)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_yw4qn")
+
+[node name="lab_type" type="Label" parent="MarginContainer3/MarginContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "攻击"
+label_settings = SubResource("LabelSettings_vohy2")
+horizontal_alignment = 1
+
+[node name="sheenFX" type="TextureRect" parent="MarginContainer3"]
 visible = false
 layout_mode = 2
 mouse_filter = 2
