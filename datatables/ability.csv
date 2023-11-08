@@ -1,0 +1,6 @@
+﻿ID,注释,ability_name,description,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7,Unnamed: 8,Unnamed: 9,Unnamed: 10
+编号,注释,技能名,技能描述, 能量消耗, 效果ID列表, 目标类型, 触发时机, 持续回合, 稀有度, 类别
+string,注释,string,string,,,,,,,
+strike,,打击,造成6点伤害,,,,,,,
+defense,,防御,获得5点护甲,,,,,,,
+trounce,,痛击,造成8点伤害，给与2层易伤,,,,,,,

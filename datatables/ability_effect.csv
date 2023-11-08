@@ -1,0 +1,7 @@
+﻿ID,注释,effect_name,description
+编号,注释,技能效果名,技能效果描述
+string,注释,string,string
+strike,,打击,造成6点伤害
+defense,,防御,获得5点护甲
+trounce_01,,痛击,造成8点伤害
+trounce_02,,给予易伤,给与2层易伤
