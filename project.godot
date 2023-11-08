@@ -16,9 +16,9 @@ config/features=PackedStringArray("4.1")
 
 [autoload]
 
-GameInstance="*res://source/controller/auto/game_instance.gd"
 EventBus="*res://addons/li_framework/auto/event_bus.gd"
 DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
+GameInstance="*res://source/auto/game_instance.gd"
 
 [display]
 
