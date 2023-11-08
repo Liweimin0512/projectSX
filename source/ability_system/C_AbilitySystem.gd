@@ -1,4 +1,4 @@
-extends RefCounted
+extends Node
 class_name C_AbilitySystem
 
 const component_name : String = "C_AbilitySystem"

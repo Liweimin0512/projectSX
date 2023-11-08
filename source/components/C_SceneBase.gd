@@ -1,5 +1,5 @@
-extends RefCounted
-class_name SceneBaseLogic
+extends Node
+class_name C_SceneBase
 
 func _enter(msg:Dictionary = {}) -> void:
 	pass

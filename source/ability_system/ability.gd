@@ -1,5 +1,5 @@
 extends RefCounted
-class_name Ability
+class_name GameplayAbility
 
 var effects = []  # 技能可以包含多个Effect
 

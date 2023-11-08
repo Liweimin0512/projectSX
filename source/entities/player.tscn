@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6whu55qq7xu2"]
+[gd_scene load_steps=11 format=3 uid="uid://c6whu55qq7xu2"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_fb8bn"]
-[ext_resource type="Script" path="res://source/entities/player.gd" id="2_ff1ti"]
 [ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/adventurer-idle-00.png" id="3_nhjn5"]
 [ext_resource type="Texture2D" uid="uid://d26vbo46lrcj8" path="res://asserts/character/adventurer/adventurer-idle-01.png" id="4_1lfue"]
 [ext_resource type="Texture2D" uid="uid://rodyj5aj6awe" path="res://asserts/character/adventurer/adventurer-idle-02.png" id="5_yec65"]
+[ext_resource type="Script" path="res://source/components/C_Player.gd" id="6_c67lg"]
 [ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/adventurer-idle-03.png" id="6_ujr5a"]
+[ext_resource type="Script" path="res://source/card_system/C_CardSystem.gd" id="6_xhiqj"]
 
 [sub_resource type="Animation" id="Animation_0ndc3"]
 length = 0.001
@@ -45,8 +46,7 @@ _data = {
 "idle": SubResource("Animation_2am5v")
 }
 
-[node name="player_view" instance=ExtResource("1_fb8bn")]
-script = ExtResource("2_ff1ti")
+[node name="player" instance=ExtResource("1_fb8bn")]
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
@@ -57,3 +57,9 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_orul5")
 }
+
+[node name="C_CardSystem" type="Node" parent="." index="5"]
+script = ExtResource("6_xhiqj")
+
+[node name="C_Player" type="Node" parent="." index="6"]
+script = ExtResource("6_c67lg")

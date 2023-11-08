@@ -28,7 +28,7 @@ const CARD_TYPE_NAME = [
 @onready var timer_preview = $timer_preview
 @onready var timer_release = $timer_release
 
-var _controller : CardLogic
+var _controller : C_Card
 var model: CardModel:
 	get:
 		return _controller.card_data

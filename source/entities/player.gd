@@ -1,2 +1,0 @@
-extends CharacterView
-class_name PlayerCharacter

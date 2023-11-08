@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3ki5tbnvkieq"]
+[gd_scene load_steps=14 format=3 uid="uid://c3ki5tbnvkieq"]
 
-[ext_resource type="Script" path="res://source/scenes/combat_scene.gd" id="1_ylw5h"]
+[ext_resource type="Script" path="res://source/entities/Entity.gd" id="1_khda7"]
 [ext_resource type="Texture2D" uid="uid://cn7igau1ewgqc" path="res://asserts/background/Layer_0011_0.png" id="2_iavej"]
 [ext_resource type="Texture2D" uid="uid://df5lmhr6y7xmh" path="res://asserts/background/Layer_0010_1.png" id="3_jrhge"]
 [ext_resource type="Texture2D" uid="uid://b2u8nf0d0d0ws" path="res://asserts/background/Layer_0009_2.png" id="4_7d4gw"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="9_e5abc"]
 [ext_resource type="Texture2D" uid="uid://062sompa2pml" path="res://asserts/background/Layer_0001_8.png" id="10_nmkkq"]
 [ext_resource type="Texture2D" uid="uid://6fawcdnvkcqt" path="res://asserts/background/Layer_0000_9.png" id="11_a2qif"]
+[ext_resource type="Script" path="res://source/components/C_CombatScene.gd" id="12_lh8f7"]
+[ext_resource type="Script" path="res://source/components/C_CombatSceneView.gd" id="13_thwhq"]
 
 [node name="combat_scene_view" type="Node2D"]
-script = ExtResource("1_ylw5h")
+script = ExtResource("1_khda7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -145,3 +147,10 @@ metadata/_edit_group_ = true
 unique_name_in_owner = true
 position = Vector2(898, 498)
 metadata/_edit_group_ = true
+
+[node name="C_CombatScene" type="Node" parent="."]
+script = ExtResource("12_lh8f7")
+
+[node name="CombatSceneView" type="Node" parent="." node_paths=PackedStringArray("controller")]
+script = ExtResource("13_thwhq")
+controller = NodePath("../C_CombatScene")

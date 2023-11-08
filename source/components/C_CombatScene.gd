@@ -1,14 +1,18 @@
-extends SceneBaseLogic
-class_name CombatSceneLogic
+extends C_SceneBase
+class_name C_CombatScene
 
 var _model : CombatModel
 
 var markers: Array:
 	get:
 		return _model.markers
+	set(value):
+		markers = _model.markers
 var current_marker: int:
 	get:
 		return _model.current_marker
+	set(value):
+		_model.current_marker = value
 
 signal combat_begined
 
@@ -29,7 +33,7 @@ func begin_combat(combat_id: StringName) -> void:
 
 ## 开始回合
 func begin_turn() -> void:
-	var cha : CharacterLogic = _get_current_marker()
+	var cha : Entity = _get_current_marker()
 	if cha == null:
 		_get_next_marker()
 		begin_turn()
@@ -38,7 +42,7 @@ func begin_turn() -> void:
 
 ## 结束回合
 func end_turn() -> void:
-	var cha: CharacterLogic = _get_current_marker()
+	var cha: Entity = _get_current_marker()
 	cha.end_turn()
 	_get_next_marker().begin_turn()
 
@@ -50,16 +54,16 @@ func end_combat() -> void:
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
 	if enemyID.is_empty():
 		return
-	var enemy : EnemyLogic = EnemyLogic.new(enemyID)
+	var enemy : C_Enemy = C_Enemy.new(enemyID)
 	enemy.combat_scene = self
 	markers[markerID] = enemy
 
 ## 获取当前位置
-func _get_current_marker() -> EntityBaseLogic:
+func _get_current_marker() -> Entity:
 	return markers[_model.current_marker]
 
 ## 获取下一个位置的角色（不为空）
-func _get_next_marker() -> CharacterLogic:
+func _get_next_marker() -> Entity:
 	if current_marker >= markers.size() -1:
 		current_marker = 0
 	else:

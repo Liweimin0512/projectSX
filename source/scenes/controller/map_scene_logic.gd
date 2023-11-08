@@ -1,2 +1,0 @@
-extends SceneBaseLogic
-class_name MapSceneLogic

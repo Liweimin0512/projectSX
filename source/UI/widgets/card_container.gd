@@ -1,7 +1,6 @@
 extends Control
 class_name CardContainer
 
-@onready var t_card_view : PackedScene = preload(AssetUtility.card_view)
 @onready var hand_card : W_HandCardContainer = %hand_card
 @onready var draw_deck : W_Deck = %draw_deck
 @onready var discard_deck : W_Deck = %discard_deck
@@ -9,11 +8,11 @@ class_name CardContainer
 
 var card_remove_index := 0
 
-var _controller : CardManagerLogic
+var _controller : C_CardSystem
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_controller = GameInstance.player.get_component("CardManager")
+	_controller = GameInstance.player.get_component("C_CardSystem")
 #	card_preview.pivot_offset = Vector2(card_preview.size.x/2,card_preview.size.y)
 #	card_preview.hide()
 	_controller.card_distributed.connect(
@@ -24,6 +23,7 @@ func _ready() -> void:
 ## 抽卡
 func draw_card(cards: Array) -> void:
 	for card in cards:
+		var t_card_view = load(AssetUtility.card_view)
 		var w_card : CardView = t_card_view.instantiate()
 		w_card._controller = card
 		w_card.global_position = draw_deck.global_position

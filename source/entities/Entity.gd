@@ -1,7 +1,13 @@
-extends RefCounted
-class_name EntityBaseLogic
+@tool
+extends Node
+class_name Entity
 
 var _components : Dictionary = {}
+
+func _enter_tree() -> void:
+	for child in get_children():
+		if is_component(child):
+			_components[child.component_name] = child
 
 ## 添加组件
 func add_component(component: Object) -> bool:
@@ -9,6 +15,8 @@ func add_component(component: Object) -> bool:
 		return false
 	if _components.has(component.component_name):
 		return false
+	if "_owner" in component:
+		component._owner = self
 	_components[component.component_name] = component
 	return true
 
@@ -28,5 +36,6 @@ func get_component(component_name: StringName) -> Object:
 func has_component(component_name: StringName) -> bool:
 	return _components.has(component_name)
 
-static func is_component(component: Object) -> bool:
+## 判断是否为组件
+static func is_component(component: Node) -> bool:
 	return "component_name" in component

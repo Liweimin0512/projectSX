@@ -1,7 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bghoauk4pq40q"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_yh4r0"]
-[ext_resource type="Script" path="res://source/entities/enemy.gd" id="2_11cm3"]
 [ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/character/slime/slime-idle-0.png" id="3_4ky16"]
 [ext_resource type="Texture2D" uid="uid://dlo5l7lc3ebv8" path="res://asserts/character/slime/slime-attack-0.png" id="4_h5358"]
 [ext_resource type="Texture2D" uid="uid://2rfvc615wrxh" path="res://asserts/character/slime/slime-attack-1.png" id="5_uu44a"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://domninpu3ud" path="res://asserts/character/slime/slime-attack-4.png" id="8_8ah6m"]
 [ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://asserts/character/slime/slime-idle-1.png" id="9_nm821"]
 [ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://asserts/character/slime/slime-idle-2.png" id="10_do5qh"]
+[ext_resource type="Script" path="res://source/components/C_Enemy.gd" id="11_j32pj"]
 [ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/character/slime/slime-idle-3.png" id="11_pijae"]
 
 [sub_resource type="Animation" id="Animation_j7sah"]
@@ -66,8 +66,7 @@ _data = {
 "idle": SubResource("Animation_1iao4")
 }
 
-[node name="enemy_view" instance=ExtResource("1_yh4r0")]
-script = ExtResource("2_11cm3")
+[node name="enemy" instance=ExtResource("1_yh4r0")]
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -32)
@@ -79,3 +78,6 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_fxyv5")
 }
+
+[node name="C_Enemy" type="Node" parent="." index="4"]
+script = ExtResource("11_j32pj")
