@@ -15,6 +15,7 @@ func _ready() -> void:
 	_deck.card_drawed.connect(_on_card_drawed)
 	for c in _deck.get_card_list():
 		cards.add_child(c)
+	set_card_amount(cards.get_child_count())
 
 func set_card_amount(amount:int) -> void:
 	lab_card_amount.text = str(amount)
@@ -22,11 +23,14 @@ func set_card_amount(amount:int) -> void:
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
 func _on_card_added(card: Card) -> void:
 	cards.add_child(card)
+	set_card_amount(cards.get_child_count())
 
 ## 移除卡牌(Remove Card)：从牌组中移除卡牌。
 func _on_card_removed(card: Card) -> void:
 	cards.remove_child(card)
+	set_card_amount(cards.get_child_count())
 
 ## 抽牌(Draw Card)：从牌组中抽取卡牌。
 func _on_card_drawed(card: Card) -> void:
 	cards.remove_child(card)
+	set_card_amount(cards.get_child_count())
