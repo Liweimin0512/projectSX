@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bejgi8p6de4rq"
-path="res://.godot/imported/slime-idle-0.png-2719b048a1c334b76f3bb41036228e95.ctex"
+uid="uid://domninpu3ud"
+path="res://.godot/imported/slime-attack-4.png-44dd1c8374ebe83ab783e3a78f8e22bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/character/slime/slime-idle-0.png"
-dest_files=["res://.godot/imported/slime-idle-0.png-2719b048a1c334b76f3bb41036228e95.ctex"]
+source_file="res://asserts/character/slime/attack/slime-attack-4.png"
+dest_files=["res://.godot/imported/slime-attack-4.png-44dd1c8374ebe83ab783e3a78f8e22bd.ctex"]
 
 [params]
 

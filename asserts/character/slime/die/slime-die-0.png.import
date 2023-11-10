@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://domninpu3ud"
-path="res://.godot/imported/slime-attack-4.png-a60c41fde6488c6b721f336acef107d2.ctex"
+uid="uid://b3d7l0yii1eur"
+path="res://.godot/imported/slime-die-0.png-cc778eb058d57bc05983ee8aad2c7e20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asserts/character/slime/slime-attack-4.png"
-dest_files=["res://.godot/imported/slime-attack-4.png-a60c41fde6488c6b721f336acef107d2.ctex"]
+source_file="res://asserts/character/slime/die/slime-die-0.png"
+dest_files=["res://.godot/imported/slime-die-0.png-cc778eb058d57bc05983ee8aad2c7e20.ctex"]
 
 [params]
 
