@@ -69,9 +69,9 @@ func can_release() -> bool:
 
 func release(caster: Character, targets: Array[Character]) -> void:
 	var effects = create_effects(targets)
+	await caster.play_animation(_model.play_animation)
 	for effect in effects:
 		effect.execute()
-	caster.play_animation(_model.play_animation)
 
 func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
 	return _model.get_effect_targets(caster, targets)

@@ -7,7 +7,7 @@ var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1)
 var hand_cards : Array = []
 var initial_deck: Array
 
-#signal card_distributed
+signal card_distributed
 signal card_released(card: Card)
 
 func component_init(playerID: StringName) -> void:
@@ -33,8 +33,7 @@ func distribute_card() -> void:
 	for i in range(0, distribute_card_amount):
 		var card : Card = draw_deck.draw_card()
 		hand_cards.append(card)
-#	card_distributed.emit(hand_cards)
-	EventBus.emit("card_distributed", [hand_cards])
+	card_distributed.emit(hand_cards)
 
 func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 	match  dect_type:

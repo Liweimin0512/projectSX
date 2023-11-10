@@ -4,11 +4,10 @@ class_name CardContainer
 @onready var hand_card : Control = %hand_card
 @onready var draw_deck : W_Deck = %draw_deck
 @onready var discard_deck : W_Deck = %discard_deck
-@onready var bessel_arrow :Node2D = $bessel_arrow
+@onready var bezier_arrow :Node2D = %bezier_arrow
 
 var card_remove_index := 0
 
-var _card_system :C_CardSystem
 
 ## 存储手牌的数组
 #var cards : Array = []
@@ -25,67 +24,42 @@ var tween : Tween
 var highlighted_card: Card = null
 
 var is_dragging := false
-#var dragging_start_position : Vector2
-var selected_card: Card = null
+var selected_card: Card = null:
+	set(value):
+		selected_card = value
+		if selected_card:
+			selected_card.global_position = hand_card.global_position
+			selected_card.scale = Vector2.ONE * 1.2
+			selected_card.z_index = 128
 
-var combat_scene : CombatScene 
-
-
+## 战斗场景引用
+var _combat_scene : CombatScene 
+## 卡牌管理器的引用
+var _card_system :C_CardSystem
 ## 当添加了一张新的卡片时发出
 signal card_added(card: Card)
 ## 当一张卡片被移除时发出
 signal card_removed(card: Card)
 
 func _ready() -> void:
-	EventBus.subscribe("card_distributed", _on_card_distributed)
 	_card_system = GameInstance.player.get_node("C_CardSystem")
-	combat_scene = SceneManager.current_scene
-
-func _process(delta: float) -> void:
-	if selected_card:
-		if combat_scene.cha_selected:
-			bessel_arrow.selected()
-		else:
-			bessel_arrow.unselected()
-		bessel_arrow.reset(hand_card.global_position, get_global_mouse_position())
+	_combat_scene = SceneManager.current_scene
+	_card_system.card_distributed.connect(_on_card_distributed)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not event is InputEventMouseButton: return
-	if event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_released() or event.is_pressed():
+	if not selected_card: return
+	if event is InputEventMouseMotion:
+		find_target()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_released() and _combat_scene.cha_selected:
 			# 此时如果是选择目标状态，则选择目标
-			if combat_scene.cha_selected != null:
-				release_card(selected_card, combat_scene.cha_selected)
-	if event.button_index == MOUSE_BUTTON_RIGHT:
+			release_card(selected_card, _combat_scene.cha_selected)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.is_pressed():
 			# 此时是选择目标状态，则退出选择状态
 			selected_card = null
-			bessel_arrow.hide()
+			bezier_arrow.hide()
 			_update_card_positions()
-
-## 抽卡
-func draw_card(card: Card) -> void:
-	hand_card.add_child(card)
-	card.global_position = draw_deck.global_position
-	# 首先，将新卡牌添加到容器和卡牌数组中
-#	cards.append(card)
-	# 然后，更新所有卡牌的位置
-	_update_card_positions()
-	card.mouse_entered.connect(_on_card_mouse_entered.bind(card))
-	card.mouse_exited.connect(_on_card_mouse_exited.bind(card))
-	card.gui_input.connect(_on_card_gui_input.bind(card))
-	# 您可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
-
-## 从手牌中移除卡牌
-func remove_card(card: Card) -> void:
-	if not card in get_children():
-		return
-#	cards.erase(w_card)
-	remove_child(card)
-	_update_card_positions()
-	card.mouse_entered.disconnect(_on_card_mouse_entered.bind(card))
-	card.mouse_exited.disconnect(_on_card_mouse_exited.bind(card))
-	card.gui_input.disconnect(_on_card_gui_input.bind(card))
 
 ## 突出显示一个卡牌，使其与其他卡牌分开
 func highlight_card(card: Card) -> void:
@@ -110,7 +84,7 @@ func can_card_release(card: Card) -> bool:
 ## 释放卡牌
 func release_card(card: Card, target: Character) -> void:
 	selected_card = null
-	bessel_arrow.hide()
+	bezier_arrow.hide()
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(card, "position", discard_deck.global_position, 0.5)
@@ -120,9 +94,27 @@ func release_card(card: Card, target: Character) -> void:
 	hand_card.remove_child(card)
 	_update_card_positions()
 
+## 寻找目标
+func find_target() -> void:
+	if not selected_card: return
+	if _combat_scene.cha_selected:
+		bezier_arrow.selected()
+	else:
+		bezier_arrow.unselected()
+	bezier_arrow.reset(hand_card.global_position, get_global_mouse_position())
+
 func _on_card_distributed(cards: Array) -> void:
 	for card in cards:
-		draw_card(card)
+		hand_card.add_child(card)
+		card.global_position = draw_deck.global_position
+		# 首先，将新卡牌添加到容器和卡牌数组中
+	#	cards.append(card)
+		# 然后，更新所有卡牌的位置
+		_update_card_positions()
+		card.mouse_entered.connect(_on_card_mouse_entered.bind(card))
+		card.mouse_exited.connect(_on_card_mouse_exited.bind(card))
+		card.gui_input.connect(_on_card_gui_input.bind(card))
+		# 您可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
 
 func _on_card_mouse_entered(card: Card) -> void:
 	if is_dragging:
@@ -140,11 +132,8 @@ func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseMotion and is_dragging:
 		if card.needs_target():
 			# 如果需要选择目标，则显示贝塞尔曲线或其他目标选择指示器
-#			print("需要选择目标")
 			selected_card = card
-			card.global_position = hand_card.global_position
-			card.scale = Vector2.ONE * 1.2
-			card.z_index = 128
+			find_target()
 		else:
 			# 如果不需要选择目标，则直接随着拖动移动卡牌
 #			card.global_position = event.position
@@ -152,8 +141,8 @@ func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseButton and event.is_released():
 		is_dragging = false
 		if selected_card:
-			if combat_scene.cha_selected:
-				release_card(card, combat_scene.cha_selected)
+			if _combat_scene.cha_selected:
+				release_card(card, _combat_scene.cha_selected)
 		elif event.global_position.y < get_viewport_rect().size.y * 2/3:
 			if can_card_release(card):
 				await release_card(card, null)
@@ -181,4 +170,5 @@ func _update_card_positions() -> void:
 		var tween = create_tween()
 		tween.set_parallel()
 		tween.tween_property(card, "position", target_position, tween_speed)
+		tween.tween_property(card, "scale", Vector2.ONE, tween_speed)
 		await tween.finished

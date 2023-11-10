@@ -64,7 +64,7 @@ color = Color(0.168627, 0.768627, 1, 1)
 [node name="MarginContainer" parent="discard_deck" index="1"]
 size_flags_horizontal = 0
 
-[node name="bessel_arrow" parent="." instance=ExtResource("2_oqebg")]
+[node name="bezier_arrow" parent="." instance=ExtResource("2_oqebg")]
 unique_name_in_owner = true
 z_index = 100
 

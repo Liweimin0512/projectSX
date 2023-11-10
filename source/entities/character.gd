@@ -18,23 +18,23 @@ var current_health: float:
 	get:
 		return _model.current_health
 	set(value):
-		pass
+		_model.current_health = value
+		display_health_bar()
 
 var max_health: float:
 	get:
 		return _model.max_health
 	set(value):
-		pass
+		_model.max_health = value
+		display_health_bar()
 
 func _ready() -> void:
 	area_2d.mouse_entered.connect(
 		func() -> void:
-			print(self.name, "选择")
 			mouse_entered.emit()
 	)
 	area_2d.mouse_exited.connect(
 		func() -> void:
-			print(self.name, "退出选择")
 			mouse_exited.emit()
 	)
 	_model = CharacterModel.new(cha_id)
@@ -66,6 +66,8 @@ func add_shielded(value: int) -> void:
 
 func damage(value: int) -> void:
 	print("造成伤害：", value)
+	await play_animation("hurt")
+	current_health -= value
 
 func play_animation(animation_name : String) -> void:
 	var current_animation = animation_player.current_animation
