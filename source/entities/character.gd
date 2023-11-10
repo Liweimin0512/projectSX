@@ -7,6 +7,7 @@ var _model: CharacterModel
 
 @onready var health_bar: ProgressBar = %health_bar
 @onready var health_label: Label = %health_label
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal play_begined
 
@@ -28,19 +29,19 @@ func _ready() -> void:
 	display_health_bar()
 
 ## 开始战斗
-func begin_play() -> void:
+func _begin_combat() -> void:
 	pass
 
 ## 结束战斗
-func end_play() -> void:
+func _end_combat() -> void:
 	pass
 
 ## 回合开始时
-func begin_turn() -> void:
+func _begin_turn() -> void:
 	pass
 
 ## 回合结束时
-func end_turn() -> void:
+func _end_turn() -> void:
 	pass
 
 func display_health_bar() -> void:

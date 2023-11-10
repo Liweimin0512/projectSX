@@ -1,9 +1,0 @@
-﻿ID,注释,ability_name,description,cost,target_type,trigger,type,effects
-编号,注释,技能名,技能描述,能量消耗,"目标类型
-1、自身
-2、对方单体
-3、对方全体",触发时机,类别,效果ID列表
-string,注释,string,string,int,string,string,string,string[]
-strike,,打击,造成6点伤害,1,2,0,攻击,strike
-defense,,防御,获得5点护甲,1,1,0,技能,defense
-trounce,,痛击,造成8点伤害，给与2层易伤,2,2,0,攻击,trounce_01*trounce_02

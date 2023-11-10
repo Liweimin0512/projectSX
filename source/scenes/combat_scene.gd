@@ -37,21 +37,25 @@ func init_combat(combat_id : StringName) -> void:
 
 ## 开始战斗，战斗初始化
 func begin_combat() -> void:
+	await get_tree().create_timer(0.5).timeout
+	for cha in characters:
+		cha._begin_combat()
 	next_turn()
 
 ## 开始回合
 func next_turn() -> void:
 	if current_character:
-		current_character.end_turn()
+		current_character._end_turn()
 		current_character = _get_next_character()
 	else:
 		current_character = characters[0]
 	if current_character:
-		current_character.begin_turn()
+		current_character._begin_turn()
 
 ## 结束战斗
 func end_combat() -> void:
-	pass
+	for cha in characters:
+		cha._end_combat()
 
 ## 初始化玩家角色
 func _init_player() -> void:

@@ -1,12 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6whu55qq7xu2"]
+[gd_scene load_steps=28 format=3 uid="uid://c6whu55qq7xu2"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_fb8bn"]
 [ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/adventurer-idle-00.png" id="3_nhjn5"]
 [ext_resource type="Texture2D" uid="uid://d26vbo46lrcj8" path="res://asserts/character/adventurer/adventurer-idle-01.png" id="4_1lfue"]
 [ext_resource type="Texture2D" uid="uid://rodyj5aj6awe" path="res://asserts/character/adventurer/adventurer-idle-02.png" id="5_yec65"]
 [ext_resource type="Script" path="res://source/entities/player.gd" id="6_c67lg"]
+[ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="6_i3bik"]
 [ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/adventurer-idle-03.png" id="6_ujr5a"]
 [ext_resource type="Script" path="res://source/card_system/C_CardSystem.gd" id="6_xhiqj"]
+[ext_resource type="Texture2D" uid="uid://d3fcpk31ueupa" path="res://asserts/character/adventurer/die/adventurer-die-00.png" id="7_e2d8t"]
+[ext_resource type="Texture2D" uid="uid://cyagfio7hrajm" path="res://asserts/character/adventurer/die/adventurer-die-01.png" id="8_4ixhf"]
+[ext_resource type="Texture2D" uid="uid://btedb7hfjglsh" path="res://asserts/character/adventurer/die/adventurer-die-03.png" id="10_ayh87"]
+[ext_resource type="Texture2D" uid="uid://2ty4rxrodusa" path="res://asserts/character/adventurer/die/adventurer-die-04.png" id="11_17inj"]
+[ext_resource type="Texture2D" uid="uid://c2yybaqd0c7dp" path="res://asserts/character/adventurer/die/adventurer-die-05.png" id="12_sldrl"]
+[ext_resource type="Texture2D" uid="uid://dr4bhkpixb1vh" path="res://asserts/character/adventurer/die/adventurer-die-06.png" id="13_ceo5d"]
+[ext_resource type="Texture2D" uid="uid://csdylaedyes2w" path="res://asserts/character/adventurer/adventurer-items-00.png" id="14_t2lsu"]
+[ext_resource type="Texture2D" uid="uid://cskyuqksaq15t" path="res://asserts/character/adventurer/adventurer-items-01.png" id="15_m6fma"]
+[ext_resource type="Texture2D" uid="uid://c7eqx4ey50iag" path="res://asserts/character/adventurer/adventurer-items-02.png" id="16_vxkol"]
+[ext_resource type="Texture2D" uid="uid://g5wurutkvj1g" path="res://asserts/character/adventurer/adventurer-swrd-drw-00.png" id="17_ftnp6"]
+[ext_resource type="Texture2D" uid="uid://bxdei18qtptga" path="res://asserts/character/adventurer/adventurer-swrd-drw-01.png" id="18_mlvj0"]
+[ext_resource type="Texture2D" uid="uid://bq1u38g0dpuif" path="res://asserts/character/adventurer/adventurer-swrd-drw-02.png" id="19_y1w8h"]
+[ext_resource type="Texture2D" uid="uid://bwip1ugjiquya" path="res://asserts/character/adventurer/adventurer-swrd-drw-03.png" id="20_xl6jt"]
 
 [sub_resource type="Animation" id="Animation_0ndc3"]
 length = 0.001
@@ -21,6 +35,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_nhjn5")]
+}
+
+[sub_resource type="Animation" id="Animation_120w7"]
+resource_name = "die"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_e2d8t"), ExtResource("8_4ixhf"), ExtResource("6_i3bik"), ExtResource("10_ayh87"), ExtResource("11_17inj"), ExtResource("12_sldrl"), ExtResource("13_ceo5d")]
 }
 
 [sub_resource type="Animation" id="Animation_2am5v"]
@@ -40,10 +70,45 @@ tracks/0/keys = {
 "values": [ExtResource("3_nhjn5"), ExtResource("4_1lfue"), ExtResource("5_yec65"), ExtResource("6_ujr5a")]
 }
 
+[sub_resource type="Animation" id="Animation_fvfwo"]
+resource_name = "items"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_t2lsu"), ExtResource("15_m6fma"), ExtResource("16_vxkol")]
+}
+
+[sub_resource type="Animation" id="Animation_g14vr"]
+resource_name = "swrd_drw"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_ftnp6"), ExtResource("18_mlvj0"), ExtResource("19_y1w8h"), ExtResource("20_xl6jt")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
 _data = {
 "RESET": SubResource("Animation_0ndc3"),
-"idle": SubResource("Animation_2am5v")
+"die": SubResource("Animation_120w7"),
+"idle": SubResource("Animation_2am5v"),
+"items": SubResource("Animation_fvfwo"),
+"swrd_drw": SubResource("Animation_g14vr")
 }
 
 [node name="player" instance=ExtResource("1_fb8bn")]

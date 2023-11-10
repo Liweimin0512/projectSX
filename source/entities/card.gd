@@ -29,15 +29,16 @@ const CARD_TYPE_NAME = [
 @onready var timer_release = $timer_release
 
 var cardID : StringName
+var _model : CardModel
 
 func _ready():
-	var model : Dictionary = DatatableManager.get_datatable_row("card", cardID)
+	_model = CardModel.new(cardID)
 #	self.pivot_offset = Vector2(card.size.x/2, card.size.y)
-	lab_name.text = model.card_name
-	lab_description.text = model.description
-	lab_type.text = CARD_TYPE_NAME[model.card_type]
-	lab_cost.text = str(model.cost)
-	tr_icon.texture = model.icon
+	lab_name.text = _model.card_name
+	lab_description.text = _model.card_description
+	lab_type.text = CARD_TYPE_NAME[_model.card_type]
+	lab_cost.text = str(_model.cost)
+	tr_icon.texture = _model.icon
 
 func predragging():
 	if card_state == CARD_STATE.PRERELEASE:
@@ -56,10 +57,17 @@ func prerelease():
 		card_state = CARD_STATE.PRERELEASE
 
 func needs_target() -> bool:
-	return false
+	return _model.needs_target()
 
 func can_release() -> bool:
+	var player = GameInstance.player
+	if _model.cost <= player.energy:
+		return true
 	return false
 
 func release() -> void:
+	print("release:", self)
 	pass
+
+func _to_string() -> String:
+	return self.name + " : " + _model.card_name

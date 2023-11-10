@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://72uhpsyxdbi7"]
+[gd_scene load_steps=4 format=3 uid="uid://72uhpsyxdbi7"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card_container.gd" id="1_mttcu"]
 [ext_resource type="PackedScene" uid="uid://ik2l54j58jrl" path="res://source/UI/widgets/bessel_arrow.tscn" id="2_oqebg"]
-[ext_resource type="Script" path="res://source/UI/widgets/w_hand_card_container.gd" id="3_2701d"]
 [ext_resource type="PackedScene" uid="uid://dikirj650nrtg" path="res://source/UI/widgets/w_deck.tscn" id="4_qfylv"]
 
 [node name="CardContainer" type="Control"]
@@ -29,8 +28,6 @@ offset_top = -100.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("3_2701d")
-tween_speed = 0.1
 
 [node name="draw_deck" parent="." instance=ExtResource("4_qfylv")]
 unique_name_in_owner = true
