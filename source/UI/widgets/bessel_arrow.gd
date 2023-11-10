@@ -38,9 +38,10 @@ func reset(startPos,endPos):
 		var pos=startPos*(1-t)*(1-t)*(1-t)+3*ctrlAPos*t*(1-t)*(1-t)+3*ctrlBPos*t*t*(1-t)+endPos*t*t*t
 		list[i].position=pos 
 	#虽然更改了箭头的位置，不过还需要重新计算箭头的方向   
-	updateAngle()   #重新计算所有箭头的方向
-	
-func updateAngle():
+	update_angle()   #重新计算所有箭头的方向
+
+## 更新箭头显示
+func update_angle():
 	for i in range(arrow_num):
 		if i==0:
 			list[0].rotation_degrees=270    #第一个小箭头就让他固定朝上好了

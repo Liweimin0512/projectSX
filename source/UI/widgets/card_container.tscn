@@ -14,8 +14,6 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_mttcu")
 
-[node name="bessel_arrow" parent="." instance=ExtResource("2_oqebg")]
-
 [node name="hand_card" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -58,12 +56,16 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
+deck_type = 1
 
 [node name="ColorRect" parent="discard_deck" index="0"]
 color = Color(0.168627, 0.768627, 1, 1)
 
 [node name="MarginContainer" parent="discard_deck" index="1"]
 size_flags_horizontal = 0
+
+[node name="bessel_arrow" parent="." instance=ExtResource("2_oqebg")]
+unique_name_in_owner = true
 
 [node name="button" type="VBoxContainer" parent="."]
 visible = false

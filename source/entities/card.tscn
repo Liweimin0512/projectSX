@@ -73,6 +73,9 @@ offset_top = -197.0
 offset_right = 67.0
 offset_bottom = -2.0
 script = ExtResource("1_vqj25")
+card_state = null
+tween_speed = null
+is_back = null
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 2

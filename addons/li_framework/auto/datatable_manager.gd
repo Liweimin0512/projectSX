@@ -26,9 +26,9 @@ func load_datatables(names: PackedStringArray) -> void:
 func _load_datatables(names: PackedStringArray) -> Dictionary:
 	var ret_dic : Dictionary
 	for datatable_name in names:
-#		print_debug("开始加载数据表： ", datatable_name)
+		print_debug("开始加载数据表： ", datatable_name)
 		ret_dic[datatable_name] = _load_datatable(datatable_name)
-#		print_debug("完成加载数据表： ", datatable_name)
+		print_debug("完成加载数据表： ", datatable_name, ret_dic[datatable_name])
 		emit_signal("load_completed", datatable_name, ret_dic[datatable_name])
 	return ret_dic
 

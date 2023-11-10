@@ -48,3 +48,16 @@ func needs_target() -> bool :
 			return true
 		_:
 			return false
+
+## 获取目标
+func get_effect_targets(owenr:Character, targets: Array[Character]) -> Array[Character]:
+	match target_type:
+		TARGET_TYPE.SELF:
+			return [owenr]
+		TARGET_TYPE.THEY_SIGNAL:
+			return targets
+		TARGET_TYPE.OUR_SIGNAL:
+			return targets
+		_:
+			push_error("未知的目标，未实现！")
+			return []

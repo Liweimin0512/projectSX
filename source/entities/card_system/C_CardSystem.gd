@@ -2,12 +2,13 @@ extends Node
 class_name C_CardSystem
 
 var distribute_card_amount: int = 5
-var discard_deck: CardDeck = CardDeck.new("弃牌堆", 0)
-var draw_deck : CardDeck = CardDeck.new("抽牌堆", 1)
+var draw_deck : CardDeck = CardDeck.new("抽牌堆", 0)
+var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1)
 var hand_cards : Array = []
 var initial_deck: Array
 
 #signal card_distributed
+signal card_released(card: Card)
 
 func component_init(playerID: StringName) -> void:
 	initial_deck = DatatableManager.get_datatable_row("hero", playerID)["initial_deck"]
@@ -34,3 +35,22 @@ func distribute_card() -> void:
 		hand_cards.append(card)
 #	card_distributed.emit(hand_cards)
 	EventBus.emit("card_distributed", [hand_cards])
+
+func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
+	match  dect_type:
+		CardDeckModel.DECK_TYPE.DRAW:
+			return draw_deck
+		CardDeckModel.DECK_TYPE.DISCARD:
+			return discard_deck
+		_:
+			push_error("未找到指定的牌堆类型")
+			return null
+
+func release_card(card: Card, targets: Array[Character]) -> void:
+	var effects = create_effects(card, targets)
+	for effect in effects:
+		effect.execute()
+	card_released.emit(card)
+	
+func create_effects(card: Card, targets: Array[Character]) -> Array[Effect]:
+	return card.create_effects(targets)

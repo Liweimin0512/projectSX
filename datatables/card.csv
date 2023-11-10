@@ -7,5 +7,5 @@
 3、对方全体",效果ID列表
 string,string,int,int,string,texture,int,string[]
 strike,打击,1,1,造成6点伤害,res://asserts/cards/card_icons/card_strike.png,2,strike
-defense,防御,2,1,获得5点护甲,res://asserts/cards/card_icons/card_defense.png,1,defense
+defense,防御,2,1,获得5点护甲,res://asserts/cards/card_icons/card_defense.png,1,shielded
 trounce,痛击,1,2,造成8点伤害，给与2层易伤,res://asserts/cards/card_icons/card_trounce.png,2,trounce_01*trounce_02

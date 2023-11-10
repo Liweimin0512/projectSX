@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c6whu55qq7xu2"]
+[gd_scene load_steps=32 format=3 uid="uid://c6whu55qq7xu2"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_fb8bn"]
 [ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/adventurer-idle-00.png" id="3_nhjn5"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://source/entities/player.gd" id="6_c67lg"]
 [ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="6_i3bik"]
 [ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/adventurer-idle-03.png" id="6_ujr5a"]
-[ext_resource type="Script" path="res://source/card_system/C_CardSystem.gd" id="6_xhiqj"]
+[ext_resource type="Script" path="res://source/entities/card_system/C_CardSystem.gd" id="6_xhiqj"]
 [ext_resource type="Texture2D" uid="uid://d3fcpk31ueupa" path="res://asserts/character/adventurer/die/adventurer-die-00.png" id="7_e2d8t"]
 [ext_resource type="Texture2D" uid="uid://cyagfio7hrajm" path="res://asserts/character/adventurer/die/adventurer-die-01.png" id="8_4ixhf"]
 [ext_resource type="Texture2D" uid="uid://btedb7hfjglsh" path="res://asserts/character/adventurer/die/adventurer-die-03.png" id="10_ayh87"]
@@ -21,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://bxdei18qtptga" path="res://asserts/character/adventurer/adventurer-swrd-drw-01.png" id="18_mlvj0"]
 [ext_resource type="Texture2D" uid="uid://bq1u38g0dpuif" path="res://asserts/character/adventurer/adventurer-swrd-drw-02.png" id="19_y1w8h"]
 [ext_resource type="Texture2D" uid="uid://bwip1ugjiquya" path="res://asserts/character/adventurer/adventurer-swrd-drw-03.png" id="20_xl6jt"]
+[ext_resource type="Texture2D" uid="uid://bqeo8fs54o3ms" path="res://asserts/character/adventurer/adventurer-hurt-00.png" id="21_ux23y"]
+[ext_resource type="Texture2D" uid="uid://cv05m80dtfdmk" path="res://asserts/character/adventurer/adventurer-hurt-01.png" id="22_4h5se"]
+[ext_resource type="Texture2D" uid="uid://dfgv4bmldb66d" path="res://asserts/character/adventurer/adventurer-hurt-02.png" id="23_jm05i"]
 
 [sub_resource type="Animation" id="Animation_0ndc3"]
 length = 0.001
@@ -102,10 +105,27 @@ tracks/0/keys = {
 "values": [ExtResource("17_ftnp6"), ExtResource("18_mlvj0"), ExtResource("19_y1w8h"), ExtResource("20_xl6jt")]
 }
 
+[sub_resource type="Animation" id="Animation_ibnnk"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_ux23y"), ExtResource("22_4h5se"), ExtResource("23_jm05i")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
 _data = {
 "RESET": SubResource("Animation_0ndc3"),
 "die": SubResource("Animation_120w7"),
+"hurt": SubResource("Animation_ibnnk"),
 "idle": SubResource("Animation_2am5v"),
 "items": SubResource("Animation_fvfwo"),
 "swrd_drw": SubResource("Animation_g14vr")

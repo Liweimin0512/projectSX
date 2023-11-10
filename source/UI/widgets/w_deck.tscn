@@ -46,3 +46,7 @@ text = "17"
 label_settings = SubResource("LabelSettings_r2u85")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="cards" type="Control" parent="."]
+visible = false
+layout_mode = 2

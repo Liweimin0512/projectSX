@@ -65,9 +65,17 @@ func can_release() -> bool:
 		return true
 	return false
 
-func release() -> void:
-	print("release:", self)
-	pass
+func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
+	return _model.get_effect_targets(caster, targets)
+
+func create_effects(targets: Array[Character]) -> Array[Effect]:
+	var caster : Character = GameInstance.player
+	var _targets : Array[Character] = get_effect_targets(caster, targets)
+	var effects: Array[Effect]
+	for e in _model.effects:
+		var effect = Effect.create_effect(e, _targets)
+		effects.append(effect)
+	return effects
 
 func _to_string() -> String:
 	return self.name + " : " + _model.card_name
