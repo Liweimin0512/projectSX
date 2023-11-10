@@ -13,18 +13,18 @@ var cards : Array = []
 var tween : Tween
 
 # 被突出显示的卡牌
-var highlighted_card: CardView = null
+var highlighted_card: Card = null
 
 var is_dragging = false
 #var dragging_start_position : Vector2
 
 ## 当添加了一张新的卡片时发出
-signal card_added(card: CardView)
+signal card_added(card: Card)
 ## 当一张卡片被移除时发出
-signal card_removed(card: CardView)
+signal card_removed(card: Card)
 
 ## 向手牌中添加卡牌
-func add_card(w_card: CardView) -> void:
+func add_card(w_card: Card) -> void:
 	# 首先，将新卡牌添加到容器和卡牌数组中
 	add_child(w_card)
 	cards.append(w_card)
@@ -36,7 +36,7 @@ func add_card(w_card: CardView) -> void:
 	# 您可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
 
 ## 从手牌中移除卡牌
-func remove_card(w_card: CardView) -> void:
+func remove_card(w_card: Card) -> void:
 	if not w_card in cards:
 		return
 	cards.erase(w_card)
@@ -52,7 +52,7 @@ func _update_card_positions() -> void:
 	if num_cards == 0 : return # 没有手牌直接返回
 	var offset_x = cards[0].size.x * offset_x_proportion * min(1, max_num_cards/ num_cards) ## 单卡偏移量
 	for i in num_cards:
-		var card : CardView = cards[i]
+		var card : Card = cards[i]
 		var card_offset = num_cards * -0.5 + 0.5 + 1 * i
 		var target_position : Vector2 = Vector2(
 			card_offset * offset_x,
@@ -65,7 +65,7 @@ func _update_card_positions() -> void:
 		await tween.finished
 	
 ## 突出显示一个卡牌，使其与其他卡牌分开
-func highlight_card(card: CardView) -> void:
+func highlight_card(card: Card) -> void:
 	# 放大被悬停的卡牌
 	card.scale = 2 * Vector2.ONE
 	# 根据需要重新排列卡牌，例如将悬停的卡牌移到前面
@@ -81,23 +81,23 @@ func reset_highlight() -> void:
 		highlighted_card = null
 
 ## 能否释放卡牌
-func can_card_release(card: CardView) -> bool:
+func can_card_release(card: Card) -> bool:
 	
 	return card.can_release()
 
 ## 释放卡牌
-func release_card(card: CardView) -> void:
+func release_card(card: Card) -> void:
 	card.release()
 
-func _on_card_mouse_entered(card: CardView) -> void:
+func _on_card_mouse_entered(card: Card) -> void:
 	if is_dragging:
 		return
 	highlight_card(card)
 
-func _on_card_mouse_exited(card: CardView) -> void:
+func _on_card_mouse_exited(card: Card) -> void:
 	reset_highlight()
 
-func _on_card_gui_input(event:InputEvent, card: CardView) -> void:
+func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		print("选中卡牌")
 		is_dragging = true

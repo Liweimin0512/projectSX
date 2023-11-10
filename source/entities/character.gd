@@ -1,12 +1,12 @@
-extends Node
-class_name C_Character
+extends Node2D
+class_name Character
 
-const component_name : StringName = "C_Character"
+var cha_id: StringName
 
 var _model: CharacterModel
 
-@export var health_bar: ProgressBar
-@export var health_label: Label
+@onready var health_bar: ProgressBar = %health_bar
+@onready var health_label: Label = %health_label
 
 signal play_begined
 
@@ -23,10 +23,8 @@ var max_health: float:
 	set(value):
 		pass
 
-func _init(cha_id: StringName) -> void:
-	_model = CharacterModel.new(cha_id)
-
 func _ready() -> void:
+	_model = CharacterModel.new(cha_id)
 	display_health_bar()
 
 ## 开始战斗

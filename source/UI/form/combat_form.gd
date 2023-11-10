@@ -4,6 +4,8 @@ extends UIForm
 @onready var btn_end_turn: Button = %btn_end_turn
 @onready var card_container: Control = %CardContainer
 
+var combat_scene : CombatScene
+
 signal end_turn_pressed
 
 func _ready() -> void:

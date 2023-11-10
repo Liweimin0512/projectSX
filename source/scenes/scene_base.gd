@@ -1,5 +1,5 @@
-extends Node
-class_name C_SceneBase
+extends Node2D
+class_name SceneBase
 
 func _enter(msg:Dictionary = {}) -> void:
 	pass

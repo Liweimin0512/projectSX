@@ -1,5 +1,5 @@
 extends Control
-class_name CardView
+class_name Card
 
 enum CARD_STATE {
 	NORMAL, 
@@ -28,17 +28,13 @@ const CARD_TYPE_NAME = [
 @onready var timer_preview = $timer_preview
 @onready var timer_release = $timer_release
 
-var _controller : C_Card
-var model: CardModel:
-	get:
-		return _controller.card_data
-	set(value):
-		pass
+var cardID : StringName
 
 func _ready():
+	var model : Dictionary = DatatableManager.get_datatable_row("card", cardID)
 #	self.pivot_offset = Vector2(card.size.x/2, card.size.y)
 	lab_name.text = model.card_name
-	lab_description.text = model.card_description
+	lab_description.text = model.description
 	lab_type.text = CARD_TYPE_NAME[model.card_type]
 	lab_cost.text = str(model.cost)
 	tr_icon.texture = model.icon
@@ -60,10 +56,10 @@ func prerelease():
 		card_state = CARD_STATE.PRERELEASE
 
 func needs_target() -> bool:
-	return _controller.needs_target()
+	return false
 
 func can_release() -> bool:
-	return _controller.can_release()
+	return false
 
 func release() -> void:
 	pass

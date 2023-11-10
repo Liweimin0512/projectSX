@@ -1,2 +1,0 @@
-extends C_SceneBase
-class_name C_MapScene

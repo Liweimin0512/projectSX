@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1dkxxilwqga4"]
+[gd_scene load_steps=6 format=3 uid="uid://d1dkxxilwqga4"]
 
-[ext_resource type="Script" path="res://source/entities/Entity.gd" id="1_6e0xs"]
-[ext_resource type="Script" path="res://source/components/C_Character.gd" id="2_gxres"]
+[ext_resource type="Script" path="res://source/entities/character.gd" id="2_gxres"]
 [ext_resource type="Script" path="res://source/ability_system/C_AbilitySystem.gd" id="3_n3l57"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_g371q"]
@@ -22,7 +21,7 @@ outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [node name="character" type="Node2D"]
-script = ExtResource("1_6e0xs")
+script = ExtResource("2_gxres")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -62,6 +61,3 @@ vertical_alignment = 1
 
 [node name="C_AbilitySystem" type="Node" parent="."]
 script = ExtResource("3_n3l57")
-
-[node name="C_Character" type="Node" parent="."]
-script = ExtResource("2_gxres")

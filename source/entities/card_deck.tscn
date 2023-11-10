@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk437doqmox85"]
-
-[ext_resource type="Script" path="res://source/entities/Entity.gd" id="1_x3veq"]
-
-[node name="CardDeck" type="Node"]
-script = ExtResource("1_x3veq")

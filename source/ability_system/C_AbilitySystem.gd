@@ -1,13 +1,11 @@
 extends Node
 class_name C_AbilitySystem
 
-const component_name : String = "C_AbilitySystem"
-
 var attribute_sets = {}
 var abilities = {}  # 存储所有Ability对象
 var effects = {}    # 存储当前活跃的Effect对象
 
-func _init(attribute_set_definitions: Dictionary):
+func _component_ready(attribute_set_definitions: Dictionary):
 	for set_name in attribute_set_definitions:
 		attribute_sets[set_name] = GameplayAttributeSet.new(attribute_set_definitions[set_name])
 

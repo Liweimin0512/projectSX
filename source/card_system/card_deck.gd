@@ -12,12 +12,12 @@ func _init(d_name: StringName, type: int) -> void:
 	_model = CardDeckModel.new(d_name, type)
 
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
-func add_card(card: Entity) -> void:
+func add_card(card: Card) -> void:
 	_model.card_list.append(card)
 	card_added.emit()
 
 ## 移除卡牌(Remove Card)：从牌组中移除卡牌。
-func remove_card(card: Entity) -> void:
+func remove_card(card: Card) -> void:
 	_model.card_list.erase(card)
 	card_removed.emit()
 
@@ -27,9 +27,9 @@ func shuffle() -> void:
 	shuffled.emit()
 
 ## 抽牌(Draw Card)：从牌组中抽取卡牌。
-func draw_card() -> Entity:
+func draw_card() -> Card:
 	shuffle()
-	var card : Entity = _model.card_list.pop_front()
+	var card : Card = _model.card_list.pop_front()
 	drawed.emit(card)
 	return card
 
