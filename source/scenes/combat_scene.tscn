@@ -22,6 +22,7 @@ layer = -100
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0.0470588, 0.0666667, 0.133333, 1)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

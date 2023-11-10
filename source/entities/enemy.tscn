@@ -73,7 +73,7 @@ script = ExtResource("11_j32pj")
 position = Vector2(0, -32)
 texture = ExtResource("3_4ky16")
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
 autoplay = "idle"
 libraries = {

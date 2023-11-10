@@ -62,7 +62,9 @@ func needs_target() -> bool:
 func can_release() -> bool:
 	var player = GameInstance.player
 	if _model.cost <= player.energy:
+		print("当前卡牌可释放")
 		return true
+	print("当前卡牌不可释放")
 	return false
 
 func release(caster: Character, targets: Array[Character]) -> void:

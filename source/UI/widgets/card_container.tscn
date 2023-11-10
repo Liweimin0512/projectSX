@@ -66,6 +66,7 @@ size_flags_horizontal = 0
 
 [node name="bessel_arrow" parent="." instance=ExtResource("2_oqebg")]
 unique_name_in_owner = true
+z_index = 100
 
 [node name="button" type="VBoxContainer" parent="."]
 visible = false

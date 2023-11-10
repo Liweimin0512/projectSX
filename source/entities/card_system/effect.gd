@@ -9,7 +9,7 @@ enum EFFECT_TYPE {
 	STATUS,		# 特性
 }
 
-var _targets:= []
+var _targets : Array[Character] = []
 var effect_name := ""
 var effect_description := ""
 var target_type := 0

@@ -53,6 +53,22 @@ tracks/0/keys = {
 "values": [ExtResource("21_vy7yl"), ExtResource("22_d7tq5"), ExtResource("23_kj0os")]
 }
 
+[sub_resource type="Animation" id="Animation_4ri8u"]
+resource_name = "attack_01"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_i5lod"), ExtResource("33_o8its"), ExtResource("34_8cmn1"), ExtResource("35_tgnl1"), ExtResource("36_it0i1")]
+}
+
 [sub_resource type="Animation" id="Animation_120w7"]
 resource_name = "die"
 length = 0.7
@@ -100,6 +116,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("3_70kh5"), ExtResource("14_nj7ij"), ExtResource("15_ti83s"), ExtResource("16_vitb2")]
+}
+
+[sub_resource type="Animation" id="Animation_21fv5"]
+resource_name = "idle_02"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("28_0b1kx"), ExtResource("29_v2yvm"), ExtResource("30_yau1p"), ExtResource("31_vtxm7")]
 }
 
 [sub_resource type="Animation" id="Animation_fvfwo"]
@@ -150,38 +183,6 @@ tracks/0/keys = {
 "values": [ExtResource("24_dimsa"), ExtResource("25_2n2dn"), ExtResource("26_wmf61"), ExtResource("27_0ksqc")]
 }
 
-[sub_resource type="Animation" id="Animation_21fv5"]
-resource_name = "idle_02"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("28_0b1kx"), ExtResource("29_v2yvm"), ExtResource("30_yau1p"), ExtResource("31_vtxm7")]
-}
-
-[sub_resource type="Animation" id="Animation_4ri8u"]
-resource_name = "attack_01"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_i5lod"), ExtResource("33_o8its"), ExtResource("34_8cmn1"), ExtResource("35_tgnl1"), ExtResource("36_it0i1")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
 _data = {
 "RESET": SubResource("Animation_0ndc3"),
@@ -202,7 +203,7 @@ script = ExtResource("6_c67lg")
 position = Vector2(0, -52)
 texture = ExtResource("21_vy7yl")
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_orul5")

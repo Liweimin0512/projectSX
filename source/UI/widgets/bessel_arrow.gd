@@ -53,3 +53,9 @@ func update_angle():
 			a=rad_to_deg(a)               #弧度转成角度
 			
 			current.rotation_degrees=a #更新小箭头的方向
+
+func selected() -> void:
+	self.modulate = Color.DARK_RED
+
+func unselected() -> void:
+	self.modulate = Color.WHITE

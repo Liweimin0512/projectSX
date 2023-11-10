@@ -16,6 +16,7 @@ class_name CombatScene
 @onready var combat_form: Control = $CanvasLayer2/combat_form
 var characters : Array = []
 var current_character: Character = null
+var cha_selected: Character = null
 
 ## 进入当前场景，开始战斗
 func _enter(msg:Dictionary = {}) -> void:
@@ -39,6 +40,8 @@ func init_combat(combat_id : StringName) -> void:
 func begin_combat() -> void:
 	await get_tree().create_timer(0.5).timeout
 	for cha in characters:
+		cha.mouse_entered.connect(_on_cha_mouse_entered.bind(cha))
+		cha.mouse_exited.connect(_on_cha_mouse_exited.bind(cha))
 		cha._begin_combat()
 	next_turn()
 
@@ -55,11 +58,13 @@ func next_turn() -> void:
 ## 结束战斗
 func end_combat() -> void:
 	for cha in characters:
+		cha.mouse_entered.disconnect(_on_cha_mouse_entered.bind(cha))
+		cha.mouse_exited.disconnect(_on_cha_mouse_exited.bind(cha))
 		cha._end_combat()
 
 ## 初始化玩家角色
 func _init_player() -> void:
-	var player = GameInstance.player
+	var player : Character = GameInstance.player
 	player.get_parent().remove_child(player)
 	markers[0].add_child(GameInstance.player)
 	characters.append(player)
@@ -82,3 +87,10 @@ func _get_next_character() -> Character:
 			else:
 				return characters[i + 1]
 	return characters[0]
+
+func _on_cha_mouse_entered(cha: Character) -> void:
+	cha_selected = cha
+
+func _on_cha_mouse_exited(cha: Character) -> void:
+	if cha_selected == cha:
+		cha_selected = null

@@ -8,8 +8,10 @@ var _model: CharacterModel
 @onready var health_bar: ProgressBar = %health_bar
 @onready var health_label: Label = %health_label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var area_2d: Area2D = $Area2D
 
-signal play_begined
+signal mouse_entered
+signal mouse_exited
 
 ## 控制器引用
 var current_health: float:
@@ -25,6 +27,16 @@ var max_health: float:
 		pass
 
 func _ready() -> void:
+	area_2d.mouse_entered.connect(
+		func() -> void:
+			print(self.name, "选择")
+			mouse_entered.emit()
+	)
+	area_2d.mouse_exited.connect(
+		func() -> void:
+			print(self.name, "退出选择")
+			mouse_exited.emit()
+	)
 	_model = CharacterModel.new(cha_id)
 	display_health_bar()
 
@@ -51,6 +63,9 @@ func display_health_bar() -> void:
 
 func add_shielded(value: int) -> void:
 	print("添加护盾：", value)
+
+func damage(value: int) -> void:
+	print("造成伤害：", value)
 
 func play_animation(animation_name : String) -> void:
 	var current_animation = animation_player.current_animation
