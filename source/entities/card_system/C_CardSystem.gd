@@ -47,9 +47,7 @@ func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 			return null
 
 func release_card(card: Card, targets: Array[Character]) -> void:
-	var effects = create_effects(card, targets)
-	for effect in effects:
-		effect.execute()
+	card.release(owner, targets)
 	card_released.emit(card)
 	
 func create_effects(card: Card, targets: Array[Character]) -> Array[Effect]:

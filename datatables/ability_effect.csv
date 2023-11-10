@@ -13,7 +13,7 @@
 1、伤害值
 2、护盾值
 3、BUFFID",技能效果描述
-string,注释,string,int,int,int,string[],string
+string,string,string,int,int,int,string[],string
 strike,,打击,0,0,1,6,造成6点伤害
 shielded,,护盾,1,0,2,5,获得5点护盾
 trounce_01,,痛击,0,0,1,8,造成8点伤害

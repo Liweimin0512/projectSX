@@ -65,6 +65,12 @@ func can_release() -> bool:
 		return true
 	return false
 
+func release(caster: Character, targets: Array[Character]) -> void:
+	var effects = create_effects(targets)
+	for effect in effects:
+		effect.execute()
+	caster.play_animation(_model.play_animation)
+
 func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
 	return _model.get_effect_targets(caster, targets)
 
@@ -74,6 +80,8 @@ func create_effects(targets: Array[Character]) -> Array[Effect]:
 	var effects: Array[Effect]
 	for e in _model.effects:
 		var effect = Effect.create_effect(e, _targets)
+		if not effect:
+			push_error("创建技能效果失败！")
 		effects.append(effect)
 	return effects
 

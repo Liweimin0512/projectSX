@@ -48,3 +48,12 @@ func display_health_bar() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_label.text = str(current_health) + "/" + str(max_health)
+
+func add_shielded(value: int) -> void:
+	print("添加护盾：", value)
+
+func play_animation(animation_name : String) -> void:
+	var current_animation = animation_player.current_animation
+	animation_player.play(animation_name)
+	await animation_player.animation_finished
+	animation_player.play(current_animation)

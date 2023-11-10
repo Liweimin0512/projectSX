@@ -24,6 +24,7 @@ enum CARD_TYPE{
 @export var icon : Texture
 @export var target_type : TARGET_TYPE = 0
 @export var effects: Array = []
+@export var play_animation: String = ""
 
 @export var tween_speed : float = 0.2
 @export var preview_scale := Vector2(1,1)
@@ -38,6 +39,7 @@ func _init(card_id: String) -> void:
 	icon = data.icon
 	target_type = data.target_type
 	effects = data.effects
+	play_animation = data.play_animation
 
 ## 是否需要选择目标？
 func needs_target() -> bool :
