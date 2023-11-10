@@ -1,32 +1,40 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6whu55qq7xu2"]
+[gd_scene load_steps=42 format=3 uid="uid://c6whu55qq7xu2"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_fb8bn"]
-[ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/adventurer-idle-00.png" id="3_nhjn5"]
-[ext_resource type="Texture2D" uid="uid://d26vbo46lrcj8" path="res://asserts/character/adventurer/adventurer-idle-01.png" id="4_1lfue"]
-[ext_resource type="Texture2D" uid="uid://rodyj5aj6awe" path="res://asserts/character/adventurer/adventurer-idle-02.png" id="5_yec65"]
+[ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/idle_00/adventurer-idle-00.png" id="3_70kh5"]
 [ext_resource type="Script" path="res://source/entities/player.gd" id="6_c67lg"]
-[ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/background/Layer_0002_7.png" id="6_i3bik"]
-[ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/adventurer-idle-03.png" id="6_ujr5a"]
 [ext_resource type="Script" path="res://source/entities/card_system/C_CardSystem.gd" id="6_xhiqj"]
 [ext_resource type="Texture2D" uid="uid://d3fcpk31ueupa" path="res://asserts/character/adventurer/die/adventurer-die-00.png" id="7_e2d8t"]
 [ext_resource type="Texture2D" uid="uid://cyagfio7hrajm" path="res://asserts/character/adventurer/die/adventurer-die-01.png" id="8_4ixhf"]
+[ext_resource type="Texture2D" uid="uid://bhnqkn6d4a0d5" path="res://asserts/character/adventurer/die/adventurer-die-02.png" id="8_j73ny"]
 [ext_resource type="Texture2D" uid="uid://btedb7hfjglsh" path="res://asserts/character/adventurer/die/adventurer-die-03.png" id="10_ayh87"]
 [ext_resource type="Texture2D" uid="uid://2ty4rxrodusa" path="res://asserts/character/adventurer/die/adventurer-die-04.png" id="11_17inj"]
 [ext_resource type="Texture2D" uid="uid://c2yybaqd0c7dp" path="res://asserts/character/adventurer/die/adventurer-die-05.png" id="12_sldrl"]
 [ext_resource type="Texture2D" uid="uid://dr4bhkpixb1vh" path="res://asserts/character/adventurer/die/adventurer-die-06.png" id="13_ceo5d"]
-[ext_resource type="Texture2D" uid="uid://csdylaedyes2w" path="res://asserts/character/adventurer/adventurer-items-00.png" id="14_t2lsu"]
-[ext_resource type="Texture2D" uid="uid://cskyuqksaq15t" path="res://asserts/character/adventurer/adventurer-items-01.png" id="15_m6fma"]
-[ext_resource type="Texture2D" uid="uid://c7eqx4ey50iag" path="res://asserts/character/adventurer/adventurer-items-02.png" id="16_vxkol"]
-[ext_resource type="Texture2D" uid="uid://g5wurutkvj1g" path="res://asserts/character/adventurer/adventurer-swrd-drw-00.png" id="17_ftnp6"]
-[ext_resource type="Texture2D" uid="uid://bxdei18qtptga" path="res://asserts/character/adventurer/adventurer-swrd-drw-01.png" id="18_mlvj0"]
-[ext_resource type="Texture2D" uid="uid://bq1u38g0dpuif" path="res://asserts/character/adventurer/adventurer-swrd-drw-02.png" id="19_y1w8h"]
-[ext_resource type="Texture2D" uid="uid://bwip1ugjiquya" path="res://asserts/character/adventurer/adventurer-swrd-drw-03.png" id="20_xl6jt"]
-[ext_resource type="Texture2D" uid="uid://bqeo8fs54o3ms" path="res://asserts/character/adventurer/adventurer-hurt-00.png" id="21_ux23y"]
-[ext_resource type="Texture2D" uid="uid://cv05m80dtfdmk" path="res://asserts/character/adventurer/adventurer-hurt-01.png" id="22_4h5se"]
-[ext_resource type="Texture2D" uid="uid://dfgv4bmldb66d" path="res://asserts/character/adventurer/adventurer-hurt-02.png" id="23_jm05i"]
+[ext_resource type="Texture2D" uid="uid://csdylaedyes2w" path="res://asserts/character/adventurer/items/adventurer-items-00.png" id="13_ewin7"]
+[ext_resource type="Texture2D" uid="uid://g5wurutkvj1g" path="res://asserts/character/adventurer/swrd/adventurer-swrd-drw-00.png" id="13_nq88r"]
+[ext_resource type="Texture2D" uid="uid://bxdei18qtptga" path="res://asserts/character/adventurer/swrd/adventurer-swrd-drw-01.png" id="14_fpo74"]
+[ext_resource type="Texture2D" uid="uid://d26vbo46lrcj8" path="res://asserts/character/adventurer/idle_00/adventurer-idle-01.png" id="14_nj7ij"]
+[ext_resource type="Texture2D" uid="uid://cskyuqksaq15t" path="res://asserts/character/adventurer/items/adventurer-items-01.png" id="14_r0b1c"]
+[ext_resource type="Texture2D" uid="uid://bq1u38g0dpuif" path="res://asserts/character/adventurer/swrd/adventurer-swrd-drw-02.png" id="15_hv32d"]
+[ext_resource type="Texture2D" uid="uid://rodyj5aj6awe" path="res://asserts/character/adventurer/idle_00/adventurer-idle-02.png" id="15_ti83s"]
+[ext_resource type="Texture2D" uid="uid://c7eqx4ey50iag" path="res://asserts/character/adventurer/items/adventurer-items-02.png" id="15_wxee2"]
+[ext_resource type="Texture2D" uid="uid://bwip1ugjiquya" path="res://asserts/character/adventurer/swrd/adventurer-swrd-drw-03.png" id="16_6dx28"]
+[ext_resource type="Texture2D" uid="uid://dnyoysreiek2e" path="res://asserts/character/adventurer/idle_00/adventurer-idle-03.png" id="16_vitb2"]
+[ext_resource type="Texture2D" uid="uid://bqeo8fs54o3ms" path="res://asserts/character/adventurer/hurt/adventurer-hurt-00.png" id="21_vy7yl"]
+[ext_resource type="Texture2D" uid="uid://cv05m80dtfdmk" path="res://asserts/character/adventurer/hurt/adventurer-hurt-01.png" id="22_d7tq5"]
+[ext_resource type="Texture2D" uid="uid://dfgv4bmldb66d" path="res://asserts/character/adventurer/hurt/adventurer-hurt-02.png" id="23_kj0os"]
+[ext_resource type="Texture2D" uid="uid://c5am0dspadv1c" path="res://asserts/character/adventurer/swrd/adventurer-swrd-shte-00.png" id="24_dimsa"]
+[ext_resource type="Texture2D" uid="uid://c5ar58vf7erkl" path="res://asserts/character/adventurer/swrd/adventurer-swrd-shte-01.png" id="25_2n2dn"]
+[ext_resource type="Texture2D" uid="uid://d4at6oj2a6vrt" path="res://asserts/character/adventurer/swrd/adventurer-swrd-shte-02.png" id="26_wmf61"]
+[ext_resource type="Texture2D" uid="uid://dqfgsnw457ilv" path="res://asserts/character/adventurer/swrd/adventurer-swrd-shte-03.png" id="27_0ksqc"]
+[ext_resource type="Texture2D" uid="uid://ceqcxuh4wcbkj" path="res://asserts/character/adventurer/idle_02/adventurer-idle-2-00.png" id="28_0b1kx"]
+[ext_resource type="Texture2D" uid="uid://bncfmnvxkl361" path="res://asserts/character/adventurer/idle_02/adventurer-idle-2-01.png" id="29_v2yvm"]
+[ext_resource type="Texture2D" uid="uid://cusiugxt4mw74" path="res://asserts/character/adventurer/idle_02/adventurer-idle-2-02.png" id="30_yau1p"]
+[ext_resource type="Texture2D" uid="uid://dsahsw4b8kmr1" path="res://asserts/character/adventurer/idle_02/adventurer-idle-2-03.png" id="31_vtxm7"]
 
 [sub_resource type="Animation" id="Animation_0ndc3"]
-length = 0.001
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,10 +42,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_nhjn5")]
+"values": [ExtResource("21_vy7yl"), ExtResource("22_d7tq5"), ExtResource("23_kj0os")]
 }
 
 [sub_resource type="Animation" id="Animation_120w7"]
@@ -53,7 +61,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("7_e2d8t"), ExtResource("8_4ixhf"), ExtResource("6_i3bik"), ExtResource("10_ayh87"), ExtResource("11_17inj"), ExtResource("12_sldrl"), ExtResource("13_ceo5d")]
+"values": [ExtResource("7_e2d8t"), ExtResource("8_4ixhf"), ExtResource("8_j73ny"), ExtResource("10_ayh87"), ExtResource("11_17inj"), ExtResource("12_sldrl"), ExtResource("13_ceo5d")]
+}
+
+[sub_resource type="Animation" id="Animation_ibnnk"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("21_vy7yl"), ExtResource("22_d7tq5"), ExtResource("23_kj0os")]
 }
 
 [sub_resource type="Animation" id="Animation_2am5v"]
@@ -70,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_nhjn5"), ExtResource("4_1lfue"), ExtResource("5_yec65"), ExtResource("6_ujr5a")]
+"values": [ExtResource("3_70kh5"), ExtResource("14_nj7ij"), ExtResource("15_ti83s"), ExtResource("16_vitb2")]
 }
 
 [sub_resource type="Animation" id="Animation_fvfwo"]
@@ -86,11 +110,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("14_t2lsu"), ExtResource("15_m6fma"), ExtResource("16_vxkol")]
+"values": [ExtResource("13_ewin7"), ExtResource("14_r0b1c"), ExtResource("15_wxee2")]
 }
 
 [sub_resource type="Animation" id="Animation_g14vr"]
 resource_name = "swrd_drw"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("13_nq88r"), ExtResource("14_fpo74"), ExtResource("15_hv32d"), ExtResource("16_6dx28")]
+}
+
+[sub_resource type="Animation" id="Animation_om1ha"]
+resource_name = "swrd_shte"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -102,12 +142,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("17_ftnp6"), ExtResource("18_mlvj0"), ExtResource("19_y1w8h"), ExtResource("20_xl6jt")]
+"values": [ExtResource("24_dimsa"), ExtResource("25_2n2dn"), ExtResource("26_wmf61"), ExtResource("27_0ksqc")]
 }
 
-[sub_resource type="Animation" id="Animation_ibnnk"]
-resource_name = "hurt"
-length = 0.3
+[sub_resource type="Animation" id="Animation_21fv5"]
+resource_name = "idle_02"
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,10 +156,10 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("21_ux23y"), ExtResource("22_4h5se"), ExtResource("23_jm05i")]
+"values": [ExtResource("28_0b1kx"), ExtResource("29_v2yvm"), ExtResource("30_yau1p"), ExtResource("31_vtxm7")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
@@ -127,8 +168,10 @@ _data = {
 "die": SubResource("Animation_120w7"),
 "hurt": SubResource("Animation_ibnnk"),
 "idle": SubResource("Animation_2am5v"),
+"idle_02": SubResource("Animation_21fv5"),
 "items": SubResource("Animation_fvfwo"),
-"swrd_drw": SubResource("Animation_g14vr")
+"swrd_drw": SubResource("Animation_g14vr"),
+"swrd_shte": SubResource("Animation_om1ha")
 }
 
 [node name="player" instance=ExtResource("1_fb8bn")]
@@ -136,7 +179,7 @@ script = ExtResource("6_c67lg")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
-texture = ExtResource("3_nhjn5")
+texture = ExtResource("21_vy7yl")
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "idle"
