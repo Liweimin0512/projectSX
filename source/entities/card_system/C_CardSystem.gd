@@ -35,6 +35,19 @@ func distribute_card() -> void:
 		hand_cards.append(card)
 	card_distributed.emit(hand_cards)
 
+## 释放卡牌：释放卡牌技能
+func release_card(card: Card, targets: Array[Character]) -> void:
+	if not can_release_card(card):
+		push_warning("能量不足，无法释放卡牌！")
+		return
+	card.release(owner, targets)
+	discard_deck.add_card(card)
+	card_released.emit(card)
+
+# 检查玩家能量是否足够释放卡牌
+func can_release_card(card: Card) -> bool:
+	return card.can_release(owner)
+
 func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 	match  dect_type:
 		CardDeckModel.DECK_TYPE.DRAW:
@@ -45,9 +58,3 @@ func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 			push_error("未找到指定的牌堆类型")
 			return null
 
-func release_card(card: Card, targets: Array[Character]) -> void:
-	card.release(owner, targets)
-	card_released.emit(card)
-	
-func create_effects(card: Card, targets: Array[Character]) -> Array[Effect]:
-	return card.create_effects(targets)

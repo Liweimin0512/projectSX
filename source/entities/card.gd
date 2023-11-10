@@ -59,9 +59,8 @@ func prerelease():
 func needs_target() -> bool:
 	return _model.needs_target()
 
-func can_release() -> bool:
-	var player = GameInstance.player
-	if _model.cost <= player.energy:
+func can_release(caster: Character) -> bool:
+	if _model.cost <= caster.current_energy:
 		print("当前卡牌可释放")
 		return true
 	print("当前卡牌不可释放")
@@ -72,6 +71,8 @@ func release(caster: Character, targets: Array[Character]) -> void:
 	await caster.play_animation(_model.play_animation)
 	for effect in effects:
 		effect.execute()
+	# 消耗能量
+	caster.use_energy(_model.cost)
 
 func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
 	return _model.get_effect_targets(caster, targets)

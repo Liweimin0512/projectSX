@@ -142,7 +142,7 @@ layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
-color = Color(0.101961, 0.101961, 0.101961, 0.639216)
+color = Color(0.101961, 0.101961, 0.101961, 0.407843)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -159,9 +159,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 88.0
-offset_top = -152.0
+offset_top = -168.0
 offset_right = 152.0
-offset_bottom = -88.0
+offset_bottom = -104.0
 grow_vertical = 0
 metadata/_edit_group_ = true
 
@@ -185,10 +185,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -224.0
-offset_top = -120.0
-offset_right = -96.0
-offset_bottom = -88.0
+offset_left = -232.0
+offset_top = -160.0
+offset_right = -104.0
+offset_bottom = -128.0
 grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_group_ = true

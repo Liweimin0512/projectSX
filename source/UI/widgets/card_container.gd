@@ -45,6 +45,7 @@ func _ready() -> void:
 	_card_system = GameInstance.player.get_node("C_CardSystem")
 	_combat_scene = SceneManager.current_scene
 	_card_system.card_distributed.connect(_on_card_distributed)
+	_card_system.card_released.connect(_on_card_released)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not selected_card: return
@@ -79,20 +80,17 @@ func reset_highlight() -> void:
 
 ## 能否释放卡牌
 func can_card_release(card: Card) -> bool:
-	return card.can_release()
+	return _card_system.can_release_card(card)
 
 ## 释放卡牌
 func release_card(card: Card, target: Character) -> void:
-	selected_card = null
-	bezier_arrow.hide()
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(card, "position", discard_deck.global_position, 0.5)
 	tween.tween_property(card, "scale", Vector2.ZERO, 0.5)
 	await tween.finished
-	_card_system.release_card(card, [target])
 	hand_card.remove_child(card)
-	_update_card_positions()
+	_card_system.release_card(card, [target])
 
 ## 寻找目标
 func find_target() -> void:
@@ -115,6 +113,11 @@ func _on_card_distributed(cards: Array) -> void:
 		card.mouse_exited.connect(_on_card_mouse_exited.bind(card))
 		card.gui_input.connect(_on_card_gui_input.bind(card))
 		# 您可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
+
+func _on_card_released(card: Card) -> void:
+	selected_card = null
+	bezier_arrow.hide()
+	_update_card_positions()
 
 func _on_card_mouse_entered(card: Card) -> void:
 	if is_dragging:

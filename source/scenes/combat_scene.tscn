@@ -24,6 +24,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0.0470588, 0.0666667, 0.133333, 1)
+metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(0, -100)
@@ -33,6 +34,7 @@ transform = Transform2D(1, 0, 0, 1, 0, -100)
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer10"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("2_iavej")
 centered = false
@@ -41,6 +43,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("3_jrhge")
 centered = false
@@ -49,6 +52,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("4_7d4gw")
 centered = false
@@ -57,6 +61,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("5_g5w4w")
 centered = false
@@ -65,6 +70,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("6_x1vaq")
 centered = false
@@ -73,6 +79,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("7_27yn5")
 centered = false
@@ -95,6 +102,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer7"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("9_e5abc")
 centered = false
@@ -103,6 +111,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer8"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("10_nmkkq")
 centered = false
@@ -111,6 +120,7 @@ centered = false
 motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer9"]
+position = Vector2(0, -30)
 scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("11_a2qif")
 centered = false
@@ -122,30 +132,30 @@ layer = 128
 
 [node name="Marker2D1" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(386, 498)
+position = Vector2(386, 468)
 metadata/_edit_group_ = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(258, 499)
+position = Vector2(258, 469)
 metadata/_edit_group_ = true
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(130, 498)
+position = Vector2(130, 468)
 metadata/_edit_group_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(578, 498)
+position = Vector2(578, 468)
 metadata/_edit_group_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(738, 498)
+position = Vector2(738, 468)
 metadata/_edit_group_ = true
 
 [node name="Marker2D6" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(898, 498)
+position = Vector2(898, 468)
 metadata/_edit_group_ = true

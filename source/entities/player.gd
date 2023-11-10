@@ -4,11 +4,18 @@ class_name Player
 var _player_model : PlayerModel
 @onready var c_card_system: Node = %C_CardSystem
 ## 释放卡牌的能量
-var energy: int = 0:
+var current_energy: int = 0:
 	get:
-		return _player_model.energy
+		return _player_model.current_energy
 	set(value):
-		_player_model.energy = value
+		_player_model.current_energy = value
+var max_energy : int = 0:
+	get:
+		return _player_model.max_energy
+	set(value):
+		_player_model.max_energy = value
+
+signal energy_changed
 
 func _ready() -> void:
 	super()
@@ -32,3 +39,8 @@ func _begin_turn() -> void:
 ## 结束回合
 func _end_turn() -> void:
 	print("结束玩家回合")
+
+# 扣除能量的方法
+func use_energy(amount: int) -> void:
+	current_energy -= amount
+	energy_changed.emit()
