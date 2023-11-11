@@ -84,3 +84,29 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 text = "结束回合"
+
+[node name="turn_begin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="turn_begin"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.337255)
+
+[node name="lab_turn_begin" type="Label" parent="turn_begin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 35
+text = "玩家回合"
+horizontal_alignment = 1
+vertical_alignment = 1

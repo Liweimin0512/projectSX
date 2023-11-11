@@ -18,6 +18,13 @@ var characters : Array = []
 var current_character: Character = null
 var cha_selected: Character = null
 
+func _ready() -> void:
+	combat_form.end_turn_pressed.connect(
+		func() -> void:
+			if is_player_turn():
+				next_turn()
+	)
+
 ## 进入当前场景，开始战斗
 func _enter(msg:Dictionary = {}) -> void:
 	if not "combat_id" in msg:
@@ -51,10 +58,13 @@ func next_turn() -> void:
 		current_character = _get_next_character()
 	else:
 		current_character = characters[0]
+
+	if current_character:
 		if current_character == GameInstance.player:
 			_player_turn_begin()
-	if current_character:
+		await get_tree().create_timer(1.5).timeout
 		current_character._begin_turn()
+	combat_form.next_turn(current_character)
 
 ## 结束战斗
 func end_combat() -> void:
@@ -74,7 +84,11 @@ func _init_player() -> void:
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
 	if enemyID.is_empty():
 		return
-	var enemy : Character = GameInstance.create_entity(AssetUtility.get_entity_path("enemy"))
+	var enemy : Enemy = GameInstance.create_entity(AssetUtility.get_entity_path("enemy"))
+	enemy.enemy_turn_end.connect(
+		func() -> void:
+			next_turn()
+	)
 	enemy.cha_id = enemyID
 	markers[markerID].add_child(enemy)
 	characters.append(enemy)
@@ -102,3 +116,6 @@ func _on_cha_mouse_entered(cha: Character) -> void:
 func _on_cha_mouse_exited(cha: Character) -> void:
 	if cha_selected == cha:
 		cha_selected = null
+
+func is_player_turn() -> bool:
+	return current_character == GameInstance.player

@@ -7,8 +7,7 @@ var _enemy_model : EnemyModel
 @onready var c_intent_system: C_IntentSystem = %C_IntentSystem
 @onready var w_tooltip: MarginContainer = %w_tooltip
 
-signal action_before
-signal action_end
+signal enemy_turn_end
 
 func _ready() -> void:
 	super()
@@ -43,3 +42,22 @@ func show_tooltip() -> void:
 		c_intent_system.current_intent.description
 	)
 	w_tooltip.show()
+
+func attack() -> void:
+	animation_player.play("attack")
+	await animation_player.animation_finished
+	animation_player.play("idle")
+	var player = GameInstance.player
+	player.damage(5)
+
+## 回合开始时
+func _begin_turn() -> void:
+	await intent_status.execute_intent()
+	intent_status.hide()
+	print("敌人攻击")
+	attack()
+	enemy_turn_end.emit()
+
+## 回合结束时
+func _end_turn() -> void:
+	intent_status.show()

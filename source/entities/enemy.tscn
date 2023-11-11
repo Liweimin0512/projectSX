@@ -158,6 +158,10 @@ unique_name_in_owner = true
 anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -156.0
+offset_right = 16.0
+offset_bottom = -124.0
 grow_vertical = 0
 
 [node name="w_tooltip" parent="." index="5" instance=ExtResource("22_rlg1m")]
