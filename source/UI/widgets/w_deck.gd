@@ -34,3 +34,8 @@ func _on_card_removed(card: Card) -> void:
 func _on_card_drawed(card: Card) -> void:
 	cards.remove_child(card)
 	set_card_amount(cards.get_child_count())
+
+func _make_custom_tooltip(for_text: String) -> Object:
+	var w_tooltip = load("res://source/UI/widgets/w_tooltip.tscn").instantiate()
+	w_tooltip.set_tooltip(_deck.deck_name, "在每回合开始时，你从这里抽5张牌，点击查看你抽牌堆中的牌（但顺序是打乱的）")
+	return w_tooltip

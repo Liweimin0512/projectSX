@@ -30,6 +30,7 @@ class ProcedureInitResource:
 		"ability_effect" : false,
 		"attribute" : false,
 #		"attribute_set" : false,
+		"intent" : false,
 	}
 	
 	func enter(msg : Dictionary = {}) -> void:

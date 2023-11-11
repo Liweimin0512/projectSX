@@ -31,6 +31,9 @@ const CARD_TYPE_NAME = [
 var cardID : StringName
 var _model : CardModel
 
+func _init() -> void:
+	self.pivot_offset = Vector2(size.x/2, size.y)
+
 func _ready():
 	_model = CardModel.new(cardID)
 #	self.pivot_offset = Vector2(card.size.x/2, card.size.y)
@@ -39,22 +42,6 @@ func _ready():
 	lab_type.text = CARD_TYPE_NAME[_model.card_type]
 	lab_cost.text = str(_model.cost)
 	tr_icon.texture = _model.icon
-
-func predragging():
-	if card_state == CARD_STATE.PRERELEASE:
-		print("predragging")
-		var tween : Tween = get_tree().create_tween()
-		tween.tween_property(card, "scale", Vector2(1,1), tween_speed)
-		tween.play()
-		card_state = CARD_STATE.DRAGGING
-
-func prerelease():
-	if card_state != CARD_STATE.PRERELEASE:
-		# print("prerelease")
-		var tween : Tween = get_tree().create_tween()
-		tween.interpolate_property(card, "scale", Vector2(1.5,1.5), tween_speed)
-		tween.play()
-		card_state = CARD_STATE.PRERELEASE
 
 func needs_target() -> bool:
 	return _model.needs_target()
@@ -87,6 +74,9 @@ func create_effects(targets: Array[Character]) -> Array[Effect]:
 			push_error("创建技能效果失败！")
 		effects.append(effect)
 	return effects
+
+func get_offset_x() -> float:
+	return $MarginContainer3.size.x
 
 func _to_string() -> String:
 	return self.name + " : " + _model.card_name

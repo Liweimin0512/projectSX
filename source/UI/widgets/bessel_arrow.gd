@@ -15,9 +15,11 @@ func _ready():
 		sprite.texture = t_arrow_body #把图片换成箭头1
 		sprite.scale=Vector2(1,1) * (0.2 + float(i)/18*0.8) #改变缩放，根据杀戮尖塔，箭头是一节节越来越大的
 		sprite.offset=Vector2(-25,0)  #由于我画的图片中心点在箭头中间，
+		sprite.scale = sprite.scale * 0.7
 	# 这里改变一下图片偏移，把图片中心点移动到箭头头部
 	# 最后生成终点的箭头，用箭头2的图片
 	var sprite= Sprite2D.new()   
+	sprite.scale = Vector2.ONE * 0.7
 	add_child(sprite)
 	list.append(sprite)
 	sprite.texture = t_arrow_head

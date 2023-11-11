@@ -10,15 +10,13 @@ var _model: CharacterModel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
 
-signal mouse_entered
-signal mouse_exited
-
 ## 控制器引用
 var current_health: float:
 	get:
 		return _model.current_health
 	set(value):
 		_model.current_health = value
+		current_health_changed.emit(_model.current_health)
 		display_health_bar()
 
 var max_health: float:
@@ -27,6 +25,10 @@ var max_health: float:
 	set(value):
 		_model.max_health = value
 		display_health_bar()
+
+signal mouse_entered
+signal mouse_exited
+signal current_health_changed(value)
 
 func _ready() -> void:
 	area_2d.mouse_entered.connect(

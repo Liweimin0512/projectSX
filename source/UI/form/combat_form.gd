@@ -17,6 +17,14 @@ func _ready() -> void:
 			display_energy()
 	)
 	display_energy()
+	card_container.card_selected.connect(
+		func(card: Card) -> void:
+			btn_end_turn.disabled = true
+	)
+	card_container.card_unselected.connect(
+		func(card: Card) -> void:
+			btn_end_turn.disabled = false
+	)
 
 func _on_btn_end_turn_pressed() -> void:
 	end_turn_pressed.emit()

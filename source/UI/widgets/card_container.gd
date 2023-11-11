@@ -12,11 +12,12 @@ var card_remove_index := 0
 ## 存储手牌的数组
 #var cards : Array = []
 ## 动效的时间
-@export var tween_speed : float = 0.1
+@export var tween_speed : float = 0.05
 
-@export var offset_x_proportion : float = 0.8
+@export var offset_x_proportion : float = 0.6
 ## 手中最大牌数限制
 @export var max_num_cards: int = 12
+@export var rotation_proportion:float = 5
 
 var tween : Tween
 
@@ -29,8 +30,11 @@ var selected_card: Card = null:
 		selected_card = value
 		if selected_card:
 			selected_card.global_position = hand_card.global_position
-			selected_card.scale = Vector2.ONE * 1.2
+			selected_card.scale = Vector2.ONE * 1.3
+			selected_card.rotation = 0
 			selected_card.z_index = 128
+		else:
+			bezier_arrow.hide()
 
 ## 战斗场景引用
 var _combat_scene : CombatScene 
@@ -40,6 +44,8 @@ var _card_system :C_CardSystem
 signal card_added(card: Card)
 ## 当一张卡片被移除时发出
 signal card_removed(card: Card)
+signal card_selected(card: Card)
+signal card_unselected(card: Card)
 
 func _ready() -> void:
 	_card_system = GameInstance.player.get_node("C_CardSystem")
@@ -54,13 +60,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_released() and _combat_scene.cha_selected:
 			# 此时如果是选择目标状态，则选择目标
-			release_card(selected_card, _combat_scene.cha_selected)
+			if can_card_release(selected_card):
+				release_card(selected_card, _combat_scene.cha_selected)
+			else:
+				selected_card = null
+				_update_card_positions()
+			card_unselected.emit(selected_card)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
 		if event.is_pressed():
 			# 此时是选择目标状态，则退出选择状态
 			selected_card = null
 			bezier_arrow.hide()
 			_update_card_positions()
+			card_unselected.emit(selected_card)
 
 ## 突出显示一个卡牌，使其与其他卡牌分开
 func highlight_card(card: Card) -> void:
@@ -84,13 +96,13 @@ func can_card_release(card: Card) -> bool:
 
 ## 释放卡牌
 func release_card(card: Card, target: Character) -> void:
+	_card_system.release_card(card, [target])
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(card, "position", discard_deck.global_position, 0.5)
 	tween.tween_property(card, "scale", Vector2.ZERO, 0.5)
 	await tween.finished
 	hand_card.remove_child(card)
-	_card_system.release_card(card, [target])
 
 ## 寻找目标
 func find_target() -> void:
@@ -131,8 +143,12 @@ func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		is_dragging = true
 #		dragging_start_position = event.position
+		card_selected.emit(card)
 		reset_highlight()
 	if event is InputEventMouseMotion and is_dragging:
+		if not can_card_release(card):
+			push_warning("不可释放，直接不让拖拽")
+			return
 		if card.needs_target():
 			# 如果需要选择目标，则显示贝塞尔曲线或其他目标选择指示器
 			selected_card = card
@@ -144,34 +160,48 @@ func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseButton and event.is_released():
 		is_dragging = false
 		if selected_card:
-			if _combat_scene.cha_selected:
+			if _combat_scene.cha_selected and can_card_release(card):
 				release_card(card, _combat_scene.cha_selected)
+				card_unselected.emit(card)
+#			else:
+#				selected_card = null
+#				_update_card_positions()
 		elif event.global_position.y < get_viewport_rect().size.y * 2/3:
 			if can_card_release(card):
 				await release_card(card, null)
 			else:
 				_update_card_positions()
+			card_unselected.emit(card)
 		else:
 			# 返回卡牌到原始位置
 			_update_card_positions()
+			card_unselected.emit(card)
 
 ## 更新所有卡牌的位置、旋转和大小，以实现扇形效果
-func _update_card_positions() -> void:
-	var cards = hand_card.get_children()
-	var num_cards = cards.size()
-	if num_cards == 0 : return # 没有手牌直接返回
-	var offset_x = cards[0].size.x * offset_x_proportion * min(1, max_num_cards/ num_cards) ## 单卡偏移量
-	for i in num_cards:
-		var card : Card = cards[i]
+func _update_card_positions():
+	var hand_cards = hand_card.get_children()
+	if hand_cards.size() == 0: return
+	var card_amount = hand_cards.size()
+	var offset_x = hand_cards[0].get_offset_x()
+	for i in hand_cards.size():
+		var card : Card = hand_cards[i]
+		var card_offset = card_amount * -0.5 + 0.5 + 1 * i
 		card.z_index = 0
-		var card_offset = num_cards * -0.5 + 0.5 + 1 * i
-		var target_position : Vector2 = Vector2(
-			card_offset * offset_x,
+#		card.pivot_offset = Vector2(card.size.x/2, card.size.y)
+		# 位置偏移
+#		card.position.x = card_offset * offset_x * offset_x_proportion
+#		printerr(" card position x: ", card.position.x, " card_offset: ", card_offset, \
+#			" offset_x_proportion: ", offset_x_proportion, " offset_x: ", offset_x)
+		# 旋转偏移
+		# cards[i].rotation = card_offset * rotation_proportion
+		var target_position = Vector2(
+			card_offset * offset_x * offset_x_proportion * (1 if card_amount <= max_num_cards else max_num_cards/card_amount) ,
 			0
-		)
-		card.pivot_offset = Vector2(card.size.x/2, card.size.y)
-		var tween = create_tween()
-		tween.set_parallel()
-		tween.tween_property(card, "position", target_position, tween_speed)
-		tween.tween_property(card, "scale", Vector2.ONE, tween_speed)
+		) 
+		var target_rotation = card_offset * rotation_proportion
+#		assert(tween, '没找到 tween')
+		var tween : Tween = create_tween()
+		tween.tween_property(card, "position", target_position, tween_speed).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+		tween.tween_property(card, "rotation_degrees", target_rotation, tween_speed).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+		tween.tween_property(card, "scale", Vector2(1,1), tween_speed).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 		await tween.finished

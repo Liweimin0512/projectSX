@@ -1,4 +1,4 @@
-﻿ID,name
-ID,怪物名
-string,string
-slime,史莱姆
+﻿ID,name,intent_pool
+ID,怪物名,意图池
+string,string,string[]
+slime,史莱姆,ATTACK*MULTI_ATTACK*DEFEND

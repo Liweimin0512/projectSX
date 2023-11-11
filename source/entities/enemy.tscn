@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bghoauk4pq40q"]
+[gd_scene load_steps=29 format=3 uid="uid://bghoauk4pq40q"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_yh4r0"]
 [ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/character/slime/idle/slime-idle-0.png" id="3_4ky16"]
@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://b2f1q21davkvv" path="res://asserts/character/slime/hurt/slime-hurt-1.png" id="17_2qfre"]
 [ext_resource type="Texture2D" uid="uid://buppdgjsgpujx" path="res://asserts/character/slime/hurt/slime-hurt-2.png" id="18_2k7o7"]
 [ext_resource type="Texture2D" uid="uid://c831haw5pdlwb" path="res://asserts/character/slime/hurt/slime-hurt-3.png" id="19_3p5j7"]
+[ext_resource type="PackedScene" uid="uid://c2eootn4eg0wl" path="res://source/UI/widgets/w_intent_status.tscn" id="20_yltto"]
+[ext_resource type="Script" path="res://source/entities/intent_system/C_IntentSystem.gd" id="21_ijss2"]
+[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_rlg1m"]
 
 [sub_resource type="Animation" id="Animation_j7sah"]
 length = 0.001
@@ -37,6 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0w1a3"]
 resource_name = "attack"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,27 +48,22 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("4_h5358"), ExtResource("5_uu44a"), ExtResource("6_5agal"), ExtResource("7_o1vkl"), ExtResource("8_8ah6m")]
 }
-
-[sub_resource type="Animation" id="Animation_1iao4"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("3_4ky16"), ExtResource("9_nm821"), ExtResource("10_do5qh"), ExtResource("11_pijae")]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-80, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6keks"]
@@ -99,6 +98,35 @@ tracks/0/keys = {
 "values": [ExtResource("16_14fnh"), ExtResource("17_2qfre"), ExtResource("18_2k7o7"), ExtResource("19_3p5j7")]
 }
 
+[sub_resource type="Animation" id="Animation_1iao4"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_4ky16"), ExtResource("9_nm821"), ExtResource("10_do5qh"), ExtResource("11_pijae")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxyv5"]
 _data = {
 "RESET": SubResource("Animation_j7sah"),
@@ -115,9 +143,31 @@ script = ExtResource("11_j32pj")
 position = Vector2(0, -32)
 texture = ExtResource("3_4ky16")
 
+[node name="Area2D" parent="." index="1"]
+unique_name_in_owner = true
+
 [node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
 autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_fxyv5")
 }
+
+[node name="IntentStatus" parent="." index="4" instance=ExtResource("20_yltto")]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="w_tooltip" parent="." index="5" instance=ExtResource("22_rlg1m")]
+unique_name_in_owner = true
+visible = false
+offset_left = 50.0
+offset_top = -87.0
+offset_right = 250.0
+offset_bottom = -3.0
+
+[node name="C_IntentSystem" type="Node" parent="." index="7"]
+unique_name_in_owner = true
+script = ExtResource("21_ijss2")

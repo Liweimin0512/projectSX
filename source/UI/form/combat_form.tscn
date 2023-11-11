@@ -1,29 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d08olufvkbwcn"]
+[gd_scene load_steps=6 format=3 uid="uid://d08olufvkbwcn"]
 
 [ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/card_container.tscn" id="1_i77bo"]
 [ext_resource type="Script" path="res://source/UI/form/combat_form.gd" id="1_kt0dy"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7vb4m"]
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_v0kub"]
-font_size = 12
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_st41v"]
-font_color = Color(1, 0, 0, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_0d5il"]
-font_color = Color(1, 1, 0, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_tk3ut"]
-font_color = Color(0.00784314, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
+[ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
@@ -40,112 +20,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_kt0dy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="w_status_bar" parent="." instance=ExtResource("2_8h2ee")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0.0862745, 0.0862745, 0.0862745, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="lab_name" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "玩家名"
-label_settings = SubResource("LabelSettings_7vb4m")
-vertical_alignment = 1
-
-[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="lab_hero" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "英雄名称"
-label_settings = SubResource("LabelSettings_v0kub")
-vertical_alignment = 1
-
-[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="lab_health" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "生命：34/80"
-label_settings = SubResource("LabelSettings_st41v")
-vertical_alignment = 1
-
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="lab_coin" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "钱币：274"
-label_settings = SubResource("LabelSettings_0d5il")
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "哥布林营地"
-label_settings = SubResource("LabelSettings_tk3ut")
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_right = 10
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-
-[node name="btn_map" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "地图"
-
-[node name="btn_card_deck" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "牌库22"
-
-[node name="btn_settings" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "设置"
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer2"]
-layout_mode = 2
-color = Color(0.101961, 0.101961, 0.101961, 0.407843)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
-layout_mode = 2
 
 [node name="CardContainer" parent="." instance=ExtResource("1_i77bo")]
 unique_name_in_owner = true
@@ -153,7 +29,7 @@ layout_mode = 1
 scale = Vector2(1, 0.988801)
 metadata/_edit_lock_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="w_energy" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -165,12 +41,12 @@ offset_bottom = -104.0
 grow_vertical = 0
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="w_energy"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 color = Color(0.580392, 0.568627, 0.137255, 1)
 
-[node name="lab_power" type="Label" parent="MarginContainer"]
+[node name="lab_power" type="Label" parent="w_energy"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "4/4"
@@ -178,7 +54,7 @@ label_settings = SubResource("LabelSettings_gsyk6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="w_turn" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -191,14 +67,20 @@ offset_right = -104.0
 offset_bottom = -128.0
 grow_horizontal = 0
 grow_vertical = 0
+tooltip_text = "按下这个按钮将会结束你的回合。
+
+你会把手牌移入弃牌堆，敌人将进行他们的回合，然后你将重新抽5张牌，并开始你的下一回合。"
+script = ExtResource("3_f1pr6")
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer2"]
+[node name="ColorRect" type="ColorRect" parent="w_turn"]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
+mouse_filter = 1
 color = Color(0.054902, 0.447059, 1, 1)
 
-[node name="btn_end_turn" type="Button" parent="MarginContainer2"]
+[node name="btn_end_turn" type="Button" parent="w_turn"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 text = "结束回合"

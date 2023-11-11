@@ -24,7 +24,6 @@ func _enter(msg:Dictionary = {}) -> void:
 		push_error("combatScene初始化失败，没找到combat_id")
 		return
 	var combat_id = msg.combat_id
-	
 	init_combat(combat_id)
 
 ## 初始化战斗
@@ -52,6 +51,8 @@ func next_turn() -> void:
 		current_character = _get_next_character()
 	else:
 		current_character = characters[0]
+		if current_character == GameInstance.player:
+			_player_turn_begin()
 	if current_character:
 		current_character._begin_turn()
 
@@ -87,6 +88,13 @@ func _get_next_character() -> Character:
 			else:
 				return characters[i + 1]
 	return characters[0]
+
+func _player_turn_begin() -> void:
+	for cha in characters:
+		if cha != GameInstance.player:
+			cha.on_player_turn_begined()
+		
+
 
 func _on_cha_mouse_entered(cha: Character) -> void:
 	cha_selected = cha

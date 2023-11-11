@@ -3,6 +3,10 @@ class_name CardDeck
 
 var _model : CardDeckModel
 
+var deck_name: String :
+	get:
+		return _model.deck_name
+
 signal card_added
 signal card_removed
 signal shuffled

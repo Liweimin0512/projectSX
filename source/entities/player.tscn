@@ -68,6 +68,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("32_i5lod"), ExtResource("33_o8its"), ExtResource("34_8cmn1"), ExtResource("35_tgnl1"), ExtResource("36_it0i1")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(50, 0), Vector2(50, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_120w7"]
 resource_name = "die"
@@ -117,6 +129,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("3_70kh5"), ExtResource("14_nj7ij"), ExtResource("15_ti83s"), ExtResource("16_vitb2")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_21fv5"]
 resource_name = "idle_02"
@@ -133,6 +157,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("28_0b1kx"), ExtResource("29_v2yvm"), ExtResource("30_yau1p"), ExtResource("31_vtxm7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fvfwo"]
