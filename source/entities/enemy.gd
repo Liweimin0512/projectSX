@@ -24,6 +24,18 @@ func _ready() -> void:
 			w_tooltip.hide()
 	)
 
+## 回合开始时
+func _begin_turn() -> void:
+	await intent_status.execute_intent()
+	intent_status.hide()
+	print("敌人攻击")
+	attack()
+	enemy_turn_end.emit()
+
+## 回合结束时
+func _end_turn() -> void:
+	intent_status.show()
+
 ## 决策意图
 func choose_intent() -> void:
 	var intent : Intent = c_intent_system.choose_intent()
@@ -51,15 +63,3 @@ func attack() -> void:
 	animation_player.play("idle")
 	var player = GameInstance.player
 	player.damage(5)
-
-## 回合开始时
-func _begin_turn() -> void:
-	await intent_status.execute_intent()
-	intent_status.hide()
-	print("敌人攻击")
-	attack()
-	enemy_turn_end.emit()
-
-## 回合结束时
-func _end_turn() -> void:
-	intent_status.show()

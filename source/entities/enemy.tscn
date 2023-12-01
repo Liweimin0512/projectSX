@@ -149,10 +149,10 @@ unique_name_in_owner = true
 
 [node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_fxyv5")
 }
+autoplay = "idle"
 next/attack = &"RESET"
 
 [node name="IntentStatus" parent="." index="4" instance=ExtResource("20_yltto")]

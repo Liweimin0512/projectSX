@@ -22,7 +22,16 @@ enum INTENT_TYPE {
 @export var type: INTENT_TYPE 
 ## 意图相关的数值
 @export var value: int 
+var cooldown: int = 0
+@export var max_cooldown: int = 1
 @export var callable : StringName
+## 意图权重
+@export var weight: float = 0
+
+## 当前状态是否可用
+var is_available: bool = true :
+	get:
+		return cooldown == 0
 
 var _caster: Character
 
@@ -35,7 +44,17 @@ func _init(caster: Character, intentID: StringName) -> void:
 	type = data.type
 	value = data.value
 	callable = data.func
-	
-func execute():
+
+## 刷新冷却
+func process_cooldown() -> void:
+	if cooldown > 0:
+		cooldown -= 1
+
+## 实现意图的具体逻辑
+func execute() -> void:
 	if _caster.has_method(callable):
 		_caster.call(callable, value)
+
+## 返回意图的描述
+func get_description() -> String:
+	return ""
