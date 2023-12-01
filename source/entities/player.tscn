@@ -84,7 +84,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ibnnk"]
 resource_name = "hurt"
-length = 0.3
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -92,7 +92,7 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("21_vy7yl"), ExtResource("22_d7tq5"), ExtResource("23_kj0os")]
@@ -217,12 +217,12 @@ _data = {
 }
 
 [node name="player" instance=ExtResource("1_fb8bn")]
-position = Vector2(50, 0)
+position = Vector2(20, 0)
 script = ExtResource("6_c67lg")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
-texture = ExtResource("34_8cmn1")
+texture = ExtResource("23_kj0os")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-1.5, -48)

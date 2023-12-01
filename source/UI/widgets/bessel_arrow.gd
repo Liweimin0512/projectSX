@@ -2,8 +2,8 @@ extends Node2D
 
 var list=[] #数组，用来保存20节小箭头
 
-@onready var t_arrow_head = preload("res://asserts/widgets/right.png")
-@onready var t_arrow_body = preload("res://asserts/widgets/fightJ.png")
+@onready var t_arrow_head = preload(AssetUtility.t_arrow_head_path)
+@onready var t_arrow_body = preload(AssetUtility.t_arrow_body_path)
 const arrow_num = 15
 
 func _ready():

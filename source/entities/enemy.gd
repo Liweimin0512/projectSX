@@ -3,7 +3,7 @@ class_name Enemy
 
 var _enemy_model : EnemyModel
 
-@onready var intent_status: MarginContainer = %IntentStatus
+@onready var intent_status: Control = %IntentStatus
 @onready var c_intent_system: C_IntentSystem = %C_IntentSystem
 @onready var w_tooltip: MarginContainer = %w_tooltip
 
@@ -39,6 +39,9 @@ func _end_turn() -> void:
 ## 决策意图
 func choose_intent() -> void:
 	var intent : Intent = c_intent_system.choose_intent()
+	if not intent:
+		intent_status.hide()
+		return
 	intent_status.set_status(intent)
 
 ## 执行意图
@@ -51,6 +54,7 @@ func on_player_turn_begined() -> void:
 
 ## 显示意图
 func show_tooltip() -> void:
+	if not c_intent_system.current_intent: return
 	w_tooltip.set_tooltip(
 		c_intent_system.current_intent.intent_name,
 		c_intent_system.current_intent.description

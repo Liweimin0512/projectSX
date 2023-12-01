@@ -1,27 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1dkxxilwqga4"]
+[gd_scene load_steps=5 format=3 uid="uid://d1dkxxilwqga4"]
 
+[ext_resource type="PackedScene" uid="uid://t4e44od55s3t" path="res://source/UI/widgets/w_health_bar.tscn" id="2_d0fqm"]
 [ext_resource type="Script" path="res://source/entities/character.gd" id="2_gxres"]
 [ext_resource type="Script" path="res://source/ability_system/C_AbilitySystem.gd" id="3_n3l57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
 size = Vector2(96, 151)
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_g371q"]
-color = Color(0, 0, 0, 0.701961)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_ygloy"]
-color = Color(0.745098, 0, 0, 1)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_3l5io"]
-font_size = 12
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
 
 [node name="character" type="Node2D"]
 script = ExtResource("2_gxres")
@@ -40,33 +24,12 @@ shape = SubResource("RectangleShape2D_voqo7")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 
-[node name="health_bar" type="ProgressBar" parent="."]
+[node name="w_health_bar" parent="." instance=ExtResource("2_d0fqm")]
 unique_name_in_owner = true
-offset_left = -48.0
-offset_top = -112.0
-offset_right = 48.0
-offset_bottom = -102.0
-theme_override_styles/background = SubResource("StyleBoxLine_g371q")
-theme_override_styles/fill = SubResource("StyleBoxLine_ygloy")
-value = 50.0
-show_percentage = false
-
-[node name="health_label" type="Label" parent="health_bar"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -5.0
-offset_right = -16.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "20/20"
-label_settings = SubResource("LabelSettings_3l5io")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = -60.0
+offset_top = -168.0
+offset_right = 56.0
+offset_bottom = -128.0
 
 [node name="C_AbilitySystem" type="Node" parent="."]
 script = ExtResource("3_n3l57")

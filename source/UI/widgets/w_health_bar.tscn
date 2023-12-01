@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://t4e44od55s3t"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_health_bar.gd" id="1_ji472"]
+[ext_resource type="Texture2D" uid="uid://c7wd6p8jt2hmp" path="res://asserts/textures/widgets/Spells/fortify_spell.png" id="2_edmx4"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_g371q"]
+color = Color(0, 0, 0, 0.701961)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ygloy"]
+color = Color(1, 0, 0, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_3l5io"]
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="w_health_bar" type="MarginContainer"]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 24.0
+script = ExtResource("1_ji472")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ShieldedContainer" type="MarginContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ShieldedContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_edmx4")
+expand_mode = 1
+
+[node name="label_shielded" type="Label" parent="HBoxContainer/ShieldedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 12
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="health_bar" type="ProgressBar" parent="HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxLine_g371q")
+theme_override_styles/fill = SubResource("StyleBoxLine_ygloy")
+value = 50.0
+show_percentage = false
+
+[node name="health_label" type="Label" parent="HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "20/20"
+label_settings = SubResource("LabelSettings_3l5io")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -3,32 +3,35 @@
 [ext_resource type="Script" path="res://source/UI/widgets/w_intent_status.gd" id="1_1op2a"]
 [ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://asserts/textures/widgets/Spells/poison_dagger.png" id="1_ischg"]
 
-
 [sub_resource type="Animation" id="Animation_m15w2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-16, -156)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rek3t"]
+resource_name = "execute"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.368627), Color(1, 1, 1, 1), Color(1, 1, 1, 0.415686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
 }
 
 [sub_resource type="Animation" id="Animation_q3xtd"]
@@ -37,30 +40,14 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("MarginContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-16, -140), Vector2(-16, -155)]
-}
-
-[sub_resource type="Animation" id="Animation_rek3t"]
-resource_name = "execute"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.368627), Color(1, 1, 1, 1), Color(1, 1, 1, 0.415686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+"values": [Vector2(0, 0), Vector2(0, 15)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brsw3"]
@@ -70,27 +57,36 @@ _data = {
 "idle": SubResource("Animation_q3xtd")
 }
 
-[node name="IntentStatus" type="MarginContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="IntentStatus" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_1op2a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -156.0
-offset_right = 16.0
-offset_bottom = -124.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1op2a")
 
-[node name="sprite" type="TextureRect" parent="."]
+[node name="sprite" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_ischg")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -101,7 +97,7 @@ text = "3"
 vertical_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_brsw3")
 }
+autoplay = "idle"

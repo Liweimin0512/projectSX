@@ -9,6 +9,7 @@ var player: Character :
 
 ## 创建实体
 func create_entity(entity_path: String) -> Node:
+	assert(ResourceLoader.exists(entity_path), "实体路径有误")
 	var view = load(entity_path).instantiate()
 	return view
 

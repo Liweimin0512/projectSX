@@ -1,7 +1,6 @@
 extends Node
 class_name S_Datatable
 
-
 @export var datatable_path : String = "res://datatables/"
 var _datatable_dics : Dictionary = {}
 
@@ -71,8 +70,11 @@ func _load_datatable(datatable_name : String) -> Dictionary:
 						res.append(r.to_float())
 					d[_d_name] = res
 				"string[]":
-					var res := row_data[i].split("*")
-					d[_d_name] = [] if res.is_empty() else res
+					if row_data[i].is_empty():
+						d[_d_name] = []
+					else:
+						var res := row_data[i].split("*")
+						d[_d_name] = [] if res.is_empty() else res
 				"texture":
 					# godot引擎的材质
 					if row_data[i].is_empty():

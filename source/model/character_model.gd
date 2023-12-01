@@ -12,6 +12,8 @@ var current_health : int = max_health :
 		health_changed.emit(value)
 		current_health = value
 
+var shielded: int = 0
+
 func _init(cha_id) -> void:
 	var data: Dictionary = DatatableManager.get_datatable_row("character", cha_id)
 	cha_name = data.name

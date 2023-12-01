@@ -19,19 +19,22 @@ texture = ExtResource("3_4ky16")
 unique_name_in_owner = true
 position = Vector2(0, -24)
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -52)
+
 [node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
 autoplay = "idle"
 
-[node name="health_bar" parent="." index="3"]
-offset_top = -136.0
-offset_bottom = -126.0
-
 [node name="IntentStatus" parent="." index="4" instance=ExtResource("20_yltto")]
 unique_name_in_owner = true
-anchors_preset = 7
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -192.0
+offset_right = 20.0
+offset_bottom = -160.0
 grow_vertical = 0
 
 [node name="w_tooltip" parent="." index="5" instance=ExtResource("22_rlg1m")]

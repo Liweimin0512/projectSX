@@ -5,7 +5,7 @@ var cha_id: StringName
 
 var _model: CharacterModel
 
-@onready var health_bar: ProgressBar = %health_bar
+@onready var w_health_bar = %w_health_bar
 @onready var health_label: Label = %health_label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
@@ -26,6 +26,14 @@ var max_health: float:
 		_model.max_health = value
 		display_health_bar()
 
+## 护盾值
+var shielded: int:
+	get:
+		return _model.shielded
+	set(value):
+		_model.shielded = value
+		display_health_bar()
+
 signal mouse_entered
 signal mouse_exited
 signal current_health_changed(value)
@@ -40,6 +48,7 @@ func _ready() -> void:
 			mouse_exited.emit()
 	)
 	_model = CharacterModel.new(cha_id)
+	w_health_bar._character = self
 	display_health_bar()
 
 ## 开始战斗
@@ -59,17 +68,21 @@ func _end_turn() -> void:
 	pass
 
 func display_health_bar() -> void:
-	health_bar.max_value = max_health
-	health_bar.value = current_health
-	health_label.text = str(current_health) + "/" + str(max_health)
+	w_health_bar.update_display()
 
+## 添加护盾
 func add_shielded(value: int) -> void:
 	print("添加护盾：", value)
+	shielded += value
 
 func damage(value: int) -> void:
 	print("造成伤害：", value)
 	await play_animation("hurt")
-	current_health -= value
+	if shielded >= value:
+		shielded -= value
+	else:
+		current_health -= (value - shielded)
+		shielded = 0
 
 func play_animation(animation_name : String) -> void:
 	var current_animation = animation_player.current_animation

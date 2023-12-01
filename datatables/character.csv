@@ -3,3 +3,7 @@
 string,string,int,int,string
 1,铁甲战士,80,0,铁甲军团残留下的士兵，他出卖自己的灵魂，获得了恶魔的力量。
 slime,史莱姆,50,10,一个矮小而丑陋的怪物，生活在森林深处。
+flying_eye,眼魔,50,10,
+goblin,地精,50,10,
+mushroom,蘑菇怪,50,10,
+skeleton,骷髅怪,50,10,
