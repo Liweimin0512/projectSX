@@ -222,7 +222,7 @@ script = ExtResource("6_c67lg")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
-texture = ExtResource("23_kj0os")
+texture = ExtResource("21_vy7yl")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-1.5, -48)
