@@ -21,12 +21,14 @@ enum INTENT_TYPE {
 ## 意图的类型，比如"attack", "defend", "buff", "debuff"等
 @export var type: INTENT_TYPE 
 ## 意图相关的数值
-@export var value: int 
-var cooldown: int = 0
-@export var max_cooldown: int = 1
+@export var value: int
+
 @export var callable : StringName
+
+var cooldown: int = 0
+@export var max_cooldown: int = 0
 ## 意图权重
-@export var weight: float = 0
+@export var weight: float = 1
 
 ## 当前状态是否可用
 var is_available: bool = true :
@@ -52,6 +54,7 @@ func process_cooldown() -> void:
 
 ## 实现意图的具体逻辑
 func execute() -> void:
+	cooldown = max_cooldown
 	if _caster.has_method(callable):
 		_caster.call(callable, value)
 

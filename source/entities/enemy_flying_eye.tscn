@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu5f31d35ijdr"]
+
+[ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_5m082"]
+[ext_resource type="Texture2D" uid="uid://dxiwjtluxt0hy" path="res://asserts/textures/character/Flying eye/Death.png" id="2_hx2s3"]
+[ext_resource type="AnimationLibrary" uid="uid://b8aqljepl3n8j" path="res://asserts/animtions/enemy_flying_eye.tres" id="3_nmxoa"]
+
+[node name="enemy_flying_eye" instance=ExtResource("1_5m082")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(1, -79)
+texture = ExtResource("2_hx2s3")
+flip_h = true
+hframes = 8
+
+[node name="Area2D" parent="." index="1"]
+position = Vector2(1, -47)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -28.5)
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": ExtResource("3_nmxoa")
+}
+
+[node name="health_bar" parent="." index="3"]
+offset_left = -47.0
+offset_top = -159.0
+offset_right = 49.0
+offset_bottom = -149.0

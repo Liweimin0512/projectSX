@@ -1,4 +1,8 @@
-﻿ID,name,intent_pool
-ID,怪物名,意图池
-string,string,string[]
-slime,史莱姆,ATTACK*MULTI_ATTACK*DEFEND
+﻿ID,name,intent_pool,enemy_scene
+ID,怪物名,意图池,怪物场景
+string,string,string[],string
+slime,史莱姆,ATTACK*MULTI_ATTACK*DEFEND,enemy_slime
+flying_eye,眼魔,,enemy_flying_eye
+goblin,地精,,enemy_goblin
+mushroom,蘑菇怪,,enemy_mushroom
+skeleton,骷髅怪,,enemy_skeleton

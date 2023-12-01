@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://source/ability_system/C_AbilitySystem.gd" id="3_n3l57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
-size = Vector2(96, 95.5)
+size = Vector2(96, 151)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_g371q"]
 color = Color(0, 0, 0, 0.701961)

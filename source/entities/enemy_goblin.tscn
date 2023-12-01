@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://daas7c82f8lur"]
+
+[ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_tuvj2"]
+[ext_resource type="Texture2D" uid="uid://iu6nhnmptpix" path="res://asserts/textures/character/Goblin/Idle.png" id="2_vhk0g"]
+[ext_resource type="AnimationLibrary" uid="uid://vg1hh0sxm1mo" path="res://asserts/animtions/enemy_goblin.tres" id="3_mec04"]
+
+[node name="enemy_goblin" instance=ExtResource("1_tuvj2")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-4, -76)
+texture = ExtResource("2_vhk0g")
+flip_h = true
+hframes = 4
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": ExtResource("3_mec04")
+}

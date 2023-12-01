@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bni4k5plk3slj"]
+
+[ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_wqjps"]
+[ext_resource type="Texture2D" uid="uid://dlnp3t346r8gd" path="res://asserts/textures/character/Skeleton/Idle.png" id="2_0f23f"]
+[ext_resource type="AnimationLibrary" uid="uid://da6lfgvwswab7" path="res://asserts/animtions/enemy_skeleton.tres" id="3_h6e77"]
+
+[node name="enemy_skeleton" instance=ExtResource("1_wqjps")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -80)
+texture = ExtResource("2_0f23f")
+flip_h = true
+hframes = 4
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -56.25)
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": ExtResource("3_h6e77")
+}
+
+[node name="health_bar" parent="." index="3"]
+offset_top = -176.0
+offset_bottom = -166.0

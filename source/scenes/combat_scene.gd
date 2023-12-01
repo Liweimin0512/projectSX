@@ -84,7 +84,7 @@ func _init_player() -> void:
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
 	if enemyID.is_empty():
 		return
-	var enemy : Enemy = GameInstance.create_entity(AssetUtility.get_entity_path("enemy"))
+	var enemy : Enemy = GameInstance.create_entity(AssetUtility.get_enemy_path("enemy"))
 	enemy.enemy_turn_end.connect(
 		func() -> void:
 			next_turn()

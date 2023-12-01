@@ -1,0 +1,143 @@
+[gd_scene load_steps=25 format=3 uid="uid://dn84oti3g0wfc"]
+
+[ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_c5g8a"]
+[ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/textures/character/slime/idle/slime-idle-0.png" id="2_242tc"]
+[ext_resource type="Texture2D" uid="uid://dlo5l7lc3ebv8" path="res://asserts/textures/character/slime/attack/slime-attack-0.png" id="3_yg8kw"]
+[ext_resource type="Texture2D" uid="uid://2rfvc615wrxh" path="res://asserts/textures/character/slime/attack/slime-attack-1.png" id="4_b6b5a"]
+[ext_resource type="Texture2D" uid="uid://bvpthv4iggq1r" path="res://asserts/textures/character/slime/attack/slime-attack-2.png" id="5_o84nr"]
+[ext_resource type="Texture2D" uid="uid://pxixjngwcgq5" path="res://asserts/textures/character/slime/attack/slime-attack-3.png" id="6_dyoug"]
+[ext_resource type="Texture2D" uid="uid://domninpu3ud" path="res://asserts/textures/character/slime/attack/slime-attack-4.png" id="7_ta516"]
+[ext_resource type="Texture2D" uid="uid://b3d7l0yii1eur" path="res://asserts/textures/character/slime/die/slime-die-0.png" id="8_ft6qf"]
+[ext_resource type="Texture2D" uid="uid://byw3cm38cv32h" path="res://asserts/textures/character/slime/die/slime-die-1.png" id="9_e5yr7"]
+[ext_resource type="Texture2D" uid="uid://bhec6ffam0dny" path="res://asserts/textures/character/slime/die/slime-die-2.png" id="10_qp6fl"]
+[ext_resource type="Texture2D" uid="uid://iaix65mqybo4" path="res://asserts/textures/character/slime/die/slime-die-3.png" id="11_ud7re"]
+[ext_resource type="Texture2D" uid="uid://d13enghjfqk7i" path="res://asserts/textures/character/slime/hurt/slime-hurt-0.png" id="12_u14au"]
+[ext_resource type="Texture2D" uid="uid://b2f1q21davkvv" path="res://asserts/textures/character/slime/hurt/slime-hurt-1.png" id="13_13scl"]
+[ext_resource type="Texture2D" uid="uid://buppdgjsgpujx" path="res://asserts/textures/character/slime/hurt/slime-hurt-2.png" id="14_6g184"]
+[ext_resource type="Texture2D" uid="uid://c831haw5pdlwb" path="res://asserts/textures/character/slime/hurt/slime-hurt-3.png" id="15_kgcxj"]
+[ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://asserts/textures/character/slime/idle/slime-idle-1.png" id="16_y5nky"]
+[ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://asserts/textures/character/slime/idle/slime-idle-2.png" id="17_e611r"]
+[ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/textures/character/slime/idle/slime-idle-3.png" id="18_f8l8y"]
+
+[sub_resource type="Animation" id="Animation_j7sah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_242tc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0w1a3"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_yg8kw"), ExtResource("4_b6b5a"), ExtResource("5_o84nr"), ExtResource("6_dyoug"), ExtResource("7_ta516")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-80, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6keks"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_ft6qf"), ExtResource("9_e5yr7"), ExtResource("10_qp6fl"), ExtResource("11_ud7re")]
+}
+
+[sub_resource type="Animation" id="Animation_jkwjr"]
+resource_name = "hurt"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_u14au"), ExtResource("13_13scl"), ExtResource("14_6g184"), ExtResource("15_kgcxj")]
+}
+
+[sub_resource type="Animation" id="Animation_1iao4"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_242tc"), ExtResource("16_y5nky"), ExtResource("17_e611r"), ExtResource("18_f8l8y")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5yip"]
+_data = {
+"RESET": SubResource("Animation_j7sah"),
+"attack": SubResource("Animation_0w1a3"),
+"die": SubResource("Animation_6keks"),
+"hurt": SubResource("Animation_jkwjr"),
+"idle": SubResource("Animation_1iao4")
+}
+
+[node name="enemy_slime" instance=ExtResource("1_c5g8a")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -36)
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_p5yip")
+}

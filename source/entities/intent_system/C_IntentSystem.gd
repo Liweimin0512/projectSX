@@ -30,10 +30,7 @@ func choose_intent() -> Intent:
 			return intent.is_available
 	)
 	if available_intents.is_empty() : return null
-	var total_weight : float = available_intents.reduce(
-		func(a: Intent, b: Intent):
-			a.weight + b.weight
-	)
+	var total_weight : float = available_intents.reduce(func(a, b): return a + b.weight, 0)
 	# 基于权重随机选择意图
 	var random_choice = randf_range(0, total_weight)
 	var accumulated_weight = 0	
