@@ -7,6 +7,8 @@ var _enemy_model : EnemyModel
 @onready var c_intent_system: C_IntentSystem = %C_IntentSystem
 @onready var w_tooltip: MarginContainer = %w_tooltip
 
+@export var can_attack := true
+
 signal enemy_turn_end
 
 func _ready() -> void:

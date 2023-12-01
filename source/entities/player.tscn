@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://c6whu55qq7xu2"]
+[gd_scene load_steps=47 format=3 uid="uid://c6whu55qq7xu2"]
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_fb8bn"]
 [ext_resource type="Texture2D" uid="uid://btn6cqpmcj16g" path="res://asserts/character/adventurer/idle_00/adventurer-idle-00.png" id="3_70kh5"]
@@ -37,21 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://cj24h38mdy78k" path="res://asserts/character/adventurer/attack1/adventurer-attack1-02.png" id="34_8cmn1"]
 [ext_resource type="Texture2D" uid="uid://b3d3mqf37w35u" path="res://asserts/character/adventurer/attack1/adventurer-attack1-03.png" id="35_tgnl1"]
 [ext_resource type="Texture2D" uid="uid://c7tdsh7dxoh3k" path="res://asserts/character/adventurer/attack1/adventurer-attack1-04.png" id="36_it0i1"]
-
-[sub_resource type="Animation" id="Animation_0ndc3"]
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("21_vy7yl"), ExtResource("22_d7tq5"), ExtResource("23_kj0os")]
-}
 
 [sub_resource type="Animation" id="Animation_4ri8u"]
 resource_name = "attack_01"
@@ -221,7 +206,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
 _data = {
-"RESET": SubResource("Animation_0ndc3"),
 "attack_01": SubResource("Animation_4ri8u"),
 "die": SubResource("Animation_120w7"),
 "hurt": SubResource("Animation_ibnnk"),
@@ -233,17 +217,21 @@ _data = {
 }
 
 [node name="player" instance=ExtResource("1_fb8bn")]
+position = Vector2(50, 0)
 script = ExtResource("6_c67lg")
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
-texture = ExtResource("21_vy7yl")
+texture = ExtResource("34_8cmn1")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1.5, -48)
 
 [node name="AnimationPlayer" parent="." index="2"]
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_orul5")
 }
+autoplay = "idle"
 
 [node name="C_CardSystem" type="Node" parent="." index="4"]
 unique_name_in_owner = true

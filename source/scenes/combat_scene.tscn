@@ -159,3 +159,8 @@ metadata/_edit_group_ = true
 unique_name_in_owner = true
 position = Vector2(898, 468)
 metadata/_edit_group_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.4, 0.4, 0.4, 1)
+range_layer_min = -128
+range_layer_max = 128
