@@ -16,10 +16,10 @@ config/features=PackedStringArray("4.2")
 
 [autoload]
 
-EventBus="*res://addons/li_framework/auto/event_bus.gd"
-DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
 GameInstance="*res://source/auto/game_instance.gd"
 SceneManager="*res://source/auto/scene_manager.gd"
+EventBus="*res://addons/li_framework/auto/event_bus.gd"
+DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
 
 [display]
 

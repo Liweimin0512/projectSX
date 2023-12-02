@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://72uhpsyxdbi7"]
+[gd_scene load_steps=5 format=3 uid="uid://72uhpsyxdbi7"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card_container.gd" id="1_mttcu"]
 [ext_resource type="PackedScene" uid="uid://ik2l54j58jrl" path="res://source/UI/widgets/bessel_arrow.tscn" id="2_oqebg"]
+[ext_resource type="PackedScene" uid="uid://cixs5tbqar2uk" path="res://source/UI/widgets/w_card_list.tscn" id="4_58htw"]
 [ext_resource type="PackedScene" uid="uid://dikirj650nrtg" path="res://source/UI/widgets/w_deck.tscn" id="4_qfylv"]
 
 [node name="CardContainer" type="Control"]
@@ -78,6 +79,11 @@ text = "add card"
 [node name="btn_remove_card" type="Button" parent="button"]
 layout_mode = 2
 text = "remove card"
+
+[node name="w_card_list" parent="." instance=ExtResource("4_58htw")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="button/btn_add_card" to="." method="_on_btn_add_card_pressed"]
 [connection signal="pressed" from="button/btn_remove_card" to="." method="_on_btn_remove_card_pressed"]

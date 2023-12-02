@@ -6,14 +6,17 @@ var _model : CardDeckModel
 var deck_name: String :
 	get:
 		return _model.deck_name
+var deck_des: String:
+	get:
+		return _model.deck_des
 
 signal card_added
 signal card_removed
 signal shuffled
 signal card_drawed
 
-func _init(d_name: String, type: int) -> void:
-	_model = CardDeckModel.new(d_name, type)
+func _init(d_name: String, type: int, des: String) -> void:
+	_model = CardDeckModel.new(d_name, type, des)
 
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
 func add_card(card: Card) -> void:
@@ -37,8 +40,10 @@ func draw_card() -> Card:
 	card_drawed.emit(card)
 	return card
 
+## 获取全部卡牌
 func get_card_list() -> Array:
 	return _model.card_list
 
+## 获取卡牌数量
 func get_card_amount() -> int:
 	return _model.card_list.size()

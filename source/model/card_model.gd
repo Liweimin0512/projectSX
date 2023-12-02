@@ -31,6 +31,7 @@ enum CARD_TYPE{
 @export var preview_position := Vector2(0,10)
 
 func _init(card_id: String) -> void:
+	if card_id.is_empty(): return
 	var data = DatatableManager.get_datatable_row("card", card_id)
 	card_name = data.card_name
 	card_type = data.card_type

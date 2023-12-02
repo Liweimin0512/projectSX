@@ -5,6 +5,7 @@ class_name CardContainer
 @onready var draw_deck : W_Deck = %draw_deck
 @onready var discard_deck : W_Deck = %discard_deck
 @onready var bezier_arrow :Node2D = %bezier_arrow
+@onready var w_card_list: Control = %w_card_list
 
 var card_remove_index := 0
 
@@ -39,7 +40,7 @@ var selected_card: Card = null:
 ## 战斗场景引用
 var _combat_scene : CombatScene 
 ## 卡牌管理器的引用
-var _card_system :C_CardSystem
+var _card_system : C_CardSystem
 ## 当添加了一张新的卡片时发出
 signal card_added(card: Card)
 ## 当一张卡片被移除时发出
@@ -50,8 +51,13 @@ signal card_unselected(card: Card)
 func _ready() -> void:
 	_card_system = GameInstance.player.get_node("C_CardSystem")
 	_combat_scene = SceneManager.current_scene
-	_card_system.card_distributed.connect(_on_card_distributed)
+	#_card_system.card_distributed.connect(_on_card_distributed)
+	_card_system.card_drawn.connect(_on_card_drawn)
 	_card_system.card_released.connect(_on_card_released)
+	_card_system.card_discarded.connect(_on_card_discarded)
+	
+	draw_deck.pressed.connect(_on_deck_pressed.bind(draw_deck))
+	discard_deck.pressed.connect(_on_deck_pressed.bind(discard_deck))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not selected_card: return
@@ -113,6 +119,16 @@ func find_target() -> void:
 		bezier_arrow.unselected()
 	bezier_arrow.reset(hand_card.global_position, get_global_mouse_position())
 
+func _on_card_drawn(card: Card) -> void:
+	hand_card.add_child(card)
+	card.global_position = draw_deck.global_position
+	card.scale = Vector2.ZERO
+	_update_card_positions()
+	card.mouse_entered.connect(_on_card_mouse_entered.bind(card))
+	card.mouse_exited.connect(_on_card_mouse_exited.bind(card))
+	card.gui_input.connect(_on_card_gui_input.bind(card))
+
+## 分发卡牌
 func _on_card_distributed(cards: Array) -> void:
 	for card in cards:
 		hand_card.add_child(card)
@@ -120,15 +136,17 @@ func _on_card_distributed(cards: Array) -> void:
 		# 首先，将新卡牌添加到容器和卡牌数组中
 	#	cards.append(card)
 		# 然后，更新所有卡牌的位置
-		_update_card_positions()
 		card.mouse_entered.connect(_on_card_mouse_entered.bind(card))
 		card.mouse_exited.connect(_on_card_mouse_exited.bind(card))
 		card.gui_input.connect(_on_card_gui_input.bind(card))
-		# 您可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
+		_update_card_positions()
+		# 可以在此添加其他与添加卡牌相关的逻辑，例如播放音效等。
 
+## 卡牌释放的信号处理
 func _on_card_released(card: Card) -> void:
 	selected_card = null
 	bezier_arrow.hide()
+	hand_card.remove_child(card)
 	_update_card_positions()
 
 func _on_card_mouse_entered(card: Card) -> void:
@@ -138,6 +156,14 @@ func _on_card_mouse_entered(card: Card) -> void:
 
 func _on_card_mouse_exited(card: Card) -> void:
 	reset_highlight()
+
+func _on_card_discarded(card: Card) -> void:
+	hand_card.remove_child(card)
+
+func _on_deck_pressed(w_deck: W_Deck) -> void:
+	w_card_list._deck = w_deck._deck
+	w_card_list.show()
+	print("_on_deck_pressed", w_deck)
 
 func _on_card_gui_input(event:InputEvent, card: Card) -> void:
 	if event is InputEventMouseButton and event.is_pressed():

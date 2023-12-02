@@ -7,6 +7,8 @@ class_name W_Deck
 @export var deck_type: CardDeckModel.DECK_TYPE
 var _deck: CardDeck
 
+signal pressed
+
 func _ready() -> void:
 	var c_card_sytem: C_CardSystem = GameInstance.player.get_node("C_CardSystem")
 	_deck = c_card_sytem.get_deck(deck_type)
@@ -16,6 +18,7 @@ func _ready() -> void:
 	for c in _deck.get_card_list():
 		cards.add_child(c)
 	set_card_amount(cards.get_child_count())
+	self.gui_input.connect(_on_gui_input)
 
 func set_card_amount(amount:int) -> void:
 	lab_card_amount.text = str(amount)
@@ -39,3 +42,8 @@ func _make_custom_tooltip(for_text: String) -> Object:
 	var w_tooltip = load("res://source/UI/widgets/w_tooltip.tscn").instantiate()
 	w_tooltip.set_tooltip(_deck.deck_name, "在每回合开始时，你从这里抽5张牌，点击查看你抽牌堆中的牌（但顺序是打乱的）")
 	return w_tooltip
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_released():
+			pressed.emit()

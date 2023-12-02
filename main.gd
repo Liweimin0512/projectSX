@@ -10,6 +10,7 @@ func _ready() -> void:
 	GameInstance.game_main = self
 	procedure_manager.launch()
 
+## 开始游戏（初始化）
 func begin_game() -> void:
 	player = GameInstance.create_entity(AssetUtility.get_entity_path("player"))
 	player.cha_id = "1"

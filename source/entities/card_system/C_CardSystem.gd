@@ -2,13 +2,16 @@ extends Node
 class_name C_CardSystem
 
 var distribute_card_amount: int = 5
-var draw_deck : CardDeck = CardDeck.new("抽牌堆", 0)
-var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1)
+var draw_deck : CardDeck = CardDeck.new("抽牌堆", 0, "每个回合结束的时候都从这里抽牌")
+var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1, "每个回合结束的时候都会将手牌丢弃在这里")
 var hand_cards : Array = []
 var initial_deck: Array
 
-signal card_distributed
+#signal card_distributed
+signal card_drawn(card: Card)
 signal card_released(card: Card)
+signal card_discarded(card: Card)
+signal draw_deck_replenished
 
 func component_init(playerID: StringName) -> void:
 	initial_deck = DatatableManager.get_datatable_row("hero", playerID)["initial_deck"]
@@ -28,12 +31,29 @@ func create_card(cardID : StringName) -> Card:
 func upgrade_card() -> void:
 	pass
 
+## 抽牌
+func draw_card() -> Card:
+	var card = draw_deck.draw_card()
+	if card == null and not discard_deck.cards.empty():
+		replenish_draw_deck()
+		card = draw_deck.draw_card()
+	# 处理抽到的卡牌，比如添加到手牌
+	if card:
+		hand_cards.append(card)
+		card_drawn.emit(card)
+	return card
+
+func replenish_draw_deck():
+	discard_deck.shuffle_deck()
+	draw_deck.cards = discard_deck.cards
+	discard_deck.cards.clear()
+	draw_deck_replenished.emit()
+
 ## 分发卡牌(Distribute Card)：在游戏开始或特定事件时分发卡牌给玩家。
 func distribute_card() -> void:
 	for i in range(0, distribute_card_amount):
-		var card : Card = draw_deck.draw_card()
-		hand_cards.append(card)
-	card_distributed.emit(hand_cards)
+		draw_card()
+	#card_distributed.emit(hand_cards)
 
 ## 释放卡牌：释放卡牌技能
 func release_card(card: Card, targets: Array[Character]) -> void:
@@ -41,8 +61,9 @@ func release_card(card: Card, targets: Array[Character]) -> void:
 		push_warning("能量不足，无法释放卡牌！")
 		return
 	card.release(owner, targets)
-	discard_deck.add_card(card)
+	hand_cards.erase(card)
 	card_released.emit(card)
+	discard_deck.add_card(card)
 
 # 检查玩家能量是否足够释放卡牌
 func can_release_card(card: Card) -> bool:
@@ -58,3 +79,15 @@ func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 			push_error("未找到指定的牌堆类型")
 			return null
 
+## 丢弃卡牌
+func discard_card(card_index: int) -> void:
+	var card = hand_cards.pop_at(card_index)
+	card_discarded.emit(card)
+	discard_deck.add_card(card)
+
+## 丢弃所有手牌
+func discard_all() -> void:
+	for card in hand_cards:
+		discard_deck.add_card(card)
+		card_discarded.emit(card)
+	hand_cards.clear()

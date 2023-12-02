@@ -2,7 +2,7 @@ extends Character
 class_name Player
 
 var _player_model : PlayerModel
-@onready var c_card_system: Node = %C_CardSystem
+@onready var c_card_system: C_CardSystem = %C_CardSystem
 ## 释放卡牌的能量
 var current_energy: int = 0:
 	get:
@@ -35,10 +35,12 @@ func _end_combat() -> void:
 ## 回合开始时
 func _begin_turn() -> void:
 	c_card_system.distribute_card()
+	current_energy = max_energy
 
 ## 结束回合
 func _end_turn() -> void:
 	print("结束玩家回合")
+	c_card_system.discard_all()
 
 # 扣除能量的方法
 func use_energy(amount: int) -> void:

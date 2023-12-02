@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_aa7bp"]
 [ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_3kp7e"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
 font_size = 13
 outline_size = 3
@@ -69,12 +68,15 @@ _data = {
 }
 
 [node name="card" type="Control"]
+custom_minimum_size = Vector2(108, 160)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1152.0
-offset_bottom = -648.0
+offset_left = -54.0
+offset_top = -159.0
+offset_right = -1098.0
+offset_bottom = -647.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vqj25")
@@ -263,7 +265,7 @@ texture = ExtResource("8_elix0")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fx_sheen"
 libraries = {
 "": SubResource("AnimationLibrary_axa8x")
 }
+autoplay = "fx_sheen"
