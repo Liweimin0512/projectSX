@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://d08olufvkbwcn"]
 
-[ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/card_container.tscn" id="1_i77bo"]
+[ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/w_card_manager.tscn" id="1_i77bo"]
 [ext_resource type="Script" path="res://source/UI/form/combat_form.gd" id="1_kt0dy"]
 [ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22

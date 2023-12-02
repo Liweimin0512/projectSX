@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cixs5tbqar2uk"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_card_list.gd" id="1_pwqcg"]
-[ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/entities/card.tscn" id="1_sn2m6"]
+[ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/UI/widgets/w_card.tscn" id="2_slf3g"]
 
 [node name="w_card_list" type="Control"]
 z_index = 12
@@ -46,19 +46,19 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 5
 
-[node name="card" parent="ScrollContainer/GridContainer" instance=ExtResource("1_sn2m6")]
+[node name="card" parent="ScrollContainer/GridContainer" instance=ExtResource("2_slf3g")]
 layout_mode = 2
 
-[node name="card2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_sn2m6")]
+[node name="card2" parent="ScrollContainer/GridContainer" instance=ExtResource("2_slf3g")]
 layout_mode = 2
 
-[node name="card3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_sn2m6")]
+[node name="card3" parent="ScrollContainer/GridContainer" instance=ExtResource("2_slf3g")]
 layout_mode = 2
 
-[node name="card4" parent="ScrollContainer/GridContainer" instance=ExtResource("1_sn2m6")]
+[node name="card4" parent="ScrollContainer/GridContainer" instance=ExtResource("2_slf3g")]
 layout_mode = 2
 
-[node name="card5" parent="ScrollContainer/GridContainer" instance=ExtResource("1_sn2m6")]
+[node name="card5" parent="ScrollContainer/GridContainer" instance=ExtResource("2_slf3g")]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

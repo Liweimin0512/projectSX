@@ -1,22 +1,22 @@
 [gd_scene load_steps=24 format=3 uid="uid://ds4gbleycp8dr"]
 
-[ext_resource type="Script" path="res://source/entities/card.gd" id="1_vqj25"]
-[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_aeb8b"]
-[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_syvck"]
-[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_ls00s"]
-[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_u3ywn"]
-[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_bl8rf"]
-[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_vx14s"]
-[ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0000_sheen01.png" id="8_elix0"]
-[ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0001_sheen02.png" id="9_wi03j"]
-[ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/textures/cards/card_sheen_fx/sheen__0002_sheen03.png" id="10_83g0f"]
-[ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0003_sheen04.png" id="11_bgtm7"]
-[ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/textures/cards/card_sheen_fx/sheen__0004_sheen05.png" id="12_0ob08"]
-[ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/textures/cards/card_sheen_fx/sheen__0005_sheen06.png" id="13_tnmyo"]
-[ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/textures/cards/card_sheen_fx/sheen__0006_sheen07.png" id="14_tcruc"]
-[ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0007_sheen08.png" id="15_f8yut"]
-[ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_aa7bp"]
-[ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_3kp7e"]
+[ext_resource type="Script" path="res://source/UI/widgets/w_card.gd" id="1_0thyn"]
+[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_7kppa"]
+[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_fxb6n"]
+[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_d8764"]
+[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_lbvm3"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_0ijkk"]
+[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_f5xms"]
+[ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0000_sheen01.png" id="8_6ymnc"]
+[ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0001_sheen02.png" id="9_86kkd"]
+[ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/textures/cards/card_sheen_fx/sheen__0002_sheen03.png" id="10_h2lww"]
+[ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0003_sheen04.png" id="11_85ejf"]
+[ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/textures/cards/card_sheen_fx/sheen__0004_sheen05.png" id="12_hem7t"]
+[ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/textures/cards/card_sheen_fx/sheen__0005_sheen06.png" id="13_2v2ia"]
+[ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/textures/cards/card_sheen_fx/sheen__0006_sheen07.png" id="14_qfgun"]
+[ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0007_sheen08.png" id="15_bhgpa"]
+[ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_73gjm"]
+[ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_dowwh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m5d0h"]
 font_size = 13
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_elix0")]
+"values": [ExtResource("8_6ymnc")]
 }
 
 [sub_resource type="Animation" id="Animation_2abhc"]
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("8_elix0"), ExtResource("9_wi03j"), ExtResource("10_83g0f"), ExtResource("11_bgtm7"), ExtResource("12_0ob08"), ExtResource("13_tnmyo"), ExtResource("14_tcruc"), ExtResource("15_f8yut"), ExtResource("16_aa7bp"), ExtResource("17_3kp7e")]
+"values": [ExtResource("8_6ymnc"), ExtResource("9_86kkd"), ExtResource("10_h2lww"), ExtResource("11_85ejf"), ExtResource("12_hem7t"), ExtResource("13_2v2ia"), ExtResource("14_qfgun"), ExtResource("15_bhgpa"), ExtResource("16_73gjm"), ExtResource("17_dowwh")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axa8x"]
@@ -79,22 +79,16 @@ offset_right = -1098.0
 offset_bottom = -647.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vqj25")
+script = ExtResource("1_0thyn")
 metadata/_edit_group_ = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -155.0
-offset_right = 54.0
-offset_bottom = 5.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -103,7 +97,7 @@ theme_override_constants/margin_bottom = 5
 [node name="card_frame" type="TextureRect" parent="MarginContainer3"]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("2_aeb8b")
+texture = ExtResource("2_7kppa")
 expand_mode = 1
 
 [node name="Control" type="Control" parent="MarginContainer3"]
@@ -138,7 +132,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = ExtResource("3_syvck")
+texture = ExtResource("3_fxb6n")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/Control/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
@@ -166,7 +160,7 @@ size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer3/Control/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("4_ls00s")
+texture = ExtResource("4_d8764")
 
 [node name="lab_cost" type="Label" parent="MarginContainer3/Control/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
@@ -184,13 +178,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_u3ywn")
+texture = ExtResource("5_lbvm3")
 expand_mode = 1
 
 [node name="tr_description" type="NinePatchRect" parent="MarginContainer3/Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_bl8rf")
+texture = ExtResource("6_0ijkk")
 patch_margin_left = 20
 patch_margin_top = 6
 patch_margin_right = 16
@@ -241,7 +235,7 @@ custom_minimum_size = Vector2(40, 12)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("7_vx14s")
+texture = ExtResource("7_f5xms")
 
 [node name="lab_type" type="Label" parent="MarginContainer3/Control/MarginContainer3/TextureRect"]
 unique_name_in_owner = true
@@ -261,7 +255,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("8_elix0")
+texture = ExtResource("8_6ymnc")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://72uhpsyxdbi7"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_card_manager.gd" id="1_u3n8i"]
+[ext_resource type="Script" path="res://source/UI/widgets/w_hand_card.gd" id="2_bfh1e"]
+[ext_resource type="PackedScene" uid="uid://dikirj650nrtg" path="res://source/UI/widgets/w_deck.tscn" id="2_fw5vv"]
+[ext_resource type="PackedScene" uid="uid://ik2l54j58jrl" path="res://source/UI/widgets/bezier_arrow.tscn" id="3_eg1od"]
+
+[node name="w_card_manager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_u3n8i")
+
+[node name="W_HandCard" type="Container" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_bfh1e")
+
+[node name="draw_deck" parent="." instance=ExtResource("2_fw5vv")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="discard_deck" parent="." instance=ExtResource("2_fw5vv")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+deck_type = 1
+
+[node name="ColorRect" parent="discard_deck" index="0"]
+color = Color(0.168627, 0.768627, 1, 1)
+
+[node name="MarginContainer" parent="discard_deck" index="1"]
+size_flags_horizontal = 0
+
+[node name="bezier_arrow" parent="." instance=ExtResource("3_eg1od")]
+unique_name_in_owner = true
+z_index = 100
+
+[editable path="discard_deck"]

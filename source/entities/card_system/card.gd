@@ -1,12 +1,5 @@
-extends Control
+extends RefCounted
 class_name Card
-
-enum CARD_STATE {
-	NORMAL, 
-	DRAGGING, 
-	PREVIEW,
-	PRERELEASE, 
-	}
 
 const CARD_TYPE_NAME = [
 	"UNKNOW",
@@ -14,38 +7,17 @@ const CARD_TYPE_NAME = [
 	"技能",
 ]
 
-@onready var lab_name: Label = %lab_name
-@onready var tr_icon: TextureRect = %tr_icon
-@onready var lab_description: RichTextLabel = %lab_description
-@onready var lab_type: Label = %lab_type
-@onready var lab_cost: Label = %lab_cost
-
-@export var card_state : CARD_STATE = CARD_STATE.NORMAL
-@export var tween_speed : float = 0.1
-@export var is_back : bool
-
-@onready var card : TextureRect = $t_card
-@onready var timer_preview = $timer_preview
-@onready var timer_release = $timer_release
-
-var cardID : StringName
 var _model : CardModel
 
-func _init() -> void:
-	self.pivot_offset = Vector2(size.x/2, size.y)
 
-func _ready():
+func _init(cardID: StringName) -> void:
 	_model = CardModel.new(cardID)
-#	self.pivot_offset = Vector2(card.size.x/2, card.size.y)
-	lab_name.text = _model.card_name
-	lab_description.text = _model.card_description
-	lab_type.text = CARD_TYPE_NAME[_model.card_type]
-	lab_cost.text = str(_model.cost)
-	tr_icon.texture = _model.icon
 
+## 是否需要目标
 func needs_target() -> bool:
 	return _model.needs_target()
 
+## 能否释放
 func can_release(caster: Character) -> bool:
 	if _model.cost <= caster.current_energy:
 		print("当前卡牌可释放")
@@ -53,6 +25,7 @@ func can_release(caster: Character) -> bool:
 	print("当前卡牌不可释放")
 	return false
 
+## 释放卡牌
 func release(caster: Character, targets: Array[Character]) -> void:
 	var effects = create_effects(targets)
 	await caster.play_animation(_model.play_animation)
@@ -61,9 +34,11 @@ func release(caster: Character, targets: Array[Character]) -> void:
 	# 消耗能量
 	caster.use_energy(_model.cost)
 
+## 获取效果目标
 func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
 	return _model.get_effect_targets(caster, targets)
 
+## 创建效果
 func create_effects(targets: Array[Character]) -> Array[Effect]:
 	var caster : Character = GameInstance.player
 	var _targets : Array[Character] = get_effect_targets(caster, targets)
@@ -74,9 +49,3 @@ func create_effects(targets: Array[Character]) -> Array[Effect]:
 			push_error("创建技能效果失败！")
 		effects.append(effect)
 	return effects
-
-func get_offset_x() -> float:
-	return $MarginContainer3.size.x
-
-func _to_string() -> String:
-	return self.name + " : " + _model.card_name

@@ -23,8 +23,8 @@ func component_init(playerID: StringName) -> void:
 
 ## 创建卡牌(Create Card)：根据指定的参数创建新卡牌。
 func create_card(cardID : StringName) -> Card:
-	var card: Card = GameInstance.create_entity(AssetUtility.get_entity_path("card"))
-	card.cardID = cardID
+	var card: Card = Card.new(cardID)
+	#card.cardID = cardID
 	return card
 
 ## 升级卡牌(Upgrade Card)：升级指定的卡牌。
