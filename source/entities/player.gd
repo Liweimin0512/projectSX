@@ -15,6 +15,12 @@ var max_energy : int = 0:
 	set(value):
 		_player_model.max_energy = value
 
+var coin: int = 0:
+	get:
+		return _player_model.coin
+	set(value):
+		_player_model.coin = value
+
 signal energy_changed
 
 func _ready() -> void:

@@ -9,6 +9,11 @@ var deck_name: String :
 var deck_des: String:
 	get:
 		return _model.deck_des
+var cards: Array:
+	get:
+		return _model.card_list
+	set(value):
+		_model.card_list = value
 
 signal card_added
 signal card_removed

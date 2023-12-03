@@ -9,7 +9,6 @@ const CARD_TYPE_NAME = [
 
 var _model : CardModel
 
-
 func _init(cardID: StringName) -> void:
 	_model = CardModel.new(cardID)
 
@@ -18,12 +17,9 @@ func needs_target() -> bool:
 	return _model.needs_target()
 
 ## 能否释放
-func can_release(caster: Character) -> bool:
-	if _model.cost <= caster.current_energy:
-		print("当前卡牌可释放")
-		return true
-	print("当前卡牌不可释放")
-	return false
+func can_release(caster: Character= null) -> bool:
+	var _caster = caster if caster != null else GameInstance.player
+	return _model.cost <= _caster.current_energy
 
 ## 释放卡牌
 func release(caster: Character, targets: Array[Character]) -> void:

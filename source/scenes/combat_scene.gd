@@ -16,6 +16,7 @@ class_name CombatScene
 @onready var combat_form: Control = $CanvasLayer2/combat_form
 var characters : Array = []
 var current_character: Character = null
+## 选中的目标
 var cha_selected: Character = null
 
 func _ready() -> void:

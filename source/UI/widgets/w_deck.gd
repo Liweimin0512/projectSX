@@ -14,6 +14,7 @@ func _ready() -> void:
 	_deck.card_removed.connect(_on_card_removed)
 	_deck.card_drawed.connect(_on_card_drawed)
 	self.gui_input.connect(_on_gui_input)
+	update_display()
 
 func update_display() -> void:
 	lab_card_amount.text = str(_deck.get_card_amount())

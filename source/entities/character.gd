@@ -83,9 +83,16 @@ func damage(value: int) -> void:
 	else:
 		current_health -= (value - shielded)
 		shielded = 0
+	if current_health<= 0:
+		current_health = 0
+		death()
+
+func death() -> void:
+	play_animation("died")
 
 func play_animation(animation_name : String) -> void:
 	var current_animation = animation_player.current_animation
 	animation_player.play(animation_name)
 	await animation_player.animation_finished
+	animation_player.play("RESET")
 	animation_player.play(current_animation)

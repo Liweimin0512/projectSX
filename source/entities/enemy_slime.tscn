@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://asserts/textures/character/slime/idle/slime-idle-3.png" id="18_f8l8y"]
 
 [sub_resource type="Animation" id="Animation_j7sah"]
-length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -147,6 +146,7 @@ offset_top = -160.0
 offset_bottom = -120.0
 
 [node name="IntentStatus" parent="." index="4"]
+anchor_bottom = 1.0
 offset_left = -16.0
 offset_top = -208.0
 offset_right = 16.0

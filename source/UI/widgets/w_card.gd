@@ -25,7 +25,11 @@ enum CARD_STATE {
 var card : Card
 var _model: CardModel:
 	get:
+		if not card:
+			return null
 		return card._model
+
+signal drag_started
 
 func _init() -> void:
 	self.pivot_offset = Vector2(size.x/2, size.y)
@@ -40,6 +44,19 @@ func _ready():
 
 func get_offset_x() -> float:
 	return $MarginContainer3.size.x
+
+## 是否需要目标
+func needs_target() -> bool:
+	return card.needs_target()
+
+## 当前能否拖动
+func can_drag() -> bool:
+	return card.can_release()
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	print(at_position)
+	drag_started.emit(at_position)
+	return null
 
 func _to_string() -> String:
 	return self.name + " : " + _model.card_name

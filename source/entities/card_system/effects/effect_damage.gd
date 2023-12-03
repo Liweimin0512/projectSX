@@ -9,4 +9,5 @@ func _init(data: Dictionary, targets: Array) -> void:
 
 func execute() -> void:
 	for cha in self._targets:
+		assert(cha != null, "找不到目标！")
 		cha.damage(damage)

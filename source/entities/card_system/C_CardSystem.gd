@@ -34,7 +34,7 @@ func upgrade_card() -> void:
 ## 抽牌
 func draw_card() -> Card:
 	var card = draw_deck.draw_card()
-	if card == null and not discard_deck.cards.empty():
+	if card == null and not discard_deck.get_card_list().is_empty():
 		replenish_draw_deck()
 		card = draw_deck.draw_card()
 	# 处理抽到的卡牌，比如添加到手牌
@@ -44,8 +44,8 @@ func draw_card() -> Card:
 	return card
 
 func replenish_draw_deck():
-	discard_deck.shuffle_deck()
-	draw_deck.cards = discard_deck.cards
+	discard_deck.shuffle()
+	draw_deck.cards = discard_deck.cards.duplicate()
 	discard_deck.cards.clear()
 	draw_deck_replenished.emit()
 
