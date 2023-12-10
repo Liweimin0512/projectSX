@@ -50,14 +50,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			drag_card.global_position = event.global_position
 	if event is InputEventMouseButton :
-		if event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			# 此时如果是选择目标状态，则选择目标
 			if can_release_card(drag_card):
 				release_card(drag_card, _combat_scene.cha_selected)
-			drag_card = null
+				drag_card = null
+				bezier_arrow.hide()
+			#drag_card = null
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 			# 此时是选择目标状态，则退出选择状态
 			drag_card = null
+			w_hand_card.reset_layout()
 			bezier_arrow.hide()
 
 ## 能否释放卡牌
@@ -91,14 +94,6 @@ func create_card_widget(card: Card) -> W_Card:
 	w_card.card = card
 	return w_card
 
-## 根据卡牌逻辑层获取表现层
-func _get_card_widget(card: Card) -> W_Card:
-	var w_card = w_hand_card.get_children().filter(
-		func(w_card) :
-			return w_card.card == card
-	)[0]
-	return w_card
-
 ## 抽牌时候的表现效果处理
 func _on_card_drawn(card: Card) -> void:
 	var w_card : W_Card = create_card_widget(card)
@@ -108,12 +103,12 @@ func _on_card_drawn(card: Card) -> void:
 ## 卡牌释放的信号处理
 func _on_card_released(card: Card) -> void:
 	bezier_arrow.hide()
-	var w_card = _get_card_widget(card)
+	var w_card = w_hand_card.get_card(card)
 	w_hand_card.remove_child(w_card)
 
 ## 卡牌被丢弃时候的信号处理
 func _on_card_discarded(card: Card) -> void:
-	var w_card = _get_card_widget(card)
+	var w_card = w_hand_card.get_card(card)
 	w_hand_card.remove_child(w_card)
 
 ## 点击牌堆时候的信号处理

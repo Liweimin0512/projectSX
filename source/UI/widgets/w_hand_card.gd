@@ -3,10 +3,16 @@ class_name W_HandCard
 
 ## 动效的时间
 @export var tween_speed : float = 0.05
-@export var offset : Vector2 = Vector2.ZERO
 ## 手中最大牌数限制
 @export var max_num_cards: int = 12
-#@export var rotation_proportion:float = 5
+# 手牌布局参数
+# @export var radius: float = 400.0
+@export var card_offset_ratio: float = 0.7  # 卡牌之间的水平偏移比例
+@export var max_angle: float = 20.0  # 卡牌之间最大角度差
+@export var draw_deck: W_Deck
+@export var discard_deck: W_Deck
+@export var card_size : Vector2 = Vector2(108,160)
+@export var vertical_drop_factor : float = 10
 
 var highlighted_card : W_Card:
 	set(value):
@@ -20,18 +26,19 @@ var highlighted_card : W_Card:
 			highlighted_card.highlight()
 		_update_card_layout()
 
-# 手牌布局参数
-# @export var radius: float = 400.0
-@export var card_offset: float = 30.0  # 卡牌之间的水平偏移量
-@export var max_angle: float = 20.0  # 卡牌之间最大角度差
-
-@export var draw_deck: W_Deck
-@export var discard_deck: W_Deck
-
 func _ready() -> void:
 	self.child_entered_tree.connect(_on_child_entered_tree)
 	self.child_exiting_tree.connect(_on_child_exiting_tree)
 	self.child_order_changed.connect(_on_child_order_changed)
+
+func reset_layout() -> void:
+	_update_card_layout()
+
+func get_card(card: Card) -> W_Card:
+	for c in get_children():
+		if c.card == card:
+			return c
+	return null
 
 ## 更新手牌布局
 func _update_card_layout() -> void:
@@ -42,13 +49,12 @@ func _update_card_layout() -> void:
 	tween.set_parallel()
 	for i in range(card_count):
 		var card : W_Card = get_child(i)
-		var angle: float = _calculate_card_angle(i, card_count)
-		var position: Vector2 = _calculate_card_position(angle)
+		var transform: Transform2D = _calculate_card_transform(i, card_count)
+		var angle: float = rad_to_deg(transform.get_rotation())
+		var position: Vector2 = transform.get_origin()
 		if card == highlighted_card:
 			angle = 0
-		#if highlighted_card and abs(i+_get_card_index(highlighted_card)) <= 2 and card != highlighted_card:
-			#position.x += 1/(i + _get_card_index(highlighted_card)) * 10
-		var scale: Vector2 = Vector2.ONE if card != highlighted_card else Vector2.ONE * 1.2
+		var scale: Vector2 = Vector2.ONE if card != highlighted_card else Vector2.ONE * 1.5
 		tween.tween_property(card, "rotation_degrees", angle, tween_speed)
 		tween.tween_property(card, "position", position, tween_speed)
 		tween.tween_property(card, "scale", scale, tween_speed)
@@ -61,23 +67,29 @@ func _update_card_layout() -> void:
 		#card.scale = Vector2.ONE
 	await tween.finished
 
-## 计算卡牌的角度，根据卡牌的编号
-func _calculate_card_angle(card_index: int, card_count: int) -> float:
-	var spread_angle_degrees = min(max_angle, card_count * 10.0)
-	var angle_step = spread_angle_degrees / max(card_count - 1, 1)
-	var angle_degrees = -spread_angle_degrees / 2 + angle_step * card_index
-	return angle_degrees
-
-## 计算卡牌的位置，根据角度
-func _calculate_card_position(angle_degrees: float) -> Vector2:
-	var angle_radians = deg_to_rad(angle_degrees)
-	var card = self.get_child(0)
-	# 扇形的中心点是 Hand 节点的位置
-	var offset = Vector2(sin(angle_radians), -cos(angle_radians)) * radius + Vector2(
-		card.size.x/2 * -1,
-		card.size.y * -1 + radius
-	)
-	return offset
+## 计算卡牌位置和角度
+func _calculate_card_transform(card_index: int, card_count: int) -> Transform2D:
+	var middle_index: float = card_count / 2.0
+	var offset_from_middle: float = card_index - middle_index
+	# 使用非线性插值来确保中间的卡牌几乎不旋转
+	var normalized_offset = offset_from_middle / middle_index
+	#var angle_factor = normalized_offset * normalized_offset  # 平方来增加两侧的变化
+	#var angle = lerp(-max_angle, max_angle, angle_factor)
+	#if offset_from_middle < 0:
+		#angle = -angle  # 调整左侧卡牌的角度方向
+	var angle : float = 0
+	var vertical_offset = abs(normalized_offset) * vertical_drop_factor
+	# 可以根据需要调整垂直位置
+	var position_y = card_size.y / 2 + vertical_offset if card_index != _get_card_index(highlighted_card) else 0
+	var position = Vector2(
+		offset_from_middle * card_offset_ratio * card_size.x - card_size.x / 2, 
+		position_y - card_size.y
+		)
+	if highlighted_card:
+		if card_index != _get_card_index(highlighted_card):
+			position.x += 0.3 / (card_index - _get_card_index(highlighted_card)) * card_size.x
+	var rotation = deg_to_rad(angle)
+	return Transform2D(rotation, position)
 
 func _get_card_index(w_card: W_Card) -> int:
 	var i : int = 0
@@ -93,6 +105,7 @@ func _on_child_entered_tree(node: Node) -> void:
 	node.mouse_exited.connect(_on_card_mouse_exited.bind(node))
 	node.global_position = draw_deck.global_position
 	node.scale = Vector2.ZERO
+	node.size = card_size
 
 func _on_child_exiting_tree(node: Node) -> void:
 	if not node is W_Card: return
