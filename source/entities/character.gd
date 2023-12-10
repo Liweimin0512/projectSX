@@ -88,7 +88,7 @@ func damage(value: int) -> void:
 		death()
 
 func death() -> void:
-	play_animation("died")
+	play_animation("death")
 
 func play_animation(animation_name : String) -> void:
 	var current_animation = animation_player.current_animation

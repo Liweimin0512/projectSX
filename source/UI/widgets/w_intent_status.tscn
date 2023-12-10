@@ -65,9 +65,9 @@ script = ExtResource("1_1op2a")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-offset_top = 12.9288
+offset_top = 15.0
 offset_right = 48.0
-offset_bottom = 60.9288
+offset_bottom = 63.0
 
 [node name="sprite" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true

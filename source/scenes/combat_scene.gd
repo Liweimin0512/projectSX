@@ -83,8 +83,7 @@ func _init_player() -> void:
 	
 ## 创建敌人
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
-	if enemyID.is_empty():
-		return
+	if enemyID.is_empty(): return
 	var enemy_path: String = AssetUtility.get_entity_path(DatatableManager.get_datatable_row("monster", enemyID)["enemy_scene"])
 	var enemy : Enemy = GameInstance.create_entity(enemy_path)
 	enemy.enemy_turn_end.connect(

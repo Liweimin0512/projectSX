@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
 outline_size = 5
@@ -23,12 +22,6 @@ script = ExtResource("1_kt0dy")
 
 [node name="w_status_bar" parent="." instance=ExtResource("2_8h2ee")]
 layout_mode = 1
-
-[node name="CardContainer" parent="." instance=ExtResource("1_i77bo")]
-unique_name_in_owner = true
-layout_mode = 1
-scale = Vector2(1, 0.988801)
-metadata/_edit_lock_ = true
 
 [node name="w_energy" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -111,3 +104,9 @@ theme_override_font_sizes/font_size = 35
 text = "玩家回合"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CardContainer" parent="." instance=ExtResource("1_i77bo")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(1, 0.988801)
+metadata/_edit_lock_ = true

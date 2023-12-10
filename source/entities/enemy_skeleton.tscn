@@ -25,5 +25,7 @@ offset_top = -192.0
 offset_bottom = -152.0
 
 [node name="IntentStatus" parent="." index="4"]
-offset_top = -228.0
-offset_bottom = -196.0
+offset_left = -24.0
+offset_top = -244.0
+offset_right = 8.0
+offset_bottom = -212.0

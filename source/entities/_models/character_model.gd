@@ -14,7 +14,7 @@ var current_health : int = max_health :
 
 var shielded: int = 0
 
-func _init(cha_id) -> void:
+func _init(cha_id: StringName) -> void:
 	var data: Dictionary = DatatableManager.get_datatable_row("character", cha_id)
 	cha_name = data.name
 	cha_des = data.description

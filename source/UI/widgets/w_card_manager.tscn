@@ -12,10 +12,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 script = ExtResource("1_u3n8i")
 
-[node name="W_HandCard" type="Container" parent="."]
+[node name="W_HandCard" type="Container" parent="." node_paths=PackedStringArray("draw_deck", "discard_deck")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -26,7 +26,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_bfh1e")
+tween_speed = null
 offset = Vector2(-130, 50)
+max_num_cards = null
+rotation_proportion = null
+radius = null
+max_angle = 60.0
+draw_deck = NodePath("../draw_deck")
+discard_deck = NodePath("../discard_deck")
 
 [node name="draw_deck" parent="." instance=ExtResource("2_fw5vv")]
 unique_name_in_owner = true
@@ -67,6 +74,6 @@ size_flags_horizontal = 0
 
 [node name="bezier_arrow" parent="." instance=ExtResource("3_eg1od")]
 unique_name_in_owner = true
-z_index = 100
+z_index = 129
 
 [editable path="discard_deck"]

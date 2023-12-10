@@ -18,7 +18,5 @@ libraries = {
 }
 
 [node name="IntentStatus" parent="." index="4"]
-offset_left = -16.0
-offset_top = -196.0
-offset_right = 16.0
-offset_bottom = -164.0
+offset_left = -24.0
+offset_right = 8.0

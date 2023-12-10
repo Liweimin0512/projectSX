@@ -3,7 +3,7 @@ class_name CardContainer
 
 @onready var draw_deck : W_Deck = %draw_deck
 @onready var discard_deck : W_Deck = %discard_deck
-@onready var bezier_arrow :Node2D = %bezier_arrow
+@onready var bezier_arrow : Node2D = %bezier_arrow
 #@onready var w_card_list: Control = %w_card_list
 @onready var w_hand_card: Control = %W_HandCard
 
@@ -15,7 +15,7 @@ var drag_card: W_Card = null:
 			drag_card.rotation = 0
 			drag_card.z_index = 128
 		else:
-			w_hand_card.update_card_layout()
+			#w_hand_card.update_card_layout()
 			bezier_arrow.hide()
 var drag_position : Vector2
 
@@ -42,6 +42,24 @@ func _ready() -> void:
 			discard_deck.update_display()
 	)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not drag_card or not drag_card.can_drag(): return
+	if event is InputEventMouseMotion:
+		if drag_card.needs_target():
+			found_target()
+		else:
+			drag_card.global_position = event.global_position
+	if event is InputEventMouseButton :
+		if event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+			# 此时如果是选择目标状态，则选择目标
+			if can_release_card(drag_card):
+				release_card(drag_card, _combat_scene.cha_selected)
+			drag_card = null
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+			# 此时是选择目标状态，则退出选择状态
+			drag_card = null
+			bezier_arrow.hide()
+
 ## 能否释放卡牌
 func can_release_card(w_card: W_Card) -> bool:
 	# 判断鼠标位置是否在屏幕下方（手牌区域）
@@ -57,29 +75,15 @@ func release_card(w_card: W_Card, target: Character) -> void:
 ## 寻找目标
 func found_target() -> void:
 	if not drag_card: return
+	drag_card.global_position = w_hand_card.global_position + Vector2(drag_card.size.x/2 * -1, drag_card.size.y * -1)
+	drag_card.rotation = 0
+	drag_card.z_index = 128
 	if _combat_scene.cha_selected:
 		bezier_arrow.selected()
 	else:
 		bezier_arrow.unselected()
-	bezier_arrow.reset(w_hand_card.global_position, get_global_mouse_position())
+	bezier_arrow.reset(drag_card.global_position+ Vector2(drag_card.size.x/2, drag_card.size.y/2), get_global_mouse_position())
 
-## 抽牌时候的表现效果处理
-func _on_card_drawn(card: Card) -> void:
-	var w_card : W_Card = create_card_widget(card)
-	w_hand_card.add_card(w_card, draw_deck.global_position)
-	w_card.drag_started.connect(_on_w_card_drag_started.bind(w_card))
-
-## 卡牌释放的信号处理
-func _on_card_released(card: Card) -> void:
-	bezier_arrow.hide()
-	w_hand_card.remove_card(card, discard_deck.global_position)
-
-## 卡牌被丢弃时候的信号处理
-func _on_card_discarded(card: Card) -> void:
-	w_hand_card.remove_card(card, discard_deck.global_position)
-
-func _on_deck_pressed(w_deck: W_Deck) -> void:
-	print("_on_deck_pressed", w_deck)
 
 ## 创建卡牌控件
 func create_card_widget(card: Card) -> W_Card:
@@ -87,26 +91,37 @@ func create_card_widget(card: Card) -> W_Card:
 	w_card.card = card
 	return w_card
 
+## 根据卡牌逻辑层获取表现层
+func _get_card_widget(card: Card) -> W_Card:
+	var w_card = w_hand_card.get_children().filter(
+		func(w_card) :
+			return w_card.card == card
+	)[0]
+	return w_card
+
+## 抽牌时候的表现效果处理
+func _on_card_drawn(card: Card) -> void:
+	var w_card : W_Card = create_card_widget(card)
+	w_hand_card.add_child(w_card)
+	w_card.drag_started.connect(_on_w_card_drag_started.bind(w_card))
+
+## 卡牌释放的信号处理
+func _on_card_released(card: Card) -> void:
+	bezier_arrow.hide()
+	var w_card = _get_card_widget(card)
+	w_hand_card.remove_child(w_card)
+
+## 卡牌被丢弃时候的信号处理
+func _on_card_discarded(card: Card) -> void:
+	var w_card = _get_card_widget(card)
+	w_hand_card.remove_child(w_card)
+
+## 点击牌堆时候的信号处理
+func _on_deck_pressed(w_deck: W_Deck) -> void:
+	print("_on_deck_pressed", w_deck)
+
 func _on_w_card_drag_started(at_position : Vector2, w_card: W_Card) -> void:
 	print("_on_w_card_drag_started:", w_card, at_position)
 	drag_position = at_position
 	drag_card = w_card
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not drag_card or not drag_card.can_drag(): return
-	if event is InputEventMouseMotion:
-		if drag_card.needs_target():
-			found_target()
-		else:
-			drag_card.global_position = event.global_position
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_released():
-			# 此时如果是选择目标状态，则选择目标
-			if can_release_card(drag_card):
-				release_card(drag_card, _combat_scene.cha_selected)
-			drag_card = null
-	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
-		#if event.is_pressed():
-			## 此时是选择目标状态，则退出选择状态
-			#unselected_card()
-			#bezier_arrow.hide()

@@ -129,6 +129,7 @@ centered = false
 layer = 128
 
 [node name="combat_form" parent="CanvasLayer2" instance=ExtResource("12_h3ulb")]
+metadata/_edit_use_anchors_ = true
 
 [node name="Marker2D1" type="Marker2D" parent="."]
 unique_name_in_owner = true

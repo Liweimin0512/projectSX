@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=28 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_card.gd" id="1_0thyn"]
 [ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_7kppa"]
@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_d8764"]
 [ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_lbvm3"]
 [ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_0ijkk"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_8nmba"]
 [ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_f5xms"]
 [ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0000_sheen01.png" id="8_6ymnc"]
+[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_ta4ns"]
 [ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0001_sheen02.png" id="9_86kkd"]
+[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_y8cw6"]
+[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_6gfg7"]
 [ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/textures/cards/card_sheen_fx/sheen__0002_sheen03.png" id="10_h2lww"]
 [ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0003_sheen04.png" id="11_85ejf"]
 [ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/textures/cards/card_sheen_fx/sheen__0004_sheen05.png" id="12_hem7t"]
@@ -76,10 +80,6 @@ offset_bottom = 160.0
 pivot_offset = Vector2(54, 160)
 mouse_filter = 1
 script = ExtResource("1_0thyn")
-card_state = null
-tween_speed = null
-is_back = null
-metadata/_edit_group_ = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -208,7 +208,12 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/normal_font_size = 8
+theme_override_fonts/normal_font = ExtResource("7_8nmba")
+theme_override_fonts/bold_font = ExtResource("8_ta4ns")
+theme_override_fonts/italics_font = ExtResource("9_y8cw6")
+theme_override_fonts/bold_italics_font = ExtResource("7_8nmba")
+theme_override_fonts/mono_font = ExtResource("10_6gfg7")
+theme_override_font_sizes/normal_font_size = 10
 text = "造成你当前格挡值的伤害。
 （造成0点伤害）"
 fit_content = true

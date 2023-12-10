@@ -16,6 +16,3 @@ hframes = 4
 libraries = {
 "": ExtResource("3_mec04")
 }
-
-[node name="IntentStatus" parent="." index="4"]
-anchor_bottom = 1.0

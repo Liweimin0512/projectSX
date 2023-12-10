@@ -101,7 +101,7 @@ vertical_alignment = 1
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "哥布林营地"
+text = "<战斗地点>"
 label_settings = SubResource("LabelSettings_tk3ut")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/UI/widgets/w_card.tscn" id="2_slf3g"]
 
 [node name="w_card_list" type="Control"]
-z_index = 12
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
