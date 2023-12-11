@@ -1,0 +1,67 @@
+<mxfile host="Electron" modified="2023-11-15T04:28:51.393Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="T9RrjYOsDZZjpHkaTkGS" version="22.0.3" type="device">
+  <diagram id="nzjvhAc7KXPs8t9zefvz" name="第 1 页">
+    <mxGraphModel dx="819" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-3" target="ay1hNhuyaZYkMiAVp4z6-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-3" target="ay1hNhuyaZYkMiAVp4z6-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-3" value="main场景&lt;br&gt;场景管理器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="271.25" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-4" target="ay1hNhuyaZYkMiAVp4z6-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-4" value="combat_scene&lt;br&gt;战斗逻辑，回合制" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="165" y="210" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-5" value="map_scene&lt;br&gt;地图场景，战斗外逻辑" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="210" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-8" value="player" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="131.25" y="360" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-12" value="enemy1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="271.25" y="360" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-13" value="enemy2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-15" value="card" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="55" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-16" value="意图intent" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="530" width="55" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-17" value="ability_effect&lt;br&gt;技能效果" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="125.63" y="530" width="235.62" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-16" target="ay1hNhuyaZYkMiAVp4z6-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-15" target="ay1hNhuyaZYkMiAVp4z6-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-20" value="character角色&lt;br&gt;回合开始、回合结束、生命值、伤害" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="125.63" y="300" width="208.75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-23" target="ay1hNhuyaZYkMiAVp4z6-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-23" value="card_manager&lt;br&gt;管理卡牌" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="118.75" y="460" width="55" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ay1hNhuyaZYkMiAVp4z6-27" target="ay1hNhuyaZYkMiAVp4z6-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ay1hNhuyaZYkMiAVp4z6-27" value="intent_manager&lt;br&gt;意图管理" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="256.25" y="460" width="113.75" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

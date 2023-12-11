@@ -8,6 +8,8 @@
 
 ![游戏流程](./docs/game_procedure.png)
 
+## 战斗流程
+
 ![战斗流程](./docs/procedure_combat.png)
 
 ## 计划内容
