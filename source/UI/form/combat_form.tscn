@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d08olufvkbwcn"]
+[gd_scene load_steps=9 format=3 uid="uid://d08olufvkbwcn"]
 
 [ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/w_card_manager.tscn" id="1_i77bo"]
 [ext_resource type="Script" path="res://source/UI/form/combat_form.gd" id="1_kt0dy"]
 [ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
+[ext_resource type="Texture2D" uid="uid://4pjk2fsbfugu" path="res://asserts/textures/widgets/icon_energy.tres" id="3_cxo8i"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
+[ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://asserts/textures/widgets/icon_turn.tres" id="4_i8vjq"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="4_rpfgr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
@@ -22,6 +25,10 @@ script = ExtResource("1_kt0dy")
 
 [node name="w_status_bar" parent="." instance=ExtResource("2_8h2ee")]
 layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 75.0
+grow_vertical = 1
 
 [node name="w_energy" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,10 +42,10 @@ offset_bottom = -104.0
 grow_vertical = 0
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="w_energy"]
+[node name="ColorRect" type="TextureRect" parent="w_energy"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-color = Color(0.580392, 0.568627, 0.137255, 1)
+texture = ExtResource("3_cxo8i")
 
 [node name="lab_power" type="Label" parent="w_energy"]
 unique_name_in_owner = true
@@ -77,7 +84,11 @@ color = Color(0.054902, 0.447059, 1, 1)
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_rpfgr")
 text = "结束回合"
+icon = ExtResource("4_i8vjq")
 
 [node name="turn_begin" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -108,4 +119,3 @@ vertical_alignment = 1
 [node name="CardContainer" parent="." instance=ExtResource("1_i77bo")]
 unique_name_in_owner = true
 layout_mode = 1
-metadata/_edit_lock_ = true

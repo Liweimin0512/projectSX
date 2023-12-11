@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://72uhpsyxdbi7"]
+[gd_scene load_steps=7 format=3 uid="uid://72uhpsyxdbi7"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_card_manager.gd" id="1_u3n8i"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_hand_card.gd" id="2_bfh1e"]
 [ext_resource type="PackedScene" uid="uid://dikirj650nrtg" path="res://source/UI/widgets/w_deck.tscn" id="2_fw5vv"]
 [ext_resource type="PackedScene" uid="uid://ik2l54j58jrl" path="res://source/UI/widgets/bezier_arrow.tscn" id="3_eg1od"]
+[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://asserts/textures/widgets/icon_draw_deck.tres" id="4_n1hgh"]
+[ext_resource type="Texture2D" uid="uid://6wh8c7mujene" path="res://asserts/textures/widgets/icon_discard_deck.tres" id="4_yc1jc"]
 
 [node name="w_card_manager" type="Control"]
 layout_mode = 3
@@ -45,6 +47,19 @@ offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 0
 
+[node name="MarginContainer" parent="draw_deck" index="1"]
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ColorRect" parent="draw_deck/MarginContainer" index="0"]
+texture = ExtResource("4_n1hgh")
+
+[node name="lab_card_amount" parent="draw_deck/MarginContainer" index="1"]
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+label_settings = null
+
 [node name="discard_deck" parent="." instance=ExtResource("2_fw5vv")]
 unique_name_in_owner = true
 layout_mode = 1
@@ -65,10 +80,22 @@ deck_type = 1
 color = Color(0.168627, 0.768627, 1, 1)
 
 [node name="MarginContainer" parent="discard_deck" index="1"]
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ColorRect" parent="discard_deck/MarginContainer" index="0"]
+texture = ExtResource("4_yc1jc")
+
+[node name="lab_card_amount" parent="discard_deck/MarginContainer" index="1"]
 size_flags_horizontal = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+label_settings = null
 
 [node name="bezier_arrow" parent="." instance=ExtResource("3_eg1od")]
 unique_name_in_owner = true
 z_index = 129
 
+[editable path="draw_deck"]
 [editable path="discard_deck"]

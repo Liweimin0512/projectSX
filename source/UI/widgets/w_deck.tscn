@@ -23,6 +23,7 @@ grow_vertical = 2
 script = ExtResource("1_vffno")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -36,10 +37,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.815686, 0, 0, 1)
 
 [node name="lab_card_amount" type="Label" parent="MarginContainer"]
 layout_mode = 2

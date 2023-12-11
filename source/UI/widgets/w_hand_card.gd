@@ -42,13 +42,13 @@ func get_card(card: Card) -> W_Card:
 
 ## 更新手牌布局
 func _update_card_layout() -> void:
-	print_debug("_update_card_layout")
 	var card_count: int = get_child_count()
-	var tween : Tween = create_tween()
-	if not tween: return
-	tween.set_parallel()
 	for i in range(card_count):
+		var tween : Tween = create_tween()
+		if not tween: return
+		tween.set_parallel()
 		var card : W_Card = get_child(i)
+		if not card : return
 		var transform: Transform2D = _calculate_card_transform(i, card_count)
 		var angle: float = rad_to_deg(transform.get_rotation())
 		var position: Vector2 = transform.get_origin()
@@ -58,14 +58,8 @@ func _update_card_layout() -> void:
 		tween.tween_property(card, "rotation_degrees", angle, tween_speed)
 		tween.tween_property(card, "position", position, tween_speed)
 		tween.tween_property(card, "scale", scale, tween_speed)
-		#card.rotation_degrees = angle
-		#card.position = position
-		#card.scale = Vector2.ONE
-		# card.size = card.custom_minimum_size
 		card.z_index = 0 if card != highlighted_card else 1
-		# card.pivot_offset = Vector2(card.size.x/2, card.size.y)
-		#card.scale = Vector2.ONE
-	await tween.finished
+		await tween.finished
 
 ## 计算卡牌位置和角度
 func _calculate_card_transform(card_index: int, card_count: int) -> Transform2D:
@@ -73,11 +67,8 @@ func _calculate_card_transform(card_index: int, card_count: int) -> Transform2D:
 	var offset_from_middle: float = card_index - middle_index
 	# 使用非线性插值来确保中间的卡牌几乎不旋转
 	var normalized_offset = offset_from_middle / middle_index
-	#var angle_factor = normalized_offset * normalized_offset  # 平方来增加两侧的变化
-	#var angle = lerp(-max_angle, max_angle, angle_factor)
-	#if offset_from_middle < 0:
-		#angle = -angle  # 调整左侧卡牌的角度方向
-	var angle : float = 0
+	## TODO : 手牌的角度设置
+	var angle : float = 0 
 	var vertical_offset = abs(normalized_offset) * vertical_drop_factor
 	# 可以根据需要调整垂直位置
 	var position_y = card_size.y / 2 + vertical_offset if card_index != _get_card_index(highlighted_card) else 0
@@ -111,15 +102,10 @@ func _on_child_exiting_tree(node: Node) -> void:
 	if not node is W_Card: return
 	node.mouse_entered.disconnect(_on_card_mouse_entered.bind(node))
 	node.mouse_exited.disconnect(_on_card_mouse_exited.bind(node))
-	var tween: Tween = create_tween()
-	tween.set_parallel()
-	tween.tween_property(node, "global_position", discard_deck.global_position, 0.3)
-	tween.tween_property(node, "scale", Vector2.ZERO, 0.3)
-	await tween.finished
 	node.queue_free()
 	
 func _on_child_order_changed() -> void:
-	_update_card_layout()
+	await _update_card_layout()
 
 func _on_card_mouse_entered(w_card: W_Card) -> void:
 	highlighted_card = w_card

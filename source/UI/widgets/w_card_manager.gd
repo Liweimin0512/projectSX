@@ -103,12 +103,18 @@ func _on_card_drawn(card: Card) -> void:
 ## 卡牌释放的信号处理
 func _on_card_released(card: Card) -> void:
 	bezier_arrow.hide()
-	var w_card = w_hand_card.get_card(card)
-	w_hand_card.remove_child(w_card)
+	#var w_card = w_hand_card.get_card(card)
+	#w_hand_card.remove_child(w_card)
+	_on_card_discarded(card)
 
 ## 卡牌被丢弃时候的信号处理
 func _on_card_discarded(card: Card) -> void:
 	var w_card = w_hand_card.get_card(card)
+	var tween: Tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(w_card, "global_position", discard_deck.global_position, 0.3)
+	tween.tween_property(w_card, "scale", Vector2.ZERO, 0.3)
+	await tween.finished
 	w_hand_card.remove_child(w_card)
 
 ## 点击牌堆时候的信号处理
