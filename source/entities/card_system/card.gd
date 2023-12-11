@@ -22,8 +22,10 @@ func can_release(caster: Character= null) -> bool:
 	return _model.cost <= _caster.current_energy
 
 ## 释放卡牌
-func release(caster: Character, targets: Array[Character]) -> void:
-	var effects = create_effects(targets)
+func release(caster: Character, selected_cha: Character = null) -> void:
+	if not needs_target():
+		selected_cha = caster
+	var effects = create_effects(selected_cha)
 	await caster.play_animation(_model.play_animation)
 	for effect in effects:
 		effect.execute()
@@ -31,13 +33,13 @@ func release(caster: Character, targets: Array[Character]) -> void:
 	caster.use_energy(_model.cost)
 
 ## 获取效果目标
-func get_effect_targets(caster: Character, targets: Array[Character]) -> Array:
-	return _model.get_effect_targets(caster, targets)
+func get_effect_targets(caster: Character, selected_cha: Character = null) -> Array:
+	return _model.get_effect_targets(caster, selected_cha)
 
 ## 创建效果
-func create_effects(targets: Array[Character]) -> Array[Effect]:
+func create_effects(selected_cha: Character = null) -> Array[Effect]:
 	var caster : Character = GameInstance.player
-	var _targets : Array[Character] = get_effect_targets(caster, targets)
+	var _targets : Array[Character] = get_effect_targets(caster, selected_cha)
 	var effects: Array[Effect]
 	for e in _model.effects:
 		var effect = Effect.create_effect(e, _targets)

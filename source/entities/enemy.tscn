@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://source/entities/intent_system/C_IntentSystem.gd" id="21_ijss2"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_rlg1m"]
 
-[node name="enemy" instance=ExtResource("1_yh4r0")]
+[node name="enemy" groups=["enemy"] instance=ExtResource("1_yh4r0")]
 script = ExtResource("11_j32pj")
 can_attack = true
+cha_type = "Enemy"
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -56)

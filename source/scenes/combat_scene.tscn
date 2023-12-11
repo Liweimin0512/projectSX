@@ -148,17 +148,17 @@ metadata/_edit_group_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(578, 468)
+position = Vector2(768, 464)
 metadata/_edit_group_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(738, 468)
+position = Vector2(864, 464)
 metadata/_edit_group_ = true
 
 [node name="Marker2D6" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(898, 468)
+position = Vector2(960, 464)
 metadata/_edit_group_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]

@@ -47,8 +47,6 @@ func init_combat(combat_id : StringName) -> void:
 func begin_combat() -> void:
 	await get_tree().create_timer(0.5).timeout
 	for cha in characters:
-		cha.mouse_entered.connect(_on_cha_mouse_entered.bind(cha))
-		cha.mouse_exited.connect(_on_cha_mouse_exited.bind(cha))
 		cha._begin_combat()
 	next_turn()
 
@@ -70,8 +68,6 @@ func next_turn() -> void:
 ## 结束战斗
 func end_combat() -> void:
 	for cha in characters:
-		cha.mouse_entered.disconnect(_on_cha_mouse_entered.bind(cha))
-		cha.mouse_exited.disconnect(_on_cha_mouse_exited.bind(cha))
 		cha._end_combat()
 
 ## 初始化玩家角色
@@ -108,15 +104,6 @@ func _player_turn_begin() -> void:
 	for cha in characters:
 		if cha != GameInstance.player:
 			cha.on_player_turn_begined()
-		
-
-
-func _on_cha_mouse_entered(cha: Character) -> void:
-	cha_selected = cha
-
-func _on_cha_mouse_exited(cha: Character) -> void:
-	if cha_selected == cha:
-		cha_selected = null
 
 func is_player_turn() -> bool:
 	return current_character == GameInstance.player

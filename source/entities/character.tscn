@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
 size = Vector2(96, 151)
 
-[node name="character" type="Node2D"]
+[node name="character" type="Node2D" groups=["character"]]
 script = ExtResource("2_gxres")
 metadata/_edit_lock_ = true
 

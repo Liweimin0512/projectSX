@@ -20,9 +20,12 @@ var drag_card: W_Card = null:
 var drag_position : Vector2
 
 ## 战斗场景引用
-var _combat_scene : CombatScene 
+#var _combat_scene : CombatScene 
 ## 卡牌管理器的引用
 var _card_system : C_CardSystem
+
+var selected_cha: Character = null
+var target_selector: TargetSelector = null
 
 # combat_scene需要获取这个事件禁用下回合按钮
 signal card_selected(card: Card)
@@ -30,7 +33,7 @@ signal card_unselected(card: Card)
 
 func _ready() -> void:
 	_card_system = GameInstance.player.get_node("C_CardSystem")
-	_combat_scene = SceneManager.current_scene
+	#_combat_scene = SceneManager.current_scene
 	_card_system.card_drawn.connect(_on_card_drawn)
 	_card_system.card_released.connect(_on_card_released)
 	_card_system.card_discarded.connect(_on_card_discarded)
@@ -52,28 +55,33 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton :
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			# 此时如果是选择目标状态，则选择目标
-			if can_release_card(drag_card):
-				release_card(drag_card, _combat_scene.cha_selected)
-				drag_card = null
-				bezier_arrow.hide()
-			#drag_card = null
+			if can_release_card(drag_card, selected_cha):
+				release_card(drag_card, selected_cha)
+				target_selector = null
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 			# 此时是选择目标状态，则退出选择状态
-			drag_card = null
-			w_hand_card.reset_layout()
-			bezier_arrow.hide()
+			_cancel_card_drag()
+
+## 取消拖拽卡牌
+func _cancel_card_drag() -> void:
+	drag_card = null
+	w_hand_card.reset_layout()
+	bezier_arrow.hide()
+	target_selector = null
 
 ## 能否释放卡牌
-func can_release_card(w_card: W_Card) -> bool:
+func can_release_card(w_card: W_Card, selected_cha: Character) -> bool:
 	# 判断鼠标位置是否在屏幕下方（手牌区域）
-	if w_card.needs_target() and _combat_scene.cha_selected == null:
+	if w_card.needs_target() and selected_cha == null:
 		return false
-	return _card_system.can_release_card(w_card.card)
+	return _card_system.can_release_card(w_card.card, selected_cha)
 
 ## 释放卡牌
-func release_card(w_card: W_Card, target: Character) -> void:
+func release_card(w_card: W_Card, selected_cha: Character = null) -> void:
 	var card = w_card.card
-	_card_system.release_card(card, [target])
+	_card_system.release_card(card, selected_cha)
+	drag_card = null
+	bezier_arrow.hide()
 
 ## 寻找目标
 func found_target() -> void:
@@ -81,12 +89,7 @@ func found_target() -> void:
 	drag_card.global_position = w_hand_card.global_position + Vector2(drag_card.size.x/2 * -1, drag_card.size.y * -1)
 	drag_card.rotation = 0
 	drag_card.z_index = 128
-	if _combat_scene.cha_selected:
-		bezier_arrow.selected()
-	else:
-		bezier_arrow.unselected()
 	bezier_arrow.reset(drag_card.global_position+ Vector2(drag_card.size.x/2, drag_card.size.y/2), get_global_mouse_position())
-
 
 ## 创建卡牌控件
 func create_card_widget(card: Card) -> W_Card:
@@ -121,8 +124,20 @@ func _on_card_discarded(card: Card) -> void:
 func _on_deck_pressed(w_deck: W_Deck) -> void:
 	print("_on_deck_pressed", w_deck)
 
+## 卡牌开始拖拽
 func _on_w_card_drag_started(at_position : Vector2, w_card: W_Card) -> void:
 	print("_on_w_card_drag_started:", w_card, at_position)
 	drag_position = at_position
 	drag_card = w_card
+	target_selector = TargetSelector.new({"cha_type":"Enemy"})
+	target_selector.target_selected.connect(
+		func(cha: Character) -> void:
+			bezier_arrow.selected()
+			selected_cha = cha
+	)
+	target_selector.selection_canceled.connect(
+		func() -> void:
+			bezier_arrow.unselected()
+			selected_cha = null
+	)
 

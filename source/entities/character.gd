@@ -10,6 +10,8 @@ var _model: CharacterModel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
 
+@export var cha_type: String = ""
+
 ## 控制器引用
 var current_health: float:
 	get:
@@ -41,10 +43,12 @@ signal current_health_changed(value)
 func _ready() -> void:
 	area_2d.mouse_entered.connect(
 		func() -> void:
+			EventBus.push_event("character_mouse_entered", self)
 			mouse_entered.emit()
 	)
 	area_2d.mouse_exited.connect(
 		func() -> void:
+			EventBus.push_event("character_mouse_exited", self)
 			mouse_exited.emit()
 	)
 	_model = CharacterModel.new(cha_id)

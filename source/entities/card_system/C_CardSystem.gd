@@ -56,17 +56,17 @@ func distribute_card() -> void:
 	#card_distributed.emit(hand_cards)
 
 ## 释放卡牌：释放卡牌技能
-func release_card(card: Card, targets: Array[Character]) -> void:
-	if not can_release_card(card):
+func release_card(card: Card, selected_cha: Character = null) -> void:
+	if not can_release_card(card, selected_cha):
 		push_warning("能量不足，无法释放卡牌！")
 		return
-	card.release(owner, targets)
+	card.release(owner, selected_cha)
 	hand_cards.erase(card)
 	card_released.emit(card)
 	discard_deck.add_card(card)
 
 # 检查玩家能量是否足够释放卡牌
-func can_release_card(card: Card) -> bool:
+func can_release_card(card: Card, selected_cha: Character) -> bool:
 	return card.can_release(owner)
 
 func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:

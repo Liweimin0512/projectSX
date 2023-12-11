@@ -222,6 +222,7 @@ _data = {
 
 [node name="player" instance=ExtResource("1_fb8bn")]
 script = ExtResource("6_c67lg")
+cha_type = "Player"
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
