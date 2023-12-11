@@ -1,0 +1,167 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3ki5tbnvkieq"]
+
+[ext_resource type="Texture2D" uid="uid://cn7igau1ewgqc" path="res://asserts/textures/background/Layer_0011_0.png" id="2_iavej"]
+[ext_resource type="Texture2D" uid="uid://df5lmhr6y7xmh" path="res://asserts/textures/background/Layer_0010_1.png" id="3_jrhge"]
+[ext_resource type="Texture2D" uid="uid://b2u8nf0d0d0ws" path="res://asserts/textures/background/Layer_0009_2.png" id="4_7d4gw"]
+[ext_resource type="Texture2D" uid="uid://b1nsabm8d7hr7" path="res://asserts/textures/background/Layer_0008_3.png" id="5_g5w4w"]
+[ext_resource type="Texture2D" uid="uid://c2ob1ste0w5w0" path="res://asserts/textures/background/Layer_0006_4.png" id="6_x1vaq"]
+[ext_resource type="Texture2D" uid="uid://fkjfxtc1x4ih" path="res://asserts/textures/background/Layer_0005_5.png" id="7_27yn5"]
+[ext_resource type="Texture2D" uid="uid://dnjgq84gactyg" path="res://asserts/textures/background/Layer_0003_6.png" id="8_imi6j"]
+[ext_resource type="Texture2D" uid="uid://1jsedd3ejovd" path="res://asserts/textures/background/Layer_0002_7.png" id="9_e5abc"]
+[ext_resource type="Texture2D" uid="uid://062sompa2pml" path="res://asserts/textures/background/Layer_0001_8.png" id="10_nmkkq"]
+[ext_resource type="Texture2D" uid="uid://6fawcdnvkcqt" path="res://asserts/textures/background/Layer_0000_9.png" id="11_a2qif"]
+[ext_resource type="PackedScene" uid="uid://d08olufvkbwcn" path="res://source/UI/form/combat_form.tscn" id="12_h3ulb"]
+[ext_resource type="Script" path="res://source/scenes/combat_scene.gd" id="13_thwhq"]
+
+[node name="combat_scene" type="Node2D"]
+script = ExtResource("13_thwhq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.0470588, 0.0666667, 0.133333, 1)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer10"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("2_iavej")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("3_jrhge")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("4_7d4gw")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("5_g5w4w")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("6_x1vaq")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("7_27yn5")
+centered = false
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = 100
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground2"]
+visible = false
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer6"]
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("8_imi6j")
+centered = false
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer7"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("9_e5abc")
+centered = false
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer8"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("10_nmkkq")
+centered = false
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer9"]
+position = Vector2(0, -30)
+scale = Vector2(1.24138, 0.81715)
+texture = ExtResource("11_a2qif")
+centered = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="combat_form" parent="CanvasLayer2" instance=ExtResource("12_h3ulb")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Marker2D1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(386, 468)
+metadata/_edit_group_ = true
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(258, 469)
+metadata/_edit_group_ = true
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(130, 468)
+metadata/_edit_group_ = true
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(768, 464)
+metadata/_edit_group_ = true
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(864, 464)
+metadata/_edit_group_ = true
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(960, 464)
+metadata/_edit_group_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.4, 0.4, 0.4, 1)
+range_layer_min = -128
+range_layer_max = 128

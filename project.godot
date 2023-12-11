@@ -12,14 +12,14 @@ config_version=5
 
 config/name="ProjectSX"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 
 [autoload]
 
-GameInstance="*res://source/controller/auto/game_instance.gd"
+GameInstance="*res://source/auto/game_instance.gd"
+SceneManager="*res://source/auto/scene_manager.gd"
 EventBus="*res://addons/li_framework/auto/event_bus.gd"
 DatatableManager="*res://addons/li_framework/auto/datatable_manager.gd"
-CardManager="*res://source/controller/auto/card_manager.gd"
 
 [display]
 

@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2eootn4eg0wl"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_intent_status.gd" id="1_1op2a"]
+[ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://asserts/textures/widgets/Spells/poison_dagger.png" id="1_ischg"]
+
+[sub_resource type="Animation" id="Animation_m15w2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rek3t"]
+resource_name = "execute"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.368627), Color(1, 1, 1, 1), Color(1, 1, 1, 0.415686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_q3xtd"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brsw3"]
+_data = {
+"RESET": SubResource("Animation_m15w2"),
+"execute": SubResource("Animation_rek3t"),
+"idle": SubResource("Animation_q3xtd")
+}
+
+[node name="IntentStatus" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1op2a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+offset_top = 15.0
+offset_right = 48.0
+offset_bottom = 63.0
+
+[node name="sprite" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_ischg")
+
+[node name="Label" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "3"
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_brsw3")
+}
+autoplay = "idle"

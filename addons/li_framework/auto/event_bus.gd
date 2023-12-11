@@ -1,6 +1,6 @@
 extends Node
 
-func emit(destination: String, payload) -> void:
+func push_event(destination: String, payload) -> void:
 		if not payload is Array:
 			payload = [payload]
 		payload.insert(0, _get_destination_signal(destination))
