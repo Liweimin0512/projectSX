@@ -16,4 +16,4 @@ func _ready() -> void:
 	)
 
 func display_health_status() -> void:
-	lab_health.text = "血量" + str(player.current_health) + "/" + str(player.max_health)
+	lab_health.text = str(player.current_health) + "/" + str(player.max_health)

@@ -22,15 +22,17 @@ func can_release(caster: Character= null) -> bool:
 	return _model.cost <= _caster.current_energy
 
 ## 释放卡牌
-func release(caster: Character, selected_cha: Character = null) -> void:
+func release(caster: Character, selected_cha: Character) -> void:
+	assert(selected_cha != null, "卡牌目标不能为空！")
 	if not needs_target():
 		selected_cha = caster
 	var effects = create_effects(selected_cha)
-	await caster.play_animation(_model.play_animation)
+	await caster.play_animation_with_reset(_model.play_animation)
 	for effect in effects:
 		effect.execute()
 	# 消耗能量
 	caster.use_energy(_model.cost)
+	await caster.play_animation_with_reset("idle")
 
 ## 获取效果目标
 func get_effect_targets(caster: Character, selected_cha: Character = null) -> Array:

@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0007_sheen08.png" id="15_bhgpa"]
 [ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_73gjm"]
 [ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_dowwh"]
+[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_oikip"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
 outline_size = 1
@@ -30,9 +31,6 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 13
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vohy2"]
-font_size = 8
 
 [sub_resource type="Animation" id="Animation_jfck6"]
 length = 0.001
@@ -205,38 +203,46 @@ theme_override_fonts/italics_font = ExtResource("9_y8cw6")
 theme_override_fonts/bold_italics_font = ExtResource("7_8nmba")
 theme_override_fonts/mono_font = ExtResource("10_6gfg7")
 theme_override_font_sizes/normal_font_size = 10
-text = "造成你当前格挡值的伤害。
+bbcode_enabled = true
+text = "造成你当前格挡值的[color=yellow]伤害[/color]。
 （造成0点伤害）"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -75.0
+offset_right = 25.0
+offset_bottom = -55.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer3"]
-custom_minimum_size = Vector2(40, 12)
+custom_minimum_size = Vector2(40, 18)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_f5xms")
 
-[node name="lab_type" type="Label" parent="MarginContainer3/TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer3"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="lab_type" type="Label" parent="MarginContainer3/MarginContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
 text = "攻击"
-label_settings = SubResource("LabelSettings_vohy2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -256,3 +262,11 @@ libraries = {
 "": SubResource("AnimationLibrary_axa8x")
 }
 autoplay = "fx_sheen"
+
+[node name="w_tooltip" parent="." instance=ExtResource("22_oikip")]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 2.0
+offset_right = 260.0
+offset_bottom = 85.0
+scale = Vector2(0.6, 0.6)

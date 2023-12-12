@@ -42,11 +42,13 @@ func _end_combat() -> void:
 func _begin_turn() -> void:
 	c_card_system.distribute_card()
 	current_energy = max_energy
+	turn_begined.emit()
 
 ## 结束回合
 func _end_turn() -> void:
-	print("结束玩家回合")
+	#print("结束玩家回合")
 	c_card_system.discard_all()
+	turn_completed.emit()
 
 # 扣除能量的方法
 func use_energy(amount: int) -> void:

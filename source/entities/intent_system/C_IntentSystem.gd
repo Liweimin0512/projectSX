@@ -29,7 +29,7 @@ func choose_intent() -> Intent:
 		func(intent: Intent):
 			return intent.is_available
 	)
-	if available_intents.is_empty() : return null
+	if available_intents.is_empty() : current_intent =  null
 	var total_weight : float = available_intents.reduce(func(a, b): return a + b.weight, 0)
 	# 基于权重随机选择意图
 	var random_choice = randf_range(0, total_weight)
@@ -37,8 +37,8 @@ func choose_intent() -> Intent:
 	for intent: Intent in available_intents:
 		accumulated_weight += intent.weight
 		if random_choice <= accumulated_weight:
-			return intent
-	return null
+			current_intent = intent
+	return current_intent
 
 # 执行当前意图
 func execute_intent():

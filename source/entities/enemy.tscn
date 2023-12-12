@@ -9,8 +9,8 @@
 
 [node name="enemy" groups=["enemy"] instance=ExtResource("1_yh4r0")]
 script = ExtResource("11_j32pj")
-can_attack = true
 cha_type = "Enemy"
+can_attack = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -56)
@@ -40,11 +40,10 @@ grow_vertical = 0
 
 [node name="w_tooltip" parent="." index="5" instance=ExtResource("22_rlg1m")]
 unique_name_in_owner = true
-visible = false
-offset_left = 50.0
-offset_top = -87.0
-offset_right = 250.0
-offset_bottom = -3.0
+offset_left = -256.0
+offset_top = -124.0
+offset_right = -56.0
+offset_bottom = -40.0
 
 [node name="C_IntentSystem" type="Node" parent="." index="7"]
 unique_name_in_owner = true

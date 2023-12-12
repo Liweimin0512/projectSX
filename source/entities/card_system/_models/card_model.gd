@@ -29,6 +29,7 @@ enum CARD_TYPE{
 @export var tween_speed : float = 0.2
 @export var preview_scale := Vector2(1,1)
 @export var preview_position := Vector2(0,10)
+var buff_des : String = ""
 
 func _init(card_id: String) -> void:
 	if card_id.is_empty(): return
@@ -41,6 +42,7 @@ func _init(card_id: String) -> void:
 	target_type = data.target_type
 	effects = data.effects
 	play_animation = data.play_animation
+	buff_des = data.buff_des
 
 ## 是否需要选择目标？
 func needs_target() -> bool :

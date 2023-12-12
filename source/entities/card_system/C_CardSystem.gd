@@ -7,11 +7,22 @@ var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1, "每个回合结束的
 var hand_cards : Array = []
 var initial_deck: Array
 
+var selected_cha: Character = null:
+	set(value):
+		if selected_cha:
+			selected_cha.unselected()
+		selected_cha = value
+		if selected_cha:
+			selected_cha.selected()
+		selected_cha_changed.emit(selected_cha)
+var target_selector: TargetSelector = null
+
 #signal card_distributed
 signal card_drawn(card: Card)
 signal card_released(card: Card)
 signal card_discarded(card: Card)
 signal draw_deck_replenished
+signal selected_cha_changed(cha: Character)
 
 func component_init(playerID: StringName) -> void:
 	initial_deck = DatatableManager.get_datatable_row("hero", playerID)["initial_deck"]
@@ -43,6 +54,7 @@ func draw_card() -> Card:
 		card_drawn.emit(card)
 	return card
 
+## 重置抽牌堆
 func replenish_draw_deck():
 	discard_deck.shuffle()
 	draw_deck.cards = discard_deck.cards.duplicate()
@@ -55,19 +67,39 @@ func distribute_card() -> void:
 		draw_card()
 	#card_distributed.emit(hand_cards)
 
+## 预释放卡牌
+func prerelease_card(card: Card) -> void:
+	if card.needs_target():
+		target_selector = TargetSelector.new({"cha_type":"Enemy"})
+		target_selector.target_selected.connect(
+			func(cha: Character) -> void:
+				selected_cha = cha
+		)
+		target_selector.selection_canceled.connect(
+			func() -> void:
+				selected_cha = null
+		)
+	else:
+		selected_cha = owner
+
 ## 释放卡牌：释放卡牌技能
-func release_card(card: Card, selected_cha: Character = null) -> void:
-	if not can_release_card(card, selected_cha):
+func release_card(card: Card) -> void:
+	if not can_release_card(card):
 		push_warning("能量不足，无法释放卡牌！")
 		return
 	card.release(owner, selected_cha)
 	hand_cards.erase(card)
 	card_released.emit(card)
 	discard_deck.add_card(card)
+	target_selector = null
+	selected_cha = null
 
 # 检查玩家能量是否足够释放卡牌
-func can_release_card(card: Card, selected_cha: Character) -> bool:
+func can_release_card(card: Card) -> bool:
+	if not selected_cha:
+		return false
 	return card.can_release(owner)
+
 
 func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 	match  dect_type:

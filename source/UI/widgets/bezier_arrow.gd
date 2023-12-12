@@ -56,8 +56,8 @@ func update_angle():
 			
 			current.rotation_degrees=a #更新小箭头的方向
 
-func selected() -> void:
+func highlight() -> void:
 	self.modulate = Color.DARK_RED
 
-func unselected() -> void:
+func unhighlight() -> void:
 	self.modulate = Color.WHITE

@@ -71,9 +71,9 @@ func _calculate_card_transform(card_index: int, card_count: int) -> Transform2D:
 	var angle : float = 0 
 	var vertical_offset = abs(normalized_offset) * vertical_drop_factor
 	# 可以根据需要调整垂直位置
-	var position_y = card_size.y / 2 + vertical_offset if card_index != _get_card_index(highlighted_card) else 0
+	var position_y = card_size.y * 0.3 + vertical_offset if card_index != _get_card_index(highlighted_card) else 0
 	var position = Vector2(
-		offset_from_middle * card_offset_ratio * card_size.x - card_size.x / 2, 
+		offset_from_middle * card_offset_ratio * card_size.x - card_size.x * 0.5, 
 		position_y - card_size.y
 		)
 	if highlighted_card:
@@ -109,8 +109,10 @@ func _on_child_order_changed() -> void:
 
 func _on_card_mouse_entered(w_card: W_Card) -> void:
 	highlighted_card = w_card
+	w_card.preview()
 
 func _on_card_mouse_exited(w_card: W_Card) -> void:
 	if highlighted_card == w_card:
 		highlighted_card = null
+		w_card.cancel_preview()
 	

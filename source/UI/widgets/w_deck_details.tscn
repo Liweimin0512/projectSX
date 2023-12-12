@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://cixs5tbqar2uk"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_deck_details.gd" id="1_8y8xy"]
+[ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/UI/widgets/w_card.tscn" id="2_avepq"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="2_c1me7"]
+
+[node name="w_deck_details" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8y8xy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.909804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.0
+offset_top = -268.5
+offset_right = 282.0
+offset_bottom = 268.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label_name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_c1me7")
+theme_override_font_sizes/font_size = 22
+text = "牌堆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="card" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+tween_speed = 0.1
+is_back = false
+
+[node name="card2" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+tween_speed = 0.1
+is_back = false
+
+[node name="card3" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+tween_speed = 0.1
+is_back = false
+
+[node name="card4" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+tween_speed = 0.1
+is_back = false
+
+[node name="card5" parent="VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+tween_speed = 0.1
+is_back = false
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.101961, 0.101961, 0.101961, 0.317647)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+text = "每个回合开始都将从这里抽牌"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_close" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 495.0
+offset_right = 116.0
+offset_bottom = 545.0
+text = "返回"

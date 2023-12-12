@@ -27,8 +27,8 @@ color = Color(0.0470588, 0.0666667, 0.133333, 1)
 metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(0, -100)
-transform = Transform2D(1, 0, 0, 1, 0, -100)
+offset = Vector2(0, -50)
+transform = Transform2D(1, 0, 0, 1, 0, -50)
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1152, 0)
@@ -86,8 +86,8 @@ centered = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 100
-offset = Vector2(0, -100)
-transform = Transform2D(1, 0, 0, 1, 0, -100)
+offset = Vector2(0, -50)
+transform = Transform2D(1, 0, 0, 1, 0, -50)
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground2"]
 visible = false
@@ -130,35 +130,36 @@ layer = 128
 
 [node name="combat_form" parent="CanvasLayer2" instance=ExtResource("12_h3ulb")]
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Marker2D1" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(386, 468)
+position = Vector2(386, 518)
 metadata/_edit_group_ = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(258, 469)
+position = Vector2(258, 518)
 metadata/_edit_group_ = true
 
 [node name="Marker2D3" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(130, 468)
+position = Vector2(130, 518)
 metadata/_edit_group_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(768, 464)
+position = Vector2(768, 518)
 metadata/_edit_group_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(864, 464)
+position = Vector2(864, 518)
 metadata/_edit_group_ = true
 
 [node name="Marker2D6" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(960, 464)
+position = Vector2(960, 518)
 metadata/_edit_group_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]

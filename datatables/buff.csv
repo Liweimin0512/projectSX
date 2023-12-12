@@ -1,0 +1,8 @@
+﻿ID,name,description
+编号,效果名,描述
+string,string,string
+block,格挡,持续到下一个回合开始之前，格挡伤害
+vulnerable,易伤,使目标收到的攻击伤害增加
+weak,虚弱,降低目标的攻击伤害
+poison,中毒,每个回合结束时，根据层数对目标造成伤害
+entangled,缠绕,目标在下一个回合无法攻击

@@ -3,7 +3,12 @@ class_name W_Deck
 
 @onready var lab_card_amount: Label = $MarginContainer/lab_card_amount
 @export var deck_type: CardDeckModel.DECK_TYPE
+
 var _deck: CardDeck
+
+var card_amount: int :
+	get:
+		return _deck.get_card_amount()
 
 signal pressed
 
@@ -17,7 +22,7 @@ func _ready() -> void:
 	update_display()
 
 func update_display() -> void:
-	lab_card_amount.text = str(_deck.get_card_amount())
+	lab_card_amount.text = str(card_amount)
 
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
 func _on_card_added(card: Card) -> void:

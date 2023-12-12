@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlea1lgk4q4ic"]
+[gd_scene load_steps=4 format=3 uid="uid://dlea1lgk4q4ic"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_tooltip.gd" id="1_ugg2e"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="2_1jsry"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="2_8s6im"]
 
 [node name="w_tooltip" type="MarginContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -10,15 +12,15 @@ offset_right = 75.0
 script = ExtResource("1_ugg2e")
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 2
-color = Color(0.2, 0.2, 0.2, 1)
+texture = ExtResource("2_8s6im")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -31,6 +33,9 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.839216, 0.870588, 0.0235294, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1jsry")
 theme_override_font_sizes/font_size = 20
 text = "提示名"
 
@@ -39,7 +44,11 @@ layout_mode = 2
 
 [node name="lab_description" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 4)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_1jsry")
 theme_override_font_sizes/font_size = 12
 text = "提示描述提示描述提示描述提示描述提示描述"
 autowrap_mode = 3

@@ -1,6 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvbsh6gt6f3w2"]
+[gd_scene load_steps=12 format=3 uid="uid://bvbsh6gt6f3w2"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_status_bar.gd" id="1_uo83n"]
+[ext_resource type="Texture2D" uid="uid://de8p1ywikmdex" path="res://asserts/textures/widgets/icons/icon_health.tres" id="2_26ltq"]
+[ext_resource type="Texture2D" uid="uid://c655ojsa81no8" path="res://asserts/textures/widgets/icons/icon_coin.tres" id="3_g3wbk"]
+[ext_resource type="Texture2D" uid="uid://benmyy0cyqqf1" path="res://asserts/textures/widgets/icons/icon_map.tres" id="4_o5chf"]
+[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://asserts/textures/widgets/icons/icon_draw_deck.tres" id="5_purme"]
+[ext_resource type="Texture2D" uid="uid://cko57iolst8sg" path="res://asserts/textures/widgets/icons/icon_settings.tres" id="6_eucxe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vb4m"]
 outline_size = 3
@@ -79,22 +84,30 @@ vertical_alignment = 1
 [node name="VSeparator2" type="VSeparator" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_26ltq")
+
 [node name="lab_health" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-text = "生命：34/80"
+text = "34/80"
 label_settings = SubResource("LabelSettings_st41v")
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_g3wbk")
+
 [node name="lab_coin" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
-text = "钱币：274"
+text = "274"
 label_settings = SubResource("LabelSettings_0d5il")
 vertical_alignment = 1
 
@@ -113,21 +126,32 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 
-[node name="btn_map" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
+[node name="btn_map" type="TextureButton" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
-text = "地图"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("4_o5chf")
 
-[node name="btn_card_deck" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
+[node name="btn_card_deck" type="TextureButton" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "牌库22"
+texture_normal = ExtResource("5_purme")
 
-[node name="btn_settings" type="Button" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
-custom_minimum_size = Vector2(60, 0)
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2/btn_card_deck"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="btn_settings" type="TextureButton" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
-text = "设置"
+texture_normal = ExtResource("6_eucxe")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 44)
