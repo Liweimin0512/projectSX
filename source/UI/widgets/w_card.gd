@@ -42,10 +42,12 @@ func highlight() -> void:
 func unhighlight() -> void:
 	pass
 
+## 预览
 func preview() -> void:
 	if not _model.buff_des.is_empty():
 		$w_tooltip.show()
 
+## 取消预览
 func cancel_preview() -> void:
 	$w_tooltip.hide()
 

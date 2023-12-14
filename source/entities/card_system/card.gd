@@ -8,6 +8,9 @@ const CARD_TYPE_NAME = [
 ]
 
 var _model : CardModel
+var card_name : String :
+	get:
+		return _model.card_name
 
 func _init(cardID: StringName) -> void:
 	_model = CardModel.new(cardID)

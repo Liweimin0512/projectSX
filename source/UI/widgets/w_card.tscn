@@ -76,6 +76,8 @@ anchors_preset = 0
 offset_right = 108.0
 offset_bottom = 160.0
 pivot_offset = Vector2(54, 160)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 1
 script = ExtResource("1_0thyn")
 

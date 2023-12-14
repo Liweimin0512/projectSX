@@ -1,2 +1,0 @@
-extends Effect
-class_name EffectApplyBuff

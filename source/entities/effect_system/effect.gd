@@ -20,6 +20,7 @@ func _init(data: Dictionary, targets: Array) -> void:
 	effect_description = data.description
 	target_type = data.target_type
 
+## 执行效果
 func execute() -> void:
 	pass
 

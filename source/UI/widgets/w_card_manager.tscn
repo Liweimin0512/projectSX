@@ -35,19 +35,19 @@ discard_deck = NodePath("../discard_deck")
 
 [node name="draw_deck" parent="." instance=ExtResource("2_fw5vv")]
 unique_name_in_owner = true
-z_index = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 0.0
+offset_left = 32.0
+offset_top = -72.0
+offset_right = 80.0
+offset_bottom = -24.0
 grow_horizontal = 1
 grow_vertical = 0
+metadata/_edit_group_ = true
 
 [node name="MarginContainer" parent="draw_deck" index="1"]
 size_flags_horizontal = 1
@@ -70,13 +70,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -80.0
+offset_top = -72.0
+offset_right = -32.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 deck_type = 1
+metadata/_edit_group_ = true
 
 [node name="ColorRect" parent="discard_deck" index="0"]
 color = Color(0.168627, 0.768627, 1, 1)

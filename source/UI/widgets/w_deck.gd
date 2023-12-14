@@ -19,6 +19,9 @@ func _ready() -> void:
 	_deck.card_removed.connect(_on_card_removed)
 	_deck.card_drawed.connect(_on_card_drawed)
 	self.gui_input.connect(_on_gui_input)
+	self.mouse_entered.connect(_on_mouse_entered)
+	self.mouse_exited.connect(_on_mouse_exited)
+	$MarginContainer/ColorRect.pivot_offset = $MarginContainer/ColorRect.size / 2
 	update_display()
 
 func update_display() -> void:
@@ -45,3 +48,9 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_released():
 			pressed.emit()
+
+func _on_mouse_entered() -> void:
+	$MarginContainer/ColorRect.scale *= 1.5
+
+func _on_mouse_exited() -> void:
+	$MarginContainer/ColorRect.scale = Vector2.ONE

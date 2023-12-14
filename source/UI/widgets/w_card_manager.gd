@@ -74,6 +74,7 @@ func _cancel_card_drag() -> void:
 	#target_selector = null
 	## TODO 调用card_system取消释放方法
 	_card_system.target_selector = null
+	_card_system.selected_cha = null
 
 ## 能否释放卡牌
 func can_release_card(w_card: W_Card) -> bool:
@@ -136,7 +137,8 @@ func _on_deck_pressed(w_deck: W_Deck) -> void:
 ## 卡牌开始拖拽
 func _on_w_card_drag_started(at_position : Vector2, w_card: W_Card) -> void:
 	print("_on_w_card_drag_started:", w_card, at_position)
+	if not w_card.card.can_release(): return
 	drag_position = at_position
 	drag_card = w_card
 	_card_system.prerelease_card(w_card.card)
-
+	w_card.cancel_preview()

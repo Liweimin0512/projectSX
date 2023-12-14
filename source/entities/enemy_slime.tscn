@@ -136,15 +136,24 @@ _data = {
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -36)
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -60)
+
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_p5yip")
 }
 
 [node name="w_health_bar" parent="." index="3"]
-offset_top = -160.0
-offset_bottom = -120.0
+offset_top = -168.0
+offset_bottom = -122.0
 
-[node name="IntentStatus" parent="." index="4"]
-offset_top = -208.0
-offset_bottom = -176.0
+[node name="IntentStatus" parent="." index="5"]
+offset_top = -212.0
+offset_bottom = -180.0
+
+[node name="w_tooltip" parent="." index="6"]
+offset_left = -204.0
+offset_top = -116.0
+offset_right = -54.0
+offset_bottom = -33.0

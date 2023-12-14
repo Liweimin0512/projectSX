@@ -2,8 +2,8 @@ extends MarginContainer
 
 @onready var lab_name: Label = %lab_name
 @onready var lab_hero: Label = %lab_hero
-@onready var lab_health: Label = %lab_health
-@onready var lab_coin: Label = %lab_coin
+@onready var w_status_health: MarginContainer = %w_status_health
+@onready var w_status_coin: MarginContainer = %w_status_coin
 
 var player: Player
 
@@ -16,4 +16,4 @@ func _ready() -> void:
 	)
 
 func display_health_status() -> void:
-	lab_health.text = str(player.current_health) + "/" + str(player.max_health)
+	w_status_health.text = str(player.current_health) + "/" + str(player.max_health)

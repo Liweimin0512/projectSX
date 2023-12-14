@@ -238,6 +238,6 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="C_CardSystem" type="Node" parent="." index="4"]
+[node name="C_CardSystem" type="Node" parent="." index="6"]
 unique_name_in_owner = true
 script = ExtResource("6_xhiqj")

@@ -9,6 +9,7 @@ var _model: CharacterModel
 @onready var health_label: Label = %health_label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
+@onready var c_buff_system: C_BuffSystem = $C_BuffSystem
 
 @export var cha_type: String = ""
 
@@ -86,16 +87,20 @@ func add_shielded(value: int) -> void:
 ## 受到伤害
 func damage(value: int) -> void:
 	#print("受到伤害：", value)
+	var damage : int = value
+	if c_buff_system.has_buff("vulnerable"):
+		damage *= 1.5
 	await play_animation_with_reset("hurt")
-	if shielded >= value:
-		shielded -= value
+	if shielded >= damage:
+		shielded -= damage
 	else:
-		current_health -= (value - shielded)
+		current_health -= (damage - shielded)
 		shielded = 0
 	if current_health<= 0:
 		current_health = 0
 		death()
 		return
+	print("受到伤害：", damage)
 	await play_animation_with_reset("idle")
 
 ## 死亡
