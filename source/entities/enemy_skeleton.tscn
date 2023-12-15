@@ -5,6 +5,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://da6lfgvwswab7" path="res://asserts/animtions/enemy_skeleton.tres" id="3_h6e77"]
 
 [node name="enemy_skeleton" instance=ExtResource("1_wqjps")]
+position = Vector2(-100, 0)
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -80)
@@ -25,7 +26,5 @@ offset_top = -192.0
 offset_bottom = -152.0
 
 [node name="IntentStatus" parent="." index="4"]
-offset_left = -24.0
 offset_top = -244.0
-offset_right = 8.0
 offset_bottom = -212.0

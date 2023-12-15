@@ -1,0 +1,155 @@
+[gd_scene load_steps=4 format=3 uid="uid://cixs5tbqar2uk"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_deck_details.gd" id="1_8y8xy"]
+[ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/UI/widgets/w_card.tscn" id="2_avepq"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="2_c1me7"]
+
+[node name="w_deck_details" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8y8xy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0.909804)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="label_name" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_c1me7")
+theme_override_font_sizes/font_size = 22
+text = "牌堆"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.101961, 0.101961, 0.101961, 0.317647)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+text = "每个回合开始都将从这里抽牌"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 5
+
+[node name="card" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card6" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card7" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card8" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card9" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card10" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card11" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card12" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card13" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card14" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card15" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card16" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card17" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card18" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="card19" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
+layout_mode = 2
+
+[node name="btn_close" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 495.0
+offset_right = 116.0
+offset_bottom = 545.0
+text = "返回"

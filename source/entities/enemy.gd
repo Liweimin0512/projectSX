@@ -9,19 +9,26 @@ var _enemy_model : EnemyModel
 
 @export var can_attack := true
 
-signal enemy_turn_end
+#signal enemy_turn_end
 
 func _ready() -> void:
 	super()
 	_enemy_model = EnemyModel.new(cha_id)
 	c_intent_system.init_intent_pool(_enemy_model.intent_pool)
+	intent_status.hide()
 	area_2d.mouse_entered.connect(
 		func() -> void:
+			if is_selected: return
 			show_tooltip()
 	)
 	area_2d.mouse_exited.connect(
 		func() -> void:
 			w_tooltip.hide()
+	)
+	GameInstance.player.turn_begined.connect(
+		func() -> void:
+			choose_intent()
+			intent_status.show()
 	)
 
 ## 回合开始时
@@ -29,32 +36,35 @@ func _begin_turn() -> void:
 	await intent_status.execute_intent()
 	intent_status.hide()
 	print("敌人攻击")
-	attack()
-	enemy_turn_end.emit()
+	#TODO 根据意图执行动作
+	#attack()
+	execute_intent()
+	turn_begined.emit()
+	#enemy_turn_end.emit()
 
 ## 回合结束时
 func _end_turn() -> void:
-	intent_status.show()
+	turn_completed.emit()
 
 ## 决策意图
 func choose_intent() -> void:
 	var intent : Intent = c_intent_system.choose_intent()
 	if not intent:
+		push_warning("没有找到合适的意图！",self)
 		intent_status.hide()
 		return
 	intent_status.set_status(intent)
+	print("筛选出意图: ", intent.intent_name)
 
 ## 执行意图
 func execute_intent() -> void:
 	c_intent_system.execute_intent()
 
-## 在玩家回合开始时初始化意图
-func on_player_turn_begined() -> void:
-	choose_intent()
-
 ## 显示意图
 func show_tooltip() -> void:
-	if not c_intent_system.current_intent: return
+	if not c_intent_system.current_intent: 
+		push_warning("当前意图为空！", self)
+		return
 	w_tooltip.set_tooltip(
 		c_intent_system.current_intent.intent_name,
 		c_intent_system.current_intent.description
@@ -62,8 +72,10 @@ func show_tooltip() -> void:
 	w_tooltip.show()
 
 func attack() -> void:
-	animation_player.play("attack")
-	await animation_player.animation_finished
-	animation_player.play("idle")
+	await play_animation_with_reset("attack")
+	play_animation_with_reset("idle")
 	var player = GameInstance.player
-	player.damage(5)
+	player.damage(Damage.new(5))
+
+func _to_string() -> String:
+	return self._model.cha_name

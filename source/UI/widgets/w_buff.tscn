@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7owvrp6cj205"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_buff.gd" id="1_1qggh"]
+[ext_resource type="Texture2D" uid="uid://dpfb4ovmthb38" path="res://asserts/textures/widgets/Buffs/attack_boost.png" id="1_5rvx4"]
+
+[node name="w_buff" type="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+script = ExtResource("1_1qggh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_5rvx4")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 15
+text = "999"
+horizontal_alignment = 2
+vertical_alignment = 2

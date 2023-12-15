@@ -1,11 +1,125 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1dkxxilwqga4"]
+[gd_scene load_steps=12 format=3 uid="uid://d1dkxxilwqga4"]
 
 [ext_resource type="PackedScene" uid="uid://t4e44od55s3t" path="res://source/UI/widgets/w_health_bar.tscn" id="2_d0fqm"]
 [ext_resource type="Script" path="res://source/entities/character.gd" id="2_gxres"]
-[ext_resource type="Script" path="res://source/ability_system/C_AbilitySystem.gd" id="3_n3l57"]
+[ext_resource type="Texture2D" uid="uid://daw1t1b5xee2s" path="res://asserts/textures/widgets/seletor/seletor_01.tres" id="4_p0c64"]
+[ext_resource type="Texture2D" uid="uid://4ys2yn3vtk8u" path="res://asserts/textures/widgets/seletor/seletor_02.tres" id="5_qq5hu"]
+[ext_resource type="Texture2D" uid="uid://b4xcjk7rudclk" path="res://asserts/textures/widgets/seletor/seletor_03.tres" id="6_4w4ta"]
+[ext_resource type="Script" path="res://source/buff_system/C_BuffSystem.gd" id="7_07cqm"]
+[ext_resource type="Texture2D" uid="uid://css3yb5xubq53" path="res://asserts/textures/widgets/seletor/seletor_04.tres" id="7_mm68b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
-size = Vector2(96, 151)
+size = Vector2(96, 121.625)
+
+[sub_resource type="Animation" id="Animation_e8tgc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("selector/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("selector/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("selector/TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 104)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("selector/TextureRect4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(76, 104)]
+}
+
+[sub_resource type="Animation" id="Animation_2dc08"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("selector/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("selector/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(76, 0), Vector2(72, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("selector/TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 108), Vector2(4, 100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("selector/TextureRect4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(76, 108), Vector2(72, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tqio"]
+_data = {
+"RESET": SubResource("Animation_e8tgc"),
+"idle": SubResource("Animation_2dc08")
+}
 
 [node name="character" type="Node2D" groups=["character"]]
 script = ExtResource("2_gxres")
@@ -18,7 +132,7 @@ scale = Vector2(3, 3)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -47.75)
+position = Vector2(0, -61.625)
 shape = SubResource("RectangleShape2D_voqo7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -26,10 +140,79 @@ root_node = NodePath("../Sprite2D")
 
 [node name="w_health_bar" parent="." instance=ExtResource("2_d0fqm")]
 unique_name_in_owner = true
-offset_left = -60.0
-offset_top = -168.0
-offset_right = 56.0
-offset_bottom = -128.0
+offset_left = -56.0
+offset_top = -164.0
+offset_right = 60.0
+offset_bottom = -124.0
 
-[node name="C_AbilitySystem" type="Node" parent="."]
-script = ExtResource("3_n3l57")
+[node name="selector" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -124.0
+offset_right = 48.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="selector"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_p0c64")
+
+[node name="TextureRect2" type="TextureRect" parent="selector"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 76.0
+offset_right = 116.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_qq5hu")
+
+[node name="TextureRect3" type="TextureRect" parent="selector"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 104.0
+offset_right = 40.0
+offset_bottom = 144.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_4w4ta")
+
+[node name="TextureRect4" type="TextureRect" parent="selector"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 104.0
+offset_right = 116.0
+offset_bottom = 144.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_mm68b")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="selector"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7tqio")
+}
+autoplay = "idle"
+
+[node name="C_BuffSystem" type="Node" parent="."]
+script = ExtResource("7_07cqm")

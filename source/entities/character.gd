@@ -9,6 +9,7 @@ var _model: CharacterModel
 @onready var health_label: Label = %health_label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var area_2d: Area2D = $Area2D
+@onready var c_buff_system: C_BuffSystem = $C_BuffSystem
 
 @export var cha_type: String = ""
 
@@ -19,14 +20,14 @@ var current_health: float:
 	set(value):
 		_model.current_health = value
 		current_health_changed.emit(_model.current_health)
-		display_health_bar()
+		_display_health_bar()
 
 var max_health: float:
 	get:
 		return _model.max_health
 	set(value):
 		_model.max_health = value
-		display_health_bar()
+		_display_health_bar()
 
 ## 护盾值
 var shielded: int:
@@ -34,26 +35,35 @@ var shielded: int:
 		return _model.shielded
 	set(value):
 		_model.shielded = value
-		display_health_bar()
+		_display_health_bar()
 
-signal mouse_entered
-signal mouse_exited
+var is_death : bool = false
+
+var is_selected : bool = false
+
+#signal mouse_entered
+#signal mouse_exited
 signal current_health_changed(value)
+
+signal turn_begined
+signal turn_completed
+
+signal died
 
 func _ready() -> void:
 	area_2d.mouse_entered.connect(
 		func() -> void:
 			EventBus.push_event("character_mouse_entered", self)
-			mouse_entered.emit()
+			#mouse_entered.emit()
 	)
 	area_2d.mouse_exited.connect(
 		func() -> void:
 			EventBus.push_event("character_mouse_exited", self)
-			mouse_exited.emit()
+			#mouse_exited.emit()
 	)
 	_model = CharacterModel.new(cha_id)
 	w_health_bar._character = self
-	display_health_bar()
+	_display_health_bar()
 
 ## 开始战斗
 func _begin_combat() -> void:
@@ -71,32 +81,56 @@ func _begin_turn() -> void:
 func _end_turn() -> void:
 	pass
 
-func display_health_bar() -> void:
-	w_health_bar.update_display()
-
 ## 添加护盾
 func add_shielded(value: int) -> void:
-	print("添加护盾：", value)
+	#print("添加护盾：", value)
 	shielded += value
 
-func damage(value: int) -> void:
-	print("造成伤害：", value)
-	await play_animation("hurt")
-	if shielded >= value:
-		shielded -= value
+## 受到伤害
+func damage(damage: Damage) -> void:
+	if self.is_death: 
+		push_error("无法攻击尸体！")
+		return
+	#print("受到伤害：", value)
+	#var damage : int = value
+	c_buff_system.before_damage(damage)
+	#if c_buff_system.has_buff("vulnerable"):
+		#damage *= 1.5
+	await play_animation_with_reset("hurt")
+	if shielded >= damage.value:
+		shielded -= damage.value
 	else:
-		current_health -= (value - shielded)
+		current_health -= (damage.value - shielded)
 		shielded = 0
+	c_buff_system.after_damage(damage)
 	if current_health<= 0:
 		current_health = 0
 		death()
+		return
+	print("受到伤害：", damage)
+	await play_animation_with_reset("idle")
 
+## 死亡
 func death() -> void:
-	play_animation("death")
+	await play_animation_with_reset("death")
+	is_death = true
+	died.emit()
 
-func play_animation(animation_name : String) -> void:
-	var current_animation = animation_player.current_animation
+## 更新血条显示
+func _display_health_bar() -> void:
+	w_health_bar.update_display()
+
+func play_animation_with_reset(animation_name: StringName) -> void:
+	if animation_player.has_animation("RESET"):
+		animation_player.play("RESET")
+	await animation_player.animation_finished
 	animation_player.play(animation_name)
 	await animation_player.animation_finished
-	animation_player.play("RESET")
-	animation_player.play(current_animation)
+
+func selected() -> void:
+	is_selected = true
+	$selector.show()
+
+func unselected() -> void:
+	is_selected = false
+	$selector.hide()

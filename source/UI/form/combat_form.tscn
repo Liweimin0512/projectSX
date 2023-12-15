@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/w_card_manager.tscn" id="1_i77bo"]
 [ext_resource type="Script" path="res://source/UI/form/combat_form.gd" id="1_kt0dy"]
 [ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
-[ext_resource type="Texture2D" uid="uid://4pjk2fsbfugu" path="res://asserts/textures/widgets/icon_energy.tres" id="3_cxo8i"]
+[ext_resource type="Texture2D" uid="uid://4pjk2fsbfugu" path="res://asserts/textures/widgets/icons/icon_energy.tres" id="3_epp6o"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
-[ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://asserts/textures/widgets/icon_turn.tres" id="4_i8vjq"]
 [ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="4_rpfgr"]
+[ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://asserts/textures/widgets/icons/icon_turn.tres" id="6_y5c6i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
@@ -36,16 +36,16 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 88.0
-offset_top = -168.0
+offset_top = -106.0
 offset_right = 152.0
-offset_bottom = -104.0
+offset_bottom = -42.0
 grow_vertical = 0
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="TextureRect" parent="w_energy"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("3_cxo8i")
+texture = ExtResource("3_epp6o")
 
 [node name="lab_power" type="Label" parent="w_energy"]
 unique_name_in_owner = true
@@ -63,9 +63,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -232.0
-offset_top = -160.0
+offset_top = -106.0
 offset_right = -104.0
-offset_bottom = -128.0
+offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 tooltip_text = "按下这个按钮将会结束你的回合。
@@ -88,7 +88,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_rpfgr")
 text = "结束回合"
-icon = ExtResource("4_i8vjq")
+icon = ExtResource("6_y5c6i")
 
 [node name="turn_begin" type="MarginContainer" parent="."]
 unique_name_in_owner = true

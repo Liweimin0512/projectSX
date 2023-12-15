@@ -19,12 +19,25 @@ var current_character: Character = null
 ## 选中的目标
 var cha_selected: Character = null
 
+signal successed
+
 func _ready() -> void:
 	combat_form.end_turn_pressed.connect(
 		func() -> void:
 			if is_player_turn():
 				next_turn()
 	)
+	EventBus.subscribe("character_mouse_entered", 
+		func(cha: Character) -> void:
+			cha_selected = cha
+	)
+	EventBus.subscribe("character_mouse_exited", 
+		func(cha: Character) -> void:
+			assert(cha == cha_selected)
+			cha_selected = null
+	)
+	var player: Character = GameInstance.player
+	player.died.connect(game_over)
 
 ## 进入当前场景，开始战斗
 func _enter(msg:Dictionary = {}) -> void:
@@ -50,17 +63,18 @@ func begin_combat() -> void:
 		cha._begin_combat()
 	next_turn()
 
-## 开始回合
+## 切换回合
 func next_turn() -> void:
 	if current_character:
 		current_character._end_turn()
 		current_character = _get_next_character()
 	else:
 		current_character = characters[0]
-
+	if current_character.is_death:
+		current_character = _get_next_character()
 	if current_character:
-		if current_character == GameInstance.player:
-			_player_turn_begin()
+		#if current_character == GameInstance.player:
+			#_player_turn_begin()
 		await get_tree().create_timer(1.5).timeout
 		current_character._begin_turn()
 	combat_form.next_turn(current_character)
@@ -81,10 +95,19 @@ func _init_player() -> void:
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
 	if enemyID.is_empty(): return
 	var enemy_path: String = AssetUtility.get_entity_path(DatatableManager.get_datatable_row("monster", enemyID)["enemy_scene"])
-	var enemy : Enemy = GameInstance.create_entity(enemy_path)
-	enemy.enemy_turn_end.connect(
+	var enemy :  = GameInstance.create_entity(enemy_path)
+	enemy.turn_begined.connect(
 		func() -> void:
 			next_turn()
+	)
+	enemy.died.connect(
+		func() -> void:
+			print("判断是否关卡成功")
+			for e in get_tree().get_nodes_in_group("enemy"):
+				if not e.is_death:
+					return
+			print("战斗胜利！")
+			successed.emit()
 	)
 	enemy.cha_id = enemyID
 	markers[markerID].add_child(enemy)
@@ -100,10 +123,14 @@ func _get_next_character() -> Character:
 				return characters[i + 1]
 	return characters[0]
 
-func _player_turn_begin() -> void:
-	for cha in characters:
-		if cha != GameInstance.player:
-			cha.on_player_turn_begined()
+#func _player_turn_begin() -> void:
+	#for cha in characters:
+		#if cha != GameInstance.player:
+			#cha.on_player_turn_begined()
 
 func is_player_turn() -> bool:
 	return current_character == GameInstance.player
+
+func game_over() -> void:
+	print("游戏结束！")
+	get_tree().paused = true

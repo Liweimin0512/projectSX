@@ -38,6 +38,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 
 [node name="ColorRect" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
 

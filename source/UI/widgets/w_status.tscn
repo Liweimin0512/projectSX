@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://mve4xgcaye53"]
+
+[ext_resource type="Script" path="res://source/UI/widgets/w_status.gd" id="1_k8k6n"]
+[ext_resource type="Texture2D" uid="uid://de8p1ywikmdex" path="res://asserts/textures/widgets/icons/icon_health.tres" id="1_m7auv"]
+
+[node name="w_status" type="MarginContainer"]
+script = ExtResource("1_k8k6n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture = ExtResource("1_m7auv")
+expand_mode = 1
+
+[node name="label" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "34/80"
+vertical_alignment = 1

@@ -32,12 +32,24 @@ func init_data() -> void:
 	lab_type.text = Card.CARD_TYPE_NAME[_model.card_type]
 	lab_cost.text = str(_model.cost)
 	tr_icon.texture = _model.icon
+	var data = DatatableManager.get_datatable_row("buff", _model.buff_des)
+	if not data.is_empty():
+		$w_tooltip.set_tooltip(data.name, data.description)
 
 func highlight() -> void:
 	pass
 
 func unhighlight() -> void:
 	pass
+
+## 预览
+func preview() -> void:
+	if not _model.buff_des.is_empty():
+		$w_tooltip.show()
+
+## 取消预览
+func cancel_preview() -> void:
+	$w_tooltip.hide()
 
 ## 是否需要目标
 func needs_target() -> bool:

@@ -1,8 +1,8 @@
-﻿ID,name,intent_pool,enemy_scene
-ID,怪物名,意图池,怪物场景
-string,string,string[],string
-slime,史莱姆,split*absorb*entangle,enemy_slime
-flying_eye,眼魔,destruction_ray*curse_gaze*magic_shield,enemy_flying_eye
-goblin,地精,sprint_stab*set_trap*sneak_attack,enemy_goblin
-mushroom,蘑菇怪,toxin_spray*healing_spore*hallucinogenic_spore,enemy_mushroom
-skeleton,骷髅怪,heavy_strike*bone_shield*summon_assistance,enemy_skeleton
+﻿ID,name,enemy_scene,intent_pool
+ID,怪物名,怪物场景,意图池
+string,string,string,string[]
+slime,史莱姆,enemy_slime,split*absorb*entangle*attack_5
+mushroom,蘑菇怪,enemy_mushroom,toxin_spray*healing_spore*hallucinogenic_spore*attack_8
+skeleton,骷髅怪,enemy_skeleton,heavy_strike*bone_shield*summon_assistance
+flying_eye,眼魔,enemy_flying_eye,destruction_ray*curse_gaze*magic_shield
+goblin,地精,enemy_goblin,sprint_stab*set_trap*sneak_attack
