@@ -18,6 +18,7 @@ func select_target(selected_character: Character) -> void:
 		emit_signal("selection_canceled")
 
 func _meets_conditions(selected_character: Character) -> bool:
+	if selected_character.is_death : return false
 	for condition in filter_conditions:
 		var value = filter_conditions[condition]
 		if selected_character.get(condition) != value:

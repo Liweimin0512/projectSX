@@ -29,26 +29,11 @@ func release(caster: Character, selected_cha: Character) -> void:
 	assert(selected_cha != null, "卡牌目标不能为空！")
 	if not needs_target():
 		selected_cha = caster
-	var effects = create_effects(selected_cha)
-	await caster.play_animation_with_reset(_model.play_animation)
-	for effect in effects:
-		effect.execute()
+	for effect_id: StringName in _model.effects:
+		#TODO 需要根据条件获取目标
+		Effect.try_execute(effect_id, caster, [selected_cha])
 	# 消耗能量
 	caster.use_energy(_model.cost)
+	await caster.play_animation_with_reset(_model.play_animation)
 	await caster.play_animation_with_reset("idle")
 
-## 获取效果目标
-func get_effect_targets(caster: Character, selected_cha: Character = null) -> Array:
-	return _model.get_effect_targets(caster, selected_cha)
-
-## 创建效果
-func create_effects(selected_cha: Character = null) -> Array[Effect]:
-	var caster : Character = GameInstance.player
-	var _targets : Array[Character] = get_effect_targets(caster, selected_cha)
-	var effects: Array[Effect]
-	for e in _model.effects:
-		var effect = Effect.create_effect(e, _targets)
-		if not effect:
-			push_error("创建技能效果失败！")
-		effects.append(effect)
-	return effects

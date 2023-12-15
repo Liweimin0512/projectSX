@@ -18,8 +18,8 @@ enum CARD_STATUS_TYPE{
 var card_status : CARD_STATUS_TYPE = CARD_STATUS_TYPE.NONE
 var value := 0
 
-func _init(data: Dictionary, targets: Array) -> void:
-	super(data, targets)
+func _init(data: Dictionary, caster: Character, targets: Array[Character]) -> void:
+	super(data, caster, targets)
 	match get_card_status(data.effect_parameters[0]):
 		CARD_STATUS_TYPE.VULNERABLE:
 			print("易伤")

@@ -55,7 +55,7 @@ func needs_target() -> bool :
 			return false
 
 ## 获取目标
-func get_effect_targets(owenr:Character, selected_cha: Character) -> Array[Character]:
+func get_targets(owenr:Character, selected_cha: Character) -> Array[Character]:
 	match target_type:
 		TARGET_TYPE.SELF:
 			return [owenr]

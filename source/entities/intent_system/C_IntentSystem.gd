@@ -38,6 +38,7 @@ func choose_intent() -> Intent:
 		accumulated_weight += intent.weight
 		if random_choice <= accumulated_weight:
 			current_intent = intent
+			return current_intent
 	return current_intent
 
 # 执行当前意图

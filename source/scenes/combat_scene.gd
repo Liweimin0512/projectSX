@@ -19,6 +19,8 @@ var current_character: Character = null
 ## 选中的目标
 var cha_selected: Character = null
 
+signal successed
+
 func _ready() -> void:
 	combat_form.end_turn_pressed.connect(
 		func() -> void:
@@ -34,6 +36,8 @@ func _ready() -> void:
 			assert(cha == cha_selected)
 			cha_selected = null
 	)
+	var player: Character = GameInstance.player
+	player.died.connect(game_over)
 
 ## 进入当前场景，开始战斗
 func _enter(msg:Dictionary = {}) -> void:
@@ -66,7 +70,8 @@ func next_turn() -> void:
 		current_character = _get_next_character()
 	else:
 		current_character = characters[0]
-
+	if current_character.is_death:
+		current_character = _get_next_character()
 	if current_character:
 		#if current_character == GameInstance.player:
 			#_player_turn_begin()
@@ -95,6 +100,15 @@ func _create_enemy(enemyID: StringName, markerID: int) -> void:
 		func() -> void:
 			next_turn()
 	)
+	enemy.died.connect(
+		func() -> void:
+			print("判断是否关卡成功")
+			for e in get_tree().get_nodes_in_group("enemy"):
+				if not e.is_death:
+					return
+			print("战斗胜利！")
+			successed.emit()
+	)
 	enemy.cha_id = enemyID
 	markers[markerID].add_child(enemy)
 	characters.append(enemy)
@@ -116,3 +130,7 @@ func _get_next_character() -> Character:
 
 func is_player_turn() -> bool:
 	return current_character == GameInstance.player
+
+func game_over() -> void:
+	print("游戏结束！")
+	get_tree().paused = true

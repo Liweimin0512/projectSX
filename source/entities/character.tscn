@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://css3yb5xubq53" path="res://asserts/textures/widgets/seletor/seletor_04.tres" id="7_mm68b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
-size = Vector2(96, 120)
+size = Vector2(96, 121.625)
 
 [sub_resource type="Animation" id="Animation_e8tgc"]
 length = 0.001

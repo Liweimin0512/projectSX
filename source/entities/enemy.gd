@@ -36,7 +36,9 @@ func _begin_turn() -> void:
 	await intent_status.execute_intent()
 	intent_status.hide()
 	print("敌人攻击")
-	attack()
+	#TODO 根据意图执行动作
+	#attack()
+	execute_intent()
 	turn_begined.emit()
 	#enemy_turn_end.emit()
 
@@ -52,6 +54,7 @@ func choose_intent() -> void:
 		intent_status.hide()
 		return
 	intent_status.set_status(intent)
+	print("筛选出意图: ", intent.intent_name)
 
 ## 执行意图
 func execute_intent() -> void:
@@ -72,7 +75,7 @@ func attack() -> void:
 	await play_animation_with_reset("attack")
 	play_animation_with_reset("idle")
 	var player = GameInstance.player
-	player.damage(5)
+	player.damage(Damage.new(5))
 
 func _to_string() -> String:
 	return self._model.cha_name

@@ -48,6 +48,8 @@ signal current_health_changed(value)
 signal turn_begined
 signal turn_completed
 
+signal died
+
 func _ready() -> void:
 	area_2d.mouse_entered.connect(
 		func() -> void:
@@ -85,17 +87,22 @@ func add_shielded(value: int) -> void:
 	shielded += value
 
 ## 受到伤害
-func damage(value: int) -> void:
+func damage(damage: Damage) -> void:
+	if self.is_death: 
+		push_error("无法攻击尸体！")
+		return
 	#print("受到伤害：", value)
-	var damage : int = value
-	if c_buff_system.has_buff("vulnerable"):
-		damage *= 1.5
+	#var damage : int = value
+	c_buff_system.before_damage(damage)
+	#if c_buff_system.has_buff("vulnerable"):
+		#damage *= 1.5
 	await play_animation_with_reset("hurt")
-	if shielded >= damage:
-		shielded -= damage
+	if shielded >= damage.value:
+		shielded -= damage.value
 	else:
-		current_health -= (damage - shielded)
+		current_health -= (damage.value - shielded)
 		shielded = 0
+	c_buff_system.after_damage(damage)
 	if current_health<= 0:
 		current_health = 0
 		death()
@@ -107,6 +114,7 @@ func damage(value: int) -> void:
 func death() -> void:
 	await play_animation_with_reset("death")
 	is_death = true
+	died.emit()
 
 ## 更新血条显示
 func _display_health_bar() -> void:
