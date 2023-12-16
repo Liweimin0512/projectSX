@@ -8,6 +8,9 @@ var intent_pool: Array = []
 # 当前选定的意图
 var current_intent: Intent = null
 
+signal intent_choosed
+signal intent_executed
+
 func _ready() -> void:
 	randomize()
 
@@ -38,7 +41,9 @@ func choose_intent() -> Intent:
 		accumulated_weight += intent.weight
 		if random_choice <= accumulated_weight:
 			current_intent = intent
+			intent_choosed.emit(current_intent)
 			return current_intent
+	intent_choosed.emit(current_intent)
 	return current_intent
 
 # 执行当前意图
@@ -48,3 +53,4 @@ func execute_intent():
 		return
 	current_intent.execute()
 	update_cooldowns()
+	intent_executed.emit()

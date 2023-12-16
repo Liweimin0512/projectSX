@@ -2,6 +2,7 @@ extends RefCounted
 class_name Intent
 
 # 意图的基础类
+
 enum INTENT_TYPE {
 	NONE,
 	ATTACK,
@@ -14,43 +15,44 @@ enum INTENT_TYPE {
 	ESCAPE
 }
 
-@export var intent_name : String = ""
-@export var description: String
-@export var icon: Texture # 意图的图标路径
+var _model: IntentModel
+var _caster: Character:
+	get:
+		return _model._caster
+	set(value):
+		_model._caster = value
 
-## 意图的类型，比如"attack", "defend", "buff", "debuff"等
-@export var type: INTENT_TYPE 
-## 意图相关的数值
-@export var value: int
-
-var effects : Array
-
-var cooldown: int = 0
-@export var max_cooldown: int = 0
-## 意图权重
-@export var weight: float = 1
-
-var play_animation: StringName
+var icon: Texture:
+	get:
+		return _model.icon
+var value: float:
+	get:
+		return _model.value
+var cooldown: float:
+	get:
+		return _model.cooldown
+	set(value):
+		_model.cooldown = value
+var play_animation : StringName:
+	get:
+		return _model.play_animation
+var max_cooldown: int:
+	get:
+		return _model.max_cooldown
+var weight: int:
+	get:
+		return _model.weight
+var effects: Array : 
+	get: return _model.effects
 
 ## 当前状态是否可用
 var is_available: bool = true :
 	get:
 		return cooldown == 0
 
-var _caster: Character
 
 func _init(caster: Character, intentID: StringName) -> void:
-	_caster = caster
-	var data: Dictionary = DatatableManager.get_datatable_row("intent", intentID)
-	intent_name = data.name
-	description = data.des
-	weight = data.weight
-	max_cooldown = data.cooldown
-	icon = data.icon
-	type = data.type
-	value = data.value
-	effects = data.effects
-	play_animation = data.play_animation
+	_model = IntentModel.new(caster, intentID)
 
 ## 刷新冷却
 func process_cooldown() -> void:
@@ -59,7 +61,8 @@ func process_cooldown() -> void:
 
 ## 实现意图的具体逻辑
 func execute() -> void:
-	await _caster.play_animation_with_reset(play_animation)
+	if not play_animation.is_empty():
+		await _caster.play_animation_with_reset(play_animation)
 	cooldown = max_cooldown
 	for effectID : StringName in effects:
 		Effect.try_execute(effectID, _caster, [GameInstance.player])
