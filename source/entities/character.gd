@@ -37,7 +37,9 @@ var shielded: int:
 		_model.shielded = value
 		_display_health_bar()
 
-var is_death : bool = false
+var is_death : bool = false:
+	get:
+		return current_health <= 0
 
 var is_selected : bool = false
 
@@ -102,19 +104,18 @@ func damage(damage: Damage) -> void:
 		shielded = 0
 	#if c_buff_system.has_buff("vulnerable"):
 		#damage *= 1.5
-	await play_animation_with_reset("hurt")
 	c_buff_system.after_damage(damage)
 	if current_health<= 0:
 		current_health = 0
 		death()
-		return
-	print("受到伤害：", damage)
-	await play_animation_with_reset("idle")
+	else:
+		await play_animation_with_reset("hurt")
+		print("受到伤害：", damage)
+		play_animation_with_reset("idle")
 
 ## 死亡
 func death() -> void:
 	await play_animation_with_reset("death")
-	is_death = true
 	died.emit()
 
 ## 更新血条显示

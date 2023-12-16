@@ -54,3 +54,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	$MarginContainer/ColorRect.scale = Vector2.ONE
+
+func _to_string() -> String:
+	return _deck.deck_name

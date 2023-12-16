@@ -19,4 +19,7 @@ func _ready() -> void:
 
 func display() -> void:
 	label.text = str(buff.value)
-	
+	if buff.buff_type == Buff.BUFF_TYPE.VALUE:
+		label.font_color == Color.DARK_GREEN if buff.value >= 0 else Color.RED
+	else:
+		label.font_color == Color.WHITE
