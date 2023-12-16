@@ -18,24 +18,34 @@ func after_damage(damage: Damage) -> void:
 		if buff.callback_type == Buff.CALLBACK_TYPE.AFTER_DAMAGE:
 			buff.execute_func.call(damage)
 
+func _on_turn_begined() -> void:
+	for buff: Buff in buffs:
+		if buff.buff_type == Buff.BUFF_TYPE.VALUE and buff.duration_type == Buff.DURATION_TYPE.TURN:
+			remove_buff(buff)
+
 func _on_turn_ended() -> void:
 	for buff in buffs:
-		if buff.is_turn():
+		if buff.is_stacked and buff.buff_type == Buff.BUFF_TYPE.STATUS:
 			buff.value -= 1
 			if buff.value <= 0:
 				remove_buff(buff)
 
 ## 应用buff
 func apply_buff(new_buff: Buff) -> void:
-	var buff_found = false
+	#var buff_found = false
+	var buff: Buff
 	if new_buff.is_stacked:
-		for buff in buffs:
-			if buff.can_stacked(new_buff):
-				buff.stack(new_buff)
-			buff_found = true
-	if not buff_found:
+		for b in buffs:
+			if b.can_stacked(new_buff):
+				b.stack(new_buff)
+				buff = b
+			#buff_found = true
+	if not buff:
 		buffs.append(new_buff)
 		buff_applied.emit(new_buff)
+		buff = new_buff
+	if buff.buff_type == Buff.BUFF_TYPE.VALUE:
+		buff.apply()
 
 func has_buff(buff_name: StringName) -> bool:
 	var bs : Array = buffs.filter(

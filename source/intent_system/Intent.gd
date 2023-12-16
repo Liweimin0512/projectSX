@@ -22,6 +22,12 @@ var _caster: Character:
 	set(value):
 		_model._caster = value
 
+var intent_name: String:
+	get:
+		return _model.intent_name
+var description: String:
+	get:
+		return _model.description
 var icon: Texture:
 	get:
 		return _model.icon

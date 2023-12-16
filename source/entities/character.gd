@@ -97,11 +97,7 @@ func damage(damage: Damage) -> void:
 	#if c_buff_system.has_buff("vulnerable"):
 		#damage *= 1.5
 	await play_animation_with_reset("hurt")
-	if shielded >= damage.value:
-		shielded -= damage.value
-	else:
-		current_health -= (damage.value - shielded)
-		shielded = 0
+
 	c_buff_system.after_damage(damage)
 	if current_health<= 0:
 		current_health = 0

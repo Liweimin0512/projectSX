@@ -37,8 +37,8 @@ func _begin_turn() -> void:
 	#intent_status.hide()
 	print("敌人攻击")
 	#TODO 根据意图执行动作
-	#attack()
-	c_intent_system.execute_intent()
+	attack()
+	#c_intent_system.execute_intent()
 	turn_begined.emit()
 	#enemy_turn_end.emit()
 

@@ -1,9 +1,9 @@
 extends MarginContainer
 
-@onready var label_shielded: Label = %label_shielded
+#@onready var label_shielded: Label = %label_shielded
 @onready var health_bar: ProgressBar = %health_bar
 @onready var health_label: Label = %health_label
-@onready var shielded_container: MarginContainer = %ShieldedContainer
+#@onready var shielded_container: MarginContainer = %ShieldedContainer
 @onready var buff_container: HBoxContainer = %buff_container
 @onready var c_buff_system: C_BuffSystem = $"../C_BuffSystem"
 
@@ -37,10 +37,7 @@ func update_display() -> void:
 	health_bar.value = _character.current_health
 	health_label.text = str(_character.current_health) + "/" + str(_character.max_health)
 	if _character.shielded > 0:
-		shielded_container.show()
 		health_bar.add_theme_stylebox_override("fill", box_line_shielded)
-		label_shielded.text = str(_character.shielded)
 	else:
-		shielded_container.hide()
 		health_bar.add_theme_stylebox_override("fill", box_line_red)
 	
