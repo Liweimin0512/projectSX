@@ -30,6 +30,7 @@ func create_buff_widget(buff: Buff) -> W_Buff:
 	w_buff.buff = buff
 	return w_buff
 
+## 更新显示
 func update_display() -> void:
 	if not _character:
 		_character = owner
@@ -37,6 +38,7 @@ func update_display() -> void:
 	health_bar.value = _character.current_health
 	health_label.text = str(_character.current_health) + "/" + str(_character.max_health)
 	if _character.shielded > 0:
+		health_label.text += " + " + str(_character.shielded)
 		health_bar.add_theme_stylebox_override("fill", box_line_shielded)
 	else:
 		health_bar.add_theme_stylebox_override("fill", box_line_red)

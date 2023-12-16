@@ -26,12 +26,26 @@ position = Vector2(0, -60.8125)
 unique_name_in_owner = true
 autoplay = "idle"
 
+[node name="TextureRect2" parent="selector" index="1"]
+offset_left = -20.0
+offset_right = 20.0
+
+[node name="TextureRect3" parent="selector" index="2"]
+offset_top = -24.0
+offset_bottom = 16.0
+
+[node name="TextureRect4" parent="selector" index="3"]
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = 16.0
+
 [node name="IntentStatus" parent="." index="6" node_paths=PackedStringArray("intent_system") instance=ExtResource("20_yltto")]
 unique_name_in_owner = true
 offset_left = -20.0
-offset_top = -220.0
+offset_top = -212.0
 offset_right = -20.0
-offset_bottom = -220.0
+offset_bottom = -212.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 intent_system = NodePath("../C_IntentSystem")

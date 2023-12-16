@@ -69,6 +69,8 @@ func process_cooldown() -> void:
 func execute() -> void:
 	if not play_animation.is_empty():
 		await _caster.play_animation_with_reset(play_animation)
+	else:
+		await _caster.get_tree().create_timer(1).timeout
 	cooldown = max_cooldown
 	for effectID : StringName in effects:
 		Effect.try_execute(effectID, _caster, [GameInstance.player])
@@ -78,3 +80,6 @@ func execute() -> void:
 ## 返回意图的描述
 func get_description() -> String:
 	return ""
+
+func _to_string() -> String:
+	return intent_name

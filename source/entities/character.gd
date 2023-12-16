@@ -75,7 +75,7 @@ func _end_combat() -> void:
 
 ## 回合开始时
 func _begin_turn() -> void:
-	pass
+	shielded = 0
 
 ## 回合结束时
 func _end_turn() -> void:
@@ -94,10 +94,15 @@ func damage(damage: Damage) -> void:
 	#print("受到伤害：", value)
 	#var damage : int = value
 	c_buff_system.before_damage(damage)
+	if shielded >= damage.value:
+		shielded -= damage.value
+	else:
+		damage.value -= shielded
+		current_health -= damage.value
+		shielded = 0
 	#if c_buff_system.has_buff("vulnerable"):
 		#damage *= 1.5
 	await play_animation_with_reset("hurt")
-
 	c_buff_system.after_damage(damage)
 	if current_health<= 0:
 		current_health = 0

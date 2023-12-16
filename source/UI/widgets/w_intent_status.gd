@@ -12,13 +12,15 @@ func _ready() -> void:
 	self.hide()
 
 func set_status(intent: Intent) -> void:
-	if not intent: return
+	self.show()
+	if not intent: 
+		push_error("意图为空！")
+		return
 	sprite.texture = intent.icon
 	label.text = str(intent.value) if intent.value > 0 else ""
-	self.show()
 
 func execute_intent() -> void:
+	self.hide()
 	animation_player.play("execute")
 	await animation_player.animation_finished
 	animation_player.play("idle")
-	self.hide()

@@ -1,7 +1,7 @@
 extends Node
 class_name C_CardSystem
 
-var distribute_card_amount: int = 5
+@export var distribute_card_amount: int = 4
 var draw_deck : CardDeck = CardDeck.new("抽牌堆", 0, "每个回合结束的时候都从这里抽牌")
 var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1, "每个回合结束的时候都会将手牌丢弃在这里")
 var hand_cards : Array = []
