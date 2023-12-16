@@ -7,4 +7,3 @@ var click_audios : Array =[
 	preload("res://asserts/audio/click4.ogg"),
 	preload("res://asserts/audio/click5.ogg"),
 ]
-

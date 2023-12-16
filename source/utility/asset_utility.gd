@@ -10,8 +10,5 @@ const t_arrow_body_path : String = "res://asserts/textures/widgets/fightJ.png"
 static func get_entity_path(entity_name: String) -> String:
 	return entity_path + entity_name + ".tscn"
 
-#static func get_enemy_path(enemy_name: String) -> String:
-	#return get_entity_path("enemy" + enemy_name)
-
 static func get_scene_path(scene_name: String) -> String:
 	return scene_path + scene_name + '.tscn'

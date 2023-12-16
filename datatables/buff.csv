@@ -15,6 +15,7 @@
 9被治疗时
 10使用卡牌时",图标,效果ID列表
 string,string,string,bool,int,int,int,texture,string[]
+block,格挡,格挡部分伤害,,,,,,
 strength,力量,增加角色攻击卡牌造成的伤害,1,,,,,
 dexterity,敏捷,增加每次或格挡时的格挡量,1,,,,,
 regen,再生,每回合结束时恢复一定量的生命值,1,,,,,

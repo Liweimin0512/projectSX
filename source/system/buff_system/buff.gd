@@ -70,24 +70,16 @@ func _init(buff_id: StringName, value: int, caster: Character,  target: Characte
 		effects.append(effect)
 	match _model.callback_type:
 		CALLBACK_TYPE.BEFORE_DAMAGE:
-			execute_func = before_damage_func
+			execute_func = _before_damage
 		_:
 			execute_func = _execute
-
-## 应用BUFF
-func apply() -> void:
-	for effect: Effect in effects:
-		effect.call("apply")
 
 ## 执行BUFF
 func _execute() -> void:
 	for effect : Effect in effects:
 		effect.execute()
 
-func is_turn() -> bool:
-	return _model.is_turn()
-
-func before_damage_func(damage: Damage) -> void:
+func _before_damage(damage: Damage) -> void:
 	for effect in effects:
 		effect.set("damage", damage)
 	_execute()

@@ -21,17 +21,14 @@ class ProcedureInitResource:
 
 	var data_system
 	var datatable_paths = {
-		"monster" : false,
-		"card" : false,
-		"hero" : false,
 		"combat": false,
 		"character": false,
-#		"ability" : false,
-		"ability_effect" : false,
-		"attribute" : false,
-#		"attribute_set" : false,
+		"hero" : false,
+		"monster" : false,
+		"card" : false,
 		"intent" : false,
 		"buff": false,
+		"ability_effect" : false,
 	}
 	
 	func enter(msg : Dictionary = {}) -> void:
