@@ -32,18 +32,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_242tc")]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_0w1a3"]
 resource_name = "attack"
@@ -60,17 +48,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("3_yg8kw"), ExtResource("4_b6b5a"), ExtResource("5_o84nr"), ExtResource("6_dyoug"), ExtResource("7_ta516")]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-80, 0)]
+
+[sub_resource type="Animation" id="Animation_6keks"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_ft6qf"), ExtResource("9_e5yr7"), ExtResource("10_qp6fl"), ExtResource("11_ud7re")]
 }
 
 [sub_resource type="Animation" id="Animation_jkwjr"]
@@ -106,22 +98,6 @@ tracks/0/keys = {
 "values": [ExtResource("2_242tc"), ExtResource("16_y5nky"), ExtResource("17_e611r"), ExtResource("18_f8l8y")]
 }
 
-[sub_resource type="Animation" id="Animation_6keks"]
-resource_name = "death"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("8_ft6qf"), ExtResource("9_e5yr7"), ExtResource("10_qp6fl"), ExtResource("11_ud7re")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5yip"]
 _data = {
 "RESET": SubResource("Animation_j7sah"),
@@ -148,28 +124,21 @@ libraries = {
 offset_top = -168.0
 offset_bottom = -122.0
 
-[node name="TextureRect2" parent="selector" index="1"]
-offset_left = -20.0
-offset_right = 20.0
-
-[node name="TextureRect3" parent="selector" index="2"]
-offset_top = -24.0
-offset_bottom = 16.0
-
-[node name="TextureRect4" parent="selector" index="3"]
-offset_left = -20.0
-offset_top = -24.0
-offset_right = 20.0
-offset_bottom = 16.0
-
-[node name="IntentStatus" parent="." index="5"]
+[node name="IntentStatus" parent="." index="6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -24.0
-offset_top = -232.0
+offset_top = -216.0
 offset_right = -24.0
-offset_bottom = -200.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="w_tooltip" parent="." index="6"]
+[node name="w_tooltip" parent="." index="7"]
 offset_left = -204.0
 offset_top = -116.0
 offset_right = -54.0

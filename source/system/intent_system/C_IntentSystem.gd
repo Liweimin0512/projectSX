@@ -8,6 +8,9 @@ var intent_pool: Array = []
 # 当前选定的意图
 var current_intent: Intent = null
 
+signal intent_choosed
+signal intent_executed
+
 func _ready() -> void:
 	randomize()
 
@@ -23,13 +26,14 @@ func update_cooldowns():
 		intent.process_cooldown()
 
 ## 选择意图的逻辑
-func choose_intent() -> Intent:
+func choose_intent() -> void:
 	# 这里可以实现一个选择意图的算法，比如随机选择或基于某些条件选择
 	var available_intents := intent_pool.filter(
 		func(intent: Intent):
 			return intent.is_available
 	)
-	if available_intents.is_empty() : current_intent =  null
+	if available_intents.is_empty() : 
+		current_intent =  null
 	var total_weight : float = available_intents.reduce(func(a, b): return a + b.weight, 0)
 	# 基于权重随机选择意图
 	var random_choice = randf_range(0, total_weight)
@@ -38,13 +42,15 @@ func choose_intent() -> Intent:
 		accumulated_weight += intent.weight
 		if random_choice <= accumulated_weight:
 			current_intent = intent
-			return current_intent
-	return current_intent
+			break
+	intent_choosed.emit(current_intent)
+	print(owner, "筛选意图：", current_intent)
 
 # 执行当前意图
 func execute_intent():
 	if not current_intent:
 		push_error("执行意图时不存在，重新选择意图")
 		return
-	current_intent.execute()
+	await current_intent.execute()
 	update_cooldowns()
+	intent_executed.emit()

@@ -22,7 +22,11 @@ func needs_target() -> bool:
 ## 能否释放
 func can_release(caster: Character= null) -> bool:
 	var _caster = caster if caster != null else GameInstance.player
-	return _model.cost <= _caster.current_energy
+	if _model.cost <= _caster.current_energy:
+		return true
+	else:
+		print("能量不足，无法释放卡牌！", self)
+		return false
 
 ## 释放卡牌
 func release(caster: Character, selected_cha: Character) -> void:
@@ -37,3 +41,5 @@ func release(caster: Character, selected_cha: Character) -> void:
 	await caster.play_animation_with_reset(_model.play_animation)
 	await caster.play_animation_with_reset("idle")
 
+func _to_string() -> String:
+	return card_name

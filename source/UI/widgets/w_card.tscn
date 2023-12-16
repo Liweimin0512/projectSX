@@ -265,10 +265,17 @@ libraries = {
 }
 autoplay = "fx_sheen"
 
-[node name="w_tooltip" parent="." instance=ExtResource("22_oikip")]
+[node name="TipContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 110.0
-offset_top = 2.0
-offset_right = 260.0
-offset_bottom = 85.0
+offset_left = 109.0
+offset_right = 259.0
+offset_bottom = 83.0
 scale = Vector2(0.6, 0.6)
+metadata/_edit_group_ = true
+
+[node name="w_tooltip" parent="TipContainer" instance=ExtResource("22_oikip")]
+layout_mode = 2
+
+[node name="w_tooltip2" parent="TipContainer" instance=ExtResource("22_oikip")]
+layout_mode = 2

@@ -1,6 +1,16 @@
 extends RefCounted
 class_name Buff
 
+enum BUFF_TYPE { 
+	NONE,
+	VALUE, 	# 数值型
+	STATUS, 	# 状态型
+}
+enum DURATION_TYPE{
+	NONE,
+	ALWAYS,	# 永久的；
+	TURN,	# 持续若干回合的；
+}
 enum CALLBACK_TYPE{
 	NONE,
 	TURN_START,			#1回合开始
@@ -38,13 +48,19 @@ var value: int:
 var callback_type: CALLBACK_TYPE:
 	get:
 		return _model.callback_type
-
+var buff_type: BUFF_TYPE:
+	get:
+		return _model.buff_type
+var duration_type: DURATION_TYPE:
+	get:
+		return _model.duration_type
 var effects: Array[Effect]
 var execute_func: Callable
 
-var is_stacked:
+var is_stacked: bool:
 	get:
 		return _model.is_stacked
+	
 signal value_changed(value)
 
 func _init(buff_id: StringName, value: int, caster: Character,  target: Character) -> void:
@@ -52,9 +68,9 @@ func _init(buff_id: StringName, value: int, caster: Character,  target: Characte
 	for effectID: StringName in _model.effects:
 		var effect: Effect = Effect.create_effect(effectID, caster, [target])
 		effects.append(effect)
-	match buff_id:
-		"vulnerable":
-			execute_func = vulnerable_execute
+	match _model.callback_type:
+		CALLBACK_TYPE.BEFORE_DAMAGE:
+			execute_func = _before_damage
 		_:
 			execute_func = _execute
 
@@ -63,10 +79,7 @@ func _execute() -> void:
 	for effect : Effect in effects:
 		effect.execute()
 
-func is_turn() -> bool:
-	return _model.is_turn()
-
-func vulnerable_execute(damage: Damage) -> void:
+func _before_damage(damage: Damage) -> void:
 	for effect in effects:
 		effect.set("damage", damage)
 	_execute()

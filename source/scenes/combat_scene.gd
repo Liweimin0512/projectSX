@@ -75,8 +75,8 @@ func next_turn() -> void:
 	if current_character:
 		#if current_character == GameInstance.player:
 			#_player_turn_begin()
-		await get_tree().create_timer(1.5).timeout
-		current_character._begin_turn()
+		#await get_tree().create_timer(1.5).timeout
+		await current_character._begin_turn()
 	combat_form.next_turn(current_character)
 
 ## 结束战斗

@@ -29,7 +29,7 @@ enum CARD_TYPE{
 @export var tween_speed : float = 0.2
 @export var preview_scale := Vector2(1,1)
 @export var preview_position := Vector2(0,10)
-var buff_des : String = ""
+var buff_des : PackedStringArray = []
 
 func _init(card_id: String) -> void:
 	if card_id.is_empty(): return

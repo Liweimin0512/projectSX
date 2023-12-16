@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://source/UI/widgets/w_intent_status.gd" id="1_1op2a"]
 [ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://asserts/textures/widgets/Buffs/poison_dagger.png" id="1_ischg"]
 
-
 [sub_resource type="Animation" id="Animation_m15w2"]
 length = 0.001
 tracks/0/type = "value"
@@ -29,10 +28,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.368627), Color(1, 1, 1, 1), Color(1, 1, 1, 0.415686), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.368627), Color(1, 1, 1, 1), Color(1, 1, 1, 0.415686), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q3xtd"]
@@ -41,14 +40,14 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/path = NodePath("MarginContainer:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 15)]
+"values": [-0.349066, 0.0, 0.349066]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_brsw3"]
@@ -66,9 +65,10 @@ script = ExtResource("1_1op2a")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-offset_top = 15.0
 offset_right = 48.0
-offset_bottom = 63.0
+offset_bottom = 48.0
+rotation = -0.0214553
+pivot_offset = Vector2(24, 24)
 
 [node name="sprite" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true

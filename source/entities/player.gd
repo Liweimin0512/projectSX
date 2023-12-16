@@ -40,6 +40,7 @@ func _end_combat() -> void:
 
 ## 回合开始时
 func _begin_turn() -> void:
+	super()
 	c_card_system.distribute_card()
 	current_energy = max_energy
 	turn_begined.emit()

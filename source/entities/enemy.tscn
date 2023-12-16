@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_yh4r0"]
 [ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/textures/character/slime/idle/slime-idle-0.png" id="3_4ky16"]
-[ext_resource type="Script" path="res://source/intent_system/C_IntentSystem.gd" id="6_fm64v"]
+[ext_resource type="Script" path="res://source/system/intent_system/C_IntentSystem.gd" id="6_fm64v"]
 [ext_resource type="Script" path="res://source/entities/enemy.gd" id="11_j32pj"]
 [ext_resource type="PackedScene" uid="uid://c2eootn4eg0wl" path="res://source/UI/widgets/w_intent_status.tscn" id="20_yltto"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_rlg1m"]
 
 [node name="enemy" groups=["enemy"] instance=ExtResource("1_yh4r0")]
 script = ExtResource("11_j32pj")
+can_attack = true
 cha_type = "Enemy"
-can_attack = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -32)
@@ -26,22 +26,23 @@ position = Vector2(0, -60.8125)
 unique_name_in_owner = true
 autoplay = "idle"
 
-[node name="IntentStatus" parent="." index="5" instance=ExtResource("20_yltto")]
+[node name="IntentStatus" parent="." index="6" node_paths=PackedStringArray("intent_system") instance=ExtResource("20_yltto")]
 unique_name_in_owner = true
 offset_left = -20.0
-offset_top = -228.0
+offset_top = -212.0
 offset_right = -20.0
-offset_bottom = -228.0
+offset_bottom = -212.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
+intent_system = NodePath("../C_IntentSystem")
 
-[node name="w_tooltip" parent="." index="6" instance=ExtResource("22_rlg1m")]
+[node name="w_tooltip" parent="." index="7" instance=ExtResource("22_rlg1m")]
 unique_name_in_owner = true
 offset_left = -208.0
 offset_top = -112.0
 offset_right = -58.0
 offset_bottom = -29.0
 
-[node name="C_IntentSystem" type="Node" parent="." index="7"]
+[node name="C_IntentSystem" type="Node" parent="." index="8"]
 unique_name_in_owner = true
 script = ExtResource("6_fm64v")

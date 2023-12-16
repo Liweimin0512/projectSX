@@ -130,6 +130,7 @@ func _on_deck_pressed(w_deck: W_Deck) -> void:
 	#print("_on_deck_pressed", w_deck)
 	if w_deck.card_amount <= 0:
 		## TODO 玩家头顶冒泡提示
+		print("当前牌堆没有卡牌！", w_deck)
 		return
 	%w_deck_details.w_deck = w_deck
 	%w_deck_details.show()
