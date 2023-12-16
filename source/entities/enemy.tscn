@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1dkxxilwqga4" path="res://source/entities/character.tscn" id="1_yh4r0"]
 [ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://asserts/textures/character/slime/idle/slime-idle-0.png" id="3_4ky16"]
-[ext_resource type="Script" path="res://source/intent_system/C_IntentSystem.gd" id="6_fm64v"]
+[ext_resource type="Script" path="res://source/system/intent_system/C_IntentSystem.gd" id="6_fm64v"]
 [ext_resource type="Script" path="res://source/entities/enemy.gd" id="11_j32pj"]
 [ext_resource type="PackedScene" uid="uid://c2eootn4eg0wl" path="res://source/UI/widgets/w_intent_status.tscn" id="20_yltto"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_rlg1m"]
