@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=15 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_card.gd" id="1_0thyn"]
 [ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_7kppa"]
@@ -8,19 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_0ijkk"]
 [ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_8nmba"]
 [ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_f5xms"]
-[ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0000_sheen01.png" id="8_6ymnc"]
 [ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_ta4ns"]
-[ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0001_sheen02.png" id="9_86kkd"]
 [ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_y8cw6"]
 [ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_6gfg7"]
-[ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/textures/cards/card_sheen_fx/sheen__0002_sheen03.png" id="10_h2lww"]
-[ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0003_sheen04.png" id="11_85ejf"]
-[ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/textures/cards/card_sheen_fx/sheen__0004_sheen05.png" id="12_hem7t"]
-[ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/textures/cards/card_sheen_fx/sheen__0005_sheen06.png" id="13_2v2ia"]
-[ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/textures/cards/card_sheen_fx/sheen__0006_sheen07.png" id="14_qfgun"]
-[ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0007_sheen08.png" id="15_bhgpa"]
-[ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_73gjm"]
-[ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_dowwh"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_oikip"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
@@ -31,43 +21,6 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 13
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_jfck6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../sheenFX:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_6ymnc")]
-}
-
-[sub_resource type="Animation" id="Animation_2abhc"]
-resource_name = "fx_sheen"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../sheenFX:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("8_6ymnc"), ExtResource("9_86kkd"), ExtResource("10_h2lww"), ExtResource("11_85ejf"), ExtResource("12_hem7t"), ExtResource("13_2v2ia"), ExtResource("14_qfgun"), ExtResource("15_bhgpa"), ExtResource("16_73gjm"), ExtResource("17_dowwh")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_axa8x"]
-_data = {
-"RESET": SubResource("Animation_jfck6"),
-"fx_sheen": SubResource("Animation_2abhc")
-}
 
 [node name="w_card" type="Control"]
 custom_minimum_size = Vector2(108, 160)
@@ -247,23 +200,6 @@ theme_override_font_sizes/font_size = 12
 text = "攻击"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="sheenFX" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 54.0
-offset_top = 80.0
-offset_right = 54.0
-offset_bottom = 80.0
-mouse_filter = 2
-texture = ExtResource("8_6ymnc")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_axa8x")
-}
-autoplay = "fx_sheen"
 
 [node name="TipContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

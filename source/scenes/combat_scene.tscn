@@ -16,10 +16,10 @@
 [node name="combat_scene" type="Node2D"]
 script = ExtResource("13_thwhq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
+[node name="BGLayer" type="CanvasLayer" parent="."]
+layer = -128
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="BGLayer"]
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
@@ -84,6 +84,38 @@ scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("7_27yn5")
 centered = false
 
+[node name="GameLayer" type="CanvasLayer" parent="."]
+
+[node name="Marker2D1" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(386, 518)
+metadata/_edit_group_ = true
+
+[node name="Marker2D2" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(258, 518)
+metadata/_edit_group_ = true
+
+[node name="Marker2D3" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(130, 518)
+metadata/_edit_group_ = true
+
+[node name="Marker2D4" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(768, 518)
+metadata/_edit_group_ = true
+
+[node name="Marker2D5" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(864, 518)
+metadata/_edit_group_ = true
+
+[node name="Marker2D6" type="Marker2D" parent="GameLayer"]
+unique_name_in_owner = true
+position = Vector2(960, 518)
+metadata/_edit_group_ = true
+
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 100
 offset = Vector2(0, -50)
@@ -125,42 +157,13 @@ scale = Vector2(1.24138, 0.81715)
 texture = ExtResource("11_a2qif")
 centered = false
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
 layer = 128
 
-[node name="combat_form" parent="CanvasLayer2" instance=ExtResource("12_h3ulb")]
+[node name="combat_form" parent="UILayer" instance=ExtResource("12_h3ulb")]
+unique_name_in_owner = true
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
-
-[node name="Marker2D1" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(386, 518)
-metadata/_edit_group_ = true
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(258, 518)
-metadata/_edit_group_ = true
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(130, 518)
-metadata/_edit_group_ = true
-
-[node name="Marker2D4" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(768, 518)
-metadata/_edit_group_ = true
-
-[node name="Marker2D5" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(864, 518)
-metadata/_edit_group_ = true
-
-[node name="Marker2D6" type="Marker2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(960, 518)
-metadata/_edit_group_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.4, 0.4, 0.4, 1)

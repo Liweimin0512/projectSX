@@ -47,16 +47,6 @@ func _begin_turn() -> void:
 func _end_turn() -> void:
 	turn_completed.emit()
 
-## 决策意图
-#func choose_intent() -> void:
-	#var intent : Intent = c_intent_system.choose_intent()
-	#if not intent:
-		#push_warning("没有找到合适的意图！",self)
-		#intent_status.hide()
-		#return
-	#intent_status.set_status(intent)
-	#print("筛选出意图: ", intent.intent_name)
-
 ## 显示意图
 func show_tooltip() -> void:
 	if not c_intent_system.current_intent: 

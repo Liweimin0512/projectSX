@@ -27,20 +27,17 @@ offset_right = 52.0
 offset_bottom = 24.0
 script = ExtResource("1_ji472")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/separation = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="health_bar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="health_bar" type="ProgressBar" parent="VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -50,7 +47,7 @@ theme_override_styles/fill = SubResource("StyleBoxLine_ygloy")
 value = 50.0
 show_percentage = false
 
-[node name="health_label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="health_label" type="Label" parent="VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -59,14 +56,14 @@ label_settings = SubResource("LabelSettings_3l5io")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="buff_container" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="buff_container" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="w_buff" parent="HBoxContainer/VBoxContainer/MarginContainer/buff_container" instance=ExtResource("3_rxkaw")]
+[node name="w_buff" parent="VBoxContainer/MarginContainer/buff_container" instance=ExtResource("3_rxkaw")]
 layout_mode = 2

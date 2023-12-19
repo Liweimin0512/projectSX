@@ -10,8 +10,8 @@ var player: Player
 func _ready() -> void:
 	player = GameInstance.player
 	display_health_status()
-	player.current_health_changed.connect(
-		func(_value: float) -> void:
+	player.damaged.connect(
+		func() -> void:
 			display_health_status()
 	)
 

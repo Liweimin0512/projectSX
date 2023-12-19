@@ -30,6 +30,7 @@ func _ready() -> void:
 
 ## 开始战斗
 func _begin_combat() -> void:
+	super()
 	animation_player.play("swrd_drw")
 	await animation_player.animation_finished
 	animation_player.play("idle_02")

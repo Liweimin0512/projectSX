@@ -16,4 +16,9 @@ func begin_game() -> void:
 	player.cha_id = "1"
 	self.add_child(player)
 #	combat_scene = CombatScene.new("1")
-	var combat_scene :  = SceneManager.change_scene("combat_scene", {"combat_id": "1"})
+	var combat_scene :  = SceneManager.change_scene(
+		"combat_scene", {
+			"combat_id": "1",
+			"player": player
+			}
+	)
