@@ -1,27 +1,17 @@
-[gd_scene load_steps=28 format=3 uid="uid://ds4gbleycp8dr"]
+[gd_scene load_steps=15 format=3 uid="uid://ds4gbleycp8dr"]
 
-[ext_resource type="Script" path="res://source/UI/widgets/w_card.gd" id="1_0thyn"]
-[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_7kppa"]
-[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_fxb6n"]
-[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_d8764"]
-[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_lbvm3"]
-[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_0ijkk"]
-[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_8nmba"]
-[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_f5xms"]
-[ext_resource type="Texture2D" uid="uid://01gei1sefme1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0000_sheen01.png" id="8_6ymnc"]
-[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_ta4ns"]
-[ext_resource type="Texture2D" uid="uid://bog0xu5mq0ea1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0001_sheen02.png" id="9_86kkd"]
-[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_y8cw6"]
-[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_6gfg7"]
-[ext_resource type="Texture2D" uid="uid://28xksyndb7ym" path="res://asserts/textures/cards/card_sheen_fx/sheen__0002_sheen03.png" id="10_h2lww"]
-[ext_resource type="Texture2D" uid="uid://b3d7blo01g5hq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0003_sheen04.png" id="11_85ejf"]
-[ext_resource type="Texture2D" uid="uid://bhnhjcyx26sf6" path="res://asserts/textures/cards/card_sheen_fx/sheen__0004_sheen05.png" id="12_hem7t"]
-[ext_resource type="Texture2D" uid="uid://duhwfpqrjm77v" path="res://asserts/textures/cards/card_sheen_fx/sheen__0005_sheen06.png" id="13_2v2ia"]
-[ext_resource type="Texture2D" uid="uid://dgx5rxnfujyyt" path="res://asserts/textures/cards/card_sheen_fx/sheen__0006_sheen07.png" id="14_qfgun"]
-[ext_resource type="Texture2D" uid="uid://co8bpeu6axgr1" path="res://asserts/textures/cards/card_sheen_fx/sheen__0007_sheen08.png" id="15_bhgpa"]
-[ext_resource type="Texture2D" uid="uid://dorlof3tbleoq" path="res://asserts/textures/cards/card_sheen_fx/sheen__0008_sheen09.png" id="16_73gjm"]
-[ext_resource type="Texture2D" uid="uid://dxxfb3kv4c6tp" path="res://asserts/textures/cards/card_sheen_fx/sheen__0009_sheen010.png" id="17_dowwh"]
-[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_oikip"]
+[ext_resource type="Script" path="res://source/UI/widgets/card/w_card.gd" id="1_50cg7"]
+[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_ga0nj"]
+[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_60nyl"]
+[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_11kcs"]
+[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_ypjme"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_d8e7j"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_wh8g0"]
+[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_8otkn"]
+[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_rltl3"]
+[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_lg2uv"]
+[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="11_xwrcj"]
+[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="12_soytr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
 outline_size = 1
@@ -31,43 +21,6 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 13
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_jfck6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../sheenFX:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_6ymnc")]
-}
-
-[sub_resource type="Animation" id="Animation_2abhc"]
-resource_name = "fx_sheen"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../sheenFX:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("8_6ymnc"), ExtResource("9_86kkd"), ExtResource("10_h2lww"), ExtResource("11_85ejf"), ExtResource("12_hem7t"), ExtResource("13_2v2ia"), ExtResource("14_qfgun"), ExtResource("15_bhgpa"), ExtResource("16_73gjm"), ExtResource("17_dowwh")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_axa8x"]
-_data = {
-"RESET": SubResource("Animation_jfck6"),
-"fx_sheen": SubResource("Animation_2abhc")
-}
 
 [node name="w_card" type="Control"]
 custom_minimum_size = Vector2(108, 160)
@@ -79,7 +32,7 @@ pivot_offset = Vector2(54, 160)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
-script = ExtResource("1_0thyn")
+script = ExtResource("1_50cg7")
 
 [node name="card_frame" type="TextureRect" parent="."]
 layout_mode = 1
@@ -89,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_7kppa")
+texture = ExtResource("2_ga0nj")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -123,7 +76,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = ExtResource("3_fxb6n")
+texture = ExtResource("3_60nyl")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
@@ -138,7 +91,7 @@ size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("4_d8764")
+texture = ExtResource("4_11kcs")
 
 [node name="lab_cost" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
@@ -168,13 +121,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_lbvm3")
+texture = ExtResource("5_ypjme")
 expand_mode = 1
 
 [node name="tr_description" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_0ijkk")
+texture = ExtResource("6_d8e7j")
 patch_margin_left = 20
 patch_margin_top = 6
 patch_margin_right = 16
@@ -199,11 +152,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("7_8nmba")
-theme_override_fonts/bold_font = ExtResource("8_ta4ns")
-theme_override_fonts/italics_font = ExtResource("9_y8cw6")
-theme_override_fonts/bold_italics_font = ExtResource("7_8nmba")
-theme_override_fonts/mono_font = ExtResource("10_6gfg7")
+theme_override_fonts/normal_font = ExtResource("7_wh8g0")
+theme_override_fonts/bold_font = ExtResource("8_8otkn")
+theme_override_fonts/italics_font = ExtResource("9_rltl3")
+theme_override_fonts/bold_italics_font = ExtResource("7_wh8g0")
+theme_override_fonts/mono_font = ExtResource("10_lg2uv")
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "造成你当前格挡值的[color=yellow]伤害[/color]。
@@ -231,7 +184,7 @@ grow_vertical = 0
 custom_minimum_size = Vector2(40, 18)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("7_f5xms")
+texture = ExtResource("11_xwrcj")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer3"]
 layout_mode = 2
@@ -248,23 +201,6 @@ text = "攻击"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="sheenFX" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 54.0
-offset_top = 80.0
-offset_right = 54.0
-offset_bottom = 80.0
-mouse_filter = 2
-texture = ExtResource("8_6ymnc")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_axa8x")
-}
-autoplay = "fx_sheen"
-
 [node name="TipContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
@@ -274,8 +210,8 @@ offset_bottom = 83.0
 scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
 
-[node name="w_tooltip" parent="TipContainer" instance=ExtResource("22_oikip")]
+[node name="w_tooltip" parent="TipContainer" instance=ExtResource("12_soytr")]
 layout_mode = 2
 
-[node name="w_tooltip2" parent="TipContainer" instance=ExtResource("22_oikip")]
+[node name="w_tooltip2" parent="TipContainer" instance=ExtResource("12_soytr")]
 layout_mode = 2

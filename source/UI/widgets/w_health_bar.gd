@@ -1,16 +1,14 @@
 extends MarginContainer
+class_name W_HealthBar
 
-#@onready var label_shielded: Label = %label_shielded
 @onready var health_bar: ProgressBar = %health_bar
 @onready var health_label: Label = %health_label
-#@onready var shielded_container: MarginContainer = %ShieldedContainer
 @onready var buff_container: HBoxContainer = %buff_container
-@onready var c_buff_system: C_BuffSystem = $"../C_BuffSystem"
 
+## 红色血条样式
 var box_line_red := StyleBoxLine.new()
+## 带有护盾效果的血条样式
 var box_line_shielded := StyleBoxLine.new()
-
-var _character: Character
 
 func _ready() -> void:
 	box_line_red.color = Color.RED
@@ -19,27 +17,26 @@ func _ready() -> void:
 	box_line_shielded.thickness = 10
 	for buff in buff_container.get_children():
 		buff.queue_free()
-	c_buff_system.buff_applied.connect(
-		func(buff: Buff) -> void:
-			var w_buff = create_buff_widget(buff)
-			buff_container.add_child(w_buff)
-	)
 
-func create_buff_widget(buff: Buff) -> W_Buff:
+## 添加Buff控件
+func add_buff_widget(buff: Buff) -> void:
+	var w_buff: W_Buff = _create_buff_widget(buff)
+	buff_container.add_child(w_buff)
+
+## 更新显示：当前hp、最大hp、护盾值
+func update_display(current_health: float, max_health: float, shielded: float) -> void:
+	health_bar.max_value = max_health
+	health_bar.value = current_health
+	health_label.text = str(current_health) + "/" + str(max_health)
+	if shielded > 0:
+		health_label.text += " + " + str(shielded)
+		health_bar.add_theme_stylebox_override("fill", box_line_shielded)
+	else:
+		health_bar.add_theme_stylebox_override("fill", box_line_red)
+
+## 创建Buff控件
+static func _create_buff_widget(buff: Buff) -> W_Buff:
 	var w_buff: W_Buff = load("res://source/UI/widgets/w_buff.tscn").instantiate()
 	w_buff.buff = buff
 	return w_buff
 
-## 更新显示
-func update_display() -> void:
-	if not _character:
-		_character = owner
-	health_bar.max_value = _character.max_health
-	health_bar.value = _character.current_health
-	health_label.text = str(_character.current_health) + "/" + str(_character.max_health)
-	if _character.shielded > 0:
-		health_label.text += " + " + str(_character.shielded)
-		health_bar.add_theme_stylebox_override("fill", box_line_shielded)
-	else:
-		health_bar.add_theme_stylebox_override("fill", box_line_red)
-	
