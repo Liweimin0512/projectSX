@@ -1,7 +1,7 @@
 extends Character
 class_name Enemy
 
-var _enemy_model : EnemyModel
+#var _enemy_model : EnemyModel
 
 #@onready var intent_status: Control = %IntentStatus
 @onready var c_intent_system: C_IntentSystem = %C_IntentSystem
@@ -13,8 +13,8 @@ var _enemy_model : EnemyModel
 
 func _ready() -> void:
 	super()
-	_enemy_model = EnemyModel.new(cha_id)
-	c_intent_system.init_intent_pool(_enemy_model.intent_pool)
+	_model = EnemyModel.new(cha_id)
+	c_intent_system.init_intent_pool(_model.intent_pool)
 	#intent_status.hide()
 	area_2d.mouse_entered.connect(
 		func() -> void:

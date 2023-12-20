@@ -1,9 +1,11 @@
 extends RefCounted
 class_name TargetSelector
 
+## 选中目标
 signal target_selected(target)
+## 取消选择
 signal selection_canceled
-
+## 筛选条件
 var filter_conditions = {}  # 筛选条件，如 {"team": "enemy"}
 
 func _init(_filter_conditions = {}):

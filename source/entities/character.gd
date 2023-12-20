@@ -45,7 +45,7 @@ signal shielded_changed
 signal died
 
 func _ready() -> void:
-	_model = CharacterModel.new(cha_id)
+	#_model = CharacterModel.new(cha_id)
 	area_2d.mouse_entered.connect(
 		func() -> void:
 			EventBus.push_event("character_mouse_entered", self)

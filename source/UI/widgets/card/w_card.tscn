@@ -1,17 +1,17 @@
 [gd_scene load_steps=15 format=3 uid="uid://ds4gbleycp8dr"]
 
-[ext_resource type="Script" path="res://source/UI/widgets/w_card.gd" id="1_0thyn"]
-[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_7kppa"]
-[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_fxb6n"]
-[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_d8764"]
-[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_lbvm3"]
-[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_0ijkk"]
-[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_8nmba"]
-[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="7_f5xms"]
-[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_ta4ns"]
-[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_y8cw6"]
-[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_6gfg7"]
-[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_oikip"]
+[ext_resource type="Script" path="res://source/UI/widgets/card/w_card.gd" id="1_50cg7"]
+[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_ga0nj"]
+[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_60nyl"]
+[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_11kcs"]
+[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_ypjme"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_d8e7j"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_wh8g0"]
+[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_8otkn"]
+[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_rltl3"]
+[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_lg2uv"]
+[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="11_xwrcj"]
+[ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="12_soytr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
 outline_size = 1
@@ -32,7 +32,7 @@ pivot_offset = Vector2(54, 160)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
-script = ExtResource("1_0thyn")
+script = ExtResource("1_50cg7")
 
 [node name="card_frame" type="TextureRect" parent="."]
 layout_mode = 1
@@ -42,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_7kppa")
+texture = ExtResource("2_ga0nj")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -76,7 +76,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = ExtResource("3_fxb6n")
+texture = ExtResource("3_60nyl")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
@@ -91,7 +91,7 @@ size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
-texture = ExtResource("4_d8764")
+texture = ExtResource("4_11kcs")
 
 [node name="lab_cost" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
@@ -121,13 +121,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("5_lbvm3")
+texture = ExtResource("5_ypjme")
 expand_mode = 1
 
 [node name="tr_description" type="NinePatchRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_0ijkk")
+texture = ExtResource("6_d8e7j")
 patch_margin_left = 20
 patch_margin_top = 6
 patch_margin_right = 16
@@ -152,11 +152,11 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/normal_font = ExtResource("7_8nmba")
-theme_override_fonts/bold_font = ExtResource("8_ta4ns")
-theme_override_fonts/italics_font = ExtResource("9_y8cw6")
-theme_override_fonts/bold_italics_font = ExtResource("7_8nmba")
-theme_override_fonts/mono_font = ExtResource("10_6gfg7")
+theme_override_fonts/normal_font = ExtResource("7_wh8g0")
+theme_override_fonts/bold_font = ExtResource("8_8otkn")
+theme_override_fonts/italics_font = ExtResource("9_rltl3")
+theme_override_fonts/bold_italics_font = ExtResource("7_wh8g0")
+theme_override_fonts/mono_font = ExtResource("10_lg2uv")
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "造成你当前格挡值的[color=yellow]伤害[/color]。
@@ -184,7 +184,7 @@ grow_vertical = 0
 custom_minimum_size = Vector2(40, 18)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("7_f5xms")
+texture = ExtResource("11_xwrcj")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer3"]
 layout_mode = 2
@@ -210,8 +210,8 @@ offset_bottom = 83.0
 scale = Vector2(0.6, 0.6)
 metadata/_edit_group_ = true
 
-[node name="w_tooltip" parent="TipContainer" instance=ExtResource("22_oikip")]
+[node name="w_tooltip" parent="TipContainer" instance=ExtResource("12_soytr")]
 layout_mode = 2
 
-[node name="w_tooltip2" parent="TipContainer" instance=ExtResource("22_oikip")]
+[node name="w_tooltip2" parent="TipContainer" instance=ExtResource("12_soytr")]
 layout_mode = 2

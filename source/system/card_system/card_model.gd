@@ -17,19 +17,24 @@ enum CARD_TYPE{
 	ABILITY				# 技能
 }
 
+## 卡牌名称
 @export var card_name : String
+## 卡牌类型
 @export var card_type : CARD_TYPE = 0
+## 卡牌描述
 @export var card_description := ""
+## 卡牌消耗
 @export var cost := 1
+## 卡牌图标
 @export var icon : Texture
+## 目标类型
 @export var target_type : TARGET_TYPE = 0
-@export var effects: Array = []
+## 释放者释放卡牌时候播放的动画
 @export var play_animation: String = ""
-
-@export var tween_speed : float = 0.2
-@export var preview_scale := Vector2(1,1)
-@export var preview_position := Vector2(0,10)
-var buff_des : PackedStringArray = []
+## 效果集
+@export var effects: Array = []
+## 词条集(用来显示）
+@export var buff_des : PackedStringArray = []
 
 func _init(card_id: String) -> void:
 	if card_id.is_empty(): return
@@ -44,7 +49,7 @@ func _init(card_id: String) -> void:
 	play_animation = data.play_animation
 	buff_des = data.buff_des
 
-## 是否需要选择目标？
+## 是否需要目标
 func needs_target() -> bool :
 	match target_type:
 		TARGET_TYPE.THEY_SIGNAL:

@@ -98,7 +98,7 @@ func found_target() -> void:
 
 ## 创建卡牌控件
 static func create_card_widget(card: Card) -> W_Card:
-	var w_card : W_Card = preload("res://source/UI/widgets/w_card.tscn").instantiate()
+	var w_card : W_Card = preload("res://source/UI/widgets/card/w_card.tscn").instantiate()
 	w_card.card = card
 	return w_card
 
