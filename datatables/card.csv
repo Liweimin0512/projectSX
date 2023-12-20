@@ -6,6 +6,6 @@
 2、对方单体
 3、对方全体",施法者动作,效果ID列表,BUFF描述
 string,string,int,int,string,texture,int,string,string[],string[]
-strike,打击,1,1,造成6点伤害,res://asserts/textures/cards/card_icons/card_strike.png,2,attack_01,strike,
+strike,打击,1,1,造成6点伤害,res://asserts/textures/cards/card_icons/card_strike.png,2,attack,strike,
 defense,防御,2,1,获得5点[color=yellow]格挡[/color],res://asserts/textures/cards/card_icons/card_defense.png,1,items,shielded_5,block
-trounce,痛击,1,2,造成8点伤害，给与2层[color=yellow]易伤[/color],res://asserts/textures/cards/card_icons/card_trounce.png,2,attack_01,trounce_01*trounce_02,vulnerable
+trounce,痛击,1,2,造成8点伤害，给与2层[color=yellow]易伤[/color],res://asserts/textures/cards/card_icons/card_trounce.png,2,attack,trounce_01*trounce_02,vulnerable
