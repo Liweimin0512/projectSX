@@ -11,15 +11,7 @@ var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1, "每个回合结束的
 var hand_cards : Array[Card] = []
 ## 牌堆
 var _deck : Array[Card] = []
-
-var selected_cha: Character = null:
-	set(value):
-		if selected_cha:
-			selected_cha.unselected()
-		selected_cha = value
-		if selected_cha:
-			selected_cha.selected()
-		selected_cha_changed.emit(selected_cha)
+## 目标选择器
 var target_selector: TargetSelector = null
 
 signal card_distributed
@@ -29,6 +21,7 @@ signal card_discarded(card: Card)
 signal draw_deck_replenished
 signal selected_cha_changed(cha: Character)
 
+## 卡牌系统组件的初始化方法
 func init(playerID: StringName) -> void:
 	var initial_deck: Array = DatatableManager.get_datatable_row("hero", playerID)["initial_deck"]
 	for i in range(0, initial_deck.size(), 2):
@@ -36,12 +29,25 @@ func init(playerID: StringName) -> void:
 		var card_amount :int= int(initial_deck[i+1])
 		for a in card_amount:
 			var card: Card = Card.new(card_id)
-			_deck.append(card)
-			draw_deck.add_card(card)
+			add_card(card)
+
+## 添加卡牌
+func add_card(card: Card) -> void:
+	_deck.append(card)
+	card.caster = owner
+
+## 移除卡牌
+func remove_card(card: Card) -> void:
+	_deck.erase(card)
+	card.caster = null
 
 ## 升级卡牌(Upgrade Card)：升级指定的卡牌。
 func upgrade_card() -> void:
 	pass
+
+## 初始化抽牌堆
+func init_draw_deck() -> void:
+	draw_deck.init_cards(_deck)
 
 ## 抽牌
 func draw_card() -> Card:
@@ -76,37 +82,56 @@ func replenish_draw_deck():
 
 # 检查玩家能量是否足够释放卡牌
 func can_release_card(card: Card) -> bool:
+	var selected_cha : Character
+	if not card.needs_target():
+		selected_cha = owner
+	elif target_selector:
+		selected_cha = target_selector.get_target()
 	if not selected_cha:
 		push_warning("当前没有选中角色，无法释放卡牌！")
 		return false
-	return card.can_release(owner)
+	return card.can_release()
 
 ## 预释放卡牌
 func prerelease_card(card: Card) -> void:
 	if card.needs_target():
+		#TODO 这里应该根据卡牌的目标类型传入参数
 		target_selector = TargetSelector.new({"cha_type":"Enemy"})
-		target_selector.target_selected.connect(
-			func(cha: Character) -> void:
-				selected_cha = cha
+		target_selector.target_changed.connect(
+			func(old: Character, new: Character) -> void:
+				if old:
+					old.unselected()
+				if new:
+					new.selected()
+				selected_cha_changed.emit(new)
 		)
-		target_selector.selection_canceled.connect(
-			func() -> void:
-				selected_cha = null
-		)
-	else:
-		selected_cha = owner
 
 ## 释放卡牌：释放卡牌技能
 func release_card(card: Card) -> void:
 	if not can_release_card(card):
 		push_warning("能量不足，无法释放卡牌！")
 		return
+	var selected_cha : Character
+	if not card.needs_target():
+		selected_cha = owner
+	elif target_selector.has_target():
+		selected_cha = target_selector.get_target()
+	if not selected_cha:
+		push_warning("未选中目标，无法释放卡牌！")
+		return
 	card.release(owner, selected_cha)
 	hand_cards.erase(card)
 	discard_deck.add_card(card)
 	target_selector = null
-	selected_cha = null
+	selected_cha.unselected()
 	card_released.emit(card)
+
+## 丢弃所有手牌
+func discard_all() -> void:
+	for card in hand_cards:
+		discard_deck.add_card(card)
+		card_discarded.emit(card)
+	hand_cards.clear()
 
 ## 根据牌库类型获取牌库
 func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
@@ -118,10 +143,3 @@ func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 		_:
 			push_error("未找到指定的牌堆类型")
 			return null
-
-## 丢弃所有手牌
-func discard_all() -> void:
-	for card in hand_cards:
-		discard_deck.add_card(card)
-		card_discarded.emit(card)
-	hand_cards.clear()

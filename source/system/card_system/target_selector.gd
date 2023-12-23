@@ -1,10 +1,13 @@
 extends RefCounted
 class_name TargetSelector
 
-## 选中目标
-signal target_selected(target)
-## 取消选择
-signal selection_canceled
+var _target_cha : Character = null:
+	set(value):
+		target_changed.emit(_target_cha, value)
+		_target_cha = value
+
+## 目标发生改变
+signal target_changed(old: Character, new: Character)
 ## 筛选条件
 var filter_conditions = {}  # 筛选条件，如 {"team": "enemy"}
 
@@ -15,9 +18,13 @@ func _init(_filter_conditions = {}):
 
 func select_target(selected_character: Character) -> void:
 	if _meets_conditions(selected_character):
-		emit_signal("target_selected", selected_character)
-	else:
-		emit_signal("selection_canceled")
+		_target_cha = selected_character
+
+func has_target() -> bool:
+	return _target_cha != null
+
+func get_target() -> Character:
+	return _target_cha
 
 func _meets_conditions(selected_character: Character) -> bool:
 	if selected_character.is_death : return false
@@ -31,4 +38,4 @@ func _on_character_mouse_entered(cha: Character) -> void:
 	select_target(cha)
 
 func _on_character_mouse_exited(cha: Character) -> void:
-	selection_canceled.emit()
+	_target_cha = null

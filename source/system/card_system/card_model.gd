@@ -16,6 +16,12 @@ enum CARD_TYPE{
 	ATTACK,				# 攻击
 	ABILITY				# 技能
 }
+## 卡牌类型名
+const CARD_TYPE_NAME: Array[String] = [
+	"UNKNOW",
+	"攻击",
+	"技能",
+]
 
 ## 卡牌名称
 @export var card_name : String
@@ -71,3 +77,6 @@ func get_targets(owenr:Character, selected_cha: Character) -> Array[Character]:
 		_:
 			push_error("未知的目标，未实现！")
 			return []
+
+func get_card_type_name() -> String:
+	return CARD_TYPE_NAME[card_type] 

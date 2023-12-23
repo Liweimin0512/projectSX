@@ -74,7 +74,6 @@ func _cancel_card_drag() -> void:
 	#target_selector = null
 	## TODO 调用card_system取消释放方法
 	_card_system.target_selector = null
-	_card_system.selected_cha = null
 
 ## 能否释放卡牌
 func can_release_card(w_card: W_Card) -> bool:

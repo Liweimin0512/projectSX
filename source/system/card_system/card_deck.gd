@@ -22,6 +22,9 @@ signal cards_changed
 func _init(d_name: String, type: int, des: String) -> void:
 	_model = CardDeckModel.new(d_name, type, des)
 
+func init_cards(cards: Array[Card]) -> void:
+	_model.card_list = cards
+
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
 func add_card(card: Card) -> void:
 	_model.card_list.append(card)

@@ -12,7 +12,7 @@ offset_right = 75.0
 script = ExtResource("1_ugg2e")
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="tr_background" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_8s6im")
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cixs5tbqar2uk"]
+[gd_scene load_steps=3 format=3 uid="uid://cixs5tbqar2uk"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card/w_deck_details.gd" id="1_8y8xy"]
-[ext_resource type="PackedScene" uid="uid://ds4gbleycp8dr" path="res://source/UI/widgets/card/w_card.tscn" id="2_avepq"]
 [ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="2_c1me7"]
 
 [node name="w_deck_details" type="Control"]
@@ -99,51 +98,6 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 columns = 5
-
-[node name="card" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card6" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card7" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card8" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card9" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card10" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card11" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card12" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card13" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card14" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card15" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card16" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card17" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card18" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
-
-[node name="card19" parent="MarginContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("2_avepq")]
-layout_mode = 2
 
 [node name="btn_close" type="Button" parent="."]
 unique_name_in_owner = true
