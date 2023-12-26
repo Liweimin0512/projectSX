@@ -12,7 +12,6 @@ class_name W_Card
 @export var tween_speed : float = 0.1
 @export var is_back : bool
 
-
 var card : Card
 var _model: CardModel:
 	get:

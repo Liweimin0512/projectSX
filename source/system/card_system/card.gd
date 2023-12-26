@@ -1,17 +1,20 @@
 extends RefCounted
 class_name Card
 
-const CARD_TYPE_NAME = [
+## 卡牌类型名
+const CARD_TYPE_NAME: Array[String] = [
 	"UNKNOW",
 	"攻击",
 	"技能",
 ]
-
+## 卡牌数据model的引用
 var _model : CardModel
+## 卡牌名称
 var card_name : String :
 	get:
 		return _model.card_name
 
+## 构造函数：通过id创建数据model
 func _init(cardID: StringName) -> void:
 	_model = CardModel.new(cardID)
 

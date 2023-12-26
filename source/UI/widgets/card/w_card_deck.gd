@@ -15,9 +15,7 @@ signal pressed
 func _ready() -> void:
 	var c_card_sytem: C_CardSystem = GameInstance.player.get_node("C_CardSystem")
 	_deck = c_card_sytem.get_deck(deck_type)
-	_deck.card_added.connect(_on_card_added)
-	_deck.card_removed.connect(_on_card_removed)
-	_deck.card_drawed.connect(_on_card_drawed)
+	_deck.cards_changed.connect(_on_card_changed)
 	self.gui_input.connect(_on_gui_input)
 	self.mouse_entered.connect(_on_mouse_entered)
 	self.mouse_exited.connect(_on_mouse_exited)
@@ -28,15 +26,7 @@ func update_display() -> void:
 	lab_card_amount.text = str(card_amount)
 
 ## 添加卡牌(Add Card)：将卡牌添加到牌组中。
-func _on_card_added(card: Card) -> void:
-	update_display()
-
-## 移除卡牌(Remove Card)：从牌组中移除卡牌。
-func _on_card_removed(card: Card) -> void:
-	update_display()
-
-## 抽牌(Draw Card)：从牌组中抽取卡牌。
-func _on_card_drawed(card: Card) -> void:
+func _on_card_changed() -> void:
 	update_display()
 
 func _make_custom_tooltip(for_text: String) -> Object:
