@@ -23,12 +23,12 @@ func _ready() -> void:
 			display_energy()
 	)
 	display_energy()
-	card_container.card_selected.connect(
-		func(card: Card) -> void:
+	card_container.drag_started.connect(
+		func(card: W_Card) -> void:
 			btn_end_turn.disabled = true
 	)
-	card_container.card_unselected.connect(
-		func(card: Card) -> void:
+	card_container.drag_ended.connect(
+		func() -> void:
 			btn_end_turn.disabled = false
 	)
 

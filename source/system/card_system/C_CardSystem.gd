@@ -1,6 +1,8 @@
 extends Node
 class_name C_CardSystem
 
+## 牌库，代表拥有者拥有的所有卡牌
+var _cards : Array[Card] = []
 ## 分发卡牌数量
 @export var distribute_card_amount: int = 4
 ## 抽牌堆
@@ -9,17 +11,15 @@ var draw_deck : CardDeck = CardDeck.new("抽牌堆", 0, "每个回合结束的�
 var discard_deck: CardDeck = CardDeck.new("弃牌堆", 1, "每个回合结束的时候都会将手牌丢弃在这里")
 ## 手牌
 var hand_cards : Array[Card] = []
-## 牌堆
-var _deck : Array[Card] = []
 ## 目标选择器
 var target_selector: TargetSelector = null
 
-signal card_distributed
-signal card_drawn(card: Card)
-signal card_released(card: Card)
-signal card_discarded(card: Card)
-signal draw_deck_replenished
-signal selected_cha_changed(cha: Character)
+signal card_distributed						# 卡牌分发
+signal card_drawn(card: Card)				# 卡牌抽取
+signal card_released(card: Card)			# 卡牌释放
+signal card_discarded(card: Card)			# 卡牌丢弃
+signal draw_deck_replenished				# 重置抽牌堆
+signal selected_cha_changed(cha: Character)	# 选择目标改变
 
 ## 卡牌系统组件的初始化方法
 func init(playerID: StringName) -> void:
@@ -33,12 +33,12 @@ func init(playerID: StringName) -> void:
 
 ## 添加卡牌
 func add_card(card: Card) -> void:
-	_deck.append(card)
+	_cards.append(card)
 	card.caster = owner
 
 ## 移除卡牌
 func remove_card(card: Card) -> void:
-	_deck.erase(card)
+	_cards.erase(card)
 	card.caster = null
 
 ## 升级卡牌(Upgrade Card)：升级指定的卡牌。
@@ -47,7 +47,7 @@ func upgrade_card() -> void:
 
 ## 初始化抽牌堆
 func init_draw_deck() -> void:
-	draw_deck.init_cards(_deck)
+	draw_deck.set_cards(_cards)
 
 ## 抽牌
 func draw_card() -> Card:
@@ -61,13 +61,7 @@ func draw_card() -> Card:
 		card_drawn.emit(card)
 	return card
 
-## 弃牌
-func discard_card(card_index: int) -> void:
-	var card = hand_cards.pop_at(card_index)
-	card_discarded.emit(card)
-	discard_deck.add_card(card)
-
-## 分发卡牌(Distribute Card)：在游戏开始或特定事件时分发卡牌给玩家。
+## 分发卡牌：在游戏开始或特定事件时分发卡牌给玩家。
 func distribute_card() -> void:
 	for i in range(0, distribute_card_amount):
 		draw_card()
@@ -76,8 +70,8 @@ func distribute_card() -> void:
 ## 重置抽牌堆
 func replenish_draw_deck():
 	discard_deck.shuffle()
-	draw_deck.cards = discard_deck.cards.duplicate()
-	discard_deck.cards.clear()
+	draw_deck.set_cards(discard_deck.cards.duplicate())
+	discard_deck.clear_cards()
 	draw_deck_replenished.emit()
 
 # 检查玩家能量是否足够释放卡牌
@@ -125,6 +119,12 @@ func release_card(card: Card) -> void:
 	target_selector = null
 	selected_cha.unselected()
 	card_released.emit(card)
+
+## 弃牌
+func discard_card(card_index: int) -> void:
+	var card = hand_cards.pop_at(card_index)
+	card_discarded.emit(card)
+	discard_deck.add_card(card)
 
 ## 丢弃所有手牌
 func discard_all() -> void:
