@@ -19,5 +19,5 @@ func _init(cha_id: StringName) -> void:
 	cha_name = data.name
 	cha_des = data.description
 	max_health = data.health
-	current_health = max_health
 	attack = data.attack
+	current_health = max_health
