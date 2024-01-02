@@ -3,18 +3,20 @@ class_name C_IntentSystem
 
 # 意图管理器组件
 
-# 存储所有可能的意图
+## 存储所有可能的意图
 var intent_pool: Array = []
-# 当前选定的意图
+## 当前选定的意图
 var current_intent: Intent = null
 
+## 意图选中
 signal intent_choosed
+## 意图行
 signal intent_executed
 
 func _ready() -> void:
 	randomize()
 
-# 初始化意图池
+## 初始化意图池
 func init_intent_pool(data: Array) -> void:
 	for intentID in data:
 		var intent = Intent.new(owner, intentID)
@@ -27,7 +29,6 @@ func update_cooldowns():
 
 ## 选择意图的逻辑
 func choose_intent() -> void:
-	# 这里可以实现一个选择意图的算法，比如随机选择或基于某些条件选择
 	var available_intents := intent_pool.filter(
 		func(intent: Intent):
 			return intent.is_available
@@ -44,7 +45,7 @@ func choose_intent() -> void:
 			current_intent = intent
 			break
 	intent_choosed.emit(current_intent)
-	print(owner, "筛选意图：", current_intent)
+	#print(owner, "筛选意图：", current_intent)
 
 # 执行当前意图
 func execute_intent():

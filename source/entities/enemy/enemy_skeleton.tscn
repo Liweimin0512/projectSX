@@ -25,6 +25,19 @@ libraries = {
 offset_top = -192.0
 offset_bottom = -152.0
 
-[node name="IntentStatus" parent="." index="4"]
+[node name="TextureRect2" parent="selector" index="1"]
+offset_left = 76.0
+offset_right = 116.0
+
+[node name="TextureRect3" parent="selector" index="2"]
+offset_top = 104.0
+offset_bottom = 144.001
+
+[node name="TextureRect4" parent="selector" index="3"]
+offset_left = 76.0
+offset_top = 104.0
+offset_right = 116.0
+offset_bottom = 144.001
+
+[node name="IntentStatus" parent="." index="7"]
 offset_top = -244.0
-offset_bottom = -212.0

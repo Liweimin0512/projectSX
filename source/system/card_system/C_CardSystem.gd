@@ -91,14 +91,7 @@ func prerelease_card(card: Card) -> void:
 	if card.needs_target():
 		#TODO 这里应该根据卡牌的目标类型传入参数
 		target_selector = TargetSelector.new({"cha_type":"Enemy"})
-		target_selector.target_changed.connect(
-			func(old: Character, new: Character) -> void:
-				if old:
-					old.unselected()
-				if new:
-					new.selected()
-				selected_cha_changed.emit(new)
-		)
+		target_selector.target_changed.connect(_on_target_changed)
 
 ## 释放卡牌：释放卡牌技能
 func release_card(card: Card) -> void:
@@ -119,6 +112,14 @@ func release_card(card: Card) -> void:
 	target_selector = null
 	selected_cha.unselected()
 	card_released.emit(card)
+
+## 取消释放卡牌
+func cancel_release_card() -> void:
+	if not target_selector : return
+	if target_selector._target_cha:
+		target_selector._target_cha.unselected()
+	target_selector.target_changed.disconnect(_on_target_changed)
+	target_selector = null
 
 ## 弃牌
 func discard_card(card_index: int) -> void:
@@ -143,3 +144,11 @@ func get_deck(dect_type: CardDeckModel.DECK_TYPE) -> CardDeck:
 		_:
 			push_error("未找到指定的牌堆类型")
 			return null
+
+## 目标选择器目标改变处理函数
+func _on_target_changed(old: Character, new: Character) -> void:
+	if old:
+		old.unselected()
+	if new:
+		new.selected()
+	selected_cha_changed.emit(new)

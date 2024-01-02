@@ -1,16 +1,19 @@
 extends RefCounted
 class_name Buff
 
+## BUFF类型
 enum BUFF_TYPE { 
 	NONE,
 	VALUE, 	# 数值型
 	STATUS, 	# 状态型
 }
+## 持续类型
 enum DURATION_TYPE{
 	NONE,
 	ALWAYS,	# 永久的；
 	TURN,	# 持续若干回合的；
 }
+## 触发时机
 enum CALLBACK_TYPE{
 	NONE,
 	TURN_START,			#1回合开始

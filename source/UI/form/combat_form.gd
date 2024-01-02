@@ -56,6 +56,7 @@ func begin_enemy_turn() -> void:
 func display_energy() -> void:
 	lab_power.text = str(player.current_energy) + "/" + str(player.max_energy)
 
+## 显示回合开始提示
 func show_turn_begin(text: String) -> void:
 	turn_begin.show()
 	lab_turn_begin.text = text

@@ -52,10 +52,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _cancel_card_drag() -> void:
 	drag_card = null
 	w_hand_card.reset_layout()
+	bezier_arrow.unhighlight()
 	bezier_arrow.hide()
-	#target_selector = null
-	## TODO 调用card_system取消释放方法
-	_card_system.target_selector = null
+	_card_system.cancel_release_card()
 
 ## 能否释放卡牌
 func _can_release_card(w_card: W_Card) -> bool:
@@ -79,7 +78,7 @@ func _found_target() -> void:
 
 ## 拖拽卡牌
 func _on_card_drag(drag_position: Vector2) -> void:
-	drag_card.global_position = drag_position
+	drag_card.global_position = drag_position - drag_card.size / 2 
 
 ## 抽牌时候的表现效果处理
 func _on_card_drawn(card: Card) -> void:
@@ -116,7 +115,7 @@ func _on_deck_pressed(w_deck: W_Deck) -> void:
 		## TODO 玩家头顶冒泡提示
 		print("当前牌堆没有卡牌！", w_deck)
 		return
-	%w_deck_details.w_deck = w_deck
+	%w_deck_details._w_deck = w_deck
 	%w_deck_details.show()
 
 ## 卡牌开始拖拽
@@ -125,10 +124,12 @@ func _on_w_card_drag_started(_at_position : Vector2, w_card: W_Card) -> void:
 	if not w_card.card.can_release(): return
 	drag_card = w_card
 	_card_system.prerelease_card(w_card.card)
-	w_card.cancel_preview()
+	drag_card.cancel_preview()
 
 ## 拖拽开始
 func _drag_started(drag_card: W_Card) -> void:
+	if drag_card.needs_target():
+		bezier_arrow.show()
 	drag_card.scale = Vector2.ONE * 1.3
 	drag_card.rotation = 0
 	drag_card.z_index = 128

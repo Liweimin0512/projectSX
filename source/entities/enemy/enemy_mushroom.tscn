@@ -16,3 +16,17 @@ hframes = 4
 libraries = {
 "": ExtResource("3_7wc42")
 }
+
+[node name="TextureRect2" parent="selector" index="1"]
+offset_left = 76.0
+offset_right = 116.0
+
+[node name="TextureRect3" parent="selector" index="2"]
+offset_top = 104.0
+offset_bottom = 144.001
+
+[node name="TextureRect4" parent="selector" index="3"]
+offset_left = 76.0
+offset_top = 104.0
+offset_right = 116.0
+offset_bottom = 144.001

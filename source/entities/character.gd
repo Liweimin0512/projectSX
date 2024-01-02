@@ -31,7 +31,7 @@ var is_death : bool = false:
 	get:
 		return current_health <= 0
 ## 是否选中
-var is_selected : bool = false
+var _is_selected : bool = false
 
 ## 回合开始
 signal turn_begined
@@ -119,12 +119,12 @@ func play_animation_with_reset(animation_name: StringName) -> void:
 
 ## 选中
 func selected() -> void:
-	is_selected = true
+	_is_selected = true
 	$selector.show()
 
 ## 取消选中
 func unselected() -> void:
-	is_selected = false
+	_is_selected = false
 	$selector.hide()
 
 ## 只读属性setter，通过断言提醒开发者赋值错误

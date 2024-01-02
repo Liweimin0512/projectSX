@@ -120,8 +120,8 @@ func _preview_card_setter(value: W_Card) -> void:
 		print("_preview_card == value")
 		return
 	if _preview_card:
-		_preview_card.preview()
+		_preview_card.cancel_preview()
 	_preview_card = value
 	if _preview_card:
-		_preview_card.cancel_preview()
+		_preview_card.preview()
 	_update_card_layout()
