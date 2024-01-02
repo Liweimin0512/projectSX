@@ -115,8 +115,7 @@ func release_card(card: Card) -> void:
 
 ## 取消释放卡牌
 func cancel_release_card() -> void:
-	if not target_selector : return
-	if target_selector._target_cha:
+	if target_selector and target_selector._target_cha:
 		target_selector._target_cha.unselected()
 	target_selector.target_changed.disconnect(_on_target_changed)
 	target_selector = null
