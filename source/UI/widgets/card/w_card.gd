@@ -9,14 +9,10 @@ class_name W_Card
 @onready var t_card : TextureRect = $t_card
 @onready var tip_container: VBoxContainer = %TipContainer
 
-@export var tween_speed : float = 0.1
-@export var is_back : bool
-
 var card : Card
 var _model: CardModel:
 	get:
-		if not card:
-			return null
+		assert(card, "card 为空！")
 		return card._model
 
 signal drag_started
@@ -24,15 +20,9 @@ signal drag_started
 func _ready():
 	for tip in tip_container.get_children():
 		tip.queue_free()
-	init_data()
-
-func init_data() -> void:
-	if _model == null: 
-		push_warning("卡牌 _model 为空！")
-		return
 	lab_name.text = _model.card_name
 	lab_description.text = _model.card_description
-	lab_type.text = Card.CARD_TYPE_NAME[_model.card_type]
+	lab_type.text = _model.get_card_type_name()
 	lab_cost.text = str(_model.cost)
 	tr_icon.texture = _model.icon
 	if not _model.buff_des.is_empty():
@@ -45,12 +35,12 @@ func init_data() -> void:
 			w_tip.show()
 	tip_container.hide()
 
+## 高亮显示
 func highlight() -> void:
 	pass
-
+## 取消高亮显示
 func unhighlight() -> void:
 	pass
-
 ## 预览
 func preview() -> void:
 	if not _model.buff_des.is_empty():
@@ -60,11 +50,9 @@ func preview() -> void:
 ## 取消预览
 func cancel_preview() -> void:
 	tip_container.hide()
-
 ## 是否需要目标
 func needs_target() -> bool:
 	return card.needs_target()
-
 ## 当前能否拖动
 func can_drag() -> bool:
 	return card.can_release()

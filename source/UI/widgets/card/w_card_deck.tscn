@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dikirj650nrtg"]
+[gd_scene load_steps=4 format=3 uid="uid://dikirj650nrtg"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card/w_card_deck.gd" id="1_vffno"]
+[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://asserts/textures/widgets/icons/icon_draw_deck.tres" id="2_hbml3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r2u85"]
 font_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -22,31 +23,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vffno")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-color = Color(0.788235, 0.768627, 1, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="ColorRect" type="TextureRect" parent="MarginContainer"]
+[node name="deck_icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
+texture = ExtResource("2_hbml3")
 
-[node name="lab_card_amount" type="Label" parent="MarginContainer"]
+[node name="lab_card_amount" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "17"
+text = "999
+"
 label_settings = SubResource("LabelSettings_r2u85")
 horizontal_alignment = 2
 vertical_alignment = 2

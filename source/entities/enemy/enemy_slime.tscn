@@ -124,7 +124,13 @@ libraries = {
 offset_top = -168.0
 offset_bottom = -122.0
 
-[node name="IntentStatus" parent="." index="6"]
+[node name="w_tooltip" parent="." index="6"]
+offset_left = -204.0
+offset_top = -116.0
+offset_right = -54.0
+offset_bottom = -33.0
+
+[node name="IntentStatus" parent="." index="7"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -137,9 +143,3 @@ offset_bottom = -216.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
-
-[node name="w_tooltip" parent="." index="7"]
-offset_left = -204.0
-offset_top = -116.0
-offset_right = -54.0
-offset_bottom = -33.0

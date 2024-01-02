@@ -1,18 +1,14 @@
 extends RefCounted
 class_name Card
 
-## 卡牌类型名
-const CARD_TYPE_NAME: Array[String] = [
-	"UNKNOW",
-	"攻击",
-	"技能",
-]
+
 ## 卡牌数据model的引用
 var _model : CardModel
 ## 卡牌名称
 var card_name : String :
 	get:
 		return _model.card_name
+var caster: Character = null
 
 ## 构造函数：通过id创建数据model
 func _init(cardID: StringName) -> void:
@@ -23,9 +19,8 @@ func needs_target() -> bool:
 	return _model.needs_target()
 
 ## 能否释放
-func can_release(caster: Character= null) -> bool:
-	var _caster = caster if caster != null else GameInstance.player
-	if _model.cost <= _caster.current_energy:
+func can_release() -> bool:
+	if _model.cost <= caster.current_energy:
 		return true
 	else:
 		print("能量不足，无法释放卡牌！", self)
@@ -43,6 +38,10 @@ func release(caster: Character, selected_cha: Character) -> void:
 	caster.use_energy(_model.cost)
 	await caster.play_animation_with_reset(_model.play_animation)
 	await caster.play_animation_with_reset("idle")
+
+## 获取卡牌类型名
+func get_card_type_name() -> String:
+	return _model.get_card_type_name()
 
 func _to_string() -> String:
 	return card_name

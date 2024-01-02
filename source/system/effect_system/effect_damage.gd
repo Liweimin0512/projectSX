@@ -3,9 +3,9 @@ class_name EffectDamage
 
 var value := 0
 
-func _init(data: Dictionary, caster: Character, targets: Array) -> void:
-	super(data, caster, targets)
+func _init(data: Dictionary) -> void:
 	value = int(data.effect_parameters[0])
+	super(data)
 
 func execute() -> void:
 	for cha in self._targets:

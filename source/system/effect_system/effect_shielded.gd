@@ -2,11 +2,10 @@ extends Effect
 class_name EffectShielded
 
 var shielded := 0
-var damage: Damage
 
-func _init(data: Dictionary, caster: Character, targets: Array) -> void:
-	super(data, caster, targets)
+func _init(data: Dictionary) -> void:
 	shielded = int(data.effect_parameters[0])
+	super(data)
 
 func execute() -> void:
 	for target : Character in _targets:

@@ -8,7 +8,7 @@ enum DECK_TYPE{
 	}
 
 ## 卡牌列表
-var card_list : Array = []
+var card_list : Array[Card]
 ## 牌堆类型
 var deck_type : DECK_TYPE = DECK_TYPE.DRAW
 ## 牌堆名称

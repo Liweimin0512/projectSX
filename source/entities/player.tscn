@@ -54,6 +54,34 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4ri8u"]
+resource_name = "attack_01"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("32_i5lod"), ExtResource("33_o8its"), ExtResource("34_8cmn1"), ExtResource("35_tgnl1"), ExtResource("36_it0i1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(20, 0), Vector2(100, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_120w7"]
 resource_name = "death"
 length = 0.7
@@ -180,34 +208,6 @@ tracks/0/keys = {
 "values": [ExtResource("24_dimsa"), ExtResource("25_2n2dn"), ExtResource("26_wmf61"), ExtResource("27_0ksqc")]
 }
 
-[sub_resource type="Animation" id="Animation_4ri8u"]
-resource_name = "attack_01"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("32_i5lod"), ExtResource("33_o8its"), ExtResource("34_8cmn1"), ExtResource("35_tgnl1"), ExtResource("36_it0i1")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(20, 0), Vector2(100, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_orul5"]
 _data = {
 "RESET": SubResource("Animation_72w5p"),
@@ -240,20 +240,6 @@ autoplay = "idle"
 
 [node name="w_health_bar" parent="." index="3"]
 metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" parent="selector" index="1"]
-offset_left = 76.0
-offset_right = 116.0
-
-[node name="TextureRect3" parent="selector" index="2"]
-offset_top = 104.0
-offset_bottom = 144.001
-
-[node name="TextureRect4" parent="selector" index="3"]
-offset_left = 76.0
-offset_top = 104.0
-offset_right = 116.0
-offset_bottom = 144.001
 
 [node name="C_CardSystem" type="Node" parent="." index="6"]
 unique_name_in_owner = true

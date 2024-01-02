@@ -23,32 +23,32 @@ func _ready() -> void:
 			display_energy()
 	)
 	display_energy()
-	card_container.card_selected.connect(
-		func(card: Card) -> void:
+	card_container.drag_started.connect(
+		func(card: W_Card) -> void:
 			btn_end_turn.disabled = true
 	)
-	card_container.card_unselected.connect(
-		func(card: Card) -> void:
+	card_container.drag_ended.connect(
+		func() -> void:
 			btn_end_turn.disabled = false
 	)
 
 ## 回合改变
 func next_turn(cha: Character) -> void:
 	if cha is Player:
-		begin_player_turn()
+		await begin_player_turn()
 	elif current_turn_cha is Player:
-		begin_enemy_turn()
+		await begin_enemy_turn()
 	current_turn_cha = cha
 
 ## 开始玩家回合
 func begin_player_turn() -> void:
-	show_turn_begin("玩家回合")
+	await show_turn_begin("玩家回合")
 	btn_end_turn.text = "结束回合"
 	btn_end_turn.disabled = false
 
 ## 开始敌人回合
 func begin_enemy_turn() -> void:
-	show_turn_begin("敌人回合")
+	await show_turn_begin("敌人回合")
 	btn_end_turn.text = "敌人回合"
 	btn_end_turn.disabled = true
 
@@ -56,6 +56,7 @@ func begin_enemy_turn() -> void:
 func display_energy() -> void:
 	lab_power.text = str(player.current_energy) + "/" + str(player.max_energy)
 
+## 显示回合开始提示
 func show_turn_begin(text: String) -> void:
 	turn_begin.show()
 	lab_turn_begin.text = text

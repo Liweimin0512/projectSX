@@ -5,8 +5,6 @@ class_name IntentModel
 @export var description: String
 @export var icon: Texture # 意图的图标路径
 
-## 意图的类型，比如"attack", "defend", "buff", "debuff"等
-@export var type: Intent.INTENT_TYPE 
 ## 意图相关的数值
 @export var value: int
 
@@ -30,7 +28,6 @@ func _init(caster: Character, intentID: StringName) -> void:
 	weight = data.weight
 	max_cooldown = data.cooldown
 	icon = data.icon
-	type = data.type
 	value = data.value
 	effects = data.effects
 	play_animation = data.play_animation

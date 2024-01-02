@@ -8,7 +8,6 @@
 [ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="4_rpfgr"]
 [ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://asserts/textures/widgets/icons/icon_turn.tres" id="6_y5c6i"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
 outline_size = 5

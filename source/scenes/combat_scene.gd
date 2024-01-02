@@ -56,10 +56,9 @@ func _init_combat(combat_id : StringName, player: Character) -> void:
 
 ## 开始战斗，战斗初始化
 func _begin_combat() -> void:
-	await get_tree().create_timer(0.5).timeout
 	for cha in characters:
 		cha._begin_combat()
-	_next_turn()
+	await _next_turn()
 
 ## 切换回合
 func _next_turn() -> void:
@@ -71,8 +70,8 @@ func _next_turn() -> void:
 	if current_character.is_death:
 		current_character = _get_next_character()
 	if current_character:
+		await combat_form.next_turn(current_character)
 		await current_character._begin_turn()
-	combat_form.next_turn(current_character)
 
 ## 结束战斗
 func _end_combat() -> void:
@@ -88,7 +87,7 @@ func _init_player(player: Character) -> void:
 ## 创建敌人
 func _create_enemy(enemyID: StringName, markerID: int) -> void:
 	if enemyID.is_empty(): return
-	var enemy_path: String = AssetUtility.get_entity_path(DatatableManager.get_datatable_row("monster", enemyID)["enemy_scene"])
+	var enemy_path: String = AssetUtility.get_enemy_path(DatatableManager.get_datatable_row("monster", enemyID)["enemy_scene"])
 	var enemy :  = GameInstance.create_entity(enemy_path)
 	enemy.turn_begined.connect(
 		func() -> void:
