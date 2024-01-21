@@ -1,7 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2eootn4eg0wl"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_intent_status.gd" id="1_1op2a"]
-[ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://asserts/textures/widgets/Buffs/poison_dagger.png" id="1_ischg"]
+[ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://assets/textures/widgets/Buffs/poison_dagger.png" id="1_ischg"]
+
 
 [sub_resource type="Animation" id="Animation_m15w2"]
 length = 0.001

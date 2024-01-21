@@ -1,0 +1,133 @@
+[gd_resource type="AnimationLibrary" load_steps=23 format=3 uid="uid://ddxy0ex48omuo"]
+
+[ext_resource type="Texture2D" uid="uid://bejgi8p6de4rq" path="res://assets/textures/character/slime/idle/slime-idle-0.png" id="1_ihqr1"]
+[ext_resource type="Texture2D" uid="uid://dlo5l7lc3ebv8" path="res://assets/textures/character/slime/attack/slime-attack-0.png" id="2_msby1"]
+[ext_resource type="Texture2D" uid="uid://2rfvc615wrxh" path="res://assets/textures/character/slime/attack/slime-attack-1.png" id="3_k3ytw"]
+[ext_resource type="Texture2D" uid="uid://bvpthv4iggq1r" path="res://assets/textures/character/slime/attack/slime-attack-2.png" id="4_xwjbm"]
+[ext_resource type="Texture2D" uid="uid://pxixjngwcgq5" path="res://assets/textures/character/slime/attack/slime-attack-3.png" id="5_w2t73"]
+[ext_resource type="Texture2D" uid="uid://domninpu3ud" path="res://assets/textures/character/slime/attack/slime-attack-4.png" id="6_47rxg"]
+[ext_resource type="Texture2D" uid="uid://b3d7l0yii1eur" path="res://assets/textures/character/slime/die/slime-die-0.png" id="7_xdgys"]
+[ext_resource type="Texture2D" uid="uid://byw3cm38cv32h" path="res://assets/textures/character/slime/die/slime-die-1.png" id="8_mphuq"]
+[ext_resource type="Texture2D" uid="uid://bhec6ffam0dny" path="res://assets/textures/character/slime/die/slime-die-2.png" id="9_7ba5e"]
+[ext_resource type="Texture2D" uid="uid://iaix65mqybo4" path="res://assets/textures/character/slime/die/slime-die-3.png" id="10_y0epg"]
+[ext_resource type="Texture2D" uid="uid://d13enghjfqk7i" path="res://assets/textures/character/slime/hurt/slime-hurt-0.png" id="11_k6eyt"]
+[ext_resource type="Texture2D" uid="uid://b2f1q21davkvv" path="res://assets/textures/character/slime/hurt/slime-hurt-1.png" id="12_45hnn"]
+[ext_resource type="Texture2D" uid="uid://buppdgjsgpujx" path="res://assets/textures/character/slime/hurt/slime-hurt-2.png" id="13_uj6ck"]
+[ext_resource type="Texture2D" uid="uid://c831haw5pdlwb" path="res://assets/textures/character/slime/hurt/slime-hurt-3.png" id="14_btdlx"]
+[ext_resource type="Texture2D" uid="uid://bhicyncxaxqto" path="res://assets/textures/character/slime/idle/slime-idle-1.png" id="15_dw3of"]
+[ext_resource type="Texture2D" uid="uid://4jq66nshg62p" path="res://assets/textures/character/slime/idle/slime-idle-2.png" id="16_8vitd"]
+[ext_resource type="Texture2D" uid="uid://u6y6llufrjh3" path="res://assets/textures/character/slime/idle/slime-idle-3.png" id="17_q2khf"]
+
+
+[sub_resource type="Animation" id="Animation_j7sah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ihqr1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0w1a3"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_msby1"), ExtResource("3_k3ytw"), ExtResource("4_xwjbm"), ExtResource("5_w2t73"), ExtResource("6_47rxg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-80, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6keks"]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_xdgys"), ExtResource("8_mphuq"), ExtResource("9_7ba5e"), ExtResource("10_y0epg")]
+}
+
+[sub_resource type="Animation" id="Animation_jkwjr"]
+resource_name = "hurt"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_k6eyt"), ExtResource("12_45hnn"), ExtResource("13_uj6ck"), ExtResource("14_btdlx")]
+}
+
+[sub_resource type="Animation" id="Animation_1iao4"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_ihqr1"), ExtResource("15_dw3of"), ExtResource("16_8vitd"), ExtResource("17_q2khf")]
+}
+
+[resource]
+_data = {
+"RESET": SubResource("Animation_j7sah"),
+"attack": SubResource("Animation_0w1a3"),
+"die": SubResource("Animation_6keks"),
+"hurt": SubResource("Animation_jkwjr"),
+"idle": SubResource("Animation_1iao4")
+}

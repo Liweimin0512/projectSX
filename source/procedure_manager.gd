@@ -19,7 +19,7 @@ class ProcedureLaunch:
 class ProcedureInitResource:
 	extends BaseState
 
-	var data_system
+	#var data_system
 	var datatable_paths = {
 		"combat": false,
 		"character": false,
@@ -45,6 +45,7 @@ class ProcedureInitResource:
 	func _on_load_completed(datatable_name : String, data : Dictionary) -> void:
 		datatable_paths[datatable_name] = true
 
+	## 判断是否全部CSV加载完成
 	func _is_load_completed() -> bool:
 		for d in datatable_paths.values():
 			if d == false:

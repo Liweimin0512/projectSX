@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://1hta5e7qx8pv"]
 
 [ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_nnovx"]
-[ext_resource type="Texture2D" uid="uid://7b8chesuyp71" path="res://asserts/textures/character/Mushroom/Idle.png" id="2_rsfih"]
-[ext_resource type="AnimationLibrary" uid="uid://cq2amtot2cw17" path="res://asserts/animtions/enemy_mushroom.tres" id="3_7wc42"]
+[ext_resource type="Texture2D" uid="uid://7b8chesuyp71" path="res://assets/textures/character/Mushroom/Idle.png" id="2_rsfih"]
+[ext_resource type="AnimationLibrary" uid="uid://cq2amtot2cw17" path="res://assets/animtions/enemy_mushroom.tres" id="3_7wc42"]
+
 
 [node name="enemy_mushroon" instance=ExtResource("1_nnovx")]
 

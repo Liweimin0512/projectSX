@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7owvrp6cj205"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_buff.gd" id="1_1qggh"]
-[ext_resource type="Texture2D" uid="uid://dpfb4ovmthb38" path="res://asserts/textures/widgets/Buffs/attack_boost.png" id="1_5rvx4"]
+[ext_resource type="Texture2D" uid="uid://dpfb4ovmthb38" path="res://assets/textures/widgets/Buffs/attack_boost.png" id="1_5rvx4"]
 
 [node name="w_buff" type="MarginContainer"]
 custom_minimum_size = Vector2(32, 32)

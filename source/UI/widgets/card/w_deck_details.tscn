@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cixs5tbqar2uk"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card/w_deck_details.gd" id="1_8y8xy"]
-[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="2_c1me7"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://assets/fonts/SourceHanSansCN-Normal.otf" id="2_c1me7"]
+
 
 [node name="w_deck_details" type="Control"]
 layout_mode = 3

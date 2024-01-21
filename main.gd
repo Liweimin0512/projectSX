@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var ui_manager: CanvasLayer = %UIManager
 
 var player: Character
-var value = 0
+#var value = 0
 
 func _ready() -> void:
 	GameInstance.game_main = self

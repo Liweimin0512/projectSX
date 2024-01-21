@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dikirj650nrtg"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card/w_card_deck.gd" id="1_vffno"]
-[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://asserts/textures/widgets/icons/icon_draw_deck.tres" id="2_hbml3"]
+[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://assets/textures/widgets/icons/icon_draw_deck.tres" id="2_hbml3"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_r2u85"]
 font_color = Color(0.87451, 0.87451, 0.87451, 1)
