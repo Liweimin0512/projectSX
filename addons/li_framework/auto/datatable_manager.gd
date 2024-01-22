@@ -36,15 +36,15 @@ func _load_datatable(datatable_name : String) -> Dictionary:
 	加载数据表，格式化数据
 	'''
 	var datatable = datatable_path + datatable_name + ".csv"
-	assert(FileAccess.file_exists(datatable),"文件不存在！")
+	assert(FileAccess.file_exists(datatable), "文件不存在！")
 	var file = FileAccess.open(datatable, FileAccess.READ)
-	var retunr_dic : Dictionary = {}
+	var return_dic : Dictionary = {}
 	# TODO CSV数据解析
-	var data_name = file.get_csv_line(",")
-	var _dec = file.get_csv_line(",")
-	var type_name = file.get_csv_line(",")
+	var data_name : PackedStringArray = file.get_csv_line(",")
+	var _dec : PackedStringArray = file.get_csv_line(",")
+	var type_name : PackedStringArray = file.get_csv_line(",")
 	while not file.eof_reached():
-		var row_data = file.get_csv_line(",")
+		var row_data : PackedStringArray = file.get_csv_line(",")
 		var d = {}
 		for i in row_data.size():
 			var _d_name : StringName = data_name[i]
@@ -90,10 +90,10 @@ func _load_datatable(datatable_name : String) -> Dictionary:
 					else:
 						assert(false,"未知的配置表数据类型: " + type_name[i])
 		if not d.is_empty():
-			retunr_dic[StringName(d["ID"])] = d
-	add_datatable(datatable_name, retunr_dic)
-	load_completed.emit(datatable_name, retunr_dic)
-	return retunr_dic
+			return_dic[StringName(d["ID"])] = d
+	add_datatable(datatable_name, return_dic)
+	load_completed.emit(datatable_name, return_dic)
+	return return_dic
 
 func add_datatable(datatable_name : String, data : Dictionary) -> void:
 	'''
