@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://source/system/buff_system/C_BuffSystem.gd" id="7_07cqm"]
 [ext_resource type="Texture2D" uid="uid://css3yb5xubq53" path="res://assets/textures/widgets/seletor/seletor_04.tres" id="7_mm68b"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
 size = Vector2(96, 121.625)
 

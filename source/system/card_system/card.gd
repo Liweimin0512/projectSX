@@ -1,7 +1,6 @@
 extends RefCounted
 class_name Card
 
-
 ## 卡牌数据model的引用
 var _model : CardModel
 ## 卡牌名称

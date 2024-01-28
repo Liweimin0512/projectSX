@@ -14,7 +14,7 @@ func subscribe(destination: String, callback: Callable) -> void:
 		# warning-ignore: return_value_discarded
 		connect(dest_signal, callback)
 
-## 取消订阅时间
+## 取消订阅事件
 func unsubscribe(destination: String, callback: Callable) -> void:
 	var dest_signal: String = _get_destination_signal(destination)
 	if is_connected(dest_signal, callback):

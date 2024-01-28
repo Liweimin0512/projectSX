@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c2eootn4eg0wl" path="res://source/UI/widgets/w_intent_status.tscn" id="20_yltto"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="22_rlg1m"]
 
-
 [node name="enemy" groups=["enemy"] instance=ExtResource("1_yh4r0")]
 script = ExtResource("11_j32pj")
 cha_type = "Enemy"
@@ -25,6 +24,20 @@ position = Vector2(0, -60.8125)
 [node name="AnimationPlayer" parent="." index="2"]
 unique_name_in_owner = true
 autoplay = "idle"
+
+[node name="TextureRect2" parent="selector" index="1"]
+offset_left = 76.0
+offset_right = 116.0
+
+[node name="TextureRect3" parent="selector" index="2"]
+offset_top = 104.0
+offset_bottom = 144.0
+
+[node name="TextureRect4" parent="selector" index="3"]
+offset_left = 76.0
+offset_top = 104.0
+offset_right = 116.0
+offset_bottom = 144.0
 
 [node name="w_tooltip" parent="." index="6" instance=ExtResource("22_rlg1m")]
 unique_name_in_owner = true

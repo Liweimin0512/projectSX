@@ -227,7 +227,7 @@ cha_type = "Player"
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -52)
-texture = ExtResource("36_it0i1")
+texture = ExtResource("15_ti83s")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(-1.5, -48)
