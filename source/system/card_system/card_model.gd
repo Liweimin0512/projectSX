@@ -72,8 +72,8 @@ func get_targets(owenr:Character, selected_cha: Character) -> Array[Character]:
 			return [owenr]
 		TARGET_TYPE.THEY_SIGNAL:
 			return [selected_cha]
-		#TARGET_TYPE.OUR_SIGNAL:
-			#return targets
+		TARGET_TYPE.OUR_SIGNAL:
+			return [selected_cha]
 		_:
 			push_error("未知的目标，未实现！")
 			return []

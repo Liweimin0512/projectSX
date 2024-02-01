@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://source/UI/widgets/card/bezier_arrow.gd" id="6_our5o"]
 [ext_resource type="PackedScene" uid="uid://cixs5tbqar2uk" path="res://source/UI/widgets/card/w_deck_details.tscn" id="7_td0xq"]
 
-
 [node name="w_card_manager" type="Control"]
 layout_mode = 3
 anchors_preset = 15
