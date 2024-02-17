@@ -4,7 +4,6 @@
 [ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://assets/fonts/SourceHanSansCN-Normal.otf" id="2_1jsry"]
 [ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://assets/textures/cards/card_frame/card_des_frame.png" id="2_8s6im"]
 
-
 [node name="w_tooltip" type="MarginContainer"]
 custom_minimum_size = Vector2(150, 0)
 offset_left = -75.0

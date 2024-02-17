@@ -26,8 +26,8 @@ func _ready():
 			var buff_data: Dictionary = DatatableManager.get_datatable_row("buff", buffID)
 			var w_tip = load("res://source/UI/widgets/w_tooltip.tscn").instantiate()
 			if buff_data.is_empty(): continue
-			w_tip.set_tooltip(buff_data.name, buff_data.description)
 			tip_container.add_child(w_tip)
+			w_tip.set_tooltip(buff_data.name, buff_data.description)
 			w_tip.show()
 	tip_container.hide()
 

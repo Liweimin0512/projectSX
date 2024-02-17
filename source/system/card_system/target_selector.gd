@@ -7,10 +7,11 @@ var _target_cha : Character = null:
 		target_changed.emit(_target_cha, value)
 		_target_cha = value
 
-## 目标发生改变
-signal target_changed(old: Character, new: Character)
 ## 筛选条件
 var filter_conditions = {}  # 筛选条件，如 {"team": "enemy"}
+
+## 目标发生改变
+signal target_changed(old: Character, new: Character)
 
 func _init(_filter_conditions = {}):
 	filter_conditions = _filter_conditions
