@@ -9,7 +9,7 @@ class_name W_Card
 #@onready var t_card : TextureRect = $t_card
 @onready var tip_container: VBoxContainer = %TipContainer
 
-var card : Card
+var card : Card # 是在ready方法之前赋值的
 
 signal drag_started
 

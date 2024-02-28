@@ -12,9 +12,9 @@ func _ready():
 		add_child(sprite)          		# 添加到场景里
 		sprite.texture = t_arrow_body 	# 把图片换成箭头1
 		# 改变缩放，根据《杀戮尖塔》，箭头是一节节越来越大的
-		sprite.scale=Vector2(1,1) * (0.2 + float(i)/18*0.8) 
+		sprite.scale = Vector2(1,1) * (0.2 + float(i)/18*0.8) 
 		# 由于我画的图片中心点在箭头中间
-		sprite.offset=Vector2(-25,0)
+		sprite.offset = Vector2(-25,0)
 		sprite.scale = sprite.scale * 0.7
 	# 这里改变一下图片偏移，把图片中心点移动到箭头头部
 	# 最后生成终点的箭头，用箭头2的图片
@@ -45,12 +45,12 @@ func reset(start_pos: Vector2, end_pos: Vector2):
 		get_child(i).position = start_pos * b1 + 3 * ctrl_a_position * b2 + 3 * ctrl_b_position * b3 + end_pos * b4
 	# 虽然更改了箭头的位置，不过还需要重新计算箭头的方向
 	# 重新计算所有箭头的方向
-	update_angle()
+	_update_angle()
 
 ## 更新箭头显示
-func update_angle():
+func _update_angle():
 	for i in range(arrow_num):
-		if i==0:
+		if i == 0:
 			get_child(0).rotation_degrees = 270    #第一个小箭头就让他固定朝上好了
 		else:
 			# 当前的小箭头
