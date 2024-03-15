@@ -10,7 +10,7 @@ var current_intent: Intent = null
 
 ## 意图选中
 signal intent_choosed
-## 意图行
+## 意图执行
 signal intent_executed
 
 func _ready() -> void:
@@ -35,7 +35,11 @@ func choose_intent() -> void:
 	)
 	if available_intents.is_empty() : 
 		current_intent =  null
-	var total_weight : float = available_intents.reduce(func(a, b): return a + b.weight, 0)
+	var total_weight : float = available_intents.reduce(
+		func(a, b): 
+			return a + b.weight, 
+		0
+		)
 	# 基于权重随机选择意图
 	var random_choice = randf_range(0, total_weight)
 	var accumulated_weight = 0	

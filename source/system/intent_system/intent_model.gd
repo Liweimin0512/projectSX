@@ -17,8 +17,8 @@ var cooldown: int = 0
 
 var play_animation: StringName
 
-
-var _caster: Character
+## 意图的拥有者
+var _caster: Character 
 
 func _init(caster: Character, intentID: StringName) -> void:
 	_caster = caster

@@ -24,7 +24,6 @@ var is_available: bool = true :
 	get:
 		return _model.cooldown == 0
 
-
 func _init(caster: Character, intentID: StringName) -> void:
 	_model = IntentModel.new(caster, intentID)
 

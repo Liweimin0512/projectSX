@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://source/UI/widgets/w_intent_status.gd" id="1_1op2a"]
 [ext_resource type="Texture2D" uid="uid://boiwkvw4rd12i" path="res://assets/textures/widgets/Buffs/poison_dagger.png" id="1_ischg"]
 
-
 [sub_resource type="Animation" id="Animation_m15w2"]
 length = 0.001
 tracks/0/type = "value"
@@ -68,7 +67,7 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 offset_right = 48.0
 offset_bottom = 48.0
-rotation = -0.349066
+rotation = -0.254288
 pivot_offset = Vector2(24, 24)
 
 [node name="sprite" type="TextureRect" parent="MarginContainer"]

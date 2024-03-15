@@ -33,11 +33,9 @@ var _model: BuffModel
 var buff_id: StringName:
 	get:
 		return _model.id
-
 var buff_name: StringName:
 	get:
 		return _model.buff_name
-
 var icon: Texture:
 	get:
 		return _model.icon
@@ -47,7 +45,6 @@ var value: int:
 	set(value):
 		_model.value = value
 		value_changed.emit(_model.value)
-
 var callback_type: CALLBACK_TYPE:
 	get:
 		return _model.callback_type

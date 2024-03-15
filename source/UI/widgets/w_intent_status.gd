@@ -20,7 +20,7 @@ func set_status(intent: Intent) -> void:
 	label.text = str(intent.value) if intent.value > 0 else ""
 
 func execute_intent() -> void:
-	self.hide()
 	animation_player.play("execute")
 	await animation_player.animation_finished
 	animation_player.play("idle")
+	self.hide()
