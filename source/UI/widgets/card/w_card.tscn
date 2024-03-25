@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://ds4gbleycp8dr"]
 
 [ext_resource type="Script" path="res://source/UI/widgets/card/w_card.gd" id="1_50cg7"]
-[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://asserts/textures/cards/card_frame/card_frame.png" id="2_ga0nj"]
-[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://asserts/textures/cards/card_frame/card_name_frame.png" id="3_60nyl"]
-[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://asserts/textures/cards/card_frame/card_cost_frame.png" id="4_11kcs"]
-[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://asserts/textures/cards/card_icons/card_strike.png" id="5_ypjme"]
-[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://asserts/textures/cards/card_frame/card_des_frame.png" id="6_d8e7j"]
-[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="7_wh8g0"]
-[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://asserts/fonts/SourceHanSansCN-Bold.otf" id="8_8otkn"]
-[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://asserts/fonts/SourceHanSansCN-ExtraLight.otf" id="9_rltl3"]
-[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://asserts/fonts/SourceHanSansCN-Medium.otf" id="10_lg2uv"]
-[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://asserts/textures/cards/card_frame/card_type_frame.png" id="11_xwrcj"]
+[ext_resource type="Texture2D" uid="uid://dv6v5csnn38dq" path="res://assets/textures/cards/card_frame/card_frame.png" id="2_ga0nj"]
+[ext_resource type="Texture2D" uid="uid://bsbfj2nykta2u" path="res://assets/textures/cards/card_frame/card_name_frame.png" id="3_60nyl"]
+[ext_resource type="Texture2D" uid="uid://dyw32f4gxh3gr" path="res://assets/textures/cards/card_frame/card_cost_frame.png" id="4_11kcs"]
+[ext_resource type="Texture2D" uid="uid://dalxihsw5t304" path="res://assets/textures/cards/card_icons/card_strike.png" id="5_ypjme"]
+[ext_resource type="Texture2D" uid="uid://dq8cid5wbnlhq" path="res://assets/textures/cards/card_frame/card_des_frame.png" id="6_d8e7j"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://assets/fonts/SourceHanSansCN-Normal.otf" id="7_wh8g0"]
+[ext_resource type="FontFile" uid="uid://cqpfbqec73olb" path="res://assets/fonts/SourceHanSansCN-Bold.otf" id="8_8otkn"]
+[ext_resource type="FontFile" uid="uid://drg6qfljcph8r" path="res://assets/fonts/SourceHanSansCN-ExtraLight.otf" id="9_rltl3"]
+[ext_resource type="FontFile" uid="uid://6oc5e4qxi5oy" path="res://assets/fonts/SourceHanSansCN-Medium.otf" id="10_lg2uv"]
+[ext_resource type="Texture2D" uid="uid://bogxjs57u701s" path="res://assets/textures/cards/card_frame/card_type_frame.png" id="11_xwrcj"]
 [ext_resource type="PackedScene" uid="uid://dlea1lgk4q4ic" path="res://source/UI/widgets/w_tooltip.tscn" id="12_soytr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wkfj"]
@@ -44,6 +44,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_ga0nj")
 expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -10,5 +10,4 @@ func _init(data: Dictionary) -> void:
 func execute() -> void:
 	for cha in self._targets:
 		assert(cha != null, "找不到目标！")
-		var damage = Damage.new(value)
-		cha.damage(damage)
+		cha.damage(Damage.new(value))

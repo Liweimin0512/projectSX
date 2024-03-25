@@ -13,7 +13,7 @@ class_name W_CardManager
 ## 拖拽的卡牌
 var drag_card: W_Card : set = _drag_card_setter
 
-## 卡牌管理器的引用
+## 卡牌系统组件的引用
 var _card_system : C_CardSystem
 
 # combat_scene需要获取这个事件禁用下回合按钮
@@ -48,14 +48,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			# 此时是选择目标状态，则退出选择状态
 			_cancel_card_drag()
 
-## 取消拖拽卡牌
-func _cancel_card_drag() -> void:
-	drag_card = null
-	w_hand_card.reset_layout()
-	bezier_arrow.unhighlight()
-	bezier_arrow.hide()
-	_card_system.cancel_release_card()
-
 ## 能否释放卡牌
 func _can_release_card(w_card: W_Card) -> bool:
 	# 判断鼠标位置是否在屏幕下方（手牌区域）
@@ -74,11 +66,22 @@ func _found_target() -> void:
 	drag_card.global_position = w_hand_card.global_position + Vector2(drag_card.size.x/2 * -1, drag_card.size.y * -1)
 	drag_card.rotation = 0
 	drag_card.z_index = 128
-	bezier_arrow.reset(drag_card.global_position+ Vector2(drag_card.size.x/2, drag_card.size.y/2), get_global_mouse_position())
+	bezier_arrow.reset(
+		drag_card.global_position+ Vector2(drag_card.size.x/2, drag_card.size.y/2),
+	 	get_global_mouse_position()
+		)
 
 ## 拖拽卡牌
 func _on_card_drag(drag_position: Vector2) -> void:
 	drag_card.global_position = drag_position - drag_card.size / 2 
+
+## 取消拖拽卡牌
+func _cancel_card_drag() -> void:
+	drag_card = null
+	await w_hand_card.reset_layout()
+	bezier_arrow.unhighlight()
+	bezier_arrow.hide()
+	_card_system.cancel_release_card()
 
 ## 抽牌时候的表现效果处理
 func _on_card_drawn(card: Card) -> void:

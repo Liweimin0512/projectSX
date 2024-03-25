@@ -49,9 +49,9 @@ func _on_mouse_exited() -> void:
 	deck_icon.scale = Vector2.ONE
 
 ## 覆盖tooltip显示方法，自定义tooltip控件
-func _make_custom_tooltip(for_text: String) -> Object:
+func _make_custom_tooltip(_for_text: String) -> Object:
 	var w_tooltip = load("res://source/UI/widgets/w_tooltip.tscn").instantiate()
-	w_tooltip.set_tooltip(_deck.deck_name, "在每回合开始时，你从这里抽5张牌，点击查看你抽牌堆中的牌（但顺序是打乱的）")
+	w_tooltip.set_tooltip(_deck.deck_name, _deck.deck_des)
 	return w_tooltip
 
 ## 重写获取名称时候的输出

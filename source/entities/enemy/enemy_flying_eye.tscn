@@ -1,10 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bu5f31d35ijdr"]
 
 [ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_5m082"]
-[ext_resource type="Texture2D" uid="uid://debninpqlwnsj" path="res://asserts/textures/character/Flying eye/Flight.png" id="2_a17lw"]
-[ext_resource type="Texture2D" uid="uid://d08ngf8chxr76" path="res://asserts/textures/character/Flying eye/Take Hit.png" id="2_cntbv"]
-[ext_resource type="Texture2D" uid="uid://bhal1hjbslq5l" path="res://asserts/textures/character/Flying eye/Attack.png" id="2_du6c3"]
-[ext_resource type="Texture2D" uid="uid://dxiwjtluxt0hy" path="res://asserts/textures/character/Flying eye/Death.png" id="2_hx2s3"]
+[ext_resource type="Texture2D" uid="uid://debninpqlwnsj" path="res://assets/textures/character/Flying eye/Flight.png" id="2_a17lw"]
+[ext_resource type="Texture2D" uid="uid://d08ngf8chxr76" path="res://assets/textures/character/Flying eye/Take Hit.png" id="2_cntbv"]
+[ext_resource type="Texture2D" uid="uid://bhal1hjbslq5l" path="res://assets/textures/character/Flying eye/Attack.png" id="2_du6c3"]
+[ext_resource type="Texture2D" uid="uid://dxiwjtluxt0hy" path="res://assets/textures/character/Flying eye/Death.png" id="2_hx2s3"]
+
 
 [sub_resource type="Animation" id="Animation_e20al"]
 length = 0.001

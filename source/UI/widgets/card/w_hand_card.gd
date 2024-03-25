@@ -26,7 +26,7 @@ func _ready() -> void:
 
 ## 重置布局
 func reset_layout() -> void:
-	_update_card_layout()
+	await _update_card_layout()
 
 ## 获取卡牌widget（根据逻辑层card)
 func get_card(card: Card) -> W_Card:
@@ -63,7 +63,7 @@ func _calculate_card_transform(card_index: int, card_count: int) -> Transform2D:
 	# 使用非线性插值来确保中间的卡牌几乎不旋转
 	var normalized_offset = offset_from_middle / middle_index
 	## TODO : 手牌的角度设置
-	var angle : float = 0 
+	var angle : float = 0
 	var vertical_offset = abs(normalized_offset) * vertical_drop_factor
 	# 可以根据需要调整垂直位置
 	var position_y = card_size.y * 0.3 + vertical_offset if card_index != _get_card_index(_preview_card) else 0

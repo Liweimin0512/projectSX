@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://t4e44od55s3t" path="res://source/UI/widgets/w_health_bar.tscn" id="2_d0fqm"]
 [ext_resource type="Script" path="res://source/entities/character.gd" id="2_gxres"]
-[ext_resource type="Texture2D" uid="uid://daw1t1b5xee2s" path="res://asserts/textures/widgets/seletor/seletor_01.tres" id="4_p0c64"]
-[ext_resource type="Texture2D" uid="uid://4ys2yn3vtk8u" path="res://asserts/textures/widgets/seletor/seletor_02.tres" id="5_qq5hu"]
-[ext_resource type="Texture2D" uid="uid://b4xcjk7rudclk" path="res://asserts/textures/widgets/seletor/seletor_03.tres" id="6_4w4ta"]
+[ext_resource type="Texture2D" uid="uid://daw1t1b5xee2s" path="res://assets/textures/widgets/seletor/seletor_01.tres" id="4_p0c64"]
+[ext_resource type="Texture2D" uid="uid://4ys2yn3vtk8u" path="res://assets/textures/widgets/seletor/seletor_02.tres" id="5_qq5hu"]
+[ext_resource type="Texture2D" uid="uid://b4xcjk7rudclk" path="res://assets/textures/widgets/seletor/seletor_03.tres" id="6_4w4ta"]
 [ext_resource type="Script" path="res://source/system/buff_system/C_BuffSystem.gd" id="7_07cqm"]
-[ext_resource type="Texture2D" uid="uid://css3yb5xubq53" path="res://asserts/textures/widgets/seletor/seletor_04.tres" id="7_mm68b"]
+[ext_resource type="Texture2D" uid="uid://css3yb5xubq53" path="res://assets/textures/widgets/seletor/seletor_04.tres" id="7_mm68b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_voqo7"]
 size = Vector2(96, 121.625)

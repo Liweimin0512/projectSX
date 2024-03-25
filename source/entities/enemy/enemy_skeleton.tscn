@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bni4k5plk3slj"]
 
 [ext_resource type="PackedScene" uid="uid://bghoauk4pq40q" path="res://source/entities/enemy.tscn" id="1_wqjps"]
-[ext_resource type="Texture2D" uid="uid://dlnp3t346r8gd" path="res://asserts/textures/character/Skeleton/Idle.png" id="2_0f23f"]
-[ext_resource type="AnimationLibrary" uid="uid://da6lfgvwswab7" path="res://asserts/animtions/enemy_skeleton.tres" id="3_h6e77"]
+[ext_resource type="Texture2D" uid="uid://dlnp3t346r8gd" path="res://assets/textures/character/Skeleton/Idle.png" id="2_0f23f"]
+[ext_resource type="AnimationLibrary" uid="uid://da6lfgvwswab7" path="res://assets/animtions/enemy_skeleton.tres" id="3_h6e77"]
 
 [node name="enemy_skeleton" instance=ExtResource("1_wqjps")]
 position = Vector2(-100, 0)
@@ -24,20 +24,6 @@ libraries = {
 [node name="w_health_bar" parent="." index="3"]
 offset_top = -192.0
 offset_bottom = -152.0
-
-[node name="TextureRect2" parent="selector" index="1"]
-offset_left = 76.0
-offset_right = 116.0
-
-[node name="TextureRect3" parent="selector" index="2"]
-offset_top = 104.0
-offset_bottom = 144.001
-
-[node name="TextureRect4" parent="selector" index="3"]
-offset_left = 76.0
-offset_top = 104.0
-offset_right = 116.0
-offset_bottom = 144.001
 
 [node name="IntentStatus" parent="." index="7"]
 offset_top = -244.0

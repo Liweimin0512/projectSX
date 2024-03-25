@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://source/UI/widgets/w_status_bar.gd" id="1_uo83n"]
 [ext_resource type="PackedScene" uid="uid://mve4xgcaye53" path="res://source/UI/widgets/w_status.tscn" id="2_uj4b2"]
-[ext_resource type="Texture2D" uid="uid://c655ojsa81no8" path="res://asserts/textures/widgets/icons/icon_coin.tres" id="3_g3wbk"]
-[ext_resource type="Texture2D" uid="uid://benmyy0cyqqf1" path="res://asserts/textures/widgets/icons/icon_map.tres" id="4_o5chf"]
+[ext_resource type="Texture2D" uid="uid://c655ojsa81no8" path="res://assets/textures/widgets/icons/icon_coin.tres" id="3_g3wbk"]
+[ext_resource type="Texture2D" uid="uid://benmyy0cyqqf1" path="res://assets/textures/widgets/icons/icon_map.tres" id="4_o5chf"]
 [ext_resource type="Script" path="res://source/UI/widgets/status_button.gd" id="5_2l7we"]
-[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://asserts/textures/widgets/icons/icon_draw_deck.tres" id="5_purme"]
-[ext_resource type="Texture2D" uid="uid://cko57iolst8sg" path="res://asserts/textures/widgets/icons/icon_settings.tres" id="6_eucxe"]
+[ext_resource type="Texture2D" uid="uid://diryem3klgdu6" path="res://assets/textures/widgets/icons/icon_draw_deck.tres" id="5_purme"]
+[ext_resource type="Texture2D" uid="uid://cko57iolst8sg" path="res://assets/textures/widgets/icons/icon_settings.tres" id="6_eucxe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7vb4m"]
 outline_size = 3

@@ -5,8 +5,8 @@ const scene_path: String = "res://source/scenes/"
 const form_path: String = "res://source/UI/form/"
 const entity_path : String = "res://source/entities/"
 const enemy_path: String = "res://source/entities/enemy/"
-const t_arrow_head_path : String = "res://asserts/textures/widgets/right.png"
-const t_arrow_body_path : String = "res://asserts/textures/widgets/fightJ.png"
+const t_arrow_head_path : String = "res://assets/textures/widgets/right.png"
+const t_arrow_body_path : String = "res://assets/textures/widgets/fightJ.png"
 
 static func get_entity_path(entity_name: String) -> String:
 	return entity_path + entity_name + ".tscn"

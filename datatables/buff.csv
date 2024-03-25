@@ -19,7 +19,7 @@ block,格挡,格挡部分伤害,,,,,,
 strength,力量,增加角色攻击卡牌造成的伤害,1,,,,,
 dexterity,敏捷,增加每次或格挡时的格挡量,1,,,,,
 regen,再生,每回合结束时恢复一定量的生命值,1,,,,,
-vulnerable,易伤,使目标受到的攻击伤害增加,1,2,2,5,res://asserts/textures/widgets/Buffs/defense_down.png,VULNERABLE
+vulnerable,易伤,使目标受到的攻击伤害增加,1,2,2,5,res://assets/textures/widgets/Buffs/defense_down.png,VULNERABLE
 weak,虚弱,降低目标的攻击伤害,0,,,,,
 poison,中毒,每个回合结束时，根据层数对目标造成伤害,0,,,,,
 frail,摧残,减少从所有来源获得的格挡值,0,,,,,

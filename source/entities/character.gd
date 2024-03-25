@@ -99,7 +99,7 @@ func damage(damage: Damage) -> void:
 		death()
 	else:
 		await play_animation_with_reset("hurt")
-		print("受到伤害：", damage)
+		# print("受到伤害：", damage)
 		play_animation_with_reset("idle")
 	damaged.emit()
 	w_health_bar.update_display(current_health, max_health, shielded)

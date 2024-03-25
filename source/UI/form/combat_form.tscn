@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://72uhpsyxdbi7" path="res://source/UI/widgets/card/w_card_manager.tscn" id="1_i77bo"]
 [ext_resource type="Script" path="res://source/UI/form/combat_form.gd" id="1_kt0dy"]
 [ext_resource type="PackedScene" uid="uid://bvbsh6gt6f3w2" path="res://source/UI/widgets/w_status_bar.tscn" id="2_8h2ee"]
-[ext_resource type="Texture2D" uid="uid://4pjk2fsbfugu" path="res://asserts/textures/widgets/icons/icon_energy.tres" id="3_epp6o"]
+[ext_resource type="Texture2D" uid="uid://4pjk2fsbfugu" path="res://assets/textures/widgets/icons/icon_energy.tres" id="3_epp6o"]
 [ext_resource type="Script" path="res://source/UI/widgets/w_turn.gd" id="3_f1pr6"]
-[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://asserts/fonts/SourceHanSansCN-Normal.otf" id="4_rpfgr"]
-[ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://asserts/textures/widgets/icons/icon_turn.tres" id="6_y5c6i"]
+[ext_resource type="FontFile" uid="uid://bp53tlinpuypa" path="res://assets/fonts/SourceHanSansCN-Normal.otf" id="4_rpfgr"]
+[ext_resource type="Texture2D" uid="uid://dwtuh8qseqye5" path="res://assets/textures/widgets/icons/icon_turn.tres" id="6_y5c6i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gsyk6"]
 font_size = 22
